@@ -10,8 +10,14 @@
 stop -->
 start
    input origPrice
-   set discount = price * 0.80
-   set finalPrice = discount
+   set discount = price * 0.20
+   set finalPrice = origPrice - discount
+   output finalPrice
+stop
+||
+start
+   input origPrice
+   set finalPrice = price * 0.80
    output finalPrice
 stop
 
