@@ -1,26 +1,26 @@
 # Navigation:
 
-- Subject
-    -> Module 1
-        > Activity Files
-    -> Module 2
-        > Activity Files
-        > ...
+**Subject**
+- Module 1 <br>
+> Activity Files <br>
+- Module 2 <br>
+> Activity Files <br>
+> ... <br>
 
-- Subject
-    -> Module 1
-        > Activity Files
-    -> Module 2
-        > Activity Files
-        > ...
+**Subject**
+- Module 1 <br>
+> Activity Files <br>
+- Module 2 <br>
+> Activity Files <br>
+> ... <br>
 
-- Subject
-    -> Module 1
-        > Activity Files
-    -> Module 2
-        > Activity Files
-        > ...
+**Subject**
+- Module 1 <br>
+> Activity Files <br>
+- Module 2 <br>
+> Activity Files <br>
+> ... <br>
 
-- Assignments
-    -> Subject
-        > Assignments Files
+**Assignments**
+- Subject <br>
+> Assignments File
