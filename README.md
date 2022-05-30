@@ -22,5 +22,5 @@
 > ... <br />
 
 **Assignments**
-- Subject <br />
+- *Subject* <br />
 > Assignments File
