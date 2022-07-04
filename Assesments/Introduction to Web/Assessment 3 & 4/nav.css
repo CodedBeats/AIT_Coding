@@ -1,20 +1,23 @@
+body {
+    transition: 0.5s; /* for DOM effects */
+}
 
-/* ============================================ nav css ============================================ */
-.sidenav {
+/* ============================================ nav ============================================ */
+.side-nav {
     height: 100%;  
-    width: 0;           /* changed in js */
+    width: 0;
     position: fixed;    
-    z-index: 1;         /* highest layer */
+    z-index: 1;      
     top: 0;             
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #111; 
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
 }
 
 /* nav links */
-.sidenav a {
+.side-nav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -24,12 +27,16 @@
 }
 
 /*nav link hover */
-.sidenav a:hover {
-    color: #f1f1f1;
+.side-nav a:hover {
+    color: #dfb80c;
+}
+
+.close-btn:hover {
+    color: red;
 }
 
 /* close nav button (top right corner) */
-.sidenav .closebtn {
+.side-nav .close-btn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -37,7 +44,8 @@
     margin-left: 50px;
 }
 
-/* ============================================ content css ============================================ */
+
+/* ============================================ content ============================================ */
 #main {
     transition: margin-left .5s;
     padding: 20px;
