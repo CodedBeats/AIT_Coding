@@ -1,0 +1,13 @@
+/* ============================================ content ============================================ */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+body {
+    transition: 0.5s; /* for DOM effects */
+}
+
+p {
+    margin: 0;
+}
