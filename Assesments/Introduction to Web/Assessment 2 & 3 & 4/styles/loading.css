@@ -20,6 +20,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     overflow: hidden;
+    color: white;
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
