@@ -76,7 +76,8 @@
     left: 56px;
 }
 .head {
-    background: #dad5cd;
+    /* background: #dad5cd; */
+    background: linear-gradient(#fc0303, #e95b00, #d08100, #b49d00, #96b300, #76c543, #4fd578, #00e2aa);
     border-radius: 90px 90px 14px 14px;
     -moz-border-radius: 90px 90px 14px 14px;
     -webkit-border-radius: 90px 90px 14px 14px;
@@ -147,7 +148,7 @@
     right: 4px;
 }
 .eye.two {
-    background: #ddd2c2;
+    background: linear-gradient(#ff0000, #00ff00, #0000ff);
     border: 1px solid #06060e;
     height: 16px;
     width: 16px;
