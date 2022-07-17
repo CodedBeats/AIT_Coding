@@ -1,4 +1,4 @@
-/* ============================================ font | color | animation ============================================ */
+/* ============================================ color | animation ============================================ */
 
 /* -------------- gradient background -------------- */
 @keyframes AnimateGradient { 
@@ -7,6 +7,7 @@
     100%{background-position:0% 50%}
 }
 
+/* -------------- Arcade title text -------------- */
 .arcade-div {
     font-family: 'Press Start 2P', cursive;
     width: 100%;
@@ -24,8 +25,7 @@
     );  
     animation: AnimateGradient 10s ease infinite;
 }
- 
-/* -------------- Arcade title text -------------- */
+
 .arcade-text {
   /* position: absolute; */
   top: 0;
@@ -45,6 +45,10 @@
     4px 0 0 #4405fc
 }
 
+
+
+
+/* ============================================ fonts ============================================ */
 /* -------------- Quantico title text -------------- */
 .title1 {
     font-family: 'Quantico', sans-serif;
@@ -55,3 +59,23 @@
 .paragraph-text {
     font-family: 'Share Tech Mono', monospace;
 }
+
+
+
+
+
+/* ============================================ titles ============================================ */
+#contact-heading {
+    margin-top: 25px;
+}
+
+
+
+
+
+/* ============================================ paragraph ============================================ */
+
+p {
+    margin: 0;
+}
+

@@ -10,10 +10,12 @@
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
+    white-space: nowrap;
 }
 
 /* nav links */
 .side-nav a {
+    font-family: 'Quantico', sans-serif;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -26,13 +28,13 @@
 .side-nav a:hover {
     color: rgb(223, 184, 12);
 }
-
-.close-btn:hover {
+#close-btn:hover {
     color: red;
 }
 
+
 /* close nav button (top right corner) */
-.side-nav .close-btn {
+.side-nav #close-btn {
     position: absolute;
     top: 0;
     right: 25px;
