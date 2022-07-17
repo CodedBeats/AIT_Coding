@@ -22,8 +22,6 @@ Particle.prototype.draw = function() {
     ctx.fillStyle = this.color
     ctx.fill()
 }
-const particle1 = new Particle(100, 100, 1, 1, 20, "white")
-particle1.draw()
 
 // add update method to particle prototype
 Particle.prototype.update = function() {
@@ -54,7 +52,10 @@ function init() {
         // make particles move slowly so it looks more like they're floating
         let directionX = (Math.random() * .4) - .2
         let directionY = (Math.random() * .4) - .2
-        let color = "black"
+        // asign random colors
+        const colors = ["red", "green", "blue"]
+        let randomColor = Math.floor(Math.random() * colors.length)
+        let color = `${colors[randomColor]}`
 
         // push 100 particles into the array
         particleArr.push(new Particle(x, y, directionX, directionY, size, color))
@@ -77,3 +78,12 @@ function animation() {
 init()
 // call the animation function to animate particles
 animation()
+
+// if window size is changed, nothing breaks
+window.addEventListener("resize",
+    function() {
+        canvas.width = innerWidth
+        canvas.height = innerHeight
+        init()
+    }
+)
