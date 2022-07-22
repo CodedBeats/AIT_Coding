@@ -1,3 +1,4 @@
+ethereum.autoRefreshOnNetworkChange = false
 // initialize canvas
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
@@ -6,65 +7,92 @@ ctx.canvas.height = window.innerHeight
 let laserArr = []
 
 
-let lineLength = 0
-let x1 = canvas.width
-let x2 = canvas.width - lineLength
-let y1 = (Math.random() * canvas.height)
-// let y1 = 180
-let speedX = -40
-let speedY = 0
 
-// === angled Lasers ===
-// const angle = 180
-// const r = angle * (Math.PI/180)
-// x2 = x1 + Math.cos(r) * lineLength
-// y2 = y1 + Math.sin(r) * lineLength
+// constructor function for Laser object
+function Laser(x1, x2, y, speedX, speedY, lineWidth, lineCap,shadowBlur, shadowColor, strokeStyle) {
+    this.x1 = x1
+    this.x2 = x2
+    this.y = y
+    this.speedX = speedX
+    this.speedY = speedY
+    this.lineWidth = lineWidth
+    this.lineCap = lineCap
+    this.shadowColor = shadowColor
+    this.shadowBlur = shadowBlur
+    this.strokeStyle = strokeStyle
+}
 
 
-function draw() {
+// add properties to Laser in draw() function
+Laser.prototype.draw = function() {
     ctx.beginPath()
-    ctx.moveTo(x1, y1)
-    // angled Lasers
-    // ctx.lineTo(x2, y2 + lineLength)
-    ctx.lineTo(x2, y1)
-    ctx.lineWidth = 15
-    ctx.lineCap = "round"
-    ctx.stroke()
-    ctx.shadowColor = "red"
-    ctx.shadowBlur = 20
-    ctx.strokeStyle = "rgb(255, 0, 0)"
+    ctx.moveTo(this.x1, this.y)
+    ctx.lineTo(this.x2, this.y)
+    ctx.lineWidth = this.lineWidth
+    ctx.lineCap = this.lineCap
+    ctx.shadowColor = this.shadowColor
+    ctx.shadowBlur = this.shadowBlur
+    ctx.strokeStyle = this.strokeStyle
     ctx.stroke()
 }
-// console.log(`X1 is: ${x1}, Y1 is: ${y1}, X2 is: ${x2}, Y2 is: ${y2}`)
-console.log(`X1 is: ${x1}, Y1 is: ${y1}`)
 
 
 
+// create array of Lasers
+function lasers() {
+    laserArr = []
+
+    for (let i = 0; i < 10; i++) {
+
+        // set Laser position and speed
+        let x1 = canvas.width
+        let x2 = canvas.width
+        let y = (Math.random() * canvas.height)
+        let speedX = -40
+        let speedY = 0
+
+        // set Laser line properties
+        let lineWidth = 15
+        let lineCap = "round"
+        let shadowColor = "red"
+        let shadowBlur = 20
+        let strokeStyle = "rgb(255, 0, 0)"
+
+        laserArr.push(new Laser(x1, x2, y, speedX, speedY, lineWidth, lineCap, shadowColor, shadowBlur, strokeStyle))
+    }
+    console.log(laserArr)
+}
+
+
+// make lasers go pewpew
 function pewpew() {
-    x1 += speedX
-
-    function xSpeed() {x2 += speedX}
-    setTimeout(xSpeed, 50)
-
-    // angled Lasers
-    // x2 += speedX
-    // y2 += speedY
+    // iterate through laser array
+    for (let i = 0; i < laserArr.length; i++) {
+        laserArr[i].draw()                                          // draw sigle point laser
+        laserArr[i].x1 += laserArr[i].speedX                        // start drawing right
+        function xSpeed() {laserArr[i].x2 += laserArr[i].speedX}    // function for setTimeout
+        setTimeout(xSpeed, 50)  
+    }
 }
+
+
+
 
 function loopAnimation() {
-	// clear old frame;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    pewpew();
-    draw();
-    requestAnimationFrame(loopAnimation);
+    requestAnimationFrame(loopAnimation)
+    // clear canvas so its ready for next update to draw
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    
+    pewpew()
 }
-requestAnimationFrame(loopAnimation);
+lasers()
+requestAnimationFrame(loopAnimation)
 
 // if window size is changed, nothing breaks
 window.addEventListener("resize",
     function() {
         canvas.width = innerWidth
         canvas.height = innerHeight
-        // init()
+        lasers()
     }
 )

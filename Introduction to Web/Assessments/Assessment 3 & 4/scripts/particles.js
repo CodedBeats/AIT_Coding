@@ -65,8 +65,8 @@ function init() {
 }
 
 // particle animation loop
-function animation() {
-    requestAnimationFrame(animation)
+function loopAnimation() {
+    requestAnimationFrame(loopAnimation)
     // clear canvas so its ready for next update to draw
     ctx.clearRect(0, 0, innerWidth, innerHeight)
 
@@ -79,7 +79,7 @@ function animation() {
 // call the initialize function to set up particles
 init()
 // call the animation function to animate particles
-animation()
+loopAnimation()
 
 // if window size is changed, nothing breaks
 window.addEventListener("resize",
