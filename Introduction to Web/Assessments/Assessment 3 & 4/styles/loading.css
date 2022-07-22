@@ -54,6 +54,7 @@
     position: absolute;
     transition: left 0.6s;
     left: 0;
+    animation: verticalShake .5s linear infinite;
 }
 /* .radios.right {
     left: 0%;
@@ -90,6 +91,7 @@
     top: -46px;
     left: 50%;
     border: 1px solid black;
+    animation: verticalShake .5s linear infinite;
 }
 .band {
     position: absolute;
@@ -174,7 +176,7 @@
     overflow: hidden;
     position: relative;
     width: var(--size);
-    animation: roll 5.2s linear infinite;
+    animation: roll 2s linear infinite;
 }
 .lines {
     border: 2px solid rgb(167,145,108);
@@ -252,7 +254,7 @@
         transform: rotate(0deg);
     }
     50% {
-        transform: rotate(10deg);
+        transform: rotate(25deg);
     }
     100% {
         transform: rotate(0deg);
@@ -275,5 +277,13 @@
     to {
         transform: translateX(-110%);
     }
+}
+
+@keyframes verticalShake {
+    0% { transform: translateY(0) }
+    25% { transform: translateY(2px) }
+    50% { transform: translateY(-2px) }
+    75% { transform: translateY(2px) }
+    100% { transform: translateY(0) }
 }
 
