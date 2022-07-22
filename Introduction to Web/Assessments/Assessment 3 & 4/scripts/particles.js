@@ -1,5 +1,5 @@
 // initialize canvas
-const canvas = document.getElementById("canvas1")
+const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 ctx.canvas.width  = window.innerWidth
 ctx.canvas.height = window.innerHeight
@@ -42,7 +42,7 @@ Particle.prototype.update = function() {
     this.draw()
 }
 
-// create particle arrays 
+// create particle array
 function init() {
     particleArr = []
     for (let i = 0; i < 100; i++) {
@@ -53,13 +53,15 @@ function init() {
         let directionX = (Math.random() * .4) - .2
         let directionY = (Math.random() * .4) - .2
         // asign random colors
-        const colors = ["red", "green", "blue"]
+        const colors = ["rgba(255, 0, 0, 0.5)", "rgba(255, 255, 0, 0.5)", "rgba(0, 0, 255, 0.5)"]
         let randomColor = Math.floor(Math.random() * colors.length)
         let color = `${colors[randomColor]}`
+        // let color = "rgba(255, 0, 0, 0.5)"
 
         // push 100 particles into the array
         particleArr.push(new Particle(x, y, directionX, directionY, size, color))
     }
+    console.log(particleArr)
 }
 
 // particle animation loop
