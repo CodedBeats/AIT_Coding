@@ -35,26 +35,22 @@
             <!-- Button to open side bar -->
             <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
             
-            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
-                Login
+            <button onclick="alertMessage('Lets Admin Users Login')" class="button">
+                <a href="#" class="button-text">Login</a>
             </button>
         </div>
         <div id="main">
             <!-- body content -->
 
-            <div>
+            <div class="to-add">
                 <h2>To Add</h2>
                 <ol class="list">
-                    <li id="list_item1">Add Images</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item1').id)" value="Done">
-                    <li id="list_item2">Ask if website has to be responsive</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item2').id)" value="Done">
-                    <li id="list_item3">make a background for each page</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item3').id)" value="Done">
-                    <li id="list_item4">Add background boxes to text</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item4').id)" value="Done">
+                    <li id="list_item1">Ask if website has to be responsive</li>
+                        <input type="button" onclick="taskDone(document.getElementById('list_item1').id)" class="done-btn" value="Done">
+                    <li id="list_item2">add style to to-add and testing buttons</li>
+                        <input type="button" onclick="taskDone(document.getElementById('list_item2').id)" class="done-btn" value="Done">
                     <li id="list_item10">Remove text decoration on these list items</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item10').id)" value="Done">
+                        <input type="button" onclick="taskDone(document.getElementById('list_item10').id)" class="done-btn" value="Done">
                 </ol>
             </div>
         </div>
@@ -80,8 +76,8 @@
                     </a>
                 </div>
                 <div class="contact-btn-container">
-                    <button class="contact-btn">
-                        <a href="./contact.html">Contact Us</a>
+                    <button class="button">
+                        <a href="./contact.html" class="button-text">Contact Us</a>
                     </button>
                 </div>
             </div>

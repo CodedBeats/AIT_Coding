@@ -31,7 +31,7 @@
     grid-column-end: 3;
     z-index: 1;
     font-size: 100;
-    color:rgb(23,115,234);
+    color: white;
 }
 .linkdin-link-container {
     display: flex;
@@ -41,7 +41,7 @@
     grid-column-end: 4;
     z-index: 1;
     font-size: 100;
-    color: rgb(0,115,177);
+    color: white;
 }
 .github-link-container {
     display: flex;
@@ -65,15 +65,7 @@
 
 
 
-
-.footer a {
-    font-family: 'Quantico', sans-serif;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
 .footer-links {
-    padding: 0px 30px 0px;
     color:rgb(255, 255, 255)
 }
 .footer-links:hover {

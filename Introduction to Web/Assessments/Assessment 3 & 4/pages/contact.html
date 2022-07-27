@@ -35,8 +35,8 @@
             <!-- Button to open side bar -->
             <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
             
-            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
-                Login
+            <button onclick="alertMessage('Lets Admin Users Login')" class="button">
+                <a href="#" class="button-text">Login</a>
             </button>
         </div>
         <div id="main">
@@ -47,19 +47,22 @@
 
                 <form>
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="First name">
+                        <div class="row z-in">
+                            <div class="col z-in">
+                                <input type="text" class="form-control p-text" placeholder="First Name">
                             </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name">
+                            <div class="col z-in">
+                                <input type="text" class="form-control p-text" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label for="exampleInputEmail1" class="p-text">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                        <small id="emailHelp" class="form-text text-muted p-text">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control p-text" placeholder="Your Message To Us">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -87,8 +90,8 @@
                     </a>
                 </div>
                 <div class="contact-btn-container">
-                    <button class="contact-btn">
-                        <a href="./contact.html">Contact Us</a>
+                    <button class="button">
+                        <a href="./contact.html" class="button-text">Contact Us</a>
                     </button>
                 </div>
             </div>

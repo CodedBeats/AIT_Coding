@@ -39,21 +39,16 @@
 
         <div class="navbar">
             <!-- Button to open side bar -->
-            <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+            <button onclick="openNav()" type="button" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
             
-            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
-                Login
+            <button onclick="alertMessage('Lets Admin Users Login')" class="button">
+                <a href="#" class="button-text">Login</a>
             </button>
         </div>
         <div id="main">
             <!-- body content -->
-
-            <h2 class="title1">This is a Quantico title</h2>
-            <p class="paragraph-text">
-                Our Body text is called "Share Tech Mono"
-            </p>
             
-            
+            <!-- login -->
             <div class=arcade-div>
                 <h3 class="arcade-text">Press Start To Play</h3>
                 <button onclick="alertMessage('Starts Game')" class="start-game-btn">START</button>
@@ -68,23 +63,23 @@
                     <img src="./images/website_img.png" alt="WHW img" height="200">
                 </div>
                 <div class="facebook-link-container">
-                    <a>
+                    <a onclick="alertMessage(`Links to WHW's Facebook Page`)">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                 </div>
                 <div class="linkdin-link-container">
-                    <a>
+                    <a onclick="alertMessage(`Links to WHW's Linkdin Page`)">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </div>
                 <div class="github-link-container">
-                    <a>
+                    <a onclick="alertMessage(`Links to WHW's Github Page`)">
                         <i class="fa-brands fa-github"></i>
                     </a>
                 </div>
                 <div class="contact-btn-container">
-                    <button class="contact-btn">
-                        <a href="./pages/contact.html">Contact Us</a>
+                    <button class="button">
+                        <a href="./pages/contact.html" class="button-text">Contact Us</a>
                     </button>
                 </div>
             </div>
