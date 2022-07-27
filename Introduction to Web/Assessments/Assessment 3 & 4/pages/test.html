@@ -1,29 +1,107 @@
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Test Page</title>
-        <link rel="stylesheet" href="../styles/test.css">
-    </head>
 
-    <body>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Test Page</title>
+    <!-- font links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Press Start 2P -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Quantico -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- File Links -->
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <!-- side bar -->
+    <div id="dom-side-nav" class="side-nav" style="display:none;">
+        <a href="javascript:void(0)" id="close-btn" onclick="closeNav()">&times;</a>
+        <img src="../images/Logo.PNG" alt="WHW Logo" width="250">
+        <a href="../index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./to-add.html">To Add</a>
+        <a href="./test.html">Experiments</a>
+    </div>
+
+    <div id="main">
+        <div class="navbar">
+            <!-- Button to open side bar -->
+            <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+            
+            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
+                Login
+            </button>
+        </div>
+
 
         <!-- Add class to element -->
-        <button onclick="addClass()" type="button">btn</button>
-        <div id="test1">
-            <p>xx</p>
+        <div class="testing-div">
+            <h3 class="testing-title">Toggle the class on an element</h3>
+            <button onclick="addClass()" type="button" class="btn btn-light testing-btn">Toggle</button>
+            <div id="test1">
+                <p class="testing-text">element</p>
+            </div>
         </div>
 
         <!-- Hide Div -->
-        <button onclick="visible()" type="button" class="btn btn-outline-info">Hide Div</button>
-        <div id="test2">
-            <p>
-                This is some body text.
-            </p>
+        <div class="testing-div">
+            <h3 class="testing-title">Toggle Div visiblity</h3>
+            <button onclick="visible()" type="button" class="btn btn-light testing-btn">Toggle</button>
+            <div id="test2">
+                <p class="testing-text">Watch me dissapear</p>
+            </div>
         </div>
 
 
-        <script src="../scripts/main.js"></script>
-    </body>
+    
+        <div class="testing-div loading-page-link">
+            <a href="./loading.html">Loading Page</a>
+        </div>
 
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="company-img-container">
+                    <img src="../images/website_img.png" alt="WHW img" height="200">
+                </div>
+                <div class="facebook-link-container">
+                    <a>
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="linkdin-link-container">
+                    <a>
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="github-link-container">
+                    <a>
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <div class="contact-btn-container">
+                    <button class="contact-btn">
+                        <a href="./contact.html">Contact Us</a>
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/test.js"></script>
+    <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
 </html>

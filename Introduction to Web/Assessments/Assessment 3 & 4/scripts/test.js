@@ -4,7 +4,7 @@
 // Add class function
 function addClass() {
     let element = document.getElementById("test1")
-    element.classList.add("i-added-a-class");
+    element.classList.toggle("i-added-a-class");
     console.log("test xx")
 }
 

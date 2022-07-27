@@ -7,3 +7,13 @@
 body {
     transition: 0.5s; /* for DOM effects */
 }
+
+.blank-space {
+    /* height: 71%; */
+}
+
+/* Locks page height */
+html, body {
+    overflow: hidden;
+}
+

@@ -1,8 +1,8 @@
-// DOM elements
+// ======================== DOM Elements ======================== //
 const sideNav = document.getElementById("dom-side-nav")
 const main = document.getElementById("main")
 
-// Toggle Nav function
+// Toggle Nav func
 let openNav = () => {
     if (sideNav.style.display === "none") {
         sideNav.style.display = "block"
@@ -28,13 +28,25 @@ let openNav = () => {
     }
 }
 
-// Close nav button
+// Close nav func
 let closeNav = () => {
     sideNav.style.width = "0";
     setTimeout(() => { sideNav.style.display = "none" }, 500);
     main.style.marginLeft = "0";
     document.body.style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
+}
+
+// Add css func
+let taskDone = (id) => {
+    let listElement = document.getElementById(id);
+    listElement.classList.toggle("strike-thourgh");
+}
+
+// Lets the user know what this would do, but it's functionality that I wont build
+let alertMessage = (message) => {
+    alert(message)
+    console.log("clicked")
 }
 
 
@@ -97,7 +109,7 @@ function init() {
         let directionX = (Math.random() * .4) - .2
         let directionY = (Math.random() * .4) - .2
         // asign random colors
-        const colors = ["rgba(255, 0, 0, 0.5)", "rgba(255, 255, 0, 0.5)", "rgba(0, 0, 255, 0.5)"]
+        const colors = ["rgba(192, 0, 103, 0.7)", "rgba(7, 213, 10, 0.7)", "rgba(0, 216, 255, 0.7)"]
         let randomColor = Math.floor(Math.random() * colors.length)
         let color = `${colors[randomColor]}`
         // let color = "rgba(255, 0, 0, 0.5)"

@@ -53,7 +53,7 @@ function init() {
         let directionX = (Math.random() * .4) - .2
         let directionY = (Math.random() * .4) - .2
         // asign random colors
-        const colors = ["rgba(255, 0, 0, 0.5)", "rgba(255, 255, 0, 0.5)", "rgba(0, 0, 255, 0.5)"]
+        const colors = ["rgba(192, 0, 103, 0.7)", "rgba(7, 213, 10, 0.7)", "rgba(0, 216, 255, 0.7)"]
         let randomColor = Math.floor(Math.random() * colors.length)
         let color = `${colors[randomColor]}`
         // let color = "rgba(255, 0, 0, 0.5)"

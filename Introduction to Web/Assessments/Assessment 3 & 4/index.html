@@ -28,38 +28,70 @@
         <div class="page"></div>
         <!-- side bar -->
         <div id="dom-side-nav" class="side-nav" style="display:none;">
-            <a href="javascript:void(0)" id="close-btn" onclick="closeNav()">&times;</a>
+            <!-- <a href="javascript:void(0)" id="close-btn" onclick="closeNav()">&times;</a> -->
+            <img class="logo-img" src="./images/Logo.PNG" alt="WHW Logo" width="250">
             <a href="./index.html">Home</a>
-            <a href="#">About</a>
-            <a href="#">Procrastinate</a>
+            <a href="./pages/about.html">About</a>
             <a href="./pages/contact.html">Contact</a>
-            <a href="./pages/references.html">References</a>
-            <a href="./pages/to-add.html" >To Add</a>
+            <a href="./pages/to-add.html">To Add</a>
+            <a href="./pages/test.html">Experiments</a>
         </div>
 
         <div id="main">
-            <!-- Button to open side bar -->
-            <button onclick="openNav()" type="button" class="btn btn-outline-info">NAV</button>
+            <div class="navbar">
+                <!-- Button to open side bar -->
+                <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+                
+                <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
+                    Login
+                </button>
+            </div>
 
             <!-- body content -->
             <h2 class="title1">This is a Quantico title</h2>
             <p class="paragraph-text">
                 Our Body text is called "Share Tech Mono"
             </p>
-        </div>
-
-
-        <div class=arcade-div>
-            <h3 class="arcade-text">This Is Some Fanshy Arcade Text</h3>
+            
+            
+            <div class=arcade-div>
+                <h3 class="arcade-text">This Is Some Fanshy Arcade Text</h3>
+            </div>
+            
+            <div class="blank-space"></div>
         </div>
         
         
         <footer class="footer">
-            <a class="footer-links" href="./pages/test.html">Test Page</a>
-            <a class="footer-links" href="./pages/loading.html">Loading Page</a>
+            <div class="footer-container">
+                <div class="company-img-container">
+                    <img src="./images/website_img.png" alt="WHW img" height="200">
+                </div>
+                <div class="facebook-link-container">
+                    <a>
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="linkdin-link-container">
+                    <a>
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="github-link-container">
+                    <a>
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <div class="contact-btn-container">
+                    <button class="contact-btn">
+                        <a href="./pages/contact.html">Contact Us</a>
+                    </button>
+                </div>
+            </div>
         </footer>
 
         <script src="./scripts/main.js"></script>
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
     </body>
 
 </html>

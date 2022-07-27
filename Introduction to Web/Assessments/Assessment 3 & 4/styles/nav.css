@@ -1,4 +1,8 @@
 /* ============================================ nav ============================================ */
+.navbar {
+    z-index: 1;
+}
+
 .side-nav {
     height: 100%;  
     width: 0;
@@ -8,9 +12,13 @@
     left: 0;
     background-color: rgb(17, 17, 17); 
     overflow-x: hidden;
-    padding-top: 60px;
     transition: 0.5s;
     white-space: nowrap;
+}
+
+/* nav logo */
+.side-nav img {
+    padding-bottom: 16px
 }
 
 /* nav links */
@@ -18,7 +26,7 @@
     font-family: 'Quantico', sans-serif;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 30px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -40,6 +48,17 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+#nav-button {
+    padding: 6px;
+    border: none;
+}
+#nav-button:hover {
+    background-color: rgb(161, 161, 161)
+}
+.nav-icon {
+    font-size: 2em;
+    color:rgb(223, 184, 12);
 }
 
 
