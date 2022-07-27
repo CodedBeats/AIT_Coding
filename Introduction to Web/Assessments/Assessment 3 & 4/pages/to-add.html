@@ -31,17 +31,17 @@
             <a href="./test.html">Experiments</a>
         </div>
 
+        <div class="navbar">
+            <!-- Button to open side bar -->
+            <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+            
+            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
+                Login
+            </button>
+        </div>
         <div id="main">
-            <div class="navbar">
-                <!-- Button to open side bar -->
-                <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
-                
-                <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
-                    Login
-                </button>
-            </div>
-
             <!-- body content -->
+
             <div>
                 <h2>To Add</h2>
                 <ol class="list">
@@ -49,13 +49,13 @@
                         <input type="button" onclick="taskDone(document.getElementById('list_item1').id)" value="Done">
                     <li id="list_item2">Ask if website has to be responsive</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item2').id)" value="Done">
-                    <li id="list_item3">Add social links to footer and testing pages to sidebar</li>
+                    <li id="list_item3">make a background for each page</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item3').id)" value="Done">
                     <li id="list_item4">Add background boxes to text</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item4').id)" value="Done">
                     <li id="list_item10">Remove text decoration on these list items</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item10').id)" value="Done">
-                </ul>
+                </ol>
             </div>
         </div>
 

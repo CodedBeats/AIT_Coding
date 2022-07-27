@@ -22,8 +22,8 @@
 
     <body>
         <!-- init canvas -->
-        <canvas id="canvas">
-        </canvas>
+        <!-- <canvas id="canvas">
+        </canvas> -->
 
         <div class="page"></div>
         <!-- side bar -->
@@ -37,17 +37,17 @@
             <a href="./pages/test.html">Experiments</a>
         </div>
 
+        <div class="navbar">
+            <!-- Button to open side bar -->
+            <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+            
+            <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
+                Login
+            </button>
+        </div>
         <div id="main">
-            <div class="navbar">
-                <!-- Button to open side bar -->
-                <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
-                
-                <button onclick="alertMessage('Lets Admin Users Login')" class="login-btn">
-                    Login
-                </button>
-            </div>
-
             <!-- body content -->
+
             <h2 class="title1">This is a Quantico title</h2>
             <p class="paragraph-text">
                 Our Body text is called "Share Tech Mono"
@@ -55,10 +55,10 @@
             
             
             <div class=arcade-div>
-                <h3 class="arcade-text">This Is Some Fanshy Arcade Text</h3>
+                <h3 class="arcade-text">Press Start To Play</h3>
+                <button onclick="alertMessage('Starts Game')" class="start-game-btn">START</button>
             </div>
             
-            <div class="blank-space"></div>
         </div>
         
         

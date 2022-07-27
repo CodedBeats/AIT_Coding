@@ -11,37 +11,34 @@
 .arcade-div {
     font-family: 'Press Start 2P', cursive;
     width: 100%;
+    height: 75%;
     display: flex;
+    flex-flow: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-size: 300% 300%; */
-    /* background-image: linear-gradient(
+    background-size: 300% 300%;
+    background-image: linear-gradient(
         -45deg, 
         rgb(27, 32, 102) 0%, 
         rgb(76, 56, 151) 25%, 
         rgb(129, 52, 136) 50%, 
         rgb(124, 27, 62) 100%
-    );   */
+    );  
     animation: AnimateGradient 10s ease infinite;
 }
 
 .arcade-text {
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 90px;
+  z-index: 1;
   color: rgb(0, 0, 0);
   width: 100%;
   text-align: center;
-  margin: auto;
   font-size: 40px;
   letter-spacing: 5px;
   text-shadow: -2px 0 0 #fdff2a,
     -4px 0 0 #df4a42,
     2px 0 0 #73c0c2,
-    4px 0 0 #4405fc
+    4px 0 0 #4405fc;
 }
 
 
@@ -113,4 +110,19 @@ p {
     border-top: 3px solid #858585;
     margin-top: 20px;
     font-family: 'Quantico', sans-serif;
+}
+.start-game-btn {
+    z-index: 1;
+    width: 100%;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: 5px;
+    font-size: 30px;
+    color: white;
+    background-color: black;
+    text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #73c0c2,
+    4px 0 0 #4405fc;
 }
