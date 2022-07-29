@@ -23,8 +23,8 @@
     <body>
         <!-- side bar -->
         <div id="dom-side-nav" class="side-nav" style="display:none;">
-            <a href="javascript:void(0)" id="close-btn" onclick="closeNav()">&times;</a>
-            <img src="../images/Logo.PNG" alt="WHW Logo" width="250">
+            <img class="logo-img" src="../images/Logo.PNG" alt="WHW Logo" width="250">
+            <a href="#" id="close-btn" onclick="closeNav()">&times;</a>
             <a href="../index.html">Home</a>
             <a href="./about.html">About</a>
             <a href="./contact.html">Contact</a>
@@ -34,7 +34,7 @@
 
         <div class="navbar">
             <!-- Button to open side bar -->
-            <button onclick="openNav()" type="button" class="btn btn-outline-info" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
+            <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon"></i></button>
             
             <button onclick="alertMessage('Lets Admin Users Login')" class="button">
                 <a href="#" class="button-text">Login</a>

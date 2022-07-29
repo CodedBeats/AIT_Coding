@@ -125,10 +125,6 @@ pre {
 }
 
 
-
-
-
-
 /* ============================================ containers ============================================ */
 .about {
     margin: 40px;
@@ -258,10 +254,18 @@ i:hover {
     font-size: 30px;
     color: white;
     background-color: black;
-    text-shadow: -2px 0 0 #fdff2a,
+    text-shadow: 
+    -2px 0 0 #fdff2a,
     -4px 0 0 #df4a42,
     2px 0 0 #73c0c2,
     4px 0 0 #4405fc;
+}
+.start-game-btn:hover {
+    text-shadow: 
+    -2px 0 0 #4405fc,
+    -4px 0 0 #73c0c2,
+    2px 0 0 #df4a42,
+    4px 0 0 #fdff2a;
 }
 .button {
     background-color: black;

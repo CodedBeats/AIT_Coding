@@ -8,11 +8,11 @@ let openNav = () => {
         sideNav.style.display = "block"
         
         // phone view adjustments 
-        if (window.screen.width <= 680) {
-            console.log("xx")
-            sideNav.style.width = "100%";
-            sideNav.style.marginLeft = "100%";
-            document.body.style.backgroundColor = "rgba(0,0,0,0.2)";
+        if (window.screen.width <= 620) {
+            console.log(sideNav)
+            setTimeout(() => { sideNav.style.width = "100vw"}, 0);
+            document.body.style.height = "100%"
+            document.body.style.marginLeft = "100%"
         } 
         // desktop view adjustments
         else {
@@ -31,10 +31,9 @@ let openNav = () => {
 // Close nav func
 let closeNav = () => {
     sideNav.style.width = "0";
-    setTimeout(() => { sideNav.style.display = "none" }, 500);
-    main.style.marginLeft = "0";
     document.body.style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
+    setTimeout(() => { sideNav.style.display = "none" }, 500);
 }
 
 // Add css func
