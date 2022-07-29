@@ -212,7 +212,71 @@ pre {
     background-color: rgb(211, 211, 211);
 }
 
-
+/* example for connor */
+.testing-grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border: black 1px solid;
+}
+.testing-grid-item1 {
+    width: 50%;
+    margin: auto;
+    z-index: 1;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    /* border: black 1px solid; */
+}
+.testing-grid-item2 {
+    z-index: 1;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border: black 1px solid;
+}
+.testing-grid-item3 {
+    z-index: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: black 1px solid;
+}
+.testing-grid-item4 {
+    z-index: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: black 1px solid;
+}
+.testing-grid-item5 {
+    z-index: 1;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: black 1px solid;
+}
+.testing-grid-item6 {
+    z-index: 1;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: rgb(0, 0, 0) 1px solid;
+}
+.testing-grid-item7 {
+    z-index: 1;
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: black 1px solid;
+}
 
 /* ============================================ icons ============================================ */
 i {
