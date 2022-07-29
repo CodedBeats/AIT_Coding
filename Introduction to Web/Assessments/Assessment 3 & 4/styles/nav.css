@@ -1,7 +1,7 @@
 /* ============================================ nav ============================================ */
 .navbar {
     z-index: 1;
-    background-color: #818181;
+    background-color: #1a1a1a;
 }
 
 .side-nav {
@@ -55,6 +55,7 @@
     padding: 6px;
     border: none;
     background-color: rgba(1, 1, 1, 0);
+    text-decoration: none;
 }
 #nav-button:hover {
     background-color: rgba(1, 1, 1, 0);
@@ -65,14 +66,9 @@
 }
 
 
-/* if (width < 680px) { sidenav is 100%, nav links style change} */
-/* (not currently working, unless max-width is 1000px for some reason?) */
-@media screen and (max-width: 680px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
+
+/* ============================================ mobile view ============================================ */
+@media screen and (max-width: 620px) {
+    
 }
 

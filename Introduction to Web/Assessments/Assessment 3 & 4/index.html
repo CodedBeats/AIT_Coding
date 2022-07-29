@@ -1,3 +1,4 @@
+<!-- <!DOCTYPE html> -->
 <html>
     <head>
         <!-- Setup -->
@@ -25,7 +26,6 @@
         <!-- <canvas id="canvas">
         </canvas> -->
 
-        <div class="page"></div>
         <!-- side bar -->
         <div id="dom-side-nav" class="side-nav" style="display:none;">
             <!-- <a href="javascript:void(0)" id="close-btn" onclick="closeNav()">&times;</a> -->
@@ -41,6 +41,7 @@
             <!-- Button to open side bar -->
             <button onclick="openNav()" type="button" id="nav-button"><i class="fa-solid fa-bars nav-icon"></i></button>
             
+            <!-- login -->
             <button onclick="alertMessage('Lets Admin Users Login')" class="button">
                 <a href="#" class="button-text">Login</a>
             </button>
@@ -48,19 +49,17 @@
         <div id="main">
             <!-- body content -->
             
-            <!-- login -->
             <div class=arcade-div>
                 <h3 class="arcade-text">Press Start To Play</h3>
                 <button onclick="alertMessage('Starts Game')" class="start-game-btn">START</button>
             </div>
             
         </div>
-        
-        
+                
         <footer class="footer">
             <div class="footer-container">
                 <div class="company-img-container">
-                    <img src="./images/website_img.png" alt="WHW img" height="200">
+                    <img class="company-img" src="./images/website_img.png" alt="WHW img">
                 </div>
                 <div class="facebook-link-container">
                     <a onclick="alertMessage(`Links to WHW's Facebook Page`)">

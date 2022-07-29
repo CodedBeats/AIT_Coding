@@ -10,6 +10,7 @@
 
 /* -------------- body background -------------- */
 #main {
+    min-height: 100vh;
     z-index: 0;
     transition: margin-left .5s;
     padding: 20px;
@@ -69,11 +70,19 @@
 
 
 /* ============================================ titles ============================================ */
+h1 {
+    font-family: 'Quantico', sans-serif;
+    margin: 0;
+    /* text-align: end; */
+}
 #contact-heading {
     margin-top: 25px;
 }
 .testing-title {
     font-family: 'Quantico', sans-serif;
+}
+.references-title {
+    margin-top: 30px;
 }
 
 
@@ -115,6 +124,15 @@ pre {
     font-family: 'Share Tech Mono', monospace;
 }
 
+
+
+
+
+
+/* ============================================ containers ============================================ */
+.about {
+    margin: 40px;
+}
 .about-text {
     display: grid;
     grid-template-columns: auto;
@@ -167,15 +185,6 @@ pre {
     grid-row-end: 2;
 }
 
-
-
-
-
-/* ============================================ containers ============================================ */
-.about {
-    margin: 40px;
-}
-
 .references {
     margin-top: 30px;
     padding: 20px;
@@ -221,9 +230,15 @@ i:hover {
 
 /* ============================================ buttons ============================================ */
 .testing-btn {
-    border-style: ridge;
     font-family: 'Quantico', sans-serif;
-    border-width: 3px;
+    color: white;
+    background-color: black;
+    padding: 2px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.testing-btn:hover {
+    color: rgb(223, 184, 12);
 }
 .loading-page-link {
     margin-top: 20px;
@@ -264,4 +279,53 @@ i:hover {
 }
 .done-btn {
     font-family: 'Quantico', sans-serif;
+    color: white;
+    background-color: black;
+    padding: 2px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.done-btn:hover {
+    color: rgb(223, 184, 12);
+}
+.swap-btn {
+    background-color: transparent;
+    border: none;
+    color: black;
+}
+.swap-btn:hover {
+    color: rgb(223, 184, 12);
+}
+
+
+
+/* ============================================ mobile view ============================================ */
+@media screen and (max-width: 620px) {
+    /*---------- buttons ----------*/
+    .button {
+        padding: 3px 5px 3px;
+    }
+    .button a {
+        font-size: 20;
+    }
+
+
+    /*---------- containers ----------*/
+    .about-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*---------- titles ----------*/
+    h1 {
+        font-size: 1.5rem;
+    }
+    #about-title1 {
+        margin-bottom: 0;
+    }
+    #about-title2 {
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+
 }
