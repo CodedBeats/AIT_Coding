@@ -221,6 +221,7 @@ pre {
 /* ============================================ icons ============================================ */
 i {
     transition: 0.3s;
+    cursor: pointer;
 } 
 i:hover {
     transform: scale(1.1);
@@ -246,6 +247,7 @@ i:hover {
 }
 .start-game-btn {
     z-index: 1;
+    cursor: pointer;
     width: 100%;
     border: none;
     border-radius: 20px;
