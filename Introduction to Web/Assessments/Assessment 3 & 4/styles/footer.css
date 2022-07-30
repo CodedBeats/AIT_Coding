@@ -12,7 +12,6 @@
     color: white;
     text-align: center;
 }
-
 .footer-container {
     display: inline-grid;
     width: 100%;
@@ -78,5 +77,4 @@
     .facebook-link-container, .linkdin-link-container, .github-link-container {
         font-size: 50;
     }
-
 }

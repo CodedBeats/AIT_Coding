@@ -3,7 +3,6 @@
     z-index: 1;
     background-color: #1a1a1a;
 }
-
 .side-nav {
     height: 100%;  
     width: 0;
@@ -17,12 +16,10 @@
     border-right: 3px black solid;
     white-space: nowrap;
 }
-
 /* nav logo */
 .side-nav img {
     padding-bottom: 16px;
 }
-
 /* nav links */
 .side-nav a {
     font-family: 'Quantico', sans-serif;
@@ -33,16 +30,13 @@
     display: block;
     transition: 0.3s;
 }
-
 /* nav link hover */
 .side-nav a:hover {
     color: rgb(223, 184, 12);
 }
-
 #close-btn {
     display: none;
 }
-
 #nav-btn {
     padding: 6px;
     border: none;
@@ -64,11 +58,9 @@
     #close-btn {
         display: block;
     }
-
     .side-nav a {
         text-align: center;
     }
-
     .side-nav img {
         width: 100vw;
     }

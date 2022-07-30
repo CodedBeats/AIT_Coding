@@ -37,7 +37,6 @@
     justify-content: center;
     background-size: 300% 300%;
 }
-
 .arcade-text {
   z-index: 1;
   color: rgb(0, 0, 0);
@@ -112,11 +111,9 @@ pre {
     white-space: pre-line;
     font-family: 'Share Tech Mono', monospace;
 }
-
 .p-text {
     font-family: 'Share Tech Mono', monospace;
 }
-
 .i-added-a-class > p {
     color: red;
 }
@@ -180,14 +177,12 @@ pre {
     grid-row-start: 1;
     grid-row-end: 2;
 }
-
 .references {
     margin-top: 30px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-
 .contact {
     margin: 40px;
     padding: 20px;
@@ -197,85 +192,17 @@ pre {
 .z-in {
     z-index: 1;
 }
-
 .to-add {
     margin: 40px;
     padding: 40px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-
 .testing-div {
     margin: 40px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
-}
-
-/* example for connor */
-.testing-grid-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    border: black 1px solid;
-}
-.testing-grid-item1 {
-    width: 50%;
-    margin: auto;
-    z-index: 1;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    /* border: black 1px solid; */
-}
-.testing-grid-item2 {
-    z-index: 1;
-    grid-column-start: 2;
-    grid-column-end: 7;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border: black 1px solid;
-}
-.testing-grid-item3 {
-    z-index: 1;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item4 {
-    z-index: 1;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item5 {
-    z-index: 1;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item6 {
-    z-index: 1;
-    grid-column-start: 5;
-    grid-column-end: 6;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: rgb(0, 0, 0) 1px solid;
-}
-.testing-grid-item7 {
-    z-index: 1;
-    grid-column-start: 6;
-    grid-column-end: 7;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
 }
 
 /* ============================================ icons ============================================ */
@@ -286,8 +213,6 @@ i {
 i:hover {
     transform: scale(1.1);
 } 
-
-
 
 /* ============================================ buttons ============================================ */
 .testing-btn {
@@ -379,7 +304,6 @@ i:hover {
         font-size: 20;
     }
 
-
     /*---------- containers ----------*/
     .about-text {
         display: flex;
@@ -397,5 +321,4 @@ i:hover {
         margin-bottom: 0;
         margin-top: 20px;
     }
-
 }
