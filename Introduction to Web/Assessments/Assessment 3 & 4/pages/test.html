@@ -31,7 +31,6 @@
         <a href="../index.html">Home</a>
         <a href="./about.html">About</a>
         <a href="./contact.html">Contact</a>
-        <a href="./to-add.html">To Add</a>
         <a href="./test.html">Experiments</a>
     </div>
 
@@ -39,8 +38,8 @@
         <!-- Button to open side bar -->
         <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon"></i></button>
         
-        <button onclick="alertMessage('Lets Admin Users Login')" class="button">
-            <a href="#" class="button-text">Login</a>
+        <button onclick="login()" class="button">
+            <a href="#" class="button-text">Access Admin Page</a>
         </button>
     </div>
     <div id="main">
@@ -67,29 +66,17 @@
             </div>
         </div>
 
-        <!-- CSS Grid -->
+        <!-- Show different text box -->
         <div class="testing-div">
-            <div class="testing-grid-container">
-                <div class="testing-grid-item1">
-                    <h1>Logo</h1>
-                </div>
-                <div class="testing-grid-item2">
-                    <h2 class="testing-grid-title">Title in (Filler Text ------------------------------------------------------)</h2>
-                </div>
-                <div class="testing-grid-item3">
-                    <p>Link 1</p>
-                </div>
-                <div class="testing-grid-item4">
-                    <p>Link 2</p>
-                </div>
-                <div class="testing-grid-item5">
-                    <p>Link 3</p>
-                </div>
-                <div class="testing-grid-item6">
-                    <p>Link 4</p>
-                </div>
-                <div class="testing-grid-item7">
-                    <p>Link 5</p>
+            <h3 class="testing-title">Different Display</h3>
+            <div class="testing-box1">
+                <button onclick="changeDisplay('displayed-text1')" type="button" class="testing-btn">P1</button>
+                <button onclick="changeDisplay('displayed-text2')" type="button" class="testing-btn">P2</button>
+                <button onclick="changeDisplay('displayed-text3')" type="button" class="testing-btn">P3</button>
+                <div id="test3">
+                    <p id="displayed-text1">This is text for zxzzzzzzzzzzzzzzzzzzP1</p>
+                    <p class="displayed-text" id="displayed-text2">This is xxxxxxxxxxxxxxxxxxxtext for P2</p>
+                    <p class="displayed-text" id="displayed-text3">This is texyyyyyyyyyyyyyyyyyyyyxt for P3</p>
                 </div>
             </div>
         </div>
@@ -103,20 +90,20 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="company-img-container">
-                <img class="company-img" src="../images/website_img.png" alt="WHW img" height="200">
+                <img class="company-img" src="../images/website_img.png" alt="WHW img">
             </div>
             <div class="facebook-link-container">
-                <a>
+                <a onclick="alertMessage(`Links to WHW's Facebook Page`)">
                     <i class="fa-brands fa-facebook"></i>
                 </a>
             </div>
             <div class="linkdin-link-container">
-                <a>
+                <a onclick="alertMessage(`Links to WHW's Linkdin Page`)">
                     <i class="fa-brands fa-linkedin"></i>
                 </a>
             </div>
             <div class="github-link-container">
-                <a>
+                <a onclick="alertMessage(`Links to WHW's Github Page`)">
                     <i class="fa-brands fa-github"></i>
                 </a>
             </div>

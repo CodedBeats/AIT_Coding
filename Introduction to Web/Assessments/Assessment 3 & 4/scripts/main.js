@@ -1,4 +1,4 @@
-// ======================== DOM Elements ======================== //
+// ======================== Nav ======================== //
 const sideNav = document.getElementById("dom-side-nav")
 const main = document.getElementById("main")
 
@@ -36,6 +36,7 @@ let closeNav = () => {
     setTimeout(() => { sideNav.style.display = "none" }, 500);
 }
 
+// ======================== DOM Elements ======================== //
 // Add css func
 let taskDone = (id) => {
     let listElement = document.getElementById(id);
@@ -48,6 +49,21 @@ let alertMessage = (message) => {
     console.log("clicked")
 }
 
+
+// ======================== Login ======================== //
+let login = () => {
+    let adminPage = "../pages/planning.html"
+    let loginCode = prompt("Enter Admin Password");
+    if (loginCode != null) {
+        if (loginCode == 666) {
+            window.location.href = adminPage
+        } else {
+            alert("This is the incorrect password")
+        }
+    } else {
+        alert("You entered an empty password")
+    }
+  }
 
 
 

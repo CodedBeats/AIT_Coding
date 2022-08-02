@@ -3,8 +3,9 @@ body {
     transition: 0.5s; /* for DOM effects */
 }
 
-.blank-space {
-    /* height: 71%; */
+/* for toggling element visibility */
+.true-display {
+    display: block !important;
 }
 
 /* Locks page height */

@@ -37,7 +37,6 @@
     justify-content: center;
     background-size: 300% 300%;
 }
-
 .arcade-text {
   z-index: 1;
   color: rgb(0, 0, 0);
@@ -54,26 +53,22 @@
 
 
 
-/* ============================================ fonts ============================================ */
-/* -------------- Quantico title text -------------- */
-.title1 {
-    font-family: 'Quantico', sans-serif;
-}
-
-
-/* -------------- Share Tech Mono paragraph text -------------- */
-.paragraph-text {
-    font-family: 'Share Tech Mono', monospace;
-}
-
-
-
-
 /* ============================================ titles ============================================ */
 h1 {
     font-family: 'Quantico', sans-serif;
     margin: 0;
     /* text-align: end; */
+}
+h2 {
+    font-family: 'Quantico', sans-serif;
+}
+h5 {
+    font-family: 'Quantico', sans-serif;
+    font-weight: bold;
+}
+.planning-title {
+    text-align: center;
+    background: radial-gradient(#dfb80c 0%, transparent 50%);
 }
 #contact-heading {
     margin-top: 25px;
@@ -90,9 +85,6 @@ h1 {
 
 
 /* ============================================ lists ============================================ */
-h2 {
-    font-family: 'Quantico', sans-serif;
-}
 .strike-thourgh {
     text-decoration: line-through;
 }
@@ -112,16 +104,25 @@ pre {
     white-space: pre-line;
     font-family: 'Share Tech Mono', monospace;
 }
-
 .p-text {
     font-family: 'Share Tech Mono', monospace;
 }
-
 .i-added-a-class > p {
     color: red;
 }
 .testing-text {
     font-family: 'Share Tech Mono', monospace;
+}
+.admin-code {
+    margin-bottom: 20px;
+    padding: 5px;
+    width: max-content;
+    border: black solid 2px;
+    border-radius: 10px;
+    background-color:rgb(223, 184, 12)
+}
+.displayed-text {
+    display: none;
 }
 
 
@@ -180,14 +181,12 @@ pre {
     grid-row-start: 1;
     grid-row-end: 2;
 }
-
 .references {
     margin-top: 30px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-
 .contact {
     margin: 40px;
     padding: 20px;
@@ -197,85 +196,21 @@ pre {
 .z-in {
     z-index: 1;
 }
-
-.to-add {
+.planning-board {
     margin: 40px;
     padding: 40px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-
 .testing-div {
     margin: 40px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-
-/* example for connor */
-.testing-grid-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    border: black 1px solid;
-}
-.testing-grid-item1 {
-    width: 50%;
-    margin: auto;
+.testing-box1 {
     z-index: 1;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    /* border: black 1px solid; */
-}
-.testing-grid-item2 {
-    z-index: 1;
-    grid-column-start: 2;
-    grid-column-end: 7;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border: black 1px solid;
-}
-.testing-grid-item3 {
-    z-index: 1;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item4 {
-    z-index: 1;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item5 {
-    z-index: 1;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
-}
-.testing-grid-item6 {
-    z-index: 1;
-    grid-column-start: 5;
-    grid-column-end: 6;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: rgb(0, 0, 0) 1px solid;
-}
-.testing-grid-item7 {
-    z-index: 1;
-    grid-column-start: 6;
-    grid-column-end: 7;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    border: black 1px solid;
+    background-color: aquamarine;
 }
 
 /* ============================================ icons ============================================ */
@@ -286,8 +221,6 @@ i {
 i:hover {
     transform: scale(1.1);
 } 
-
-
 
 /* ============================================ buttons ============================================ */
 .testing-btn {
@@ -379,7 +312,6 @@ i:hover {
         font-size: 20;
     }
 
-
     /*---------- containers ----------*/
     .about-text {
         display: flex;
@@ -397,5 +329,7 @@ i:hover {
         margin-bottom: 0;
         margin-top: 20px;
     }
-
+    .planning-title {
+        background: radial-gradient(#dfb80c 0%, transparent 80%);
+    }
 }
