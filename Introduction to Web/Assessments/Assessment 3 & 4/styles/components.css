@@ -1,13 +1,5 @@
 /* ============================================ color | animation ============================================ */
 
-/* -------------- gradient background -------------- */
-@keyframes AnimateGradient { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-
 /* -------------- body background -------------- */
 #main {
     min-height: 100vh;
@@ -66,9 +58,15 @@ h5 {
     font-family: 'Quantico', sans-serif;
     font-weight: bold;
 }
+.added-features-title {
+    margin: 0;
+    padding: 5px;
+    font-weight: normal;
+}
 .planning-title {
     text-align: center;
-    background: radial-gradient(#dfb80c 0%, transparent 50%);
+    font-weight: bold;
+    /* background: radial-gradient(#dfb80c 0%, transparent 50%); */
 }
 #contact-heading {
     margin-top: 25px;
@@ -88,6 +86,9 @@ h5 {
 .strike-thourgh {
     text-decoration: line-through;
 }
+.list {
+    margin-bottom: 30px;
+}
 .list li {
     font-family: 'Share Tech Mono', monospace;
 }
@@ -100,7 +101,7 @@ p {
     margin: 0;
     font-family: 'Share Tech Mono', monospace;
 }
-pre {
+.indented-text{
     white-space: pre-line;
     font-family: 'Share Tech Mono', monospace;
 }
@@ -208,17 +209,19 @@ pre {
     border-radius: 5px;
     background-color: rgb(211, 211, 211);
 }
-.testing-box1 {
-    z-index: 1;
-    background-color: aquamarine;
+.dropdown-container {
+    margin-bottom: 15px;
+}
+.dropdown-container1 , .dropdown-container2 {
+    display: none;
 }
 
 /* ============================================ icons ============================================ */
-i {
+i.grow {
     transition: 0.3s;
     cursor: pointer;
 } 
-i:hover {
+i.grow:hover {
     transform: scale(1.1);
 } 
 
@@ -294,10 +297,15 @@ i:hover {
 .swap-btn {
     background-color: transparent;
     border: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
     color: black;
 }
 .swap-btn:hover {
     color: rgb(223, 184, 12);
+}
+.dropdown-btn {
+    margin-bottom: 20px;
 }
 
 
@@ -332,4 +340,12 @@ i:hover {
     .planning-title {
         background: radial-gradient(#dfb80c 0%, transparent 80%);
     }
+}
+
+
+/* ============================================ animations ============================================ */
+@keyframes AnimateGradient { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Test Page</title>
+    <title>Experiments</title>
     <!-- font links -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Press Start 2P -->
@@ -36,7 +36,7 @@
 
     <div class="navbar">
         <!-- Button to open side bar -->
-        <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon"></i></button>
+        <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon grow"></i></button>
         
         <button onclick="login()" class="button">
             <a href="#" class="button-text">Access Admin Page</a>
@@ -45,7 +45,7 @@
     <div id="main">
 
         <div class="testing-div">
-            <h1 id="swap"><input type="button" onclick="changePos()" class="swap-btn" id="swap-btn" value="Testing New Features To Add >"></h1>
+            <h1 id="swap"><input type="button" onclick="changePos()" class="swap-btn" id="swap-btn" value="Javascript Experiments ->"></h1>
         </div>
 
         <!-- Add class to element -->
@@ -55,6 +55,7 @@
             <div id="test1">
                 <p class="testing-text">element</p>
             </div>
+            <iframe width="100%" height="300" src="//jsfiddle.net/CodedBeats/ztaqejwh/6/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
 
         <!-- Hide Div -->
@@ -64,21 +65,21 @@
             <div id="test2">
                 <p class="testing-text">Watch me dissapear</p>
             </div>
+            <iframe width="100%" height="300" src="//jsfiddle.net/CodedBeats/ztaqejwh/8/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
 
-        <!-- Show different text box -->
+        <!-- Show different tabs -->
         <div class="testing-div">
             <h3 class="testing-title">Different Display</h3>
-            <div class="testing-box1">
-                <button onclick="changeDisplay('displayed-text1')" type="button" class="testing-btn">P1</button>
-                <button onclick="changeDisplay('displayed-text2')" type="button" class="testing-btn">P2</button>
-                <button onclick="changeDisplay('displayed-text3')" type="button" class="testing-btn">P3</button>
-                <div id="test3">
-                    <p id="displayed-text1">This is text for zxzzzzzzzzzzzzzzzzzzP1</p>
-                    <p class="displayed-text" id="displayed-text2">This is xxxxxxxxxxxxxxxxxxxtext for P2</p>
-                    <p class="displayed-text" id="displayed-text3">This is texyyyyyyyyyyyyyyyyyyyyxt for P3</p>
-                </div>
+            <button onclick="changeDisplay('displayed-text1')" type="button" class="testing-btn">P1</button>
+            <button onclick="changeDisplay('displayed-text2')" type="button" class="testing-btn">P2</button>
+            <button onclick="changeDisplay('displayed-text3')" type="button" class="testing-btn">P3</button>
+            <div id="test3">
+                <p id="displayed-text1">This is text for P1</p>
+                <p class="displayed-text" id="displayed-text2">This is text for P2</p>
+                <p class="displayed-text" id="displayed-text3">This is text for P3</p>
             </div>
+            <iframe width="100%" height="300" src="//jsfiddle.net/CodedBeats/7oxb342h/4/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
     
         <div class="testing-div loading-page-link">
@@ -94,17 +95,17 @@
             </div>
             <div class="facebook-link-container">
                 <a onclick="alertMessage(`Links to WHW's Facebook Page`)">
-                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-facebook grow"></i>
                 </a>
             </div>
             <div class="linkdin-link-container">
                 <a onclick="alertMessage(`Links to WHW's Linkdin Page`)">
-                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-linkedin grow"></i>
                 </a>
             </div>
             <div class="github-link-container">
                 <a onclick="alertMessage(`Links to WHW's Github Page`)">
-                    <i class="fa-brands fa-github"></i>
+                    <i class="fa-brands fa-github grow"></i>
                 </a>
             </div>
             <div class="contact-btn-container">

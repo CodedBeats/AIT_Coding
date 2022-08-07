@@ -33,7 +33,7 @@
 
         <div class="navbar">
             <!-- Button to open side bar -->
-            <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon"></i></button>
+            <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon grow"></i></button>
             
             <button onclick="alertMessage('You are already on the admin page')" class="button">
                 <a href="#" class="button-text">Access Admin Page</a>
@@ -47,8 +47,6 @@
                 <h2 class="planning-title">WHW Planning Board</h2>
                 <h5>Website Features To Add</h5>
                 <ol class="list">
-                    <li id="list_item1">add particle background to Experiments page</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item1').id)" class="done-btn" value="Done">
                     <li id="list_item2">add PVZ</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item2').id)" class="done-btn" value="Done">
                     <li id="list_item3">add mine sweeper</li>
@@ -59,21 +57,28 @@
                         <input type="button" onclick="taskDone(document.getElementById('list_item5').id)" class="done-btn" value="Done">
                     <li id="list_item6">add loading page at start for 5sec</li>
                         <input type="button" onclick="taskDone(document.getElementById('list_item6').id)" class="done-btn" value="Done">
-                    <li id="list_item7">change experiments page to be js playground</li>
-                        <input type="button" onclick="taskDone(document.getElementById('list_item7').id)" class="done-btn" value="Done">
                 </ol>
-                <h5>Added Features</h5>
-                <ol class="list">
-                    <li>Added a login functionality so admins can access the planning page</li>
-                    <li>Added a radial faded background color to admin page title</li>
-                    <li>Added a test that displays different components based on button click, but set up like tabs</li>
-                    <li>Made website responsive at <= 620px width</li>
-                    <li>Added cursor hover to buttons and icons</li>
-                    <li>Put a nicely placed box around text to make it more readable without removing the background</li>
-                    <li>Added page alerts to indicate what happens when social links are clicked</li>
-                    <li>Created a BB8 + particle background for future loading page</li>
-                    <li>Made an animated navigation side bar</li>
-                </ol>
+                <div class="dropdown-container">
+                    <button onclick="dropdown('.dropdown-container1')" class="dropdown-btn testing-btn">
+                        <h5 class="added-features-title">Added Features <i class="fa-solid fa-arrow-down"></i></h5>
+                    </button>
+                    <div class="dropdown-container1">
+                        <ol class="list">
+                            <li>Added a login functionality so admins can access the planning page</li>
+                            <li>Added a radial faded background color to admin page title</li>
+                            <li>Added a test that displays different components based on button click, but set up like tabs</li>
+                            <li>Made website responsive at <= 620px width</li>
+                            <li>Added cursor hover to buttons and icons</li>
+                            <li>Put a nicely placed box around text to make it more readable without removing the background</li>
+                            <li>Added page alerts to indicate what happens when social links are clicked</li>
+                            <li>Created a BB8 + particle background for future loading page</li>
+                            <li>Made an animated navigation side bar</li>
+                            <li>------------------------</li>
+                            <li>Added JSFiddle code snippets to the experiments page</li>
+                            <li>Made the "Added Features" list a dropdown</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -84,17 +89,17 @@
                 </div>
                 <div class="facebook-link-container">
                     <a onclick="alertMessage(`Links to WHW's Facebook Page`)">
-                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-facebook grow"></i>
                     </a>
                 </div>
                 <div class="linkdin-link-container">
                     <a onclick="alertMessage(`Links to WHW's Linkdin Page`)">
-                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-linkedin grow"></i>
                     </a>
                 </div>
                 <div class="github-link-container">
                     <a onclick="alertMessage(`Links to WHW's Github Page`)">
-                        <i class="fa-brands fa-github"></i>
+                        <i class="fa-brands fa-github grow"></i>
                     </a>
                 </div>
                 <div class="contact-btn-container">
