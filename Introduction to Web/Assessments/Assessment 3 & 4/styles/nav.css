@@ -50,6 +50,12 @@
     font-size: 4em;
     color:rgb(223, 184, 12);
 }
+.active {
+    color:rgb(223, 184, 12) !important;
+}
+.place-holder {
+    
+}
 
 
 

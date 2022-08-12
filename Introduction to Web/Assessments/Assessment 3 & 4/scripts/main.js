@@ -1,9 +1,8 @@
 // ======================== Nav ======================== //
-const sideNav = document.getElementById("dom-side-nav")
-const main = document.getElementById("main")
 
 // Toggle Nav func
 let openNav = () => {
+    const sideNav = document.getElementById("dom-side-nav")
     if (sideNav.style.display === "none") {
         sideNav.style.display = "block"
         
@@ -30,6 +29,7 @@ let openNav = () => {
 
 // Close nav func
 let closeNav = () => {
+    const sideNav = document.getElementById("dom-side-nav")
     sideNav.style.width = "0";
     document.body.style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
@@ -65,6 +65,8 @@ let dropdown = (t) => {
 }
 
 
+
+
 // ======================== Login ======================== //
 let login = () => {
     let adminPage = "../pages/planning.html"
@@ -79,3 +81,30 @@ let login = () => {
         alert("You entered an empty password")
     }
 }
+
+
+window.addEventListener('load', () => {
+    // Side nav active status on page load
+    const homeLink = document.getElementById("home-link")
+    const aboutLink = document.getElementById("about-link")
+    const contactLink = document.getElementById("contact-link")
+    const experimentsLink = document.getElementById("experiments-link")
+    const home = "/index.html"
+    const about = "/pages/about.html"
+    const contact = "/pages/contact.html"
+    const experiments = "/pages/test.html"
+    let navLinks = [homeLink, aboutLink, contactLink, experimentsLink]
+    let navUrls = [home, about, contact, experiments]
+
+    let j = 0
+    for (let i = 0; i < navUrls.length; i++) {
+
+        if (navUrls[i] === window.location.pathname) {
+            navLinks[j].classList.add("active")
+        } else {
+            navLinks[j].classList.remove("active")
+        }
+
+        j += 1
+    }
+});

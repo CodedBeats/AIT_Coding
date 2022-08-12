@@ -125,6 +125,16 @@ p {
 .displayed-text {
     display: none;
 }
+.active-text {
+    margin: 5px;
+    padding: 5px;
+}
+.active-text1 {
+    background-color:rgb(12, 223, 23);
+}
+.active-text2 {
+    background-color: rgb(43, 188, 207) !important;
+}
 
 
 /* ============================================ containers ============================================ */

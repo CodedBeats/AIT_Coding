@@ -28,10 +28,10 @@
     <div id="dom-side-nav" class="side-nav" style="display:none;">
         <img class="logo-img" src="../images/Logo.PNG" alt="WHW Logo" width="250">
         <a href="#" id="close-btn" onclick="closeNav()">&times;</a>
-        <a href="../index.html">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./contact.html">Contact</a>
-        <a href="./test.html">Experiments</a>
+        <a href="../index.html" class="place-holder" id="home-link">Home</a>
+        <a href="./about.html" class="place-holder" id="about-link">About</a>
+        <a href="./contact.html" class="place-holder" id="contact-link">Contact</a>
+        <a href="./test.html" class="place-holder" id="experiments-link">Experiments</a>
     </div>
 
     <div class="navbar">
@@ -81,6 +81,26 @@
             </div>
             <iframe width="100%" height="300" src="//jsfiddle.net/CodedBeats/7oxb342h/4/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
+
+        <!-- Active Items -->
+        <div class="testing-div">
+            <h3 class="testing-title">Change Active Item</h3>
+            <button onclick="active('active1')" class="testing-btn">Activate Div 1</button>
+            <button onclick="active('active2')" class="testing-btn">Activate Div 2</button>
+            <button onclick="active('active3')" class="testing-btn">Activate Div 3</button>
+            <div id="test4">
+                <div id="active1" class="active-text1 active-text2">
+                    <p>I am div 1</p>
+                </div>
+                <div id="active2" class="active-text1">
+                    <p>I am div 2</p>
+                </div>
+                <div id="active3" class="active-text1">
+                    <p>I am div 3</p>
+                </div>
+            </div>
+            <iframe width="100%" height="300" src="//jsfiddle.net/CodedBeats/bodsn1p0/24/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </div>
     
         <div class="testing-div loading-page-link">
             <a href="./loading.html">Loading Page</a>
@@ -119,4 +139,5 @@
     <script src="../scripts/main.js"></script>
     <script src="../scripts/test.js"></script>
     <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+</body>
 </html>
