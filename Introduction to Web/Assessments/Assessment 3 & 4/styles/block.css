@@ -14,9 +14,8 @@ body {
 } */
 
 
-
 /* ============================================ mobile view ============================================ */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
     body {
         width: 100%
     }

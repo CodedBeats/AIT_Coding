@@ -1,5 +1,4 @@
 /* ============================================ color | animation ============================================ */
-
 /* -------------- body background -------------- */
 #main {
     min-height: 100vh;
@@ -43,8 +42,6 @@
 }
 
 
-
-
 /* ============================================ titles ============================================ */
 h1 {
     font-family: 'Quantico', sans-serif;
@@ -66,7 +63,6 @@ h5 {
 .planning-title {
     text-align: center;
     font-weight: bold;
-    /* background: radial-gradient(#dfb80c 0%, transparent 50%); */
 }
 #contact-heading {
     margin-top: 25px;
@@ -79,9 +75,6 @@ h5 {
 }
 
 
-
-
-
 /* ============================================ lists ============================================ */
 .strike-thourgh {
     text-decoration: line-through;
@@ -92,8 +85,6 @@ h5 {
 .list li {
     font-family: 'Share Tech Mono', monospace;
 }
-
-
 
 
 /* ============================================ paragraph ============================================ */
@@ -225,6 +216,65 @@ p {
 .dropdown-container1 , .dropdown-container2 {
     display: none;
 }
+/* Modal Container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 0%;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border: none;
+}
+.modal-title {
+    padding: 2px 16px;
+    background-size: 300% 300%;
+    background-image: linear-gradient(
+        -45deg, 
+        rgb(27, 32, 102) 0%, 
+        rgb(76, 56, 151) 25%, 
+        rgb(129, 52, 136) 50%, 
+        rgb(124, 27, 62) 100%
+    );  
+    animation: AnimateGradient 5s ease infinite;
+    color: white;
+}
+.modal-body {
+    padding: 2px 16px;
+}
+#loaded-page {
+    display: none;
+}
+#loading-page {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+}
+
 
 /* ============================================ icons ============================================ */
 i.grow {
@@ -234,6 +284,7 @@ i.grow {
 i.grow:hover {
     transform: scale(1.1);
 } 
+
 
 /* ============================================ buttons ============================================ */
 .testing-btn {
@@ -259,7 +310,6 @@ i.grow:hover {
     border-radius: 20px;
     padding: 5px 0px 5px;
     text-align: center;
-    /* vertical-align: middle; */
     letter-spacing: 5px;
     font-size: 30px;
     color: white;
@@ -317,11 +367,25 @@ i.grow:hover {
 .dropdown-btn {
     margin-bottom: 20px;
 }
-
+/* close modal button */
+.close-modal {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-modal:hover, .close-modal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-button {
+    margin-right: 10px;
+}
 
 
 /* ============================================ mobile view ============================================ */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
     /*---------- buttons ----------*/
     .button {
         padding: 3px 5px 3px;
@@ -355,7 +419,17 @@ i.grow:hover {
 
 /* ============================================ animations ============================================ */
 @keyframes AnimateGradient { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
 }

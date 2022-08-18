@@ -27,23 +27,6 @@ let visible = () => {
     }
 }
 
-// Active item on click 
-let active = (ref) => {
-    const div1 = document.getElementById("active1")
-    const div2 = document.getElementById("active2")
-    const div3 = document.getElementById("active3")
-    let arr = [div1, div2, div3]
-    
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].id === ref) {
-            arr[i].classList.add("active-text2")
-        } else {
-            arr[i].classList.remove("active-text2")
-        }
-    }
-}
-
-
 
 // Show different text box
 let changeDisplay = (page) => {
@@ -61,3 +44,43 @@ let changeDisplay = (page) => {
         document.getElementById("displayed-text3").style.display = "block"
     }
 }
+
+
+// Active item on click 
+let active = (ref) => {
+    const div1 = document.getElementById("active1")
+    const div2 = document.getElementById("active2")
+    const div3 = document.getElementById("active3")
+    let arr = [div1, div2, div3]
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id === ref) {
+            arr[i].classList.add("active-text2")
+        } else {
+            arr[i].classList.remove("active-text2")
+        }
+    }
+}
+
+
+// Loading Page DOM
+let onReady = (func) => {
+    let intervalTime = window.setInterval(checkReady, 5000);
+
+    function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalTime);
+            func.call(this);
+        }
+    }
+}
+
+let show = (id, value) => {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+onReady(() => {
+    show('loaded-page', true);
+    show('loading-page', false);
+});
+

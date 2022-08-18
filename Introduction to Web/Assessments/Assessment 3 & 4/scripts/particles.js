@@ -31,7 +31,7 @@ Particle.prototype.update = function() {
         this.directionX = -this.directionX
     }
     // check if particle has reached end of the screen (y axis)
-    if(this.y + this.size > canvas.width || this.y - this.size < 0) {
+    if(this.y + this.size > canvas.height || this.y - this.size < 0) {
         // if true, switch its direction
         this.directionY = -this.directionY
     }

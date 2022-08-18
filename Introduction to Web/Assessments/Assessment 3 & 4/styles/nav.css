@@ -6,8 +6,7 @@
 .side-nav {
     height: 100%;  
     width: 0;
-    position: fixed;    
-    /* z-index: 1; */
+    position: fixed;
     top: 0;             
     left: 0;
     background-color: rgb(17, 17, 17); 
@@ -53,14 +52,11 @@
 .active {
     color:rgb(223, 184, 12) !important;
 }
-.place-holder {
-    
-}
 
 
 
 /* ============================================ mobile view ============================================ */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
     #close-btn {
         display: block;
     }

@@ -1,5 +1,4 @@
 // ======================== Nav ======================== //
-
 // Toggle Nav func
 let openNav = () => {
     const sideNav = document.getElementById("dom-side-nav")
@@ -7,7 +6,7 @@ let openNav = () => {
         sideNav.style.display = "block"
         
         // phone view adjustments 
-        if (window.screen.width <= 620) {
+        if (window.screen.width <= 800) {
             console.log(sideNav)
             setTimeout(() => { sideNav.style.width = "100vw"}, 0);
             document.body.style.height = "100%"
@@ -37,7 +36,6 @@ let closeNav = () => {
 }
 
 
-
 // ======================== DOM Elements ======================== //
 // Add css func
 let taskDone = (id) => {
@@ -64,7 +62,21 @@ let dropdown = (t) => {
     }
 }
 
+// Modal
+let modalFunc = (element) => {
+    const modal = document.getElementById("modal-box")
+    const main = document.getElementById("main")
+    // const modalBtn = document.getElementById("modal-btn")
+    // var span = document.getElementsByClassName("close")[0]
 
+    if (element === "open") {
+        modal.style.display = "block"
+        main.style.animation = "none"
+    } else if (element === "close") {
+        main.style.animation = "AnimateGradient 10s ease infinite"
+        modal.style.display = "none"
+    }
+}
 
 
 // ======================== Login ======================== //
@@ -83,6 +95,9 @@ let login = () => {
 }
 
 
+
+// ======================== Window events ======================== //
+// active status on menu items
 window.addEventListener('load', () => {
     // Side nav active status on page load
     const homeLink = document.getElementById("home-link")
@@ -95,8 +110,8 @@ window.addEventListener('load', () => {
     const experiments = "/pages/test.html"
     let navLinks = [homeLink, aboutLink, contactLink, experimentsLink]
     let navUrls = [home, about, contact, experiments]
-
     let j = 0
+
     for (let i = 0; i < navUrls.length; i++) {
 
         if (navUrls[i] === window.location.pathname) {
@@ -104,7 +119,16 @@ window.addEventListener('load', () => {
         } else {
             navLinks[j].classList.remove("active")
         }
-
         j += 1
     }
 });
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    let modal = document.getElementById("modal-box")
+    let main = document.getElementById("main")
+    if (event.target == modal) {
+        modal.style.display = "none"
+        main.style.animation = "AnimateGradient 10s ease infinite"
+    }
+}

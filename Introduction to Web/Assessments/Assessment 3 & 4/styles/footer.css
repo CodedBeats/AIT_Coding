@@ -1,7 +1,5 @@
 /* ============================================ footer ============================================ */
 .footer {
-    /* position: flex; */
-    /* position: fixed; */
     margin-top: auto;
     left: 0;
     bottom: 0;
@@ -66,7 +64,7 @@
 
 
 /* ============================================ mobile view ============================================ */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 800px) {
     .footer {
         height: 80px;
         width: 100vw;
