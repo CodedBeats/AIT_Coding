@@ -1,11 +1,16 @@
-// Simple C++ program to display "Hello, world!".
-// header file to perform Input/Output operation
+/* 
+Simple C++ program to display:
+greeting
+birthday 
+*/
 #include <iostream>
 using namespace std;
 
 int main() {
-    // print hello world
-    cout << "Hello, world!"; 
+    string greeting = "Hello, Luca";
+    string birthday = "69/420/2000";
+    // print greeting and birthday (on seperate lines)
+    cout << greeting << "\n" << birthday; 
      // Terminates the main function
-    return 0;               
+    return 0;            
 }
