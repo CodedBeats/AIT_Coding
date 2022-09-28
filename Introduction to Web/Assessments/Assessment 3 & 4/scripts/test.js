@@ -63,6 +63,7 @@ let active = (ref) => {
 }
 
 
+
 // Loading Page DOM
 let onReady = (func) => {
     let intervalTime = window.setInterval(checkReady, 5000);
