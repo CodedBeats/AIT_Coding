@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "iostream": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
         "cctype": "cpp",
@@ -17,8 +16,10 @@
         "cwchar": "cpp",
         "exception": "cpp",
         "initializer_list": "cpp",
+        "iomanip": "cpp",
         "ios": "cpp",
         "iosfwd": "cpp",
+        "iostream": "cpp",
         "istream": "cpp",
         "iterator": "cpp",
         "limits": "cpp",
@@ -36,7 +37,9 @@
         "xiosbase": "cpp",
         "xlocale": "cpp",
         "xlocinfo": "cpp",
+        "xlocmon": "cpp",
         "xlocnum": "cpp",
+        "xloctime": "cpp",
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xstring": "cpp",
