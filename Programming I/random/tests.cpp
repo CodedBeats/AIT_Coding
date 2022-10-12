@@ -7,7 +7,7 @@ using namespace std;
 
 // 1. demonstrate assignment operator
 int program1() {
-    std::cout << "This is the 1st program" << endl;
+    std::cout << "Program 1 - demonstrate assignment operator" << endl;
     int n = 420;
     std::cout << n << endl;
     
@@ -16,7 +16,7 @@ int program1() {
 
 // 2. read 3 numbers from the user and prints their sum 
 int program2() {
-    std::cout << "This is the 2nd program" << endl;
+    std::cout << "Program 2 - read 3 numbers from the user and prints their sum" << endl;
     int sum = 0;
     int x, y, z;
     
@@ -33,7 +33,7 @@ int program2() {
 
 // 3. read 2 double numbers from the user and print the sum of both doubles (scaled to 2 decimal places)
 int program3() {
-    std::cout << "This is the 3rd program" << endl;
+    std::cout << "Program 3 - read 2 double numbers from the user and print the sum of both doubles (scaled to 2 decimal places)" << endl;
     double sum = 0.00;
     double x, y;
     
@@ -49,7 +49,7 @@ int program3() {
 
 // 4. read a first and last initial of a name from the user and print it out
 int program4() {
-    std::cout << "This is the 4th program" << endl;
+    std::cout << "Program 4 - read a first and last initial of a name from the user and print it out" << endl;
     string firstName;
     string lastName;
     string output;
@@ -68,7 +68,7 @@ int program4() {
 
 // 5. display a menu with a formatted style
 int program5() {
-    std::cout << "This is the 5th program" << endl;
+    std::cout << "Program 5 - display a menu with a formatted style" << endl;
     float coffePrice = 3.50;
     float teaPrice = 3.00;
     
@@ -92,7 +92,7 @@ int program5() {
 
 // read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)
 int program6() {
-    std::cout << "This is the 6th program" << endl;
+    std::cout << "Program 6 - read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)" << endl;
     int x, y;
     cout << "Enter 2 numbers" << endl;
     cin >> x;
@@ -107,7 +107,7 @@ int program6() {
 
 // read a character and output "You are enrolled" if the input is "y" or "Y"
 int program7() {
-    std::cout << "This is the 7th program" << endl;
+    std::cout << "Program 7 - read a character and output You are enrolled if the input is y or Y" << endl;
     string x;
     cout << "Enter a letter if the user deserves to be enrolled" << endl;
     cin >> x;
@@ -121,7 +121,7 @@ int program7() {
 
 // read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)
 int program8() {
-    std::cout << "This is the 8th program" << endl;
+    std::cout << "Program 8 - read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)" << endl;
     int x, y, z, lowestValue;
     cout << "input 3 numbers" << endl;
     cin >> x;
@@ -140,7 +140,7 @@ int program8() {
 
 // read input to pick a color (using switch)
 int program9() {
-    std::cout << "This is the 9th program" << endl;
+    std::cout << "Program 9 - read input to pick a color (using switch)" << endl;
     int x;
     cout << "Enter a number to sellect your color" << "\n"
         << "1 for Red" << "\n"
@@ -172,6 +172,73 @@ int program9() {
     return 0;
 }
 
+// take input and print it's first 5 multiples
+int program10() {
+    cout << "Program 10 - take input and print the first 5 multiples" << endl;
+    int x;
+    int result;
+    cout << "Input a number" << endl;
+    cin >> x;
+    
+    for (int i = 1; i <= 5; i++) {
+        result = x * i;
+        cout << "multiplied by " << i << " is " << result << endl;
+    }
+    
+    return 0;
+}
+
+// take float and decrease by 0.25 until result is 0
+int program11() {
+    cout << "Program 11 - take float and decrease by 0.25 until result is 0" << endl;
+    float x;
+    float y = 0.25;
+    cout << "Input a number" << endl;
+    cin >> x;
+    
+    while (x > 0) {
+        x = x - y;
+        cout << x << endl;
+    }
+    
+    return 0;
+}
+
+// print 100 - 0
+int program12() {
+    cout << "Program 12 - Print 100 - 0" << endl;
+    int x = 100;
+    
+    for (int i = 100; x >= 0; i--) {
+        cout << x << endl;
+        x -= 1;
+    }
+    
+    return 0;
+}
+
+// print multiplication table with rows * columns taken from input
+int program13() {
+    cout << "Program 13 - Print multiplication table with rows * columns taken from input" << endl;
+    
+    string rowString = "|";
+    int x, y = 1;
+    cout << "Enter a number between 1 and 12" << endl;
+    cin >> x;
+    
+    cout << "\n" << "Here is your times table" << endl;
+    for(int i = 0; i < x; i++, y++) {
+        for (int i = 0; i <= x; i++) {
+            rowString += to_string(i * y) + "\t" + "|";
+        }
+        cout << rowString << endl;
+        rowString = "|";
+    }
+    
+    return 0;
+}
+
+
 
 int main() {
     program1();
@@ -183,6 +250,11 @@ int main() {
     program7();
     program8();
     program9();
+    program10();
+    program11();
+    program12();
+    program13();
+
     
     return 0;
 }
