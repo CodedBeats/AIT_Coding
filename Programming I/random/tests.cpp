@@ -3,6 +3,7 @@
 #include <string.h>
 #include <string>
 #include <cctype>
+#include <vector>
 using namespace std;
 
 // 1. demonstrate assignment operator
@@ -90,7 +91,7 @@ int program5() {
     return 0;
 }
 
-// read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)
+// 6. read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)
 int program6() {
     std::cout << "Program 6 - read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)" << endl;
     int x, y;
@@ -105,7 +106,7 @@ int program6() {
     return 0;
 }
 
-// read a character and output "You are enrolled" if the input is "y" or "Y"
+// 7. read a character and output "You are enrolled" if the input is "y" or "Y"
 int program7() {
     std::cout << "Program 7 - read a character and output You are enrolled if the input is y or Y" << endl;
     string x;
@@ -119,7 +120,7 @@ int program7() {
     return 0;
 }
 
-// read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)
+// 8. read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)
 int program8() {
     std::cout << "Program 8 - read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)" << endl;
     int x, y, z, lowestValue;
@@ -138,7 +139,7 @@ int program8() {
     return 0;
 }
 
-// read input to pick a color (using switch)
+// 9. read input to pick a color (using switch)
 int program9() {
     std::cout << "Program 9 - read input to pick a color (using switch)" << endl;
     int x;
@@ -172,7 +173,7 @@ int program9() {
     return 0;
 }
 
-// take input and print it's first 5 multiples
+// 10. take input and print it's first 5 multiples
 int program10() {
     cout << "Program 10 - take input and print the first 5 multiples" << endl;
     int x;
@@ -188,7 +189,7 @@ int program10() {
     return 0;
 }
 
-// take float and decrease by 0.25 until result is 0
+// 11. take float and decrease by 0.25 until result is 0
 int program11() {
     cout << "Program 11 - take float and decrease by 0.25 until result is 0" << endl;
     float x;
@@ -204,7 +205,7 @@ int program11() {
     return 0;
 }
 
-// print 100 - 0
+// 12. print 100 - 0
 int program12() {
     cout << "Program 12 - Print 100 - 0" << endl;
     int x = 100;
@@ -217,7 +218,7 @@ int program12() {
     return 0;
 }
 
-// print multiplication table with rows * columns taken from input
+// 13. print multiplication table with rows * columns taken from input
 int program13() {
     cout << "Program 13 - Print multiplication table with rows * columns taken from input" << endl;
     
@@ -238,6 +239,55 @@ int program13() {
     return 0;
 }
 
+// 14. print out name forwards and backwards using array
+int program14() {
+    cout << "Program 14 - Print out name forwards and backwards" << endl;
+    
+    vector<char> name;
+    char letter;
+    char exit;
+    cout << "Please enter your name 1 letter at a time" << endl;
+    
+    while(exit != 'y') {
+        cin >> letter;
+        name.push_back(letter);
+        
+        cout << "Currently typed: ";
+        for (int i = 0; i < name.size(); i++) {
+            cout << name[i];
+        }
+        
+        cout << "\n Done? (y/n)" << endl;
+        cin >> exit;
+    }
+    
+    cout << "Your name backwards is: ";
+    for (int i = name.size() - 1; i >= 0; i--) {
+        cout << name[i];
+    }
+    cout << "\n";
+    return 0;
+}
+
+// 15. print out employee data
+int program15() {
+    cout << "Program 15 - Print out employee salary and tax" << endl;
+    
+    string names[5] = {"Frodo", "Gandlaf", "Gimly", "Legless", "AraGone"};
+    int salary[5] = {1213, 1423, 884, 2531, 1001};
+    float tax;
+    
+    cout << "\nName \t\t Salary \t Tax" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << names[i] << "\t\t ";
+        cout << salary[i] << "\t\t ";
+        tax = salary[i] * 0.19;
+        cout << tax << endl;
+    }
+    
+    return 0;
+}
+
 
 
 int main() {
@@ -253,7 +303,9 @@ int main() {
     // program10();
     // program11();
     // program12();
-    program13();
+    // program13();
+    program14();
+    program15();
 
     
     return 0;
