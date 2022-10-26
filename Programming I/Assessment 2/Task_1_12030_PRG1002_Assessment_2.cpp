@@ -1,21 +1,33 @@
-/*
-notes
-input and percentage is a float
-if input is invalid -> "this score was either negative or over 50 and therefore is invalid"
-calculate percentage based off score (double the input value)
-calculate grade from percentage:
-    0 - 59.99 = F
-    60 - 69.99 = D
-    70 - 79.99 = C
-    80 - 89.99 = B
-    90 - 100 = A
+/**********
+PSEUDOCODE
 
-
-
-pseudocode
-
-
-*/
+START
+    SET studentInput, studentScore, gradeLimit = 59.99, grades = ['F', 'D', 'C', 'B', 'A']
+    OUTPUT "Please enter your score: "
+    READ studentInput
+    IF studentInput is invalid
+        OUTPUT "This score was either negative or over 50 and therefore is invalid"
+    ELSE 
+        studentScore = studentInput * 2
+        LOOP 5 times
+            IF studentScore - gradeLimit <= 0
+                IF this is the first iteration of the loop
+                    OUTPUT "You have failed with %" + studentScore + ", and received a grade " << grades[iteration number]
+                    break
+                ELSE
+                    OUTPUT "You have passed with %" + studentScore + ", and received a grade " << grades[iteration number]
+                    break
+                END IF
+            END IF
+            IF gradeLimit >= 89
+                gradeLimit = 100
+            ELSE
+                gradeLimit += 10
+            END IF
+        END LOOP
+    END IF
+END
+**********/
 
 #include <iostream>
 using namespace std;
@@ -46,10 +58,10 @@ int main() {
                 // check if i is equal to 0 for fail or pass
                 if (i == 0) {
                     cout << "You have failed with %" << studentScore << ", and received a grade " << grades[i] << endl;
-                    break;      // end program here and stop repeated messages
+                    break;      // end program here to stop repeated messages
                 } else {
                     cout << "You have passed with %" << studentScore << ", and received a grade " << grades[i] << endl;
-                    break;      // end program here and stop repeated messages
+                    break;      // end program here to stop repeated messages
                 }
             }
             
