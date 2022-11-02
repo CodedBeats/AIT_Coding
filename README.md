@@ -2,9 +2,8 @@
 
 **Subject**
 - *Assessments* <br />
-- *Module 1* <br />
-> Activity Files <br />
-- *Module 2* <br />
-> Activity Files <br />
-> ... <br />
+- *Randomly Assorted Coding* <br />
+> Modules <br />
+> Projects <br />
+> Random <br />
 ##
