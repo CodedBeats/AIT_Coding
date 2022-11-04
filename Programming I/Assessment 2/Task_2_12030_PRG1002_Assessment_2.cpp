@@ -40,7 +40,7 @@ int main() {
         cout << "You can't enter negative numbers" << endl;
     } else {
         // only calculate milesPerGallon here because it's an unnecessary step above if an input is negative
-        milesPerGallon = (milesTravelled / petrolConsumed) * 3.78541;
+        milesPerGallon = milesTravelled / (petrolConsumed * 0.26417);
         
         // set the number on all values to 3 decimal points
         cout << fixed;
@@ -49,7 +49,7 @@ int main() {
         // display Car stats
         cout << "Petrol Consumed: " << petrolConsumed << "L" << endl;
         cout << "Miles Travelled: " << milesTravelled << endl;
-        cout << "Miles per Gallon: " << milesPerGallon << endl;
+        cout << "Miles per Gallon: " << milesPerGallon << " (US mpg)" << endl;
     }
     
     return 0;
