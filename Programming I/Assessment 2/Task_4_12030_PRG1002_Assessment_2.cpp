@@ -2,7 +2,28 @@
 PSEUDOCODE
 
 START
-    
+    SET list = []
+    OUTPUT "Please enter 3 numbers"
+    OUTPUT "Value 1: "
+    READ list[0]
+    OUTPUT "Value 2: "
+    READ list[1]
+    OUTPUT "Value 3: "
+    READ list[2]
+
+    SET arrLength = list length
+
+    SORT list[] ascending
+    OUTPUT "Ascending order:"
+    LOOP through list[i]
+        OUTPUT list[i]
+    END LOOP
+
+    SORT list[] descending
+    OUTPUT "Descending order:"
+    LOOP through list[i]
+        OUTPUT list[i]
+    END LOOP
 END
 **********/
 
