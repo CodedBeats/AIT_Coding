@@ -288,6 +288,71 @@ int program15() {
     return 0;
 }
 
+// 16. read 2 arrays (including size) from user and print max and min from array (seperately)
+int findMin() {
+    int input[100], arrSize, i, min;
+
+    cout << "Enter Number of Elements in your Array: ";
+    cin >> arrSize;
+    cout << "Enter " << arrSize << " numbers" << endl;
+
+    // get input for each position in array
+    for (i = 0; i < arrSize; i++)
+    {
+        cin >> input[i];
+    }
+    // set initial min to compare
+    min = input[0];
+
+    // find min value in array
+    for (i = 0; i < arrSize; i++)
+    {
+        if (input[i] < min)
+        {
+            min = input[i];
+        }
+    }
+    cout << "Minimum Number: " << min << endl;
+
+    return 0;
+}
+int findMax() {
+    int input[100], arrSize, i, max;
+
+    cout << "Enter Number of Elements in your Array: ";
+    cin >> arrSize;
+    cout << "Enter " << arrSize << " numbers" << endl;
+
+    // get input for each position in array
+    for (i = 0; i < arrSize; i++)
+    {
+        cin >> input[i];
+    }
+    // set initial max to compare
+    max = input[0];
+
+    // find max value in array
+    for (i = 0; i < arrSize; i++)
+    {
+        if (input[i] > max)
+        {
+            max = input[i];
+        }
+    }
+    cout << "Maximum Number: " << max << endl;
+
+    return 0;
+}
+int program16() {
+    cout << "FIND THE MIN NUMBER FROM INPUTS" << endl;
+    findMin();
+    
+    cout << "\n\nFIND THE MAX NUMBER FROM INPUTS" << endl;
+    findMax();
+    
+    return 0;
+}
+
 
 
 int main() {
@@ -304,8 +369,9 @@ int main() {
     // program11();
     // program12();
     // program13();
-    program14();
-    program15();
+    // program14();
+    // program15();
+    program16();
 
     
     return 0;
