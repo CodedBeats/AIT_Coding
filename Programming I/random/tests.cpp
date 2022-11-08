@@ -4,7 +4,6 @@
 #include <string>
 #include <cctype>
 #include <vector>
-// #include <bits/stdc++.h>
 using namespace std;
 
 // 1. demonstrate assignment operator
