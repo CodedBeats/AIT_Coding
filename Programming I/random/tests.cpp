@@ -344,6 +344,7 @@ int findMax() {
     return 0;
 }
 int program16() {
+    cout << "Program 16 - Print out min and max from 2 different user inputted arrays" << endl;
     cout << "FIND THE MIN NUMBER FROM INPUTS" << endl;
     findMin();
     
@@ -353,6 +354,10 @@ int program16() {
     return 0;
 }
 
+// get sum of inputted numbers
+int sum() {
+
+}
 
 
 int main() {
