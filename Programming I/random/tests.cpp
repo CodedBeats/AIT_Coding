@@ -94,7 +94,7 @@ int program5() {
 
 // 6. read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)
 int program6() {
-    std::cout << "Program 6 - read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)" << endl;
+    cout << "Program 6 - read 2 numbers as integers and check if the 1st can be divided by the second (and be a whole number)" << endl;
     int x, y;
     cout << "Enter 2 numbers" << endl;
     cin >> x;
@@ -109,7 +109,7 @@ int program6() {
 
 // 7. read a character and output "You are enrolled" if the input is "y" or "Y"
 int program7() {
-    std::cout << "Program 7 - read a character and output You are enrolled if the input is y or Y" << endl;
+    cout << "Program 7 - read a character and output You are enrolled if the input is y or Y" << endl;
     string x;
     cout << "Enter a letter if the user deserves to be enrolled" << endl;
     cin >> x;
@@ -123,7 +123,7 @@ int program7() {
 
 // 8. read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)
 int program8() {
-    std::cout << "Program 8 - read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)" << endl;
+    cout << "Program 8 - read 3 numbers and display the lowest value (this should be done with a loop, not nested if's)" << endl;
     int x, y, z, lowestValue;
     cout << "input 3 numbers" << endl;
     cin >> x;
@@ -142,7 +142,7 @@ int program8() {
 
 // 9. read input to pick a color (using switch)
 int program9() {
-    std::cout << "Program 9 - read input to pick a color (using switch)" << endl;
+    cout << "Program 9 - read input to pick a color (using switch)" << endl;
     int x;
     cout << "Enter a number to sellect your color" << "\n"
         << "1 for Red" << "\n"
@@ -408,7 +408,6 @@ int main() {
     // program15();
     // program16();
     program17();
-
     
     return 0;
 }
