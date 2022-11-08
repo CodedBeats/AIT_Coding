@@ -4,6 +4,7 @@
 #include <string>
 #include <cctype>
 #include <vector>
+// #include <bits/stdc++.h>
 using namespace std;
 
 // 1. demonstrate assignment operator
@@ -290,6 +291,7 @@ int program15() {
 
 // 16. read 2 arrays (including size) from user and print max and min from array (seperately)
 int findMin() {
+    // use predetermined size of 100 so you don't need to use vectors but can stop iteration before 100 with input
     int input[100], arrSize, i, min;
 
     cout << "Enter Number of Elements in your Array: ";
@@ -317,6 +319,7 @@ int findMin() {
     return 0;
 }
 int findMax() {
+    // use predetermined size of 100 so you don't need to use vectors but can stop iteration before 100 with input
     int input[100], arrSize, i, max;
 
     cout << "Enter Number of Elements in your Array: ";
@@ -354,9 +357,36 @@ int program16() {
     return 0;
 }
 
-// get sum of inputted numbers
-int sum() {
-
+// 17. user inputs vector size and values and sum() func prints the sum of all vector values
+int sum17(vector<int> arr) {
+    int i, result = 0;
+    // iterate through passed vector to get result
+    for (i = 0; i < arr.size(); i++) {
+        result += arr[i];
+    }
+    // display result
+    cout << result;
+    return 0;
+}
+int program17() {
+    cout << "Program 17 - user inputs vector size and values and sum() func prints the sum of all vector values" << endl;
+    // declare vector
+    vector<int> arr;
+    int i, arrSize, input;
+    // get vector size
+    cout << "enter arr size: ";
+    cin >> arrSize;
+    // get vector values
+    for (i = 0; i < arrSize; i++) {
+        cin >> input;
+        arr.push_back(input);
+    }
+    
+    cout << "\nThe sum of all the numbers is: ";
+    // call sum() and pass arr as parameter
+    sum17(arr);
+        
+    return 0;
 }
 
 
@@ -376,7 +406,8 @@ int main() {
     // program13();
     // program14();
     // program15();
-    program16();
+    // program16();
+    program17();
 
     
     return 0;
