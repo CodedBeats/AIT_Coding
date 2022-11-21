@@ -1,6 +1,7 @@
+// header guard
 #pragma once
-using namespace std;
 
+// declare enum variables
 enum mathOperator {
 	add,
 	subtract,
@@ -9,6 +10,7 @@ enum mathOperator {
 	modulus
 };
 
+// decalre calculator fucntion in header file for use across cpp files
 int calc(int num1, int num2, mathOperator operation);
 
 
