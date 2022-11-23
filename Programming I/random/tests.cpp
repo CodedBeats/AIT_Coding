@@ -388,6 +388,77 @@ int program17() {
     return 0;
 }
 
+// 18. get user's name and friend's name, compare length and show who's longer + by how much (adding getline() method)
+int program18() {
+    cout << "Program 18 - get user's name and friend's name, compare length and show who's longer + by how much" << endl;
+    string userName, friendName;
+    int userLen, friendLen;
+    
+    cout << "Enter your name: ";
+    getline(cin, userName); 
+    cout << "Enter your friend's name: ";
+    getline(cin, friendName);
+    
+    userLen = userName.length();
+    friendLen = friendName.length();
+    
+    if (userLen > friendLen) {
+        cout << userName << " is longer than " << friendName << " by " << userLen - friendLen << endl;
+    } else if (friendLen > userLen) {
+        cout << friendName << " is longer than " << userName << " by " << friendLen - userLen << endl;
+    } else {
+        cout << "These names are equal in length" << endl;
+    }
+    
+    return 0;
+}
+
+// 19. take string input and reverse capital and lowercase letters
+int program19() {
+    cout << "Program 19 - take string input and reverse capital and lowercase letters" << endl;
+    string input, output;
+    char c;
+    
+    cout << "Enter a string with Lord Farquaad proportions" << endl;
+    getline(cin, input);
+    
+    for (int i = 0; i < input.length(); i++) {
+        c = input[i];
+        if (isupper(c)) {
+            c = tolower(c);
+            output += c;
+        }
+        else if (islower(c)) {
+            c = toupper(c);
+            output += c;
+        }
+    }
+    cout << output << endl;
+    
+    return 0;
+}
+
+// 20. find position of character in string
+int program20() {
+    cout << "Program 20 - find position of character in string" << endl;
+    string input;
+    char c = 'x';
+    
+    cout << "Please enter a sentence" << endl;
+    getline(cin, input);
+    
+    int pos = input.find(c);
+    
+    // position will be -1 if it can't be found
+    if (pos < 0) {
+        cout << "couldn't find position of " << c << endl;
+    } else {
+        cout << "position of x is: " << pos << endl;
+    }
+    
+    return 0;
+}
+
 
 int main() {
     // program1();
@@ -406,7 +477,12 @@ int main() {
     // program14();
     // program15();
     // program16();
-    program17();
+    // program17();
+    program18();
+    program19();
+    program20();
+
+
     
     return 0;
 }
