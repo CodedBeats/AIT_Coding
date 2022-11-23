@@ -11,7 +11,7 @@ START
 				"3.  Multiply"
 				"4.  Divide"
 				"5.  Modulus"
-				"Enter your choice (1-5): "
+				"Enter your choice"
 		READ option
 
 		IF option isn't valid
