@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Task 1\main.cpp" />
-    <ClCompile Include="Task 1\operations.cpp" />
+    <ClCompile Include="Task 1 - Calculator\main.cpp" />
+    <ClCompile Include="Task 1 - Calculator\operations.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Task 1\operations.h" />
+    <ClInclude Include="Task 1 - Calculator\operations.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
