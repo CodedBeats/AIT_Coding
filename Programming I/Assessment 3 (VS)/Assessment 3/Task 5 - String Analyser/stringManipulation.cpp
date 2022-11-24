@@ -116,3 +116,4 @@ int getSymbols(string input) {
     return totalSymbols;
 }
 
+
