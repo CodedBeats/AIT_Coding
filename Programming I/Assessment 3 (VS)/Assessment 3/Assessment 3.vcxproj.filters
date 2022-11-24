@@ -21,9 +21,18 @@
     <ClCompile Include="Task 1 - Calculator\operations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Task 5 - String Analyser\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Task 5 - String Analyser\stringManipulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Task 1 - Calculator\operations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Task 5 - String Analyser\stringManipulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

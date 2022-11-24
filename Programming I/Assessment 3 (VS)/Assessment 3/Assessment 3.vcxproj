@@ -129,9 +129,12 @@
   <ItemGroup>
     <ClCompile Include="Task 1 - Calculator\main.cpp" />
     <ClCompile Include="Task 1 - Calculator\operations.cpp" />
+    <ClCompile Include="Task 5 - String Analyser\main.cpp" />
+    <ClCompile Include="Task 5 - String Analyser\stringManipulation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Task 1 - Calculator\operations.h" />
+    <ClInclude Include="Task 5 - String Analyser\stringManipulation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
