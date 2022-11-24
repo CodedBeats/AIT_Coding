@@ -12,7 +12,7 @@ END
 #include "stringManipulation.h"
 using namespace std;
 
-// handle user interaction in main function
+// handle user interaction and console output in main function
 int main() {
     // declare input and output values
     string input;
@@ -22,15 +22,22 @@ int main() {
     cout << "Please enter a string: ";
     getline(cin, input);
     
-    // get string values by passing input into corresponding functions
+    // get string value statistics by passing input into corresponding functions
     length = getLength(input);
     vowels = getVowels(input);
+    lowercase = getLowercase(input);
+    uppercase = getUppercase(input);
+    numbers = getNumbers(input);
+    symbols = getSymbols(input);
 
     // output string statistics
     cout <<
         "Length of string: " << length << "\n" <<
-        "Number of Vowels: " << vowels << "\n";
-    
+        "Number of Vowels: " << vowels << "\n" <<
+        "Number of Lowercase: " << lowercase << "\n" <<
+        "Number of Uppercase: " << uppercase << "\n" <<
+        "Amount of Numbers: " << numbers << "\n" <<
+        "Number of Symbols: " << symbols << endl;
 
 	return 0;
 }
