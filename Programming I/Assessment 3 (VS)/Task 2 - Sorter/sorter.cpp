@@ -5,12 +5,10 @@ using namespace std;
 
 void sorter(int intValArr[]) {
 
-    int len = sizeof(intValArr) / sizeof(intValArr[0]);
-
-    sort(intValArr, intValArr + len);
+    sort(intValArr, intValArr + 10);
 
     cout << "Sorted Array" << endl;
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < 10; i++) {
         cout << intValArr[i] << "\n";
     }
 }
@@ -18,11 +16,10 @@ void sorter(int intValArr[]) {
 
 void sorter(char charValArr[]) {
 
-    int len = sizeof(charValArr) / sizeof(charValArr[0]);
-    
-    sort(charValArr, charValArr + len);
+    sort(charValArr, charValArr + 10);
 
-    for (int i = 0; i < len; i++) {
+    cout << "Sorted Array" << endl;
+    for (int i = 0; i < 10; i++) {
         cout << charValArr[i] << "\n";
     }
 }
@@ -30,13 +27,10 @@ void sorter(char charValArr[]) {
 
 void sorter(double doubleValArr[]) {
 
-    int len = sizeof(doubleValArr) / sizeof(doubleValArr[0]);
-
-    sort(doubleValArr, doubleValArr + len);
+    sort(doubleValArr, doubleValArr + 10);
 
     cout << "Sorted Array" << endl;
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < 10; i++) {
         cout << doubleValArr[i] << "\n";
     }
-    cout << endl;
 }
