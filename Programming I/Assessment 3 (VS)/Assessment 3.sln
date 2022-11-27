@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 1", "Task 1\Task 1.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 5", "Task 5\Task 5.vcxproj", "{A19FF90A-60B0-4AD5-B474-5A693DB06445}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 3 - Sum of Multiples", "Task 3 - Sum of Multiples\Task 3 - Sum of Multiples.vcxproj", "{47814342-13A4-4B2C-848B-E90C17917E96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{A19FF90A-60B0-4AD5-B474-5A693DB06445}.Release|x64.Build.0 = Release|x64
 		{A19FF90A-60B0-4AD5-B474-5A693DB06445}.Release|x86.ActiveCfg = Release|Win32
 		{A19FF90A-60B0-4AD5-B474-5A693DB06445}.Release|x86.Build.0 = Release|Win32
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Debug|x64.ActiveCfg = Debug|x64
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Debug|x64.Build.0 = Debug|x64
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Debug|x86.ActiveCfg = Debug|Win32
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Debug|x86.Build.0 = Debug|Win32
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Release|x64.ActiveCfg = Release|x64
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Release|x64.Build.0 = Release|x64
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Release|x86.ActiveCfg = Release|Win32
+		{47814342-13A4-4B2C-848B-E90C17917E96}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
