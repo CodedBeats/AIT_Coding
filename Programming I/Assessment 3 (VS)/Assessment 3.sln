@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 1", "Task 1\Task 1.vcxproj", "{4DB8AE25-C4C7-43C8-8A6D-AAC08B1B9AA5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 1 - Calculator", "Task 1\Task 1.vcxproj", "{4DB8AE25-C4C7-43C8-8A6D-AAC08B1B9AA5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 5", "Task 5\Task 5.vcxproj", "{A19FF90A-60B0-4AD5-B474-5A693DB06445}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 5 - String Analyser", "Task 5\Task 5.vcxproj", "{A19FF90A-60B0-4AD5-B474-5A693DB06445}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 3 - Sum of Multiples", "Task 3 - Sum of Multiples\Task 3 - Sum of Multiples.vcxproj", "{47814342-13A4-4B2C-848B-E90C17917E96}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 2 - Sorter", "Task 2 - Sorter\Task 2 - Sorter.vcxproj", "{EB3CF32B-DB3E-4007-BFFA-C417E285E50A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task 4 - Temperature Average", "Task 4 - Temperature Average\Task 4 - Temperature Average.vcxproj", "{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{EB3CF32B-DB3E-4007-BFFA-C417E285E50A}.Release|x64.Build.0 = Release|x64
 		{EB3CF32B-DB3E-4007-BFFA-C417E285E50A}.Release|x86.ActiveCfg = Release|Win32
 		{EB3CF32B-DB3E-4007-BFFA-C417E285E50A}.Release|x86.Build.0 = Release|Win32
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Debug|x64.ActiveCfg = Debug|x64
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Debug|x64.Build.0 = Debug|x64
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Debug|x86.ActiveCfg = Debug|Win32
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Debug|x86.Build.0 = Debug|Win32
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Release|x64.ActiveCfg = Release|x64
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Release|x64.Build.0 = Release|x64
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Release|x86.ActiveCfg = Release|Win32
+		{E50B0B15-B5F0-48DA-B8A3-D9135414B2CD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
