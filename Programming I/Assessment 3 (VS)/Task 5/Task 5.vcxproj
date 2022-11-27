@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Assessment 3\Task 5 - String Analyser\main.cpp" />
-    <ClCompile Include="..\Assessment 3\Task 5 - String Analyser\stringManipulation.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stringManipulation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Assessment 3\Task 5 - String Analyser\stringManipulation.h" />
+    <ClInclude Include="stringManipulation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

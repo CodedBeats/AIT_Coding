@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Assessment 3\Task 5 - String Analyser\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Assessment 3\Task 5 - String Analyser\stringManipulation.cpp">
+    <ClCompile Include="stringManipulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Assessment 3\Task 5 - String Analyser\stringManipulation.h">
+    <ClInclude Include="stringManipulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
