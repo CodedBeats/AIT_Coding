@@ -1,6 +1,9 @@
 /*
 
+    ===== Creation of Tables =====
+        Line 11 - 293
 
+    ===== xx =====
 
 */
 
@@ -164,7 +167,7 @@ CREATE TABLE AWARD(
 -- Actor Awards Table
 CREATE TABLE ACTOR_AWARD_RELATION(
     actorID varchar(100) NOT null UNIQUE,
-    nomination varchar(100) NOT null,
+    nomination bool NOT null,
     awarded bool NOT null,
   	awardID varchar(100) NOT null,
     PRIMARY KEY(actorID),
@@ -174,7 +177,7 @@ CREATE TABLE ACTOR_AWARD_RELATION(
 -- Director Awards Table
 CREATE TABLE DIRECTOR_AWARD_RELATION(
     directorID varchar(100) NOT null UNIQUE,
-    nomination varchar(100) NOT null,
+    nomination bool NOT null,
     awarded bool NOT null,
   	awardID varchar(100) NOT null,
     PRIMARY KEY(directorID),
@@ -207,7 +210,7 @@ CREATE TABLE SERIES_LANGUAGE_RELATION(
 -- Series Awards Table
 CREATE TABLE SERIES_AWARD_RELATION(
     seriesID varchar(100) NOT null UNIQUE,
-    nomination varchar(100) NOT null,
+    nomination bool NOT null,
     awarded bool NOT null,
   	awardID varchar(100) NOT null,
     PRIMARY KEY(seriesID),
@@ -240,7 +243,7 @@ CREATE TABLE MOVIE_LANGUAGE_RELATION(
 -- Movie Awards Table
 CREATE TABLE MOVIE_AWARD_RELATION(
     movieID varchar(100) NOT null UNIQUE,
-    nomination varchar(100) NOT null,
+    nomination bool NOT null,
     awarded bool NOT null,
   	awardID varchar(100) NOT null,
     PRIMARY KEY(movieID),
