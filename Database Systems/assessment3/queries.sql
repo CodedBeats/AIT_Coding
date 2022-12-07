@@ -1,5 +1,4 @@
 /*
-
     ===== Create Tables =====
         Line x - x
     =========================
@@ -8,6 +7,9 @@
         Line x - x
     ===================================
 
+    ===== Delete row from Tables =====
+        Line x - x
+    ==================================
 */
 
 ----------------------- Creation of tables -----------------------
@@ -744,5 +746,283 @@ INSERT INTO MOVIE_DIRECTOR_RELATION (movieID, directorID) VALUES
 
 
 
------------------------ xxx -----------------------
+----------------------- Delete a single row from each table -----------------------
+-- (deleting the added rows from each table)
+
+-- Customer Table
+DELETE FROM CUSTOMER
+WHERE customerID = "C11";
+
+-- Payment Details Table
+DELETE FROM PAYMENT_DETAILS
+WHERE payDetID = "PA11";
+
+-- Subscription Details Table
+DELETE FROM SUBSCRIPTION_DETAILS
+WHERE subDetID = "SUB11";
+
+-- Address Table
+DELETE FROM ADDRESS
+WHERE addressID = "ADD11";
+
+-- Gender Table
+DELETE FROM GENDER
+WHERE genderID = "GE4";
+
+-- Actor Table
+DELETE FROM ACTOR
+WHERE actorID = "AC11";
+
+-- Director Table
+DELETE FROM DIRECTOR
+WHERE directorID = "D11";
+
+-- Review Table
+DELETE FROM REVIEW
+WHERE reviewID = "RE11";
+
+-- Classification Table
+DELETE FROM CLASSIFICATION
+WHERE classificationID = "CL7";
+
+-- Movie Table
+DELETE FROM MOVIE
+WHERE movieID = "M11";
+
+-- Series Table
+DELETE FROM SERIES
+WHERE seriesID = "SER11";
+
+-- Season Table
+DELETE FROM SEASON
+WHERE seasonID = "SEA11";
+
+-- Episode Table
+DELETE FROM EPISODE
+WHERE episodeID = "EP11";
+
+-- Language Table
+DELETE FROM LANGUAGE
+WHERE languageID = "L9";
+
+-- Award Table
+DELETE FROM AWARD
+WHERE awardID = "AW11";
+
+-- Actor Awards Table
+DELETE FROM ACTOR_AWARD_RELATION
+WHERE actorID = "AC11";
+
+-- Director Awards Table
+DELETE FROM DIRECTOR_AWARD_RELATION
+WHERE directorID = "D11";
+
+-- Series Reviews Table
+DELETE FROM SERIES_REVIEW_RELATION
+WHERE reviewID = "RE11";
+
+-- Series Genres Table
+DELETE FROM SERIES_GENRE_RELATION
+WHERE seriesID = "SER11";
+
+-- Series Languages Table
+DELETE FROM SERIES_LANGUAGE_RELATION
+WHERE seriesID = "SER11";
+
+-- Series Awards Table
+DELETE FROM SERIES_AWARD_RELATION
+WHERE seriesID = "SER11";
+
+-- Movie Reviews Table
+DELETE FROM MOVIE_REVIEW_RELATION
+WHERE reviewID = "RE21";
+
+-- Movie Genres Table
+DELETE FROM MOVIE_GENRE_RELATION
+WHERE movieID = "M11";
+
+-- Movie Languages Table
+DELETE FROM MOVIE_LANGUAGE_RELATION
+WHERE movieID = "M11";
+
+-- Movie Awards Table
+DELETE FROM MOVIE_AWARD_RELATION
+WHERE movieID = "M11";
+
+-- Customer and Series Composite Table
+DELETE FROM CUSTOMER_SERIES_RELATION
+WHERE customerID = "C11";
+
+-- Customer and Movie Composite Table
+DELETE FROM CUSTOMER_MOVIE_RELATION
+WHERE customerID = "C11";
+
+-- Series and Actor Composite Table
+DELETE FROM SERIES_ACTOR_RELATION
+WHERE seriesID = "SER11";
+
+-- Series and Director Composite Table
+DELETE FROM SERIES_DIRECTOR_RELATION
+WHERE seriesID = "SER11";
+
+-- Movie and Actor Composite Table
+DELETE FROM MOVIE_ACTOR_RELATION
+WHERE movieID = "M11";
+
+-- Movie and Director Composite Table
+DELETE FROM MOVIE_DIRECTOR_RELATION
+WHERE movieID = "M11";
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+----------------------- Update a single row from each table -----------------------
+-- (updating row 1 of every table)
+
+-- Customer Table
+
+-- Payment Details Table
+
+-- Subscription Details Table
+
+-- Address Table
+
+-- Gender Table
+
+-- Actor Table
+
+-- Director Table
+
+-- Review Table
+
+-- Classification Table
+
+-- Movie Table
+
+-- Series Table
+
+-- Season Table
+
+-- Episode Table
+
+-- Language Table
+
+-- Award Table
+
+-- Actor Awards Table
+
+-- Director Awards Table
+
+-- Series Reviews Table
+
+-- Series Genres Table
+
+-- Series Languages Table
+
+-- Series Awards Table
+
+-- Movie Reviews Table
+
+-- Movie Genres Table
+
+-- Movie Languages Table
+
+-- Movie Awards Table
+
+-- Customer and Series Composite Table
+
+-- Customer and Movie Composite Table
+
+-- Series and Actor Composite Table
+
+-- Series and Director Composite Table
+
+-- Movie and Actor Composite Table
+
+-- Movie and Director Composite Table
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+----------------------- Adding a new attribute to each table -----------------------
+-- (attribute names won't correlate with the table)
+
+-- Customer Table
+
+-- Payment Details Table
+
+-- Subscription Details Table
+
+-- Address Table
+
+-- Gender Table
+
+-- Actor Table
+
+-- Director Table
+
+-- Review Table
+
+-- Classification Table
+
+-- Movie Table
+
+-- Series Table
+
+-- Season Table
+
+-- Episode Table
+
+-- Language Table
+
+-- Award Table
+
+-- Actor Awards Table
+
+-- Director Awards Table
+
+-- Series Reviews Table
+
+-- Series Genres Table
+
+-- Series Languages Table
+
+-- Series Awards Table
+
+-- Movie Reviews Table
+
+-- Movie Genres Table
+
+-- Movie Languages Table
+
+-- Movie Awards Table
+
+-- Customer and Series Composite Table
+
+-- Customer and Movie Composite Table
+
+-- Series and Actor Composite Table
+
+-- Series and Director Composite Table
+
+-- Movie and Actor Composite Table
+
+-- Movie and Director Composite Table
+
+----------------------------------------------------------------------------------
+
 
