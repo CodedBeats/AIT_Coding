@@ -3,11 +3,19 @@
         Line x - x
     =========================
 
-    ===== Insert Data into Tables =====
+    ===== Insert data into Tables =====
         Line x - x
     ===================================
 
-    ===== Delete row from Tables =====
+    ===== Delete a row from Tables =====
+        Line x - x
+    ==================================
+
+    ===== Alter a row from Tables =====
+        Line x - x
+    ==================================
+
+    ===== Add an attribute to Tables =====
         Line x - x
     ==================================
 */
