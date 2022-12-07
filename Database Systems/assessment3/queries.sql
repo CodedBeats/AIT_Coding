@@ -892,70 +892,162 @@ WHERE movieID = "M11";
 
 
 ----------------------- Update a single row from each table -----------------------
--- (updating row 1 of every table)
+-- (updating row 1 of every table, new values won't corelate with the table or attribute)
 
 -- Customer Table
+UPDATE CUSTOMER
+SET fName = "Jen", lName = "Barber"
+WHERE customerID = "C1";
 
 -- Payment Details Table
+UPDATE PAYMENT_DETAILS
+SET cardNumber = "9696 9696 9696 9696", cardName = "Barber"
+WHERE payDetID = "PA1";
 
 -- Subscription Details Table
+UPDATE SUBSCRIPTION_DETAILS
+SET planType = "Astronomical", screenCount = 99
+WHERE subDetID = "SUB1";
 
 -- Address Table
+UPDATE ADDRESS
+SET streetNo = 900, postcode = 9001
+WHERE addressID = "ADD1";
 
 -- Gender Table
+UPDATE GENDER
+SET gender = "sheep"
+WHERE genderID = "GE1";
 
 -- Actor Table
+UPDATE ACTOR
+SET fName = "Jim", lName = "Moriorioriorioriaty"
+WHERE actorID = "AC1";
 
 -- Director Table
+UPDATE DIRECTOR
+SET fName = "John", lName = "Snow"
+WHERE directorID = "D1";
 
 -- Review Table
+UPDATE REVIEW
+SET content = "wowowowowow", author = "Ferir"
+WHERE reviewID = "RE1";
 
 -- Classification Table
+UPDATE CLASSIFICATION
+SET classification = "F"
+WHERE classificationID = "CL1";
 
 -- Movie Table
+UPDATE MOVIE
+SET title = "Rhymin crap", description = "Debie Mgee and her other 3"
+WHERE movieID = "M1";
 
 -- Series Table
+UPDATE SERIES
+SET title = "A Game", description = "I'm actually not sure"
+WHERE seriesID = "SER1";
 
 -- Season Table
+UPDATE SEASON
+SET title = "Season -1", description = "Time travel is weird"
+WHERE seasonID = "SEA1";
 
 -- Episode Table
+UPDATE EPISODE
+SET title = "Car Adventure", description = "Daylight robery"
+WHERE episodeID = "EP1";
 
 -- Language Table
+UPDATE LANGUAGE
+SET language = "Swarheelee"
+WHERE languageID = "L1";
 
 -- Award Table
+UPDATE AWARD
+SET award = "Big Guns"
+WHERE awardID = "AW1";
 
 -- Actor Awards Table
+UPDATE ACTOR_AWARD_RELATION
+SET nomination = "FALSE", awarded = "FALSE"
+WHERE actorID = "AC10";
 
 -- Director Awards Table
+UPDATE DIRECTOR_AWARD_RELATION
+SET nomination = "FALSE", awarded = "FALSE"
+WHERE directorID = "D1";
 
 -- Series Reviews Table
+UPDATE SERIES_REVIEW_RELATION
+SET seriesID = "SER2"
+WHERE reviewID = "RE1";
 
 -- Series Genres Table
+UPDATE SERIES_GENRE_RELATION
+SET genre = "Magical"
+WHERE seriesID = "SER1";
 
 -- Series Languages Table
+UPDATE SERIES_LANGUAGE_RELATION
+SET languageID = "L2"
+WHERE seriesID = "SER4";
 
 -- Series Awards Table
+UPDATE SERIES_AWARD_RELATION
+SET nomination = "FALSE", awarded = "FALSE"
+WHERE seriesID = "SER1";
 
 -- Movie Reviews Table
+UPDATE MOVIE_REVIEW_RELATION
+SET movieID = "M2"
+WHERE reviewID = "RE11";
 
 -- Movie Genres Table
+UPDATE MOVIE_GENRE_RELATION
+SET genre = "Propblem Child"
+WHERE movieID = "M1";
 
 -- Movie Languages Table
+UPDATE MOVIE_LANGUAGE_RELATION
+SET languageID = "L2"
+WHERE movieID = "M1";
 
 -- Movie Awards Table
+UPDATE MOVIE_AWARD_RELATION
+SET nomination = "FALSE", awarded = "FALSE"
+WHERE movieID = "M1";
 
 -- Customer and Series Composite Table
+UPDATE CUSTOMER_SERIES_RELATION
+SET seriesID = "SER2"
+WHERE customerID = "C1";
 
 -- Customer and Movie Composite Table
+UPDATE CUSTOMER_MOVIE_RELATION
+SET movieID = "M1"
+WHERE customerID = "C1";
 
 -- Series and Actor Composite Table
+UPDATE SERIES_ACTOR_RELATION
+SET actorID = "AC2"
+WHERE seriesID = "SER1";
 
 -- Series and Director Composite Table
+UPDATE SERIES_DIRECTOR_RELATION
+SET directorID = "D1"
+WHERE seriesID = "SER1";
 
 -- Movie and Actor Composite Table
+UPDATE MOVIE_ACTOR_RELATION
+SET actorID = "AC1"
+WHERE movieID = "M1";
 
 -- Movie and Director Composite Table
-
+UPDATE MOVIE_DIRECTOR_RELATION
+SET directorID = "D1"
+WHERE movieID = "M1";
 ----------------------------------------------------------------------------------
 
 
