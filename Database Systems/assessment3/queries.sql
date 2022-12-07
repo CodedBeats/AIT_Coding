@@ -9,15 +9,19 @@
 
     ===== Delete a row from Tables =====
         Line x - x
-    ==================================
+    ====================================
 
     ===== Alter a row from Tables =====
         Line x - x
-    ==================================
+    ===================================
 
     ===== Add an attribute to Tables =====
         Line x - x
-    ==================================
+    ======================================
+
+    ===== Get 12 specified DB Queries =====
+        Line x - x
+    =======================================
 */
 
 ----------------------- Creation of tables -----------------------
@@ -1125,4 +1129,38 @@ WHERE movieID = "M1";
 
 ----------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+----------------------- 12 Specified DB Queries -----------------------
+-- (Refer to doccument for image results)
+
+-- a) The total number of TV series available
+
+-- b) The total number of Movies available
+
+-- c) List the genres available
+
+-- d) How many movies are based on a real story
+
+-- e) How many TV series are based on a book
+
+-- f) List (any) 3 Comedy movies in alphabetical order
+
+-- g) List the names of 2 directors who received more than one award
+
+-- h) List the titles of 3 PG movies/TV series
+
+-- i) The top 5 most popular movies based on peoples’ reviews
+
+-- j) Which TV series has the highest number of seasons? Display the total number of seasons as well
+
+-- k) Summary of all the TV series that are streamed in BitStream. Display short synopsis, year released the name of the main actor/actress, the director and the number of seasons for each series
+
+-- l) Summary of all Movies that are streamed in BitStream. Display short synopsis about the movie, year released, the name of the main actor/actress and the director for each movie
 
