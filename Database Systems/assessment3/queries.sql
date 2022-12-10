@@ -1220,7 +1220,9 @@ ADD pistachios varchar(100);
 
 -- j) Which TV series has the highest number of seasons? Display the total number of seasons as well
 
--- k) Summary of all the TV series that are streamed in BitStream. Display short synopsis, year released the name of the main actor/actress, the director and the number of seasons for each series
+-- k) Summary of all the TV series that are streamed in BitStream. Display short synopsis, year released the name of the main actor/actress, 
+--    The director and the number of seasons for each series
 
--- l) Summary of all Movies that are streamed in BitStream. Display short synopsis about the movie, year released, the name of the main actor/actress and the director for each movie
+-- l) Summary of all Movies that are streamed in BitStream. Display short synopsis about the movie, year released, 
+--    The name of the main actor/actress and the director for each movie
 
