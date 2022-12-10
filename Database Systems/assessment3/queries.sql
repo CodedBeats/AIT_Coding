@@ -1,26 +1,26 @@
 /*
     ===== Create Tables =====
-        Line x - x
+        Line 27 - 318
     =========================
 
     ===== Insert data into Tables =====
-        Line x - x
+        Line 328 - 751
     ===================================
 
     ===== Delete a row from Tables =====
-        Line x - x
+        Line 761 - 887
     ====================================
 
     ===== Alter a row from Tables =====
-        Line x - x
+        Line 897 - 1054
     ===================================
 
     ===== Add an attribute to Tables =====
-        Line x - x
+        Line 1064 - 1190
     ======================================
 
     ===== Get 12 specified DB Queries =====
-        Line x - x
+        Line x1200 - x
     =======================================
 */
 
