@@ -884,7 +884,6 @@ WHERE movieID = "M11";
 -- Movie and Director Composite Table
 DELETE FROM MOVIE_DIRECTOR_RELATION
 WHERE movieID = "M11";
-
 ----------------------------------------------------------------------------------
 
 
@@ -1063,70 +1062,131 @@ WHERE movieID = "M1";
 
 
 ----------------------- Adding a new attribute to each table -----------------------
--- (attribute names won't correlate with the table)
+-- (not all attributes names will correlate with their table, primarily *_RELATION tables)
 
 -- Customer Table
+ALTER TABLE CUSTOMER
+ADD age int;
 
 -- Payment Details Table
+ALTER TABLE PAYMENT_DETAILS
+ADD cardMaterial varchar(100);
 
 -- Subscription Details Table
+ALTER TABLE SUBSCRIPTION_DETAILS
+ADD subPar varchar(100);
 
 -- Address Table
+ALTER TABLE ADDRESS
+ADD planet varchar(100);
 
 -- Gender Table
+ALTER TABLE GENDER
+ADD genderDescription varchar(100);
 
 -- Actor Table
+ALTER TABLE ACTOR
+ADD nationality varchar(100);
 
 -- Director Table
+ALTER TABLE DIRECTOR
+ADD nationality varchar(100);
 
 -- Review Table
+ALTER TABLE REVIEW
+ADD platform varchar(100);
 
 -- Classification Table
+ALTER TABLE CLASSIFICATION
+ADD description varchar(100);
 
 -- Movie Table
+ALTER TABLE MOVIE
+ADD setting varchar(100);
 
 -- Series Table
+ALTER TABLE SERIES
+ADD setting varchar(100);
 
 -- Season Table
+ALTER TABLE SEASON
+ADD airing bool;
 
 -- Episode Table
+ALTER TABLE EPISODE
+ADD airing bool;
 
 -- Language Table
+ALTER TABLE LANGUAGE
+ADD country varchar(100);
 
 -- Award Table
+ALTER TABLE AWARD
+ADD description varchar(100);
 
 -- Actor Awards Table
+ALTER TABLE ACTOR_AWARD_RELATION
+ADD lemon varchar(100);
 
 -- Director Awards Table
+ALTER TABLE DIRECTOR_AWARD_RELATION
+ADD bloodOrange varchar(100);
 
 -- Series Reviews Table
+ALTER TABLE SERIES_REVIEW_RELATION
+ADD grapefruit varchar(100);
 
 -- Series Genres Table
+ALTER TABLE SERIES_GENRE_RELATION
+ADD kamquat varchar(100);
 
 -- Series Languages Table
+ALTER TABLE SERIES_LANGUAGE_RELATION
+ADD tangerine varchar(100);
 
 -- Series Awards Table
+ALTER TABLE SERIES_AWARD_RELATION
+ADD tangelo varchar(100);
 
 -- Movie Reviews Table
+ALTER TABLE MOVIE_REVIEW_RELATION
+ADD keyLime varchar(100);
 
 -- Movie Genres Table
+ALTER TABLE MOVIE_GENRE_RELATION
+ADD kaffir varchar(100);
 
 -- Movie Languages Table
+ALTER TABLE MOVIE_LANGUAGE_RELATION
+ADD citron varchar(100);
 
 -- Movie Awards Table
+ALTER TABLE MOVIE_AWARD_RELATION
+ADD lime varchar(100);
 
 -- Customer and Series Composite Table
+ALTER TABLE CUSTOMER_SERIES_RELATION
+ADD feijoa varchar(100);
 
 -- Customer and Movie Composite Table
+ALTER TABLE CUSTOMER_MOVIE_RELATION
+ADD persimmon varchar(100);
 
 -- Series and Actor Composite Table
+ALTER TABLE SERIES_ACTOR_RELATION
+ADD chestnut varchar(100);
 
 -- Series and Director Composite Table
+ALTER TABLE SERIES_DIRECTOR_RELATION
+ADD hazelnut varchar(100);
 
 -- Movie and Actor Composite Table
+ALTER TABLE MOVIE_ACTOR_RELATION
+ADD peanut varchar(100);
 
 -- Movie and Director Composite Table
-
+ALTER TABLE MOVIE_DIRECTOR_RELATION
+ADD pistachios varchar(100);
 ----------------------------------------------------------------------------------
 
 
