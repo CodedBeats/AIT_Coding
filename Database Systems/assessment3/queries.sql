@@ -20,7 +20,7 @@
     ======================================
 
     ===== Get 12 specified DB Queries =====
-        Line 1200 - x
+        Line 1200 - 1301
     =======================================
 */
 
@@ -431,7 +431,12 @@ INSERT INTO REVIEW (reviewID, timeStamp, content, author, rating) VALUES
 ("RE8", "3/5/2019, 11:02:36 PM", "alright", "Babooshka", 3),
 ("RE9", "8/28/2021, 2:29:15 AM", "im in love", "Little Bell", 1),
 ("RE10", "5/14/2020, 9:49:47 PM", "didn't like", "Empty Book", 1),
-("RE11", "7/23/2021, 6:23:27 PM", "hell yeah", "Delete Me", 5);
+("RE11", "7/23/2021, 6:23:27 PM", "hell yeah", "reviewsAlot", 5),
+("RE12", "6/25/2021, 6:23:27 PM", "wa??", "reviewsAlot", 5),
+("RE13", "7/30/2021, 6:23:27 PM", "just dont", "reviewsAlot", 5),
+("RE14", "9/2/2021, 6:30:27 PM", "marry me", "reviewsAlot", 5),
+("RE15", "3/3/2021, 6:23:27 PM", "someday and probably", "reviewsAlot", 5),
+("RE16", "1/9/2021, 6:23:27 PM", "turn this around", "reviewsAlot", 5);
 
 -- Classification data
 INSERT INTO CLASSIFICATION (classificationID, classification) VALUES 
@@ -613,10 +618,10 @@ INSERT INTO SERIES_AWARD_RELATION (seriesID, nomination, awarded, awardID) VALUE
 INSERT INTO MOVIE_REVIEW_RELATION (reviewID, movieID) VALUES 
 ("RE11", "M3"),
 ("RE12", "M3"),
-("RE13", "M3"),
-("RE14", "M3"),
-("RE15", "M3"),
-("RE16", "M3"),
+("RE13", "M5"),
+("RE14", "M6"),
+("RE15", "M9"),
+("RE16", "M10"),
 ("RE17", "M3"),
 ("RE18", "M8"),
 ("RE19", "M10"),
@@ -1201,28 +1206,96 @@ ADD pistachios varchar(100);
 -- (Refer to doccument for image results)
 
 -- a) The total number of TV series available
+SELECT COUNT(seriesID)
+FROM SERIES;
 
 -- b) The total number of Movies available
+SELECT COUNT(movieID)
+FROM MOVIE;
 
 -- c) List the genres available
+SELECT genre
+FROM MOVIE_GENRE_RELATION
+UNION 
+SELECT genre 
+FROM SERIES_GENRE_RELATION;
 
 -- d) How many movies are based on a real story
+SELECT COUNT(movieid) 
+FROM MOVIE
+WHERE nonfiction = "true";
 
 -- e) How many TV series are based on a book
+SELECT COUNT(seriesid) 
+FROM SERIES
+WHERE sourceinformation = "book";
 
 -- f) List (any) 3 Comedy movies in alphabetical order
+SELECT mov.title AS movieName
+FROM MOVIE mov
+JOIN MOVIE_GENRE_RELATION movieGen
+on (mov.movieid = movieGen.movieid)
+WHERE movieGen.genre = "Comedy"
+ORDER BY mov.title ASC
+LIMIT 3;
 
 -- g) List the names of 2 directors who received more than one award
+SELECT COUNT(*), dir.fName AS directorName
+FROM DIRECTOR dir
+JOIN DIRECTOR_AWARD_RELATION dirAward
+on (dir.directorid = dirAward.directorid)
+WHERE dirAward.awarded = "TRUE"
+GROUP BY dirAward.directorid
+HAVING COUNT(*) > 1;
 
 -- h) List the titles of 3 PG movies/TV series
+SELECT mov.title AS movieName
+FROM MOVIE mov
+JOIN CLASSIFICATION clas
+on (mov.classificationid = clas.classificationid)
+WHERE clas.classification = "PG"
+LIMIT 3;
 
 -- i) The top 5 most popular movies based on peoples’ reviews
+SELECT mov.title AS movieName, rev.rating
+FROM MOVIE mov
+JOIN MOVIE_REVIEW_RELATION movReview
+on (mov.movieid = movReview.movieID)
+JOIN REVIEW rev
+on (movReview.reviewid = rev.reviewid)
+GROUP BY mov.title
+HAVING MAX(rev.rating)
+LIMIT 5;
 
 -- j) Which TV series has the highest number of seasons? Display the total number of seasons as well
+SELECT MAX(noofseasons), title AS seriesName
+FROM SERIES; 
 
--- k) Summary of all the TV series that are streamed in BitStream. Display short synopsis, year released the name of the main actor/actress, 
---    The director and the number of seasons for each series
+-- k) Summary of all the TV series that are streamed in BitStream. 
+--    Display short synopsis, year released the name of the main actor/actress the director and the number of seasons for each series
+--    (description isn't clearly specified, but it will be added/displayed)
+SELECT ser.title AS seriesName, ser.description AS seriesDescription, ser.releaseyear AS seriesRealeaseYear, ser.noofseasons AS seriesSeasons, act.fname AS actorName, dir.fname AS directorName
+FROM SERIES ser
+JOIN SERIES_ACTOR_RELATION serActor
+on (ser.seriesid = serActor.seriesid)
+JOIN ACTOR act
+on (serActor.actorid = act.actorid)
+JOIN SERIES_DIRECTOR_RELATION serDirector
+on (ser.seriesid = serDirector.seriesid)
+JOIN DIRECTOR dir
+on (serDirector.directorid = dir.directorid);
 
--- l) Summary of all Movies that are streamed in BitStream. Display short synopsis about the movie, year released, 
---    The name of the main actor/actress and the director for each movie
-
+-- l) Summary of all Movies that are streamed in BitStream. 
+--    Display short synopsis, year released, the name of the main actor/actress and the director for each movie
+--    (description isn't clearly specified, but it will be added/displayed)
+SELECT mov.title AS movieName, mov.description AS movieDescription, mov.releaseyear AS movieRealeaseYear, act.fname AS actorName, dir.fname AS directorName
+FROM MOVIE mov
+JOIN MOVIE_ACTOR_RELATION movActor
+on (mov.movieid = movActor.movieid)
+JOIN ACTOR act
+on (movActor.actorid = act.actorid)
+JOIN MOVIE_DIRECTOR_RELATION movDirector
+on (mov.movieid = movDirector.movieid)
+JOIN DIRECTOR dir
+on (movDirector.directorid = dir.directorid);
+----------------------------------------------------------------------------------
