@@ -7,7 +7,7 @@ int main() {
     game();
 
     /*
-        1. 
+        1. Seperate classes.h into player and enemy header files
         2. implement tabs
 
         Features to add

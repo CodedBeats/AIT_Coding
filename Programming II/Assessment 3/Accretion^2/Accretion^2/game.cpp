@@ -1,4 +1,7 @@
-#include "classes.h"
+//#include "classes.h"
+#include "player.h"
+#include "enemy.h"
+
 #include <iostream>
 using namespace std;
 
@@ -94,7 +97,7 @@ void game() {
 
 		// check if enemy is dead after player turn
 		if (enemy.getHealth() == 0) {
-			cout << "You have defeated" << enemy.getName() << endl;
+			cout << "You have defeated " << enemy.getName() << endl;
 			break;
 		}
 
