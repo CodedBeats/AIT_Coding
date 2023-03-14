@@ -9,8 +9,6 @@ void displayStats(Player player, Enemy enemy) {
 	// Player stats
 	cout << player.getName() 
 		<< " (HP: " << player.getHealth()
-		<< ", Str: " << player.getStr() 
-		<< ", Def: " << player.getDef()
 		// deftenss basically being block chance just with a nicer name
 		<< ", Dft: " << player.getBlockChance() << "%"
 		<< ")" << endl;
@@ -18,8 +16,6 @@ void displayStats(Player player, Enemy enemy) {
 	// Enemy stats
 	cout << enemy.getName() 
 		<< " (HP: " << enemy.getHealth()
-		<< ", Str: " << enemy.getStr() 
-		<< ", Def: " << enemy.getDef() 
 		<< ")" << endl;
 }
 
