@@ -1,0 +1,139 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+    <!-- Setup -->
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>References Page</title>
+    <!-- font links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Press Start 2P -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Quantico -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Share Tech Mono -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- file links -->
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body>
+    <!-- side bar -->
+    <div id="dom-side-nav" class="side-nav" style="display:none;">
+        <img class="logo-img" src="../images/Logo.PNG" alt="WHW Logo" width="250">
+        <a href="#" id="close-btn" onclick="closeNav()">&times;</a>
+        <a href="../index.html" class="place-holder" id="home-link">Home</a>
+        <a href="./about.html" class="place-holder" id="about-link">About</a>
+        <a href="./contact.html" class="place-holder" id="contact-link">Contact</a>
+        <a href="./test.html" class="place-holder" id="experiments-link">Experiments</a>
+    </div>
+
+    <div class="navbar">
+        <!-- Button to open side bar -->
+        <button onclick="openNav()" type="button" id="nav-btn"><i class="fa-solid fa-bars nav-icon grow"></i></button>
+        
+        <button onclick="login()" class="button">
+            <a href="#" class="button-text">Access Admin Page</a>
+        </button>
+    </div>
+    <div id="main">
+        <!-- body content -->
+        <div class="about">
+            <div class="about-text">
+                <h2 id="about-title1">About This Website</h2>
+                <p id="about-text1">
+                    This Website is purely entertainment.
+                    Everyone procrastinates, sure you feel a bit bad while doing it but we at WHW believe there are good and bad types of
+                    procrastination.
+                    One most common distraction method is social media, but most social media platforms are designed to get you addicted to
+                    scrolling to find more, you’ll spend so much time without realising it.
+                    Another common distraction is diving down rabbit holes of random videos, constantly telling yourself you will start work
+                    when each video ends.
+                    
+                    WHW believes that if you are going to procrastinate, you should engage your mind, it keeps you focused and active so
+                    that when that next push to work comes, you aren’t discouraged by how tired your mind is because you’ve kept it active
+                    and engaged.
+                    Whetheryou are at work, studying or just doing chores, you should come here to procrastinate, we will keep your brain
+                    excited and active with games and weird interactions, so when someone pushes you back to work you steam roll ahead.
+                </p>
+                <h2 id="about-title2">A Bit About WHW</h2>
+                <p id="about-text2">
+                    <strong>WHW means We Hate Work</strong>, We are a small group of freelancers who like to take time off work and build
+                    passion projects. We maintain our creativity for random projects by never receiving any revenue from them. While this is
+                    obviously ill advised, it makes it so it doesn't feel like work and we can go at our own pace. Check out our socials to
+                    see some of our other projects.
+                </p>
+            </div>
+
+            <div class="references">
+                <h2>Helpful Websites</h2>
+                <pre class="indented-text">
+                    - Logo Maker: <a href="https://looka.com/" target="_blank">Looka</a>
+                    - Fonts: <a href="https://fonts.google.com/?preview.text=Choclate%20Cookies&preview.text_type=custom" target="_blank">Google Fonts</a>
+                    - Icons: <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>
+                    - Helpful Classes: <a href="https://getbootstrap.com/" target="_blank">Bootsrap</a>
+                    - Documentation help from <a href="https://www.w3schools.com/" target="_blank">w3schools</a> and <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN</a>
+                    - Code Snippets: <a href="https://jsfiddle.net/" target="_blank">JSFiddle</a>
+                </pre>
+                <h2 class="references-title">References</h2>
+                <pre class="indented-text">
+                    Font Awesome 5 (2017). Font Awesome 5. [online] Fontawesome.com. Available at:
+                    https://fontawesome.com/.
+
+                    Galindo, A. (n.d.). The main cause of being tired at school: sleep deprivation. [online] Hawkeye View. Available at:
+                    https://hehsnews.com/3839/showcase/the-main-cause-of-being-tired-at-school-sleep-deprivation/ [Accessed 28 Jul. 2022].
+
+                    Google Fonts. (n.d.). Google Fonts. [online] Available at:
+                    https://fonts.google.com/?preview.text=Choclate%20Cookies&preview.text_type=custom [Accessed 28 Jul. 2022].
+
+                    JSFiddle (2013). Create a new fiddle - JSFiddle. [online] Jsfiddle.net. Available at: 
+                    https://jsfiddle.net/.
+
+                    Looka. (n.d.). Free Logo Maker & Intelligent Brand Designer. [online]
+                    Available at: https://looka.com/.
+
+                    Otto, M. (2000). Bootstrap. [online] Getbootstrap.com. Available at:
+                    https://getbootstrap.com/.
+
+                    W3Schools (2019). W3Schools Online Web Tutorials. [online] W3schools.com. Available at:
+                    https://www.w3schools.com/.
+                </pre>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="company-img-container">
+                <img class="company-img" src="../images/website_img.png" alt="WHW img">
+            </div>
+            <div class="facebook-link-container">
+                <a onclick="alertMessage(`Links to WHW's Facebook Page`)">
+                    <i class="fa-brands fa-facebook grow"></i>
+                </a>
+            </div>
+            <div class="linkdin-link-container">
+                <a onclick="alertMessage(`Links to WHW's Linkdin Page`)">
+                    <i class="fa-brands fa-linkedin grow"></i>
+                </a>
+            </div>
+            <div class="github-link-container">
+                <a onclick="alertMessage(`Links to WHW's Github Page`)">
+                    <i class="fa-brands fa-github grow"></i>
+                </a>
+            </div>
+            <div class="contact-btn-container">
+                <button class="button">
+                    <a href="./contact.html" class="button-text">Contact Us</a>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* ============================================ content ============================================ */
+body {
+    transition: 0.5s; /* for DOM effects */
+}
+
+/* for toggling element visibility */
+.true-display {
+    display: block !important;
+}
+
+/* Locks page height */
+/* html, body {
+    overflow: hidden;
+} */
+
+
+/* ============================================ mobile view ============================================ */
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%
+    }
+}
