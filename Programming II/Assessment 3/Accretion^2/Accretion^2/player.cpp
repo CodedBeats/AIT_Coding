@@ -1,5 +1,5 @@
 #include <iostream>
-#include "classes.h"
+#include "player.h"
 using namespace std;
 
 // get player name
@@ -30,6 +30,7 @@ int Player::getBlockChance() {
 // calc player attack damage
 int Player::attack() {
     // damage = str - def
+    // ++++++++++++++++++++++++++++ This is wrong ++++++++++++++++++++++++++++ //
     int damage = m_str - m_def;
     return damage;
 }

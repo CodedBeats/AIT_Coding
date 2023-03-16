@@ -1,5 +1,5 @@
 #include <iostream>
-#include "classes.h"
+#include "enemy.h"
 using namespace std;
 
 // get enemy name

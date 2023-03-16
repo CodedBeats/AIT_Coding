@@ -20,7 +20,7 @@ void displayStats(Player player, Enemy enemy) {
 }
 
 
-void characterCustomisation(string& playerName, string& enemyName) {
+void characterCustomisation(string &playerName, string &enemyName) {
 	int choice = 0;
 
 	// user choose player name
