@@ -8,24 +8,53 @@ int main() {
 
     /*
         Fixes
-        1. attack func currently minus the wrong defence
+        1.
         2. implement tabs
 
         Features to add
         1. Different enemys
         2. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
-        3. An inv display
-        5. exp
-        6. levels, could differ depending on class
+        3. An player stats display
+        5. exp and lvl up
+        6. scoreboard
         7. class system? (new classes have different abilities and spells)
-        8. make a new function to handle combat and replace game
+        8. menu (with: Boss Fight, Train, View Stats, Scoreboard, Exit)
         9. create the player and pass it to game so it can pass to combat
-        10. create an arr of enemies and get rand enemy for player to vs
-        11. add speed
-        12. change defend to "shieldingAura" which increases block chance (as a spell)
+        10. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
+        11. format disply to assessment 2
+        12. character set up
         13. add magic might
         14. add dodge chance (influenced by speed)
-        14. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
+        15. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
+
+        Fixed
+        1. changed defend to shieldingAura
+        2. fixed the take damage calc
+        3. added speed
+        4. created seperate player and enemy turn funcs
+        5. added a combat function that has player or enemy go first depending on speed
+        6. combat function takes pointer params to properly update class values
+        7. added a battleContinue function that returns bool for the game loop
+
+        Changed
+        1. added some console messages purely for debug purposes (currently commented out)
+    */
+
+
+
+    /*
+        === Game Flow ===
+        intro() -> calls -> characterCustomisation()
+
+        menu() -> calls -> bossFight(), train(), viewStats(), scoreboard(), exit()
+
+        bossFight() -> calls -> enemySetup(), combat()
+        train() -> calls -> enemySetup(), combat()
+        viewStats()
+        scoreboard()
+        exit()
+
+
     */
     
 

@@ -2,6 +2,6 @@
 #include <string>
 using namespace std;
 
-void characterCustomisation(string &playerName, string &enemyName);
+void characterCustomisation(string& playerName);
 
 void game();
