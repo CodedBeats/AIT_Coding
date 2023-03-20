@@ -27,7 +27,6 @@ int main() {
         14. add dodge chance (influenced by speed)
         14. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
     */
-
     
 
     return 0;
@@ -35,4 +34,12 @@ int main() {
     
 
 
+/*
+cout << "                                        _     _                   /\\   ___  \n" <<
+    "    /\\                                 | |   (_)                 |/\\| |__ \\ \n" <<
+    "   /  \\      ___    ___   _ __    ___  | |_   _    ___    _ __           ) |\n" <<
+    "  / /\\ \\    / __|  / __| | '__|  / _ \\ | __| | |  / _ \\  | '_ \\         / / \n" <<
+    " / ____ \\  | (__  | (__  | |    |  __/ | |_  | | | (_) | | | | |       / /_ \n" <<
+    "/_/    \\_\\  \\___|  \\___| |_|     \\___|  \\__| |_|  \\___/  |_| |_|      |____|";
+*/
 // cout << "\033[2J\033[1;1H";
