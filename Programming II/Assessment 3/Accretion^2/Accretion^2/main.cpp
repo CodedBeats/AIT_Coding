@@ -8,17 +8,16 @@ int main() {
 
     /*
         Fixes
-        1.
-        2. implement tabs
+        1. put character customisation into setup.cpp
 
         Features to add
         1. Different enemys
         2. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
-        3. An player stats display
+        3. spice up player stats display while in combat
         5. exp and lvl up
         6. scoreboard
-        7. class system? (new classes have different abilities and spells)
-        8. menu (with: Boss Fight, Train, View Stats, Scoreboard, Exit)
+        7. class system
+        8. victory screen
         9. create the player and pass it to game so it can pass to combat
         10. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
         11. format disply to assessment 2
@@ -26,33 +25,22 @@ int main() {
         13. add magic might
         14. add dodge chance (influenced by speed)
         15. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
+        16. see if I need the srand stuff
+        17. format code consistently
+        18. implement assessment 3 notes
 
         Fixed
-        1. changed defend to shieldingAura
-        2. fixed the take damage calc
-        3. added speed
-        4. created seperate player and enemy turn funcs
-        5. added a combat function that has player or enemy go first depending on speed
-        6. combat function takes pointer params to properly update class values
-        7. added a battleContinue function that returns bool for the game loop
+        1. created a setup .cpp and .h file to hold player class setup and random enemy and their stats for train setup
+        2. added an intro message with the game title that returns the player's name
+        4. created a menu display func to to show options and get user int input
+        5. created a display stats func that takes player object ref to display the stats of the current player
+        6. created a game func that handles the game flow with a switch case statement inside a while loop
+        7. added a warning for the quit option in the game func
+        8. lots of functions need a revamp with proper pointer params and better file structure (and header guards)
 
         Changed
-        1. added some console messages purely for debug purposes (currently commented out)
-    */
-
-
-
-    /*
-        === Game Flow ===
-        intro() -> calls -> characterCustomisation()
-
-        menu() -> calls -> bossFight(), train(), viewStats(), scoreboard(), exit()
-
-        bossFight() -> calls -> enemySetup(), combat()
-        train() -> calls -> enemySetup(), combat()
-        viewStats()
-        scoreboard()
-        exit()
+        1. changed applyDamage variable name to not sound like a function (calcDamage)
+        2. changed game func to be called "train" indicating that it handles the combat of train (not boss fight)
     */
     
 
