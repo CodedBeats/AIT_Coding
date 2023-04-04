@@ -12,6 +12,16 @@ int Player::getHealth() {
     return m_health;
 }
 
+// get player level
+int Player::getLevel() {
+    return m_lvl;
+}
+
+// get player exp
+int Player::getExp() {
+    return m_exp;
+}
+
 // get player strength
 int Player::getStr() {
     return m_str;

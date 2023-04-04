@@ -52,7 +52,7 @@ void enemyTurn(Player& player, Enemy& enemy) {
     }
     else {
         // heavy attack
-        int damage = enemy.heavyAttack();
+        int damage = enemy.attack();
         cout << enemy.getName() << " attacks with ferocity!" << endl;
         // heavy attack ignores defence
         player.takeDamage(damage, 0);

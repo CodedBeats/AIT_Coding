@@ -12,7 +12,7 @@ void train(string playerName) {
     cout << "\033[2J\033[1;1H";
 
     Player player(playerName, 100, 20, 10, 15, 10);
-    Enemy enemy(enemyName, 100, 18, 12, 10);
+    Enemy enemy(enemyName, 100, 1, 50, 18, 12, 10);
 
     // define pointers to class so it can be accessed and updated in the fucntion
     Player* pPlayer = &player;

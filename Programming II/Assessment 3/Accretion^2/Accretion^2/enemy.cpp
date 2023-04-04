@@ -2,6 +2,8 @@
 #include "enemy.h"
 using namespace std;
 
+// === Base Class ===
+
 // get enemy name
 string Enemy::getName() {
     return m_name;
@@ -10,6 +12,16 @@ string Enemy::getName() {
 // get enemy health
 int Enemy::getHealth() {
     return m_health;
+}
+
+// get enemy level
+int Enemy::getLvl() {
+    return m_lvl;
+}
+
+// get enemy exp
+int Enemy::getExp() {
+    return m_exp;
 }
 
 // get enemy strength
@@ -32,13 +44,6 @@ int Enemy::attack() {
     return m_str;
 }
 
-// calc enemy heavy attack damage
-int Enemy::heavyAttack() {
-    // damage = str
-    int damage = m_str * 2;
-    return damage;
-}
-
 // calc enemy damage taken from attack
 void Enemy::takeDamage(int damage, int defence) {
     // reduce enemy health by (player damage - enemy defense)
@@ -54,8 +59,53 @@ void Enemy::takeDamage(int damage, int defence) {
     //     << "\n Defence " << defence
     //     << "\n==" << endl;
 
-// set enemy health to 0 if it would be negative
+    // set enemy health to 0 incase it would be negative
     if (m_health < 0) {
         m_health = 0;
     }
 }
+
+
+
+// === Inheriting Classes ===
+// Dragon (Boss)
+int Dragon::dragonBreath() {
+    // high damage attack
+    return;
+}
+void Dragon::dragonRoar() {
+    // raises dragon attack
+    return;
+}
+
+// Slime
+int Slime::stickSmash() {
+    // attack and reduce player speed
+    return;
+}
+
+// Hydra
+int Hydra::corrosiveSpray() {
+    // attack and reduce player def
+    return;
+}
+
+// Harpy
+int Harpy::razorFeather() {
+    // attack and increase attack
+    return;
+}
+
+// Specter
+int Specter::shadowStrike() {
+    // attack and enemy go first
+    return;
+}
+
+// Orc
+int Orc::bonecrushingBlow() {
+    // attack and reduce player defence
+    return;
+}
+
+
