@@ -13,28 +13,25 @@ int main() {
         Features to add
         1. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
         2. spice up player stats display while in combat
-        3. lvl up
         4. scoreboard
-        5. class system
         6. victory screen
         7. create the player and pass it to game so it can pass to combat
         8. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
         9. format disply to assessment 2
         10. character set up of class system
-        11. add magic might
         12. add dodge chance (influenced by speed)
         13. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
         14. see if I need the srand stuff
         15. format code consistently
         16. implement assessment 3 notes
         17. check if player or enemy is dead after each combat turn
-        18. add a seperate lvlup func for classes so they can increase stats in different amounts
+        18. add secret name for god player
+        19. add a debuff func to player and enemy
 
         Fixed
-        1. added class variable and get func to player class
-        2. added magical might to the player class
-        3. added lvlUp func to player class (that should work)
-        4. added resetStats func to player class (but I have no idea how it will work)
+        1. added Player classes
+        2. lvl up func now can be differentiated between Player having a class or not
+        3. lvl up func now has individual increasing stats for each class (might need balancing)
 
         Changed
         1. 
@@ -45,7 +42,6 @@ int main() {
 }
 
 
-// linear lvl up system cause I can't be assed making an exponential curved system
     
 
 

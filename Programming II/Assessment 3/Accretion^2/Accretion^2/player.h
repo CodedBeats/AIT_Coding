@@ -44,7 +44,7 @@ public:
 
     void shieldingAura();
 
-    void lvlUp();
+    void lvlUp(bool isClass);
 
     void resetStats();
 
@@ -63,4 +63,36 @@ private:
     int m_spd;
     int m_blockChance;
     int m_mgcMht;
+};
+
+
+// Inheriting classes
+// Berserker
+class Berserker: public Player {
+public:
+    int vengefulVortex();
+    void battleFury();
+};
+
+// Mage 
+class Mage: public Player {
+public:
+    int meteorShower();
+    int mindBlast();
+    void arcaneSurge();
+};
+
+// Paladin 
+class Paladin: public Player {
+public:
+    int holyStrike();
+    void shieldOfLight();
+};
+
+// Ranger 
+class Ranger: public Player {
+public:
+    int lethalArrow();
+    int rainOfPain();
+    void camouflage();
 };

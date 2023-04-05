@@ -2,8 +2,7 @@
 #include "enemy.h"
 using namespace std;
 
-// === Base Class ===
-
+// === Base Class === //
 // get enemy name
 string Enemy::getName() {
     return m_name;
@@ -67,7 +66,7 @@ void Enemy::takeDamage(int damage, int defence) {
 
 
 
-// === Inheriting Classes ===
+// === Inheriting Classes === //
 // Dragon (Boss)
 int Dragon::dragonBreath() {
     // high damage attack
