@@ -5,8 +5,10 @@ using namespace std;
 // Base class
 class Player {
 public:
-    Player(string name, int health, int lvl, int exp, int str, int def, int spd, int blockChance) {
+    // Player constructor
+    Player(string name, string playerClass, int health, int lvl, int exp, int str, int def, int spd, int blockChance, int mgcMht) {
         m_name = name;
+        m_class = playerClass;
         m_health = health;
         m_lvl = lvl;
         m_exp = exp;
@@ -14,9 +16,13 @@ public:
         m_def = def;
         m_spd = spd;
         m_blockChance = blockChance;
+        m_mgcMht = mgcMht;
     };
 
+    // Player functions
     string getName();
+
+    string getClass();
 
     int getHealth();
 
@@ -32,15 +38,23 @@ public:
 
     int getBlockChance();
 
+    int getMgcMht();
+
     int attack();
 
     void shieldingAura();
+
+    void lvlUp();
+
+    void resetStats();
 
     void takeDamage(int damage, int defence);
 
 
 private:
+    // Player variables
     string m_name;
+    string m_class;
     int m_health;
     int m_lvl;
     int m_exp;
@@ -48,4 +62,5 @@ private:
     int m_def;
     int m_spd;
     int m_blockChance;
+    int m_mgcMht;
 };

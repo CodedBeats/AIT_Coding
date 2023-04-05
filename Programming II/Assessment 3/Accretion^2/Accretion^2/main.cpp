@@ -28,10 +28,13 @@ int main() {
         15. format code consistently
         16. implement assessment 3 notes
         17. check if player or enemy is dead after each combat turn
+        18. add a seperate lvlup func for classes so they can increase stats in different amounts
 
         Fixed
-        1. fixed player and enemy objects so they had the correct params (so program can run)
-        2. fixed up "Features to add" comment numbering
+        1. added class variable and get func to player class
+        2. added magical might to the player class
+        3. added lvlUp func to player class (that should work)
+        4. added resetStats func to player class (but I have no idea how it will work)
 
         Changed
         1. 
@@ -40,6 +43,9 @@ int main() {
 
     return 0;
 }
+
+
+// linear lvl up system cause I can't be assed making an exponential curved system
     
 
 

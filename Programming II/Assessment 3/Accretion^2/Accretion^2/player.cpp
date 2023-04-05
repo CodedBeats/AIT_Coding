@@ -7,6 +7,11 @@ string Player::getName() {
     return m_name;
 }
 
+// get plyaer class
+string Player::getClass() {
+    return m_class;
+}
+
 // get player health
 int Player::getHealth() {
     return m_health;
@@ -42,6 +47,11 @@ int Player::getBlockChance() {
     return m_blockChance;
 }
 
+// get player magical might
+int Player::getMgcMht() {
+    return m_mgcMht;
+}
+
 // calc player attack damage
 int Player::attack() {
     return m_str;
@@ -58,13 +68,32 @@ void Player::shieldingAura() {
     }
 }
 
+// increase player's levl
+void Player::lvlUp() {
+    // increase lvl
+    m_lvl += 1;
+    // reset exp
+    m_exp = 0;
+
+    // increase all stats evenly by 10
+    m_health += 10;
+    m_str += 10;
+    m_def += 10;
+    m_spd += 10;
+    m_mgcMht += 10;
+}
+
+// reset changed stats after combat ends
+void Player::resetStats() {
+    // idk how to do this yet
+}
+
 // calc player damage taken from attack
 void Player::takeDamage(int damage, int defence) {
     // check for random block first
     int chance = rand() % 100 + 1;
     if (chance <= m_blockChance) {
         cout << m_name << " blocked the attack" << endl;
-
     }
     else {
         // reduce enemy health by (enemy damage - player defense)

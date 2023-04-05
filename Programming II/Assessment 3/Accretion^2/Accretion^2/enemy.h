@@ -5,6 +5,7 @@ using namespace std;
 // Base class
 class Enemy {
 public:
+    // Enemy constructor
     Enemy(string name, int health, int lvl, int exp, int str, int def, int spd) {
         m_name = name;
         m_health = health;
@@ -15,6 +16,7 @@ public:
         m_spd = spd;
     };
 
+    // Enemy functions
     string getName();
 
     int getHealth();
@@ -35,6 +37,7 @@ public:
 
 
 private:
+    // Enemy variables
     string m_name;
     int m_health;
     int m_lvl;
