@@ -11,29 +11,30 @@ int main() {
         1. put character customisation into setup.cpp
 
         Features to add
-        2. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
-        3. spice up player stats display while in combat
-        5. lvl up
-        6. scoreboard
-        7. class system
-        8. victory screen
-        9. create the player and pass it to game so it can pass to combat
-        10. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
-        11. format disply to assessment 2
-        12. character set up of class system
-        13. add magic might
-        14. add dodge chance (influenced by speed)
-        15. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
-        16. see if I need the srand stuff
-        17. format code consistently
-        18. implement assessment 3 notes
+        1. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
+        2. spice up player stats display while in combat
+        3. lvl up
+        4. scoreboard
+        5. class system
+        6. victory screen
+        7. create the player and pass it to game so it can pass to combat
+        8. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
+        9. format disply to assessment 2
+        10. character set up of class system
+        11. add magic might
+        12. add dodge chance (influenced by speed)
+        13. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
+        14. see if I need the srand stuff
+        15. format code consistently
+        16. implement assessment 3 notes
+        17. check if player or enemy is dead after each combat turn
 
         Fixed
-        1. added inheriting enemy classes and implemented their functions (with no content)
-        2. added level and exp to player and enemy (with 0 application yet)
+        1. fixed player and enemy objects so they had the correct params (so program can run)
+        2. fixed up "Features to add" comment numbering
 
         Changed
-        1. changed combat heavy attack chance to just be attack again (so it can be changed to unique enemy attacks)
+        1. 
     */
     
 

@@ -11,7 +11,7 @@ void train(string playerName) {
     string enemyName = "Enemy";
     cout << "\033[2J\033[1;1H";
 
-    Player player(playerName, 100, 20, 10, 15, 10);
+    Player player(playerName, 100, 1, 1, 20, 10, 15, 10);
     Enemy enemy(enemyName, 100, 1, 50, 18, 12, 10);
 
     // define pointers to class so it can be accessed and updated in the fucntion
@@ -23,7 +23,7 @@ void train(string playerName) {
     while (combatActive) {
         cout << "\n" << endl;
         // just use the class since it should be updated from combat()
-        displayStats(player, enemy);
+        displayBattleStats(*pPlayer, *pEnemy);
 
         // pass pointers so it can update the original classes
         handleCombat(*pPlayer, *pEnemy);
@@ -90,7 +90,7 @@ void game() {
         case 3: {
             // View Stats
             // temp
-            Player player(playerName, 100, 20, 10, 15, 10);
+            Player player(playerName, 100, 1, 1, 20, 10, 15, 10);
             Player* pPlayer = &player;
             displayStats(*pPlayer);
             break;

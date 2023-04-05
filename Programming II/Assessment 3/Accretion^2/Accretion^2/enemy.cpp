@@ -71,41 +71,40 @@ void Enemy::takeDamage(int damage, int defence) {
 // Dragon (Boss)
 int Dragon::dragonBreath() {
     // high damage attack
-    return;
+    return 0;
 }
 void Dragon::dragonRoar() {
     // raises dragon attack
-    return;
 }
 
 // Slime
 int Slime::stickSmash() {
     // attack and reduce player speed
-    return;
+    return 0;
 }
 
 // Hydra
 int Hydra::corrosiveSpray() {
     // attack and reduce player def
-    return;
+    return 0;
 }
 
 // Harpy
 int Harpy::razorFeather() {
     // attack and increase attack
-    return;
+    return 0;
 }
 
 // Specter
 int Specter::shadowStrike() {
     // attack and enemy go first
-    return;
+    return 0;
 }
 
 // Orc
 int Orc::bonecrushingBlow() {
     // attack and reduce player defence
-    return;
+    return 0;
 }
 
 

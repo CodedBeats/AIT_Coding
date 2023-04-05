@@ -6,7 +6,7 @@ using namespace std;
 
 // maybe move this func
 // display stats screen for combat
-void displayStats(Player player, Enemy enemy) {
+void displayBattleStats(Player player, Enemy enemy) {
     // Player stats
     cout << player.getName()
         << "\t\t (HP: " << player.getHealth()
