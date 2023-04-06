@@ -7,9 +7,6 @@ int main() {
     game();
 
     /*
-        Fixes
-        1. put character customisation into setup.cpp
-
         Features to add
         1. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
         2. spice up player stats display while in combat
@@ -19,6 +16,7 @@ int main() {
         8. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
         9. format disply to assessment 2
         10. character set up of class system
+        11. put character creation into setup.cpp and call it when we get player name (after welcome display)
         12. add dodge chance (influenced by speed)
         13. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
         14. see if I need the srand stuff
@@ -29,7 +27,9 @@ int main() {
         19. add a debuff func to player and enemy
 
         Fixed
-        1. added header guards to each header file to prevent header file inception
+        1. added the new player stats to displayStats func
+        2. added a battle.cpp and battle.h file to put train and boss fight func into (this also helps with how to pass objects to functions)
+        3. moved the clear screen display for each menu item to the game func
 
         Changed
         1. 

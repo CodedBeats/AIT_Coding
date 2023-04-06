@@ -48,9 +48,6 @@ string welcomePlayer() {
 
 // display menu and get input
 int menu() {
-    // clear screen before out function output
-    cout << "\033[2J\033[1;1H";
-
     // declare player input
     int playerInput;
 
@@ -73,9 +70,6 @@ int menu() {
 
 // display player stats
 void displayStats(Player& player) {
-    // clear screen before out function output
-    cout << "\033[2J\033[1;1H";
-
     // declare random variable just to exit this stats screen
     string exit;
 
@@ -83,15 +77,15 @@ void displayStats(Player& player) {
     cout <<
         "=== Stats ===\n" <<
         player.getName() << "\n" <<
-        "Class:\t\t\t" << "class" << "\n" <<
+        "Class:\t\t\t" << player.getClass() << "\n" <<
         "Health:\t\t\t" << player.getHealth() << "\n" <<
-        "Level:\t\t\t" << "lvl" << "\n" <<
-        "Exp:\t\t\t" << "exp" << "\n" <<
+        "Level:\t\t\t" << player.getLevel() << "\n" <<
+        "Exp:\t\t\t" << player.getExp() << "\n" <<
         "Strength:\t\t" << player.getStr() << "\n" <<
         "Defence:\t\t" << player.getDef() << "\n" <<
         "Speed:\t\t\t" << player.getSpd() << "\n" <<
         "Block Chance:\t\t" << player.getBlockChance() << "\n" <<
-        "Magical Might:\t\t" << "xx" << "\n\n";
+        "Magical Might:\t\t" << player.getMgcMht() << "\n\n";
 
     // Return to menu
     cout << "Type (0) to return to menu\n" <<

@@ -1,52 +1,8 @@
-// #include "player.h"
-// #include "enemy.h"
+#include "battle.h"
 #include "display.h"
 
 #include <iostream>
 using namespace std;
-
-
-// needs a name change
-void train(string playerName) {
-    string enemyName = "Enemy";
-    cout << "\033[2J\033[1;1H";
-
-    Player player(playerName, "vanilla", 100, 1, 1, 20, 10, 15, 10, 5);
-    Enemy enemy(enemyName, 100, 1, 50, 18, 12, 10);
-
-    // define pointers to class so it can be accessed and updated in the fucntion
-    Player* pPlayer = &player;
-    Enemy* pEnemy = &enemy;
-
-    // combat loop
-    bool combatActive = true;
-    while (combatActive) {
-        cout << "\n" << endl;
-        // just use the class since it should be updated from combat()
-        displayBattleStats(*pPlayer, *pEnemy);
-
-        // pass pointers so it can update the original classes
-        handleCombat(*pPlayer, *pEnemy);
-
-        // just use the class since it should be updated from combat()
-        combatActive = isFighting(player, enemy);
-    }
-
-    if (player.getHealth() == 0) {
-        cout << player.getName() << " has been defeated by the " << enemy.getName() << endl;
-    }
-    // only other possibility (should be) enemy health is 0
-    else {
-        cout << enemy.getName() << " has been defeated by " << player.getName() << endl;
-    }
-
-    // declare random variable just to exit this stats screen
-    string exit;
-    // Return to menu
-    cout << "\nType (0) to return to menu\n" <<
-        "> ";
-    cin >> exit;
-}
 
 
 /*
@@ -61,34 +17,48 @@ void train(string playerName) {
     scoreboard()
     exit()
 */
+
 // func to handle game flow
 void game() {
     // welcome player and get player name
     string playerName;
     playerName = welcomePlayer();
 
-    // create player class
-    // call playerSetup to update playerName
+    // player object setup
 
-    // display menu and handle
+    // define game variables
     bool gameIsActive = true;
+    bool gameWon = false;
     int menuChoice;
+
+    // game loop based off menu display
     while (gameIsActive) {
+    // display menu and handle
         menuChoice = menu();
         switch (menuChoice) {
         case 1: {
-            // Boss Fight
+            // === Boss Fight === //
+            cout << "\033[2J\033[1;1H";
             cout << "This is the boss fight" << endl;
+
+            // return bool and check value to see if gameWon should be true
             break;
         }
         case 2: {
-            // Train
+            // === Train === //
+            cout << "\033[2J\033[1;1H";
             // enemySetup()
-            train(playerName);
+            // temp
+            Player player(playerName, "vanilla", 100, 1, 1, 20, 10, 15, 10, 5);
+            Player* pPlayer = &player;
+            Enemy enemy("enemy1", 100, 1, 50, 18, 12, 10);
+            Enemy* eEnemy = &enemy;
+            train(*pPlayer, *eEnemy);
             break;
         }
         case 3: {
-            // View Stats
+            // === View Stats === //
+            cout << "\033[2J\033[1;1H";
             // temp
             Player player(playerName, "vanilla", 100, 1, 1, 20, 10, 15, 10, 5);
             Player* pPlayer = &player;
@@ -96,12 +66,13 @@ void game() {
             break;
         }
         case 4: {
-            // Scoreboard
+            // === Scoreboard === //
+            cout << "\033[2J\033[1;1H";
             cout << "This is the scoreboard" << endl;
             break;
         }
         case 5: {
-            // Quit
+            // === Quit === //
             cout << "\033[2J\033[1;1H";
             char quit;
             // warn player they will loose all progress
@@ -118,6 +89,4 @@ void game() {
         }
         }
     }
-
-    // check to see if game has been won and return that
 }
