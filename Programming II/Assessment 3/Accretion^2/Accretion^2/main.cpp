@@ -29,9 +29,7 @@ int main() {
         19. add a debuff func to player and enemy
 
         Fixed
-        1. added Player classes
-        2. lvl up func now can be differentiated between Player having a class or not
-        3. lvl up func now has individual increasing stats for each class (might need balancing)
+        1. added header guards to each header file to prevent header file inception
 
         Changed
         1. 

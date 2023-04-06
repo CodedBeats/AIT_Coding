@@ -1,3 +1,7 @@
+// Header Guard
+#ifndef player_HEADER_GUARD
+#define player_HEADER_GUARD
+
 #pragma once
 #include <string>
 using namespace std;
@@ -96,3 +100,7 @@ public:
     int rainOfPain();
     void camouflage();
 };
+
+
+
+#endif // player_HEADER_GUARD

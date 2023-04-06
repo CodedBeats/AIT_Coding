@@ -1,3 +1,7 @@
+// Header Guard
+#ifndef display_HEADER_GUARD
+#define display_HEADER_GUARD
+
 #pragma once
 #include "player.h"
 #include "enemy.h"
@@ -15,3 +19,8 @@ void displayStats(Player& player);
 void handleCombat(Player& player, Enemy& enemy);
 
 bool isFighting(Player& player, Enemy& enemy);
+
+
+
+
+#endif // display_HEADER_GUARD

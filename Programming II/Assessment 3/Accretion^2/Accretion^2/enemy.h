@@ -1,3 +1,7 @@
+// Header Guard
+#ifndef enemy_HEADER_GUARD
+#define enemy_HEADER_GUARD
+
 #pragma once
 #include <string>
 using namespace std;
@@ -86,3 +90,6 @@ class Orc: public Enemy {
 public:
     int bonecrushingBlow();
 };
+
+
+#endif // enemy_HEADER_GUARD
