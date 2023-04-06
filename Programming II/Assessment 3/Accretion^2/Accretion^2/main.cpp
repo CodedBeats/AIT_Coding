@@ -27,9 +27,11 @@ int main() {
         19. add a debuff func to player and enemy
 
         Fixed
-        1. added the new player stats to displayStats func
-        2. added a battle.cpp and battle.h file to put train and boss fight func into (this also helps with how to pass objects to functions)
-        3. moved the clear screen display for each menu item to the game func
+        1. added player constructor to each inheriting class so they can be created as objects with the apropriate variables
+        2. created a playerSetup func that returns a player object
+        3. the playerSetup func creates a player with or without a class depending on if the game has been won
+        4. the playerSetup func can take string params for player name, bool params for game won? and int params (1-4) for determing class
+        5. did some cool fancy stuff and idk how but got it to all still work (I think it has something to do with pointers and reference???)
 
         Changed
         1. 

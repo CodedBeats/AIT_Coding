@@ -1,13 +1,42 @@
-// include player and enemy with guard header???
+#include "player.h"
+#include "enemy.h"
 
 #include <iostream>
 using namespace std;
 
 // maybe use pointer and ref param here to update a created player class
-void playerSetup() {
-    // update player object's name
-
-    // handle class system if game has been beat (bool param)
+Player playerSetup(string playerName, bool gameWon, int classVal) {
+    // create player object
+    if (gameWon) {
+        // create player with class and different stats
+        switch (classVal) {
+        case 1: {
+            // === Berserker === //
+            Berserker player(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 5);
+            return player;
+        }
+        case 2: {
+            // === Mage === //
+            Mage player(playerName, "Mage", 110, 1, 0, 25, 20, 25, 10, 60);
+            return player;
+        }
+        case 3: {
+            // === Paladin === //
+            Paladin player(playerName, "Paladin", 130, 1, 0, 45, 60, 20, 10, 20);
+            return player;
+        }
+        case 4: {
+            // === Ranger === //
+            Ranger player(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
+            return player;
+        }
+        }
+    }
+    else {
+        // create player with no class
+        Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+        return player;
+    }
 }
 
 

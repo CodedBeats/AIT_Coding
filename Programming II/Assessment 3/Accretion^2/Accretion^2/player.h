@@ -74,6 +74,9 @@ private:
 // Berserker
 class Berserker: public Player {
 public:
+    // give Berserker the Player constructor
+    using Player::Player;
+    // Berserker spells and abilities
     int vengefulVortex();
     void battleFury();
 };
@@ -81,6 +84,9 @@ public:
 // Mage 
 class Mage: public Player {
 public:
+    // give Mage the Player constructor
+    using Player::Player;
+    // Mage spells and abilities
     int meteorShower();
     int mindBlast();
     void arcaneSurge();
@@ -89,6 +95,9 @@ public:
 // Paladin 
 class Paladin: public Player {
 public:
+    // give Paladin the Player constructor
+    using Player::Player;
+    // Paladin spells and abilities
     int holyStrike();
     void shieldOfLight();
 };
@@ -96,6 +105,9 @@ public:
 // Ranger 
 class Ranger: public Player {
 public:
+    // give Ranger the Player constructor
+    using Player::Player;
+    // Ranger spells and abilities
     int lethalArrow();
     int rainOfPain();
     void camouflage();

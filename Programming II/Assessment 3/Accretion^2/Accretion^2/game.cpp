@@ -1,5 +1,6 @@
 #include "battle.h"
 #include "display.h"
+#include "setup.h"
 
 #include <iostream>
 using namespace std;
@@ -24,7 +25,8 @@ void game() {
     string playerName;
     playerName = welcomePlayer();
 
-    // player object setup
+    // player object creation
+    Player player = playerSetup(playerName, false, 0);
 
     // define game variables
     bool gameIsActive = true;
@@ -34,6 +36,7 @@ void game() {
     // game loop based off menu display
     while (gameIsActive) {
     // display menu and handle
+        cout << "\033[2J\033[1;1H";
         menuChoice = menu();
         switch (menuChoice) {
         case 1: {
@@ -48,8 +51,7 @@ void game() {
             // === Train === //
             cout << "\033[2J\033[1;1H";
             // enemySetup()
-            // temp
-            Player player(playerName, "vanilla", 100, 1, 1, 20, 10, 15, 10, 5);
+            // create pointer to player obj
             Player* pPlayer = &player;
             Enemy enemy("enemy1", 100, 1, 50, 18, 12, 10);
             Enemy* eEnemy = &enemy;
@@ -60,7 +62,6 @@ void game() {
             // === View Stats === //
             cout << "\033[2J\033[1;1H";
             // temp
-            Player player(playerName, "vanilla", 100, 1, 1, 20, 10, 15, 10, 5);
             Player* pPlayer = &player;
             displayStats(*pPlayer);
             break;
