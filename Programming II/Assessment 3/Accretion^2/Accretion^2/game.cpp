@@ -25,8 +25,16 @@ void game() {
     string playerName;
     playerName = welcomePlayer();
 
+
     // player object creation
-    Player player = playerSetup(playerName, false, 0);
+    int classVal = 0;
+    // secret name for god powers
+    if (playerName == "Laura") {
+        classVal = 69;
+    }
+    // set classVal = classSetup() if gameWon == true
+    Player player = playerSetup(playerName, false, classVal);
+
 
     // define game variables
     bool gameIsActive = true;

@@ -25,14 +25,10 @@ int main() {
         17. check if player or enemy is dead after each combat turn
         18. add secret name for god player
         19. add a debuff func to player and enemy
-        20. explain string quit variables
+        20. give comment for string quit variables
         
         Fixed
-        1. cleaned up project code which mainly involved adding default to switch case and const to class functions (thanks to new extensions)
-        2. adding a default to switch case statements to sort of handle errors and unexpected inputs
-        3. added const to class functions where they aren't modifying the values of class variables
-        4. stil need to fix player and enemy class constructor (for good code, not cause it causes an error)
-        5. accidentally messup up some extensions which required a sort of re-install and now some syntax colors are messed up (temp fixed but not perfect)
+        1. player now gets god stats for entering in a particular name in the intro of the game
 
         Changed
         1. 
@@ -43,15 +39,4 @@ int main() {
 }
 
 
-    
-
-
-/*
-cout << "                                        _     _                   /\\   ___  \n" <<
-    "    /\\                                 | |   (_)                 |/\\| |__ \\ \n" <<
-    "   /  \\      ___    ___   _ __    ___  | |_   _    ___    _ __           ) |\n" <<
-    "  / /\\ \\    / __|  / __| | '__|  / _ \\ | __| | |  / _ \\  | '_ \\         / / \n" <<
-    " / ____ \\  | (__  | (__  | |    |  __/ | |_  | | | (_) | | | | |       / /_ \n" <<
-    "/_/    \\_\\  \\___|  \\___| |_|     \\___|  \\__| |_|  \\___/  |_| |_|      |____|";
-*/
 // cout << "\033[2J\033[1;1H";

@@ -38,9 +38,17 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
         }
     }
     else {
+        // create god player
+        if (classVal == 69) {
+            // use absurdly high stats
+            Player player(playerName, "none", 1000, 1, 0, 1000, 1000, 1000, 1000, 1000);
+            return player;
+        }
         // create player with no class
-        Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
-        return player;
+        else {
+            Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            return player;
+        }
     }
 }
 

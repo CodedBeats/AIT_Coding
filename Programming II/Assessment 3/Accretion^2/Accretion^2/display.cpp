@@ -10,7 +10,8 @@ void displayBattleStats(Player player, Enemy enemy) {
     // Player stats
     cout << player.getName()
         << "\t\t (HP: " << player.getHealth()
-        // deftenss basically being block chance just with a nicer name
+        << ", Lvl: " << player.getLevel()
+        // defend being defend chance
         << ", Dfnd: " << player.getBlockChance() << "%"
         << ")" << endl;
 
