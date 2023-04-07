@@ -19,6 +19,8 @@ void playerTurn(Player& player, Enemy& enemy) {
     // clear screen
     cout << "\033[2J\033[1;1H";
 
+    // wrap another if statement for game won to implement class abilities
+
     // calc player attack damage and apply to enemy
     if (playerCombatChoice == 1) {
         int damage = player.attack();
@@ -61,6 +63,8 @@ void enemyTurn(Player& player, Enemy& enemy) {
 
 // ============================ Combat ============================ //
 void handleCombat(Player& player, Enemy& enemy) {
+    // wrap another if statement for game won
+
     // player goes first if speed stat is higher or equal
     if (player.getSpd() >= enemy.getSpd()) {
         // <- player health goes back to full here because we pass the original class again ->

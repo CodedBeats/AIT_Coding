@@ -23,12 +23,11 @@ int main() {
         15. format code consistently
         16. implement assessment 3 notes
         17. check if player or enemy is dead after each combat turn
-        18. add secret name for god player
         19. add a debuff func to player and enemy
         20. give comment for string quit variables
         
         Fixed
-        1. player now gets god stats for entering in a particular name in the intro of the game
+        1. 
 
         Changed
         1. 

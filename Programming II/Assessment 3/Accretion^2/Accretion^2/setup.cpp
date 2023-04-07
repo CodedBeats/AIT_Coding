@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-// maybe use pointer and ref param here to update a created player class
+
 Player playerSetup(string playerName, bool gameWon, int classVal) {
     // create player object
     if (gameWon) {
