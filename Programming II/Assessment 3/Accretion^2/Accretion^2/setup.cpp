@@ -30,6 +30,11 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
             Ranger player(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
             return player;
         }
+        default: {
+            // something went wrong, classVal should only be 1-4, create default player
+            Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            return player;
+        }
         }
     }
     else {

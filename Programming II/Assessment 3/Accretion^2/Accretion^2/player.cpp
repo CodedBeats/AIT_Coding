@@ -3,58 +3,59 @@
 using namespace std;
 
 // === Base Class === //
+// use const for get() funcs since they don't modify class variables
 // get player name
-string Player::getName() {
+string Player::getName() const {
     return m_name;
 }
 
 // get plyaer class
-string Player::getClass() {
+string Player::getClass() const {
     return m_class;
 }
 
 // get player health
-int Player::getHealth() {
+int Player::getHealth() const {
     return m_health;
 }
 
 // get player level
-int Player::getLevel() {
+int Player::getLevel() const {
     return m_lvl;
 }
 
 // get player exp
-int Player::getExp() {
+int Player::getExp() const {
     return m_exp;
 }
 
 // get player strength
-int Player::getStr() {
+int Player::getStr() const {
     return m_str;
 }
 
 // get player defense
-int Player::getDef() {
+int Player::getDef() const {
     return m_def;
 }
 
 // get player speed
-int Player::getSpd() {
+int Player::getSpd() const {
     return m_spd;
 }
 
 // get player block chance
-int Player::getBlockChance() {
+int Player::getBlockChance() const {
     return m_blockChance;
 }
 
 // get player magical might
-int Player::getMgcMht() {
+int Player::getMgcMht() const {
     return m_mgcMht;
 }
 
 // calc player attack damage
-int Player::attack() {
+int Player::attack() const {
     return m_str;
 }
 
@@ -162,7 +163,7 @@ void Player::takeDamage(int damage, int defence) {
 
 // === Inheriting Classes === //
 // Berserker
-int Berserker::vengefulVortex() {
+int Berserker::vengefulVortex() const {
     // high damage attack
     return 0;
 }
@@ -171,11 +172,11 @@ void Berserker::battleFury() {
 }
 
 // Mage
-int Mage::meteorShower() {
+int Mage::meteorShower() const {
     // high damage attack
     return 0;
 }
-int Mage::mindBlast() {
+int Mage::mindBlast() const {
     // reduce enemy defence
     return 0;
 }
@@ -184,7 +185,7 @@ void Mage::arcaneSurge() {
 }
 
 // Paladin
-int Paladin::holyStrike() {
+int Paladin::holyStrike() const {
     // high damage attack
     return 0;
 }
@@ -193,11 +194,11 @@ void Paladin::shieldOfLight() {
 }
 
 // Ranger
-int Ranger::lethalArrow() {
+int Ranger::lethalArrow() const {
     // chance based off speed to 1 shot enemy
     return 0;
 }
-int Ranger::rainOfPain() {
+int Ranger::rainOfPain() const {
     // attack that hits 5 times with rand below and above a threshold
     return 0;
 }

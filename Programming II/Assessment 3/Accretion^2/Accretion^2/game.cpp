@@ -88,6 +88,10 @@ void game() {
             }
             break;
         }
+        default: {
+            // if incorrect menuChoice then just display menu again
+            break;
+        }
         }
     }
 }

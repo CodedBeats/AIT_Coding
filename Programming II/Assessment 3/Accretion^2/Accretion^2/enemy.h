@@ -21,21 +21,21 @@ public:
     };
 
     // Enemy functions
-    string getName();
+    string getName() const;
 
-    int getHealth();
+    int getHealth() const;
 
-    int getLvl();
+    int getLvl() const;
 
-    int getExp();
+    int getExp() const;
 
-    int getStr();
+    int getStr() const;
 
-    int getDef();
+    int getDef() const;
 
-    int getSpd();
+    int getSpd() const;
 
-    int attack();
+    int attack() const;
 
     void takeDamage(int damage, int defence);
 
@@ -57,20 +57,20 @@ private:
 // Dragon (Boss)
 class Dragon: public Enemy {
 public:
-    int dragonBreath();
+    int dragonBreath() const;
     void dragonRoar();
 };
 
 // Slime
 class Slime: public Enemy {
 public:
-    int stickSmash();
+    int stickySmash() const;
 };
 
 // Hydra
 class Hydra: public Enemy {
 public:
-    int corrosiveSpray();
+    int corrosiveSpray() const;
 };
 
 // Harpy
@@ -82,13 +82,13 @@ public:
 // Specter
 class Specter: public Enemy {
 public:
-    int shadowStrike();
+    int shadowStrike() const;
 };
 
 // Orc
 class Orc: public Enemy {
 public:
-    int bonecrushingBlow();
+    int bonecrushingBlow() const;
 };
 
 

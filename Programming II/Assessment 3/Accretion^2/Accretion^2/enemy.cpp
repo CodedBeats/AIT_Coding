@@ -3,43 +3,44 @@
 using namespace std;
 
 // === Base Class === //
+// use const for get() funcs since they don't modify class variables
 // get enemy name
-string Enemy::getName() {
+string Enemy::getName() const {
     return m_name;
 }
 
 // get enemy health
-int Enemy::getHealth() {
+int Enemy::getHealth() const {
     return m_health;
 }
 
 // get enemy level
-int Enemy::getLvl() {
+int Enemy::getLvl() const {
     return m_lvl;
 }
 
 // get enemy exp
-int Enemy::getExp() {
+int Enemy::getExp() const {
     return m_exp;
 }
 
 // get enemy strength
-int Enemy::getStr() {
+int Enemy::getStr() const {
     return m_str;
 }
 
 // get enemy defense
-int Enemy::getDef() {
+int Enemy::getDef() const {
     return m_def;
 }
 
 // get enemy speed
-int Enemy::getSpd() {
+int Enemy::getSpd() const {
     return m_spd;
 }
 
 // calc enemy attack damage
-int Enemy::attack() {
+int Enemy::attack() const {
     return m_str;
 }
 
@@ -68,7 +69,7 @@ void Enemy::takeDamage(int damage, int defence) {
 
 // === Inheriting Classes === //
 // Dragon (Boss)
-int Dragon::dragonBreath() {
+int Dragon::dragonBreath() const {
     // high damage attack
     return 0;
 }
@@ -77,13 +78,13 @@ void Dragon::dragonRoar() {
 }
 
 // Slime
-int Slime::stickSmash() {
+int Slime::stickySmash() const {
     // attack and reduce player speed
     return 0;
 }
 
 // Hydra
-int Hydra::corrosiveSpray() {
+int Hydra::corrosiveSpray() const {
     // attack and reduce player def
     return 0;
 }
@@ -95,13 +96,13 @@ int Harpy::razorFeather() {
 }
 
 // Specter
-int Specter::shadowStrike() {
+int Specter::shadowStrike() const {
     // attack and enemy go first
     return 0;
 }
 
 // Orc
-int Orc::bonecrushingBlow() {
+int Orc::bonecrushingBlow() const {
     // attack and reduce player defence
     return 0;
 }

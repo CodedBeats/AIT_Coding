@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 
+
 // ============================ Player Turn ============================ //
 void playerTurn(Player& player, Enemy& enemy) {
     // get player combat choice
@@ -23,7 +24,6 @@ void playerTurn(Player& player, Enemy& enemy) {
         int damage = player.attack();
         cout << player.getName() << " attacks" << endl;
         enemy.takeDamage(damage, enemy.getDef());
-
     }
     // increase block chance
     else if (playerCombatChoice == 2) {
@@ -31,7 +31,6 @@ void playerTurn(Player& player, Enemy& enemy) {
         cout << player.getName() << " uses Sheilding Aura\n"
             << "Block chance increases to " << player.getBlockChance()
             << "%" << endl;
-
     }
     else {
         cout << "Invalid choice!" << endl;
@@ -62,20 +61,17 @@ void enemyTurn(Player& player, Enemy& enemy) {
 
 // ============================ Combat ============================ //
 void handleCombat(Player& player, Enemy& enemy) {
-    // higher speed stat goes first, else player goes first
-    if (player.getSpd() > enemy.getSpd()) {
+    // player goes first if speed stat is higher or equal
+    if (player.getSpd() >= enemy.getSpd()) {
         // <- player health goes back to full here because we pass the original class again ->
         playerTurn(player, enemy);
         // <- enemy health goes back to full here because we pass the original class again ->
         enemyTurn(player, enemy);
     }
-    else if (enemy.getSpd() > player.getSpd()) {
-        enemyTurn(player, enemy);
-        playerTurn(player, enemy);
-    }
+    // else enemy speed stat is higher and goes first
     else {
-        playerTurn(player, enemy);
         enemyTurn(player, enemy);
+        playerTurn(player, enemy);
     }
 }
 

@@ -24,27 +24,27 @@ public:
     };
 
     // Player functions
-    string getName();
+    string getName() const;
 
-    string getClass();
+    string getClass() const;
 
-    int getHealth();
+    int getHealth() const;
 
-    int getLevel();
+    int getLevel() const;
 
-    int getExp();
+    int getExp() const;
 
-    int getStr();
+    int getStr() const;
 
-    int getDef();
+    int getDef() const;
 
-    int getSpd();
+    int getSpd() const;
 
-    int getBlockChance();
+    int getBlockChance() const;
 
-    int getMgcMht();
+    int getMgcMht() const;
 
-    int attack();
+    int attack() const;
 
     void shieldingAura();
 
@@ -77,7 +77,7 @@ public:
     // give Berserker the Player constructor
     using Player::Player;
     // Berserker spells and abilities
-    int vengefulVortex();
+    int vengefulVortex() const;
     void battleFury();
 };
 
@@ -87,8 +87,8 @@ public:
     // give Mage the Player constructor
     using Player::Player;
     // Mage spells and abilities
-    int meteorShower();
-    int mindBlast();
+    int meteorShower() const;
+    int mindBlast() const;
     void arcaneSurge();
 };
 
@@ -98,7 +98,7 @@ public:
     // give Paladin the Player constructor
     using Player::Player;
     // Paladin spells and abilities
-    int holyStrike();
+    int holyStrike() const;
     void shieldOfLight();
 };
 
@@ -108,8 +108,8 @@ public:
     // give Ranger the Player constructor
     using Player::Player;
     // Ranger spells and abilities
-    int lethalArrow();
-    int rainOfPain();
+    int lethalArrow() const;
+    int rainOfPain() const;
     void camouflage();
 };
 

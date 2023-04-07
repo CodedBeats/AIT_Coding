@@ -11,12 +11,12 @@ int main() {
         1. A boss objective (ask if player wants to fight boss, on defeat they just go back to enemys)
         2. spice up player stats display while in combat
         4. scoreboard
+        5. let playername be multiple words
         6. victory screen
-        7. create the player and pass it to game so it can pass to combat
         8. create a createEnemy func that will choose an enemy and their stats for the player to pass into combat
         9. format disply to assessment 2
         10. character set up of class system
-        11. put character creation into setup.cpp and call it when we get player name (after welcome display)
+        11. implement player and enemy class based attacks in combat
         12. add dodge chance (influenced by speed)
         13. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
         14. see if I need the srand stuff
@@ -25,13 +25,14 @@ int main() {
         17. check if player or enemy is dead after each combat turn
         18. add secret name for god player
         19. add a debuff func to player and enemy
-
+        20. explain string quit variables
+        
         Fixed
-        1. added player constructor to each inheriting class so they can be created as objects with the apropriate variables
-        2. created a playerSetup func that returns a player object
-        3. the playerSetup func creates a player with or without a class depending on if the game has been won
-        4. the playerSetup func can take string params for player name, bool params for game won? and int params (1-4) for determing class
-        5. did some cool fancy stuff and idk how but got it to all still work (I think it has something to do with pointers and reference???)
+        1. cleaned up project code which mainly involved adding default to switch case and const to class functions (thanks to new extensions)
+        2. adding a default to switch case statements to sort of handle errors and unexpected inputs
+        3. added const to class functions where they aren't modifying the values of class variables
+        4. stil need to fix player and enemy class constructor (for good code, not cause it causes an error)
+        5. accidentally messup up some extensions which required a sort of re-install and now some syntax colors are messed up (temp fixed but not perfect)
 
         Changed
         1. 
