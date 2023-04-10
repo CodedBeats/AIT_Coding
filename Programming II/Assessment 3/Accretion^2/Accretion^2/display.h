@@ -6,7 +6,7 @@
 #include "player.h"
 #include "enemy.h"
 
-void displayBattleStats(Player player, Enemy enemy);
+void displayBattleStats(Player* player, Enemy* enemy);
 
 string welcomePlayer();
 

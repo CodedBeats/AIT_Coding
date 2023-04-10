@@ -44,20 +44,44 @@ int Enemy::attack() const {
     return m_str;
 }
 
+// buff enemy stats while in battle
+void Enemy::buff(string stat) {
+    // increase strength by lvl * 5
+    if (stat == "str") {
+        m_str += (m_lvl * 5);
+    }
+    // increase defence by lvl * 5
+    else if (stat == "def") {
+        m_def += (m_lvl * 5);
+    }
+    // increase speed by lvl * 5
+    else if (stat == "spd") {
+        m_spd += (m_lvl * 5);
+    }
+}
+
+// debuff enemy stats while in battle
+void Enemy::debuff(string stat) {
+    // decrease strength by lvl * 5
+    if (stat == "str") {
+        m_str -= (m_lvl * 5);
+    }
+    // decrease defence by lvl * 5
+    else if (stat == "def") {
+        m_def -= (m_lvl * 5);
+    }
+    // decrease speed by lvl * 5
+    else if (stat == "spd") {
+        m_spd -= (m_lvl * 5);
+    }
+}
+
 // calc enemy damage taken from attack
 void Enemy::takeDamage(int damage, int defence) {
     // reduce enemy health by (player damage - enemy defense)
     int applyDamage = (damage - defence);
     m_health -= applyDamage;
     cout << m_name << " takes " << applyDamage << " damage" << endl;
-
-    // == DEBUG ==
-    // cout << "==\nENEMY DEBUG:"
-    //     << "\n Health " << m_health 
-    //     << "\n Damage " << damage
-    //     << "\n Applied Damage " << applyDamage
-    //     << "\n Defence " << defence
-    //     << "\n==" << endl;
 
     // set enemy health to 0 incase it would be negative
     if (m_health < 0) {
@@ -80,31 +104,35 @@ void Dragon::dragonRoar() {
 // Slime
 int Slime::stickySmash() const {
     // attack and reduce player speed
-    return 0;
+    int enemyStrength = getStr();
+    return enemyStrength;
 }
 
 // Hydra
 int Hydra::corrosiveSpray() const {
-    // attack and reduce player def
-    return 0;
+    // attack and reduce player defence
+    int enemyStrength = getStr();
+    return enemyStrength;
 }
 
 // Harpy
 int Harpy::razorFeather() {
     // attack and increase attack
-    return 0;
+    int enemyStrength = getStr();
+    return enemyStrength;
 }
 
 // Specter
 int Specter::shadowStrike() const {
-    // attack and enemy go first
-    return 0;
+    // attack and reduce player block chance
+    int enemyStrength = getStr();
+    return enemyStrength;
 }
 
 // Orc
 int Orc::bonecrushingBlow() const {
-    // attack and reduce player defence
-    return 0;
+    // attack and reduce player attack
+    int enemyStrength = getStr();
+    return enemyStrength;
 }
-
 

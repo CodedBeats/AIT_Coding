@@ -11,6 +11,8 @@ using namespace std;
 
 Player playerSetup(string playerName, bool gameWon, int classVal);
 
+Enemy* enemySetup(int playerLvl);
+
 
 
 #endif // setup_HEADER_GUARD

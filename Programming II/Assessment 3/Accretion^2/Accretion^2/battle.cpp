@@ -6,39 +6,50 @@ using namespace std;
 
 
 // Training Battle
-void train(Player& player, Enemy& enemy) {
+void train(Player* player, Enemy* enemy) {
+    // declare random variable just to continue throught text
+    string cont;
+
+    // create clone of player so its stats can be buffed and debuffed
 
     // combat loop
     bool combatActive = true;
     while (combatActive) {
         cout << "\n" << endl;
-        // just use the class since it should be updated from combat()
+        // display player and enemy battle stats
         displayBattleStats(player, enemy);
 
-        // pass pointers so it can update the original classes
+        // handle player and enemy turn
         handleCombat(player, enemy);
 
         // just use the class since it should be updated from combat()
         combatActive = isFighting(player, enemy);
     }
 
-    if (player.getHealth() == 0) {
-        cout << player.getName() << " has been defeated by the " << enemy.getName() << endl;
+    // enemy defeated player
+    if (player->getHealth() == 0) {
+        cout << player->getName() << " has been defeated by the " << enemy->getName() << endl;
     }
-    // only other possibility (should be) enemy health is 0
+    // player defeated enemy
     else {
-        cout << enemy.getName() << " has been defeated by " << player.getName() << endl;
+        cout << enemy->getName() << " has been defeated by " << player->getName() << endl;
+
+        // handle exp and lvl up
+        cout << "\nType (0) to recieve exp\n" <<
+            "> ";
+        cin >> cont;
+        cout << "\033[2J\033[1;1H";
+        // apply exp to player
+        // if exp > 100, lvlUp()
+        // display lvl up message
     }
 
-    // declare random variable just to exit this stats screen
-    string exit;
     // Return to menu
     cout << "\nType (0) to return to menu\n" <<
         "> ";
-    cin >> exit;
+    cin >> cont;
 }
 
 
 
 // Boss Fight Battle
-

@@ -61,12 +61,56 @@ int Player::attack() const {
 
 // increase player block chance
 void Player::shieldingAura() {
-    // cap block chance at 75%
-    if (m_blockChance == 75) {
+    // cap block chance at 50%
+    if (m_blockChance == 50) {
         cout << "Your block chance is already at it's max" << endl;
     }
     else {
         m_blockChance += 5;
+    }
+}
+
+// buff player stats while in battle
+void Player::buff(string stat) {
+    // increase strength by lvl * 5
+    if (stat == "str") {
+        m_str += (m_lvl * 5);
+    }
+    // increase defence by lvl * 5
+    else if (stat == "def") {
+        m_def += (m_lvl * 5);
+    }
+    // increase speed by lvl * 5
+    else if (stat == "spd") {
+        m_spd += (m_lvl * 5);
+    }
+    // increase block chance by lvl * 5
+    else if (stat == "blockChance") {
+        m_blockChance += (m_lvl * 5);
+    }
+    // increase magical might by lvl * 5
+    else if (stat == "mgcMht") {
+        m_mgcMht += (m_lvl * 5);
+    }
+}
+
+// debuff player stats while in battle
+void Player::debuff(string stat) {
+    // decrease strength by lvl * 5
+    if (stat == "str") {
+        m_str -= (m_lvl * 5);
+    }
+    // decrease defence by lvl * 5
+    else if (stat == "def") {
+        m_def -= (m_lvl * 5);
+    }
+    // decrease speed by lvl * 5
+    else if (stat == "spd") {
+        m_spd -= (m_lvl * 5);
+    }
+    // decrease block chance by lvl * 5
+    else if (stat == "blockChance") {
+        m_blockChance -= (m_lvl * 5);
     }
 }
 
@@ -75,8 +119,8 @@ void Player::shieldingAura() {
 void Player::lvlUp(bool isClass) {
     // increase lvl
     m_lvl += 1;
-    // reset exp
-    m_exp = 0;
+    // -1 lvl worth of exp (so it can handle multiple calls)
+    m_exp -= 100;
 
     // if player has a class then give class specific leveling
     if (isClass) {
@@ -125,31 +169,27 @@ void Player::lvlUp(bool isClass) {
     }
 }
 
-// reset changed stats after combat ends
-void Player::resetStats() {
-    // idk how to do this yet
-}
-
 // calc player damage taken from attack
 void Player::takeDamage(int damage, int defence) {
-    // check for random block first
-    int chance = rand() % 100 + 1;
-    if (chance <= m_blockChance) {
+    // set random variables that stop damage
+    int blockChance = rand() % 100 + 1;
+    int dodgeChance = rand() % 1000 + 1;
+
+    // check for random block chance based on blockChance stat
+    if (blockChance <= m_blockChance) {
         cout << m_name << " blocked the attack" << endl;
     }
+    // check for random dodge chance based on speed stat
+    else if (dodgeChance <= m_spd) {
+        cout << m_name << " swiftly dodged the attack" << endl;
+    }
+
+    // take damage
     else {
         // reduce enemy health by (enemy damage - player defense)
         int applyDamage = (damage - defence);
         m_health -= applyDamage;
         cout << m_name << " takes " << applyDamage << " damage" << endl;
-
-        // == DEBUG ==
-        // cout << "==\nPLAYER DEBUG:"
-        //     << "\n Health " << m_health 
-        //     << "\n Damage " << damage
-        //     << "\n Applied Damage " << applyDamage
-        //     << "\n Defence " << defence
-        //     << "\n==" << endl;
 
         // set player health to 0 if it would be negative
         if (m_health < 0) {

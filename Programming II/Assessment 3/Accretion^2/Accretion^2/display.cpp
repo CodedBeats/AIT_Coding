@@ -6,18 +6,19 @@ using namespace std;
 
 // maybe move this func
 // display stats screen for combat
-void displayBattleStats(Player player, Enemy enemy) {
+void displayBattleStats(Player* player, Enemy* enemy) {
     // Player stats
-    cout << player.getName()
-        << "\t\t (HP: " << player.getHealth()
-        << ", Lvl: " << player.getLevel()
+    cout << player->getName()
+        << "\t\t (HP: " << player->getHealth()
+        << ", Lvl: " << player->getLevel()
         // defend being defend chance
-        << ", Dfnd: " << player.getBlockChance() << "%"
+        << ", Dfnd: " << player->getBlockChance() << "%"
         << ")" << endl;
 
     // Enemy stats
-    cout << enemy.getName()
-        << "\t (HP: " << enemy.getHealth()
+    cout << enemy->getName()
+        << "\t (HP: " << enemy->getHealth()
+        << ", Lvl: " << enemy->getLvl()
         << ")" << endl;
 }
 

@@ -35,7 +35,11 @@ public:
 
     int getSpd() const;
 
-    int attack() const;
+    virtual int attack() const;
+
+    void buff(string stat);
+
+    void debuff(string stat);
 
     void takeDamage(int damage, int defence);
 
@@ -55,39 +59,57 @@ private:
 
 // Inheriting classes
 // Dragon (Boss)
-class Dragon: public Enemy {
+class Dragon : public Enemy {
 public:
+    // give Dragon the Enemy constructor
+    using Enemy::Enemy;
+    // Dragon spells and abilities
     int dragonBreath() const;
     void dragonRoar();
 };
 
 // Slime
-class Slime: public Enemy {
+class Slime : public Enemy {
 public:
+    // give Slime the Enemy constructor
+    using Enemy::Enemy;
+    // Slime spells and abilities
     int stickySmash() const;
 };
 
 // Hydra
-class Hydra: public Enemy {
+class Hydra : public Enemy {
 public:
+    // give Hydra the Enemy constructor
+    using Enemy::Enemy;
+    // Hydra abilities
     int corrosiveSpray() const;
 };
 
 // Harpy
-class Harpy: public Enemy {
+class Harpy : public Enemy {
 public:
+    // give Harpy the Enemy constructor
+    using Enemy::Enemy;
+    // Harpy abilities
     int razorFeather();
 };
 
 // Specter
-class Specter: public Enemy {
+class Specter : public Enemy {
 public:
+    // give Specter the Enemy constructor
+    using Enemy::Enemy;
+    // Specter abilities
     int shadowStrike() const;
 };
 
 // Orc
-class Orc: public Enemy {
+class Orc : public Enemy {
 public:
+    // give Orc the Enemy constructor
+    using Enemy::Enemy;
+    // Orc abilities
     int bonecrushingBlow() const;
 };
 

@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-
+// setup player instance
 Player playerSetup(string playerName, bool gameWon, int classVal) {
     // create player object
     if (gameWon) {
@@ -53,3 +53,56 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
 }
 
 
+
+// setup enemy instance from training
+Enemy* enemySetup(int playerLvl) {
+    // set random enemy stats based off player lvl
+    // formula: value = lvl1Value + (rand(1-playerLvl) * 10)
+    // generate random enemy level from 1 to playerLvl
+    int randomEnemyLvl = rand() % playerLvl + 1;
+    // multiply randomEnemyLvl by the general increase of lvl for each stat
+    int randHealth = 90 + (randomEnemyLvl * 10);
+    int randLvl = randomEnemyLvl;
+    int randExp = randomEnemyLvl * 10;
+    int randStr = 5 + (randomEnemyLvl * 10);
+    int randDef = randomEnemyLvl * 10;
+    int randSpd = randomEnemyLvl * 10;
+
+    // set array of enemy name options
+    string enemyNames[5] = { "Slime", "Hydra", "Harpy", "Specter", "Orc" };
+
+    // Randomly select an enemy name from the array
+    int i = rand() % 5;
+    string randEnemyName = enemyNames[i];
+
+    // Create an instance of the selected enemy class based on its name
+    // Slime enemy
+    if (randEnemyName == "Slime") {
+        Slime* enemy = new Slime("Slime", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        return enemy;
+    }
+    // Hydra enemy
+    else if (randEnemyName == "Hydra") {
+        Hydra* enemy = new Hydra("Hydra", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        return enemy;
+    }
+    // Harpy enemy
+    else if (randEnemyName == "Harpy") {
+        Harpy* enemy = new Harpy("Harpy", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        return enemy;
+    }
+    // Specter enemy
+    else if (randEnemyName == "Specter") {
+        Specter* enemy = new Specter("Specter", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        return enemy;
+    }
+    // Orc enemy
+    else if (randEnemyName == "Orc") {
+        Orc* enemy = new Orc("Orc", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        return enemy;
+    }
+}
+
+
+
+// setup dragon for boss fight

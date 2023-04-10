@@ -43,7 +43,7 @@ void game() {
 
     // game loop based off menu display
     while (gameIsActive) {
-    // display menu and handle
+        // display menu and handle player choice
         cout << "\033[2J\033[1;1H";
         menuChoice = menu();
         switch (menuChoice) {
@@ -58,12 +58,11 @@ void game() {
         case 2: {
             // === Train === //
             cout << "\033[2J\033[1;1H";
-            // enemySetup()
-            // create pointer to player obj
+            // create enemy
+            // create pointers to player and enemy instances
+            Enemy* eEnemy = enemySetup(player.getLevel());
             Player* pPlayer = &player;
-            Enemy enemy("enemy1", 100, 1, 50, 18, 12, 10);
-            Enemy* eEnemy = &enemy;
-            train(*pPlayer, *eEnemy);
+            train(pPlayer, eEnemy);
             break;
         }
         case 3: {

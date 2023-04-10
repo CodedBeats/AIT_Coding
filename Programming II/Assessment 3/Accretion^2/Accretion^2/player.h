@@ -44,9 +44,13 @@ public:
 
     int getMgcMht() const;
 
-    int attack() const;
+    virtual int attack() const;
 
     void shieldingAura();
+
+    void buff(string stat);
+
+    void debuff(string stat);
 
     void lvlUp(bool isClass);
 
@@ -72,7 +76,7 @@ private:
 
 // Inheriting classes
 // Berserker
-class Berserker: public Player {
+class Berserker : public Player {
 public:
     // give Berserker the Player constructor
     using Player::Player;
@@ -82,7 +86,7 @@ public:
 };
 
 // Mage 
-class Mage: public Player {
+class Mage : public Player {
 public:
     // give Mage the Player constructor
     using Player::Player;
@@ -93,7 +97,7 @@ public:
 };
 
 // Paladin 
-class Paladin: public Player {
+class Paladin : public Player {
 public:
     // give Paladin the Player constructor
     using Player::Player;
@@ -103,7 +107,7 @@ public:
 };
 
 // Ranger 
-class Ranger: public Player {
+class Ranger : public Player {
 public:
     // give Ranger the Player constructor
     using Player::Player;
