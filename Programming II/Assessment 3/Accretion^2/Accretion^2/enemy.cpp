@@ -62,24 +62,40 @@ void Enemy::buff(string stat) {
 
 // debuff enemy stats while in battle
 void Enemy::debuff(string stat) {
-    // decrease strength by lvl * 5
+    // set currentStat as stat to be reduced 
+    int* currentStat = nullptr;
+
+    // strength
     if (stat == "str") {
-        m_str -= (m_lvl * 5);
+        currentStat = &m_str;
     }
-    // decrease defence by lvl * 5
+    // defence
     else if (stat == "def") {
-        m_def -= (m_lvl * 5);
+        currentStat = &m_def;
     }
-    // decrease speed by lvl * 5
+    // speed
     else if (stat == "spd") {
-        m_spd -= (m_lvl * 5);
+        currentStat = &m_spd;
+    }
+
+    // stats can't drop below 5
+    if (*currentStat <= 5) {
+        return;
+    }
+    // decrease stat by (lvl * 5)
+    else {
+        *currentStat -= (m_lvl + 4);
     }
 }
 
 // calc enemy damage taken from attack
 void Enemy::takeDamage(int damage, int defence) {
-    // reduce enemy health by (player damage - enemy defense)
-    int applyDamage = (damage - defence);
+    // reduce enemy health by (player damage - (enemy defense / 2))
+    int applyDamage = (damage - (defence / 2));
+    // stop damage being less than 0 and increasing enemy health
+    if (applyDamage < 0) {
+        applyDamage = 0;
+    }
     m_health -= applyDamage;
     cout << m_name << " takes " << applyDamage << " damage" << endl;
 

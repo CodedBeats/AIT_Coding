@@ -27,10 +27,10 @@ void playerTurn(Player* player, Enemy* enemy) {
     }
     // increase block chance
     else if (playerCombatChoice == 2) {
+        player->shieldingAura();
         cout << player->getName() << " uses Sheilding Aura\n"
             << "Block chance increases to " << player->getBlockChance()
             << "%" << endl;
-        player->shieldingAura();
     }
     else {
         cout << "Invalid choice!" << endl;

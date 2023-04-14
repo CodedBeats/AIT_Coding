@@ -63,7 +63,7 @@ Enemy* enemySetup(int playerLvl) {
     // multiply randomEnemyLvl by the general increase of lvl for each stat
     int randHealth = 90 + (randomEnemyLvl * 10);
     int randLvl = randomEnemyLvl;
-    int randExp = randomEnemyLvl * 10;
+    int randExp = randomEnemyLvl * 15;
     int randStr = 5 + (randomEnemyLvl * 10);
     int randDef = randomEnemyLvl * 10;
     int randSpd = randomEnemyLvl * 10;

@@ -7,11 +7,31 @@ using namespace std;
 // maybe move this func
 // display stats screen for combat
 void displayBattleStats(Player* player, Enemy* enemy) {
+    // === DEBUG STATS === //
+    cout << player->getName()
+        << "\t (HP: " << player->getHealth()
+        << ", Lvl: " << player->getLevel()
+        << ", Str: " << player->getStr()
+        << ", Def: " << player->getDef()
+        << ", Spd: " << player->getSpd()
+        // Dfnd being defend chance
+        << ", Dfnd: " << player->getBlockChance() << "%"
+        << ")" << endl;
+
+    cout << enemy->getName()
+        << "\t (HP: " << enemy->getHealth()
+        << ", Lvl: " << enemy->getLvl()
+        << ", Str: " << enemy->getStr()
+        << ", Def: " << enemy->getDef()
+        << ", Spd: " << enemy->getSpd()
+        << ")" << endl;
+
+    /*
     // Player stats
     cout << player->getName()
         << "\t\t (HP: " << player->getHealth()
         << ", Lvl: " << player->getLevel()
-        // defend being defend chance
+        // Dfnd being defend chance
         << ", Dfnd: " << player->getBlockChance() << "%"
         << ")" << endl;
 
@@ -20,6 +40,7 @@ void displayBattleStats(Player* player, Enemy* enemy) {
         << "\t (HP: " << enemy->getHealth()
         << ", Lvl: " << enemy->getLvl()
         << ")" << endl;
+    */
 }
 
 

@@ -12,7 +12,7 @@ void handleCombat(Player* player, Enemy* enemy);
 
 bool isFighting(Player* player, Enemy* enemy);
 
-void train(Player* player, Enemy* enemy);
+void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon);
 
 
 

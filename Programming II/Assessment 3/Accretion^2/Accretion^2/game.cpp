@@ -26,7 +26,7 @@ void game() {
     playerName = welcomePlayer();
 
 
-    // player object creation
+    // init variable for player class
     int classVal = 0;
     // secret name for god powers
     if (playerName == "Laura") {
@@ -58,11 +58,21 @@ void game() {
         case 2: {
             // === Train === //
             cout << "\033[2J\033[1;1H";
-            // create enemy
-            // create pointers to player and enemy instances
+            // create pointer for enemy instance
             Enemy* eEnemy = enemySetup(player.getLevel());
+            // create player pointer to pass for exp and lvls
             Player* pPlayer = &player;
-            train(pPlayer, eEnemy);
+            // create copy of player instance to use for combat where stats are altered
+            Player combatPlayer = *pPlayer;
+            Player* pCombatPlayer = &combatPlayer;
+            // handle class or non calss based combat
+            if (gameWon) {
+                train(pPlayer, pCombatPlayer, eEnemy, true);
+            } 
+            else {
+                train(pPlayer, pCombatPlayer, eEnemy, false);
+            }
+            // delete combat player
             break;
         }
         case 3: {

@@ -52,6 +52,8 @@ public:
 
     void debuff(string stat);
 
+    void gainExp(int exp);
+
     void lvlUp(bool isClass);
 
     void resetStats();

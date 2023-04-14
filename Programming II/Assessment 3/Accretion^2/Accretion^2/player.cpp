@@ -96,31 +96,48 @@ void Player::buff(string stat) {
 
 // debuff player stats while in battle
 void Player::debuff(string stat) {
-    // decrease strength by lvl * 5
+    // set currentStat as stat to be reduced 
+    int* currentStat = nullptr;
+
+    // strength
     if (stat == "str") {
-        m_str -= (m_lvl * 5);
+        currentStat = &m_str;
     }
-    // decrease defence by lvl * 5
+    // defence
     else if (stat == "def") {
-        m_def -= (m_lvl * 5);
+        currentStat = &m_def;
     }
-    // decrease speed by lvl * 5
+    // speed
     else if (stat == "spd") {
-        m_spd -= (m_lvl * 5);
+        currentStat = &m_spd;
     }
-    // decrease block chance by lvl * 5
+    // block chance
     else if (stat == "blockChance") {
-        m_blockChance -= (m_lvl * 5);
+        currentStat = &m_blockChance;
     }
+
+    // stats can't drop below 5
+    if (*currentStat <= 5) {
+        return;
+    }
+    // decrease stat by (lvl * 5)
+    else {
+        *currentStat -= (m_lvl + 4);
+    }
+}
+
+// give player exp from enemy after victorious battle
+void Player::gainExp(int exp) {
+    m_exp += exp;
 }
 
 // increase player's levl
 // linear lvl up system cause I can't be assed making an exponential curved system
 void Player::lvlUp(bool isClass) {
+    // -1 lvl worth of exp (so it can handle multiple calls)
+    m_exp -= (m_lvl * 50);
     // increase lvl
     m_lvl += 1;
-    // -1 lvl worth of exp (so it can handle multiple calls)
-    m_exp -= 100;
 
     // if player has a class then give class specific leveling
     if (isClass) {
@@ -132,30 +149,63 @@ void Player::lvlUp(bool isClass) {
             m_spd += 15;
             // redundant line here to show difference between classes
             m_mgcMht += 0;
+            
+            // display how much stats are increased by
+            cout << "Health\t\t+15\n"
+                << "Strength\t+40\n"
+                << "Defence\t\t+5\n"
+                << "Speed\t\t+15\n"
+                << "Magical Might\t+0\n"
+                << endl;
         }
         // Mage
         if (m_class == "Mage") {
             m_health += 10;
-            m_str += 5;
+            // redundant line here to show difference between classes
+            m_str += 0;
             m_def += 10;
             m_spd += 10;
             m_mgcMht += 40;
+
+            // display how much stats are increased by
+            cout << "Health\t\t+10\n"
+                << "Strength\t+0\n"
+                << "Defence\t\t+10\n"
+                << "Speed\t\t+10\n"
+                << "Magical Might\t+40\n"
+                << endl;
         }
         // Paladin
-        if (m_class == "Mage") {
+        if (m_class == "Paladin") {
             m_health += 30;
             m_str += 25;
             m_def += 40;
             m_spd += 5;
             m_mgcMht += 15;
+
+            // display how much stats are increased by
+            cout << "Health\t\t+30\n"
+                << "Strength\t\t+25\n"
+                << "Defence\t+40\n"
+                << "Speed\t\t+5\n"
+                << "Magical Might\t+15\n"
+                << endl;
         }
         // Ranger
-        if (m_class == "Mage") {
+        if (m_class == "Ranger") {
             m_health += 15;
             m_str += 15;
             m_def += 15;
             m_spd += 40;
             m_mgcMht += 10;
+
+            // display how much stats are increased by
+            cout << "Health\t\t+15\n"
+                << "Strength\t+15\n"
+                << "Defence\t\t+15\n"
+                << "Speed\t\t+40\n"
+                << "Magical Might\t+10\n"
+                << endl;
         }
     }
     // if no class
@@ -186,8 +236,12 @@ void Player::takeDamage(int damage, int defence) {
 
     // take damage
     else {
-        // reduce enemy health by (enemy damage - player defense)
-        int applyDamage = (damage - defence);
+        // reduce enemy health by (enemy damage - (player defense / 2))
+        int applyDamage = (damage - (defence / 2));
+        // stop damage being less than 0 and increasing player health
+        if (applyDamage < 0) {
+            applyDamage = 0;
+        }
         m_health -= applyDamage;
         cout << m_name << " takes " << applyDamage << " damage" << endl;
 
