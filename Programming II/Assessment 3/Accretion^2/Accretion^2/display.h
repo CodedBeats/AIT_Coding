@@ -14,6 +14,8 @@ int menu();
 
 void displayStats(Player& player);
 
+void displayVictory();
+
 
 
 

@@ -12,7 +12,7 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
         switch (classVal) {
         case 1: {
             // === Berserker === //
-            Berserker player(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 5);
+            Berserker player(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 0);
             return player;
         }
         case 2: {
@@ -54,7 +54,7 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
 
 
 
-// setup enemy instance from training
+// setup enemy instance for training
 Enemy* enemySetup(int playerLvl) {
     // set random enemy stats based off player lvl
     // formula: value = lvl1Value + (rand(1-playerLvl) * 10)
@@ -106,3 +106,14 @@ Enemy* enemySetup(int playerLvl) {
 
 
 // setup dragon for boss fight
+Dragon* bossSetup(int playerLvl) {
+    // set boss stats based off player lvl
+    int bossHealth = 200 + (playerLvl * 10);
+    int bossLvl = 10;
+    int bossStr = 100;
+    int bossDef = 100;
+    int bossSpd = 100;
+
+    Dragon* boss = new Dragon("Abyssalix", bossHealth, bossLvl, 0, bossStr, bossDef, bossSpd);
+    return boss;
+}

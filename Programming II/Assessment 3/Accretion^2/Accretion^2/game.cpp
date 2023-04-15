@@ -20,7 +20,7 @@ using namespace std;
 */
 
 // func to handle game flow
-void game() {
+bool game() {
     // welcome player and get player name
     string playerName;
     playerName = welcomePlayer();
@@ -34,12 +34,15 @@ void game() {
     }
     // set classVal = classSetup() if gameWon == true
     Player player = playerSetup(playerName, false, classVal);
+    // create player pointer
+    Player* pPlayer = &player;
 
 
     // define game variables
     bool gameIsActive = true;
     bool gameWon = false;
     int menuChoice;
+    int bossLock = 0;
 
     // game loop based off menu display
     while (gameIsActive) {
@@ -50,18 +53,53 @@ void game() {
         case 1: {
             // === Boss Fight === //
             cout << "\033[2J\033[1;1H";
-            cout << "This is the boss fight" << endl;
 
-            // return bool and check value to see if gameWon should be true
+            // check if bossLock is active (> 0)
+            if (bossLock > 0) { 
+                string cont;
+
+                // display to player that they are locked out of challenging the boss
+                cout << "You have been locked out of fighting the boss for " << bossLock << " turns.\n"
+                    << "Go train so you can get strong enough to defeat the boss" << endl;
+
+                // Return to menu
+                cout << "\nType (0) to return to menu\n" <<
+                    "> ";
+                cin >> cont;
+            }
+            else {
+                // boss fight
+                bool victory;
+
+                // create copy of player instance to use for combat where stats are altered
+                Player combatPlayer = *pPlayer;
+                Player* pCombatPlayer = &combatPlayer;
+                // create pointer for boss instance
+                Dragon* dDragon = bossSetup(player.getLevel());
+                
+                // handle boss fight
+                victory = bossFight(pCombatPlayer, dDragon);
+
+                // handle boss fight results
+                if (victory) {
+                    cout << "\033[2J\033[1;1H";
+                    // display victory
+                    displayVictory();
+                    gameWon = true;
+                    gameIsActive = false;
+                }
+                else {
+                    bossLock = 3;
+                }
+            }
             break;
         }
         case 2: {
             // === Train === //
             cout << "\033[2J\033[1;1H";
+
             // create pointer for enemy instance
             Enemy* eEnemy = enemySetup(player.getLevel());
-            // create player pointer to pass for exp and lvls
-            Player* pPlayer = &player;
             // create copy of player instance to use for combat where stats are altered
             Player combatPlayer = *pPlayer;
             Player* pCombatPlayer = &combatPlayer;
@@ -73,13 +111,14 @@ void game() {
                 train(pPlayer, pCombatPlayer, eEnemy, false);
             }
             // delete combat player
+
+            // decrement bossLock
+            bossLock -= 1;
             break;
         }
         case 3: {
             // === View Stats === //
             cout << "\033[2J\033[1;1H";
-            // temp
-            Player* pPlayer = &player;
             displayStats(*pPlayer);
             break;
         }
@@ -111,4 +150,7 @@ void game() {
         }
         }
     }
+
+    // return gameWon when game has been won
+    return gameWon;
 }

@@ -58,7 +58,7 @@ public:
 
     void resetStats();
 
-    void takeDamage(int damage, int defence);
+    void takeDamage(int damage, int defence, bool isDebuff, string debuff);
 
 
 private:

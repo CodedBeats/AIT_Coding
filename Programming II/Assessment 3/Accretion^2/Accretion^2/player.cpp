@@ -220,7 +220,7 @@ void Player::lvlUp(bool isClass) {
 }
 
 // calc player damage taken from attack
-void Player::takeDamage(int damage, int defence) {
+void Player::takeDamage(int damage, int defence, bool isDebuff, string debuffStat) {
     // set random variables that stop damage
     int blockChance = rand() % 100 + 1;
     int dodgeChance = rand() % 1000 + 1;
@@ -244,6 +244,12 @@ void Player::takeDamage(int damage, int defence) {
         }
         m_health -= applyDamage;
         cout << m_name << " takes " << applyDamage << " damage" << endl;
+
+        // handle potential debuff
+        if (isDebuff) {
+            debuff(debuffStat);
+            cout << m_name << "'s " << debuffStat << " reduced" << endl;
+        }
 
         // set player health to 0 if it would be negative
         if (m_health < 0) {

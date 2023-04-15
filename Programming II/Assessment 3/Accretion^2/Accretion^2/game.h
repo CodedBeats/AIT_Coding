@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-void game();
+bool game();
 
 
 

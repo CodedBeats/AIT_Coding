@@ -23,7 +23,7 @@ void playerTurn(Player* player, Enemy* enemy) {
     if (playerCombatChoice == 1) {
         cout << player->getName() << " attacks" << endl;
         int damage = player->attack();
-        enemy->takeDamage(damage, enemy->getDef());
+        enemy->takeDamage(damage, enemy->getDef(), false, "none");
     }
     // increase block chance
     else if (playerCombatChoice == 2) {
@@ -44,132 +44,167 @@ void enemyTurn(Player* player, Enemy* enemy) {
     // get random number between 1 and 100 for enemy choice
     int enemyChoice = rand() % 100 + 1;
 
-    // <----- all these are returning NULL and therefore aren't running -----> // 
     // handle Slime turn
     if (Slime* slime = dynamic_cast<Slime*>(enemy)) {
-        // 50% chance to use special ability
-        if (enemyChoice > 50) {
-            // apply damage
+        // 30% chance to use special ability
+        if (enemyChoice <= 30) {
+            // apply damage and debuff
             int damage = slime->stickySmash();
             cout << "Slime uses Sticky Smash" << endl;
-            player->takeDamage(damage, player->getDef());
-            // apply debuff
-            cout << player->getName() << "'s Speed reduced" << endl;
-            player->debuff("spd");
+            player->takeDamage(damage, player->getDef(), true, "spd");
         }
-        // 50% chance for normal attack
+        // 70% chance for normal attack
         else {
             // apply damage
             int damage = slime->attack();
             cout << "Slime attacks" << endl;
-            player->takeDamage(damage, player->getDef());
+            player->takeDamage(damage, player->getDef(), false, "none");
         }
     }
     // handle Hydra turn
     else if (Hydra* hydra = dynamic_cast<Hydra*>(enemy)) {
-        // 50% chance to use special ability
-        if (enemyChoice > 50) {
-            // apply damage
+        // 30% chance to use special ability
+        if (enemyChoice <= 30) {
+            // apply damage and debuff
             int damage = hydra->corrosiveSpray();
             cout << "Hydra uses Corrosive Spray" << endl;
-            player->takeDamage(damage, player->getDef());
-            // apply debuff
-            cout << player->getName() << "'s Defence reduced" << endl;
-            player->debuff("def");
+            player->takeDamage(damage, player->getDef(), true, "def");
         }
-        // 50% chance for normal attack
+        // 70% chance for normal attack
         else {
             // apply damage
             int damage = hydra->attack();
             cout << "Hydra attacks" << endl;
-            player->takeDamage(damage, player->getDef());
+            player->takeDamage(damage, player->getDef(), false, "none");
         }
     }
     // handle Harpy turn
     else if (Harpy* harpy = dynamic_cast<Harpy*>(enemy)) {
-        // 50% chance to use special ability
-        if (enemyChoice > 50) {
-            // apply damage
+        // 30% chance to use special ability
+        if (enemyChoice <= 30) {
+            // apply damage and debuff
             int damage = harpy->razorFeather();
             cout << "Harpy uses Razor Feather" << endl;
-            player->takeDamage(damage, player->getDef());
-            // apply harpy buff
+            player->takeDamage(damage, player->getDef(), false, "none");
+            // display debuffed stat
             cout << "Harpy's Strength increased" << endl;
             harpy->buff("str");
         }
-        // 50% chance for normal attack
+        // 70% chance for normal attack
         else {
             // apply damage
             int damage = harpy->attack();
             cout << "Harpy attacks" << endl;
-            player->takeDamage(damage, player->getDef());
+            player->takeDamage(damage, player->getDef(), false, "none");
         }
     }
     // handle Specter turn
     else if (Specter* specter = dynamic_cast<Specter*>(enemy)) {
-        // 50% chance to use special ability
-        if (enemyChoice > 50) {
-            // apply damage
+        // 30% chance to use special ability
+        if (enemyChoice <= 30) {
+            // apply damage and debuff
             int damage = specter->shadowStrike();
             cout << "Specter uses Shadow Strike" << endl;
-            player->takeDamage(damage, player->getDef());
-            // apply debuff
-            cout << player->getName() << "'s Block Chance reduced" << endl;
-            player->debuff("blockChance");
+            player->takeDamage(damage, player->getDef(), true, "blockChance");
         }
-        // 50% chance for normal attack
+        // 70% chance for normal attack
         else {
             // apply damage
             int damage = specter->attack();
             cout << "Specter attacks" << endl;
-            player->takeDamage(damage, player->getDef());
+            player->takeDamage(damage, player->getDef(), false, "none");
         }
     }
     // handle Orc turn
     else if (Orc* orc = dynamic_cast<Orc*>(enemy)) {
-        // 50% chance to use special ability
-        if (enemyChoice > 50) {
-            // apply damage
+        // 30% chance to use special ability
+        if (enemyChoice <= 30) {
+            // apply damage and debuff
             int damage = orc->bonecrushingBlow();
             cout << "Orc uses Bonecrushing Blow" << endl;
-            player->takeDamage(damage, player->getDef());
-            // apply debuff
-            cout << player->getName() << "'s Strength reduced" << endl;
-            player->debuff("str");
+            player->takeDamage(damage, player->getDef(), true, "str");
         }
-        // 50% chance for normal attack
+        // 70% chance for normal attack
         else {
             // apply damage
             int damage = orc->attack();
             cout << "Orc attacks" << endl;
-            player->takeDamage(damage, player->getDef());
+            player->takeDamage(damage, player->getDef(), false, "none");
         }
     }
 }
 
 
-// ============================ Combat ============================ //
+
+// ============================ Boss Turn ============================ //
+void bossTurn(Player* player, Dragon* dragon) {
+    // get random number between 1 and 100 for enemy choice
+    int enemyChoice = rand() % 100 + 1;
+
+    // 30% chance to use dragon roar
+    if (enemyChoice <= 30) {
+        // buff dragon and debuff player
+        dragon->dragonRoar();
+        cout << "Abyssalix uses Dragon Roar" << endl;
+        player->debuff("spd");
+        cout << "Abyssalix's strength increased and " << player->getName() << "'s speed reduced" << endl;
+    }
+    // 30% chance to use dragon breath
+    else if (enemyChoice > 30 && enemyChoice <= 60) {
+        // apply damage
+        int damage = dragon->dragonBreath();
+        cout << "Abyssalix uses Dragon Breath" << endl;
+        player->takeDamage(damage, player->getDef(), false, "none");
+    }
+    // 40% chance to just attack
+    else {
+        // apply damage
+        int damage = dragon->attack();
+        cout << "Abyssalix attacks" << endl;
+        player->takeDamage(damage, player->getDef(), false, "none");
+    }
+}
+
+
+
+// ============================ Handle Combat ============================ //
 void handleCombat(Player* player, Enemy* enemy) {
-    // player goes first if speed stat is higher or equal
     if (player->getSpd() >= enemy->getSpd()) {
         playerTurn(player, enemy);
-        // xx
+        // exit combat loop if enemy is dead
         if (enemy->getHealth() <= 0) { return; }
         enemyTurn(player, enemy);
     }
     // else enemy speed stat is higher and goes first
-    else {
+    else if (player->getSpd() < enemy->getSpd()) {
         enemyTurn(player, enemy);
-        // xx
+        // exit combat loop if player is dead
         if (player->getHealth() <= 0) { return; }
         playerTurn(player, enemy);
     }
 }
 
+void handleBossFight(Player* player, Dragon* dragon) {
+    if (player->getSpd() >= dragon->getSpd()) {
+        playerTurn(player, dragon);
+        // exit combat loop if dragon is dead
+        if (dragon->getHealth() <= 0) { return; }
+        bossTurn(player, dragon);
+    }
+    // else dragon speed stat is higher and goes first
+    else {
+        bossTurn(player, dragon);
+        // exit combat loop if player is dead
+        if (player->getHealth() <= 0) { return; }
+        playerTurn(player, dragon);
+    }
+}
+
+
 bool isFighting(Player* player, Enemy* enemy) {
     // check if player or enemy are dead
-    // return true if battle is still going
     if (player->getHealth() > 0 && enemy->getHealth() > 0) {
+    // return true if battle is still going
         return true;
     }
     else {

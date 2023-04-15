@@ -63,7 +63,8 @@ string welcomePlayer() {
         "You are our only hope to vanquish this fearsome foe and restore peace to our kingdom.\n" <<
         "Tell us your name\n" <<
         "> ";
-    cin >> playerName;
+    // get player name (can be multiple words)
+    getline(cin, playerName);
 
     return playerName;
 }
@@ -93,7 +94,7 @@ int menu() {
 
 // display player stats
 void displayStats(Player& player) {
-    // declare random variable just to exit this stats screen
+    // declare random variable just to exit the stats screen
     string exit;
 
     // output player stats
@@ -116,3 +117,31 @@ void displayStats(Player& player) {
     cin >> exit;
 
 }
+
+
+// display victory screen
+void displayVictory() {
+    // declare random variable just to exit the victory screen
+    string exit;
+
+    // game title
+    cout << "                                        _     _                   /\\   ___  \n" <<
+        "    /\\                                 | |   (_)                 |/\\| |__ \\ \n" <<
+        "   /  \\      ___    ___   _ __    ___  | |_   _    ___    _ __           ) |\n" <<
+        "  / /\\ \\    / __|  / __| | '__|  / _ \\ | __| | |  / _ \\  | '_ \\         / / \n" <<
+        " / ____ \\  | (__  | (__  | |    |  __/ | |_  | | | (_) | | | | |       / /_ \n" <<
+        "/_/    \\_\\  \\___|  \\___| |_|     \\___|  \\__| |_|  \\___/  |_| |_|      |____|" <<
+        "\n\n";
+
+    cout << "You have accomplished what many deemed impossible by defeating the mighty dragon Abyssalix and restoring peace to our land\n"
+        << "Your courage and strength have inspired us all, and we are forever grateful for your valliant efforts.\n"
+        << "Let the bards sing of your heroism for generations to come, and may your name be forever etched in the annals of our history.\n"
+        << "Congradulations brave hero, on your momentous victory!\n"
+        << "You may check the scoreboard at any time to see your stats when you defeated the Dragon Abyssalix" << endl;
+
+    // Return to menu
+    cout << "\nType (0) to continue\n" <<
+        "> ";
+    cin >> exit;
+}
+

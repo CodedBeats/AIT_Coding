@@ -7,44 +7,39 @@ using namespace std;
 
 int main() {
 
-    srand(time(0)); // Seed the random number generator
+    // Seed the random number generator
+    srand(time(0)); 
 
     game();
 
     /*
         Features to add
-        1. A boss objective (ask if player wants to fight boss, on defeat lock out player for 3 training sessions)
-        2. handle lvlUp
-        3. scoreboard
-        4. let playername be multiple words
-        5. victory screen
-        6. character set up of class system
-        7. implement player class based attacks in combat
-        8. make stat increasing ablities only last until enemy defeated (add a function to reset the apropriare stats)
-        9. handle battleVictory() to add exp and lvl up if exp >= 100
-        10. handle multiple lvl ups
-        11. put debuff call in takeDamage func to only call if damage is taken (add bool debuff param)
-        12. is isFighting func still needed?
-        14. change enemy special ability chance to be 30%
-        15. change then lvl*value calc cause it doesn't scale properly
-        16. odd problem where enemy turn is displayer after battle stats when player speed gets to 5???
-        17. battle.cpp - line 47 - shouldn't have 3 IFs like that
+        1. scoreboard
+        2. character set up of class system
+        3. implement player class based attacks in combat
+        4. handle multiple lvl ups
+        5. when player health falls below enemy health, some weird shenanigans happen with the order of turns
+        6. battle.cpp - line 47 - shouldn't have 3 IFs like that
 
         Final Features to add
         1. format display to assessment 2
         2. implement assessment 3 notes
         3. give comment for string quit variables
         4. format code consistently
+        5. balance game
 
 
         Fixed
-        1. updated player and enemy debuff func to not let stats fall below 5 (and refactored code)
-        2. added some extra stats to displayBattleStats func for debug purposes
-        3. added another player instance that gets passed into battle so original player keeps right stats after battle
-        4. changed how applyDamage is calculated so more damage is given and taken each turn
-        5. added a gainExp func to player to give them exp from defeating an enemy
-        6. implemented the lvlUp func
-        7. added display messages for how much stats increase on lvl up
+        1. changed chance of special attack from enemy to be 30% instead of 50%
+        2. put debuff call in takeDamage func to only call if damage is taken
+        3. player name can now be multiple words
+        4. added a victory screen to be triggered after defeating the boss
+        5. changed game func to return bool so we can handle the transition to class combat
+        6. created a func to setup the boss enemy
+        7. gave the boss a name of "Abyssalix"
+        8. added a function to handle the boss fight
+        9. added a lockout variable so the player gets locked out of fighting the boss for 3 turns if they loose to it
+        10. put everything together for the player to fight the boss and get locked out or get victory screen if they loose or win respectively
 
 
         Notes:

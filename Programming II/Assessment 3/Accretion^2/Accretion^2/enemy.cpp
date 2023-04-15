@@ -89,7 +89,7 @@ void Enemy::debuff(string stat) {
 }
 
 // calc enemy damage taken from attack
-void Enemy::takeDamage(int damage, int defence) {
+void Enemy::takeDamage(int damage, int defence, bool isDebuff, string debuffStat) {
     // reduce enemy health by (player damage - (enemy defense / 2))
     int applyDamage = (damage - (defence / 2));
     // stop damage being less than 0 and increasing enemy health
@@ -98,6 +98,12 @@ void Enemy::takeDamage(int damage, int defence) {
     }
     m_health -= applyDamage;
     cout << m_name << " takes " << applyDamage << " damage" << endl;
+
+    // handle potential debuff
+    if (isDebuff) {
+        debuff(debuffStat);
+        cout << m_name << "'s " << debuffStat << " reduced" << endl;
+    }
 
     // set enemy health to 0 incase it would be negative
     if (m_health < 0) {
@@ -111,10 +117,12 @@ void Enemy::takeDamage(int damage, int defence) {
 // Dragon (Boss)
 int Dragon::dragonBreath() const {
     // high damage attack
-    return 0;
+    int enemyStrength = getStr() * 2;
+    return enemyStrength;
 }
 void Dragon::dragonRoar() {
-    // raises dragon attack
+    // buff boss strength and debuff player speed
+    buff("str");
 }
 
 // Slime
