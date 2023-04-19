@@ -4,10 +4,9 @@
 #include <iostream>
 using namespace std;
 
-// maybe move this func
+
 // display stats screen for combat
 void displayBattleStats(Player* player, Enemy* enemy) {
-    // === DEBUG STATS === //
     cout << player->getName()
         << "\t (HP: " << player->getHealth()
         << ", Lvl: " << player->getLevel()
@@ -25,22 +24,6 @@ void displayBattleStats(Player* player, Enemy* enemy) {
         << ", Def: " << enemy->getDef()
         << ", Spd: " << enemy->getSpd()
         << ")" << endl;
-
-    /*
-    // Player stats
-    cout << player->getName()
-        << "\t\t (HP: " << player->getHealth()
-        << ", Lvl: " << player->getLevel()
-        // Dfnd being defend chance
-        << ", Dfnd: " << player->getBlockChance() << "%"
-        << ")" << endl;
-
-    // Enemy stats
-    cout << enemy->getName()
-        << "\t (HP: " << enemy->getHealth()
-        << ", Lvl: " << enemy->getLvl()
-        << ")" << endl;
-    */
 }
 
 
@@ -48,8 +31,7 @@ void displayBattleStats(Player* player, Enemy* enemy) {
 string welcomePlayer() {
     string playerName;
 
-    // display game title and welcome player
-    // game title
+    // display game title
     cout << "                                        _     _                   /\\   ___  \n" <<
         "    /\\                                 | |   (_)                 |/\\| |__ \\ \n" <<
         "   /  \\      ___    ___   _ __    ___  | |_   _    ___    _ __           ) |\n" <<
@@ -57,7 +39,7 @@ string welcomePlayer() {
         " / ____ \\  | (__  | (__  | |    |  __/ | |_  | | | (_) | | | | |       / /_ \n" <<
         "/_/    \\_\\  \\___|  \\___| |_|     \\___|  \\__| |_|  \\___/  |_| |_|      |____|" <<
         "\n\n";
-    // welcome message
+    // display welcome message
     cout <<
         "Brave hero, a dragon has terrorized our land for far too long.\n" <<
         "You are our only hope to vanquish this fearsome foe and restore peace to our kingdom.\n" <<
@@ -104,7 +86,8 @@ void displayStats(Player& player) {
         "Class:\t\t\t" << player.getClass() << "\n" <<
         "Health:\t\t\t" << player.getHealth() << "\n" <<
         "Level:\t\t\t" << player.getLevel() << "\n" <<
-        "Exp:\t\t\t" << player.getExp() << "\n" <<
+        // show how much exp player needs to reach the next lvl
+        "Exp:\t\t\t" << player.getExp() << "/" << (player.getLevel() * 50) << "\n" <<
         "Strength:\t\t" << player.getStr() << "\n" <<
         "Defence:\t\t" << player.getDef() << "\n" <<
         "Speed:\t\t\t" << player.getSpd() << "\n" <<
@@ -144,4 +127,3 @@ void displayVictory() {
         "> ";
     cin >> exit;
 }
-

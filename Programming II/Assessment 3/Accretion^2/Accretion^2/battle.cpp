@@ -7,6 +7,7 @@ using namespace std;
 
 // Training Battle
 void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
+    int playerChoice;
     // declare random variable just to continue throught text
     string cont;
 
@@ -17,10 +18,13 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
         // display player and enemy battle stats
         displayBattleStats(combatPlayer, enemy);
 
-        // handle player and enemy turn
-        handleCombat(combatPlayer, enemy);
+        // get player combat choice
+        playerChoice = getPlayerInput(player);
 
-        // just use the class since it should be updated from combat()
+        // handle player and enemy turn
+        handleCombat(combatPlayer, playerChoice, enemy);
+
+        // check to see if battle is still active
         combatActive = isFighting(combatPlayer, enemy);
     }
 
@@ -76,6 +80,7 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
 
 // Boss Fight Battle
 bool bossFight(Player* player, Dragon* dragon) {
+    int playerChoice;
     // declare random variable just to continue throught text
     string cont;
 
@@ -86,8 +91,11 @@ bool bossFight(Player* player, Dragon* dragon) {
         // display player and dragon battle stats
         displayBattleStats(player, dragon);
 
+        // get player combat choice
+        playerChoice = getPlayerInput(player);
+
         // handle player and dragon turn
-        handleBossFight(player, dragon);
+        handleBossFight(player, playerChoice, dragon);
 
         // just use the class since it should be updated from combat()
         combatActive = isFighting(player, dragon);
@@ -96,7 +104,7 @@ bool bossFight(Player* player, Dragon* dragon) {
     // boss defeated player
     if (player->getHealth() == 0) {
         cout << player->getName() << " has been defeated by Abyssalix" << endl;
-        
+
         // Return to menu
         cout << "\nType (0) to return to menu\n" <<
             "> ";
@@ -105,7 +113,7 @@ bool bossFight(Player* player, Dragon* dragon) {
     // player defeated boss
     else {
         cout << "Abyssalix has been defeated by " << player->getName() << endl;
-        
+
         // Continue to victory
         cout << "\nType (0) to continue\n" <<
             "> ";
@@ -122,4 +130,3 @@ bool bossFight(Player* player, Dragon* dragon) {
         return false;
     }
 }
-

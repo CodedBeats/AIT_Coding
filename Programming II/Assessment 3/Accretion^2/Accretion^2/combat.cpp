@@ -1,12 +1,11 @@
-#include "player.h"
 #include "enemy.h"
+#include "player.h"
 
 #include <iostream>
 using namespace std;
 
-
 // ============================ Player Turn ============================ //
-void playerTurn(Player* player, Enemy* enemy) {
+int getPlayerInput(Player* player) {
     // get player combat choice
     int playerCombatChoice;
     cout << "\nWhat's your choice " << player->getName() << "?" << endl;
@@ -16,9 +15,10 @@ void playerTurn(Player* player, Enemy* enemy) {
         << "> ";
     cin >> playerCombatChoice;
 
-    // clear screen
-    cout << "\033[2J\033[1;1H";
+    return playerCombatChoice;
+}
 
+void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice) {
     // calc player attack damage and apply to enemy
     if (playerCombatChoice == 1) {
         cout << player->getName() << " attacks" << endl;
@@ -29,14 +29,13 @@ void playerTurn(Player* player, Enemy* enemy) {
     else if (playerCombatChoice == 2) {
         player->shieldingAura();
         cout << player->getName() << " uses Sheilding Aura\n"
-            << "Block chance increases to " << player->getBlockChance()
-            << "%" << endl;
+            << "Block chance increases to " << player->getBlockChance() << "%"
+            << endl;
     }
     else {
         cout << "Invalid choice!" << endl;
     }
 }
-
 
 // ============================ Enemy Turn ============================ //
 void enemyTurn(Player* player, Enemy* enemy) {
@@ -134,8 +133,6 @@ void enemyTurn(Player* player, Enemy* enemy) {
     }
 }
 
-
-
 // ============================ Boss Turn ============================ //
 void bossTurn(Player* player, Dragon* dragon) {
     // get random number between 1 and 100 for enemy choice
@@ -147,7 +144,8 @@ void bossTurn(Player* player, Dragon* dragon) {
         dragon->dragonRoar();
         cout << "Abyssalix uses Dragon Roar" << endl;
         player->debuff("spd");
-        cout << "Abyssalix's strength increased and " << player->getName() << "'s speed reduced" << endl;
+        cout << "Abyssalix's strength increased and " << player->getName()
+            << "'s speed reduced" << endl;
     }
     // 30% chance to use dragon breath
     else if (enemyChoice > 30 && enemyChoice <= 60) {
@@ -165,46 +163,58 @@ void bossTurn(Player* player, Dragon* dragon) {
     }
 }
 
-
-
 // ============================ Handle Combat ============================ //
-void handleCombat(Player* player, Enemy* enemy) {
+void handleCombat(Player* player, int playerChoice, Enemy* enemy) {
+    // clear screen
+    cout << "\033[2J\033[1;1H";
+
     if (player->getSpd() >= enemy->getSpd()) {
-        playerTurn(player, enemy);
+        playerTurn(player, enemy, playerChoice);
         // exit combat loop if enemy is dead
-        if (enemy->getHealth() <= 0) { return; }
+        if (enemy->getHealth() <= 0) {
+            return;
+        }
         enemyTurn(player, enemy);
     }
     // else enemy speed stat is higher and goes first
     else if (player->getSpd() < enemy->getSpd()) {
         enemyTurn(player, enemy);
         // exit combat loop if player is dead
-        if (player->getHealth() <= 0) { return; }
-        playerTurn(player, enemy);
+        if (player->getHealth() <= 0) {
+            return;
+        }
+        playerTurn(player, enemy, playerChoice);
     }
 }
 
-void handleBossFight(Player* player, Dragon* dragon) {
+void handleBossFight(Player* player, int playerChoice, Dragon* dragon) {
+    // clear screen
+    cout << "\033[2J\033[1;1H";
+
+    // ===================== Something Wrong Here ===================== //
     if (player->getSpd() >= dragon->getSpd()) {
-        playerTurn(player, dragon);
+        playerTurn(player, dragon, playerChoice);
         // exit combat loop if dragon is dead
-        if (dragon->getHealth() <= 0) { return; }
+        if (dragon->getHealth() <= 0) {
+            return;
+        }
         bossTurn(player, dragon);
     }
     // else dragon speed stat is higher and goes first
     else {
         bossTurn(player, dragon);
         // exit combat loop if player is dead
-        if (player->getHealth() <= 0) { return; }
-        playerTurn(player, dragon);
+        if (player->getHealth() <= 0) {
+            return;
+        }
+        playerTurn(player, dragon, playerChoice);
     }
 }
-
 
 bool isFighting(Player* player, Enemy* enemy) {
     // check if player or enemy are dead
     if (player->getHealth() > 0 && enemy->getHealth() > 0) {
-    // return true if battle is still going
+        // return true if battle is still going
         return true;
     }
     else {

@@ -7,10 +7,13 @@
 #include "enemy.h"
 
 
-// pass class reference so pointers can be passed as params
-void handleCombat(Player* player, Enemy* enemy);
 
-void handleBossFight(Player* player, Dragon* dragon);
+// pass class reference so pointers can be passed as params
+int getPlayerInput(Player* player);
+
+void handleCombat(Player* player, int playerChoice, Enemy* enemy);
+
+void handleBossFight(Player* player, int playerChoice, Dragon* dragon);
 
 bool isFighting(Player* player, Enemy* enemy);
 
