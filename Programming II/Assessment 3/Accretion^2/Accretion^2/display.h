@@ -12,7 +12,7 @@ string welcomePlayer();
 
 int menu();
 
-void displayStats(Player& player);
+void displayStats(Player* player);
 
 void displayVictory();
 

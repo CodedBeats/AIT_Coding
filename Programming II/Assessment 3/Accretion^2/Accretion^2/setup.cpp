@@ -1,8 +1,50 @@
 #include "player.h"
 #include "enemy.h"
+#include "setup.h"
+#include "display.h"
 
 #include <iostream>
 using namespace std;
+
+
+// setup game instance
+Player gameSetup(bool gameWon) {
+    // welcome player and get player name
+    string playerName;
+    playerName = welcomePlayer();
+
+    // init variable for player class
+    int classVal = 0;
+    // secret name for god powers
+    if (playerName == "Laura") {
+        classVal = 69;
+    }
+
+    // check if game has been won yet
+    if (gameWon) {
+        // xx
+        string cont;
+        cout << "\n\nType (0) to continue\n" <<
+            "> ";
+        cin >> cont;
+
+        cout << "\033[2J\033[1;1H";
+
+        classVal = getPlayerClass();
+        Player player = playerSetup(playerName, true, classVal);
+
+        // return player instance
+        return player;
+    }
+    else {
+        Player player = playerSetup(playerName, false, classVal);
+
+        // return player instance
+        return player;
+    }
+}
+
+
 
 // setup player instance
 Player playerSetup(string playerName, bool gameWon, int classVal) {
@@ -50,6 +92,29 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
             return player;
         }
     }
+}
+
+
+
+// setup class choice if game has been won
+int getPlayerClass() {
+    int classVal;
+
+    cout << "Classes:\n\n"
+        << "---Berserker---\n"
+        << "Unleash your fury with lightning-fast strikes. Just be careful not to get hit!\n\n"
+        << "---Mage---\n"
+        << "Harness the power of magic to decimate your foes. But beware, your frail body may not withstand many blows.\n\n"
+        << "---Paladin---\n"
+        << "Stand tall as a bulwark against the enemy. With strong defense and mighty strength, you can take on anything. Just don't expect to outrun it.\n\n"
+        << "---Ranger---\n"
+        << "Quick on your feet, and even quicker with a bow. You might not be the strongest or the toughest, but your agility is unmatched.\n\n"
+        << "1 = Berserker, 2 = Mage, 3 = Paladin, 4 = Ranger\n"
+        << "Please enter your choice (1 - 4)\n"
+        << "> ";
+    cin >> classVal;
+
+    return classVal;
 }
 
 

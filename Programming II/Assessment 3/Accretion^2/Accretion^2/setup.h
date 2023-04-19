@@ -9,6 +9,11 @@
 #include <string>
 using namespace std;
 
+
+Player gameSetup(bool gameWon);
+
+int getPlayerClass();
+
 Player playerSetup(string playerName, bool gameWon, int classVal);
 
 Enemy* enemySetup(int playerLvl);

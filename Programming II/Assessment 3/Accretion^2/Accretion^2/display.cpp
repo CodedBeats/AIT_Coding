@@ -75,24 +75,24 @@ int menu() {
 
 
 // display player stats
-void displayStats(Player& player) {
+void displayStats(Player* player) {
     // declare random variable just to exit the stats screen
     string exit;
 
     // output player stats
     cout <<
         "=== Stats ===\n" <<
-        player.getName() << "\n" <<
-        "Class:\t\t\t" << player.getClass() << "\n" <<
-        "Health:\t\t\t" << player.getHealth() << "\n" <<
-        "Level:\t\t\t" << player.getLevel() << "\n" <<
+        player->getName() << "\n" <<
+        "Class:\t\t\t" << player->getClass() << "\n" <<
+        "Health:\t\t\t" << player->getHealth() << "\n" <<
+        "Level:\t\t\t" << player->getLevel() << "\n" <<
         // show how much exp player needs to reach the next lvl
-        "Exp:\t\t\t" << player.getExp() << "/" << (player.getLevel() * 50) << "\n" <<
-        "Strength:\t\t" << player.getStr() << "\n" <<
-        "Defence:\t\t" << player.getDef() << "\n" <<
-        "Speed:\t\t\t" << player.getSpd() << "\n" <<
-        "Block Chance:\t\t" << player.getBlockChance() << "\n" <<
-        "Magical Might:\t\t" << player.getMgcMht() << "\n\n";
+        "Exp:\t\t\t" << player->getExp() << "/" << (player->getLevel() * 50) << "\n" <<
+        "Strength:\t\t" << player->getStr() << "\n" <<
+        "Defence:\t\t" << player->getDef() << "\n" <<
+        "Speed:\t\t\t" << player->getSpd() << "\n" <<
+        "Block Chance:\t\t" << player->getBlockChance() << "\n" <<
+        "Magical Might:\t\t" << player->getMgcMht() << "\n\n";
 
     // Return to menu
     cout << "Type (0) to return to menu\n" <<

@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "scoreboard.h"
+#include "setup.h"
 #include <iostream>
 using namespace std;
 
@@ -11,17 +12,47 @@ int main() {
     // Seed the random number generator
     srand(time(0));
 
+    // xxx
+    bool gameWon = false;
+    bool gameContinue = true;
+
     // initialize scoreboard
     Scoreboard gameScoreboard;
     Scoreboard* pScoreboard = &gameScoreboard;
-    
 
-    game(pScoreboard);
+    // execute once and then repeat if game is won
+    do {
+        cout << "\033[2J\033[1;1H";
+
+        // initialize player
+        Player player = gameSetup(gameWon);
+        Player* pPlayer = &player;
+
+        // call game func and
+        gameWon = game(pScoreboard, pPlayer, gameWon);
+
+        // check if player wants to continue
+        if (gameWon) {
+            cout << "\033[2J\033[1;1H";
+            char cont;
+            cout << "Do you wish to play again? (y = yes, n = no)\n"
+                << "> ";
+            cin >> cont;
+
+            // exit if player doesn't want to play again
+            if (cont == 'n') {
+                gameContinue = false;
+            }
+        }
+
+    } while (gameWon && gameContinue);
+
+    
 
     /*
         Features to add
-        1. character set up of class system
-        2. implement player class based attacks in combat
+        1. implement player class based attacks in combat
+        2. fix problem where game doesn't get playerName once game has been won (2nd + time playing)
 
         Final Features to add
         1. format display to assessment 2
@@ -32,10 +63,9 @@ int main() {
 
 
         Fixed
-        1. added scoreboard class to hold all game victorys which has a vector to hold all data
-        2. scoreboard holds player name, class, lvl and a line break for each iteration of a victory
-        3. scoreboard is initialized in main and gets passed as a pointer to game func
-        4. scoreboard has a get func to display the vector and an update func to added player stats to the vector on victory
+        1. added a setup func to create player by setting up the game
+        2. refactored coded so player setup and game call are handled in main
+        3. implemented the class setup so player can choose what class they want by reading a brief description fo each class' strengths and weaknesses
 
 
         // to leave in main

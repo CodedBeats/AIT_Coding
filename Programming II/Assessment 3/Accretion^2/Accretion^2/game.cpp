@@ -7,41 +7,11 @@
 using namespace std;
 
 
-/*
-    === Game Flow ===
-    intro() -> calls -> characterCustomisation()
-
-    menu() -> contains -> bossFight(), train(), viewStats(), scoreboard(), exit()
-
-    bossFight() -> calls -> enemySetup(), combat()
-    train() -> calls -> enemySetup(), combat()
-    viewStats()
-    scoreboard()
-    exit()
-*/
-
 // func to handle game flow
-bool game(Scoreboard* scoreboard) {
-    // welcome player and get player name
-    string playerName;
-    playerName = welcomePlayer();
-
-
-    // init variable for player class
-    int classVal = 0;
-    // secret name for god powers
-    if (playerName == "Laura") {
-        classVal = 69;
-    }
-    // set classVal = classSetup() if gameWon == true
-    Player player = playerSetup(playerName, false, classVal);
-    // create player pointer
-    Player* pPlayer = &player;
-
+bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
 
     // define game variables
     bool gameIsActive = true;
-    bool gameWon = false;
     int menuChoice;
     int bossLock = 0;
 
@@ -74,10 +44,10 @@ bool game(Scoreboard* scoreboard) {
                 bool victory;
 
                 // create copy of player instance to use for combat where stats are altered
-                Player combatPlayer = *pPlayer;
+                Player combatPlayer = *player;
                 Player* pCombatPlayer = &combatPlayer;
                 // create pointer for boss instance
-                Dragon* pDragon = bossSetup(player.getLevel());
+                Dragon* pDragon = bossSetup(player->getLevel());
                 
                 // handle boss fight
                 victory = bossFight(pCombatPlayer, pDragon);
@@ -90,11 +60,11 @@ bool game(Scoreboard* scoreboard) {
                     displayVictory();
                     
                     // update scoreboard
-                    scoreboard->updateScoreboard(player.getName(), player.getClass(), player.getLevel());
+                    scoreboard->updateScoreboard(player->getName(), player->getClass(), player->getLevel());
 
                     // update variables to end game loop
                     gameWon = true;
-                    gameIsActive = false;
+                    return gameWon;
                 }
                 else {
                     bossLock = 3;
@@ -108,16 +78,16 @@ bool game(Scoreboard* scoreboard) {
             cout << "\033[2J\033[1;1H";
 
             // create pointer for enemy instance
-            Enemy* pEnemy = enemySetup(player.getLevel());
+            Enemy* pEnemy = enemySetup(player->getLevel());
             // create copy of player instance to use for combat where stats are altered
-            Player combatPlayer = *pPlayer;
+            Player combatPlayer = *player;
             Player* pCombatPlayer = &combatPlayer;
             // handle class or non calss based combat
             if (gameWon) {
-                train(pPlayer, pCombatPlayer, pEnemy, true);
+                train(player, pCombatPlayer, pEnemy, true);
             } 
             else {
-                train(pPlayer, pCombatPlayer, pEnemy, false);
+                train(player, pCombatPlayer, pEnemy, false);
             }
             // delete combat player
 
@@ -129,7 +99,7 @@ bool game(Scoreboard* scoreboard) {
         // === View Stats === //
         case 3: {
             cout << "\033[2J\033[1;1H";
-            displayStats(*pPlayer);
+            displayStats(player);
             break;
         }
 
@@ -152,7 +122,8 @@ bool game(Scoreboard* scoreboard) {
 
             // if 'y' stop program, else do nothing
             if (quit == 'y') {
-                gameIsActive = false;
+                bool continueGame = false;
+                return continueGame;
             }
             break;
         }
@@ -162,7 +133,4 @@ bool game(Scoreboard* scoreboard) {
         }
         }
     }
-
-    // return gameWon when game has been won
-    return gameWon;
 }

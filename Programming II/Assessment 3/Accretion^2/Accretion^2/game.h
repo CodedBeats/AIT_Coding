@@ -4,10 +4,11 @@
 
 #pragma once
 #include "scoreboard.h"
+#include "player.h"
 #include <string>
 using namespace std;
 
-bool game(Scoreboard* scoreboard);
+bool game(Scoreboard* scoreboard, Player* player, bool gameWon);
 
 
 
