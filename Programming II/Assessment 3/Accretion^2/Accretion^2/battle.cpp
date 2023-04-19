@@ -14,7 +14,7 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
     // combat loop
     bool combatActive = true;
     while (combatActive) {
-        cout << "\n" << endl;
+        cout << "\n";
         // display player and enemy battle stats
         displayBattleStats(combatPlayer, enemy);
 
@@ -87,7 +87,7 @@ bool bossFight(Player* player, Dragon* dragon) {
     // combat loop
     bool combatActive = true;
     while (combatActive) {
-        cout << "\n" << endl;
+        cout << "\n";
         // display player and dragon battle stats
         displayBattleStats(player, dragon);
 

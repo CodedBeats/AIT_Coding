@@ -2,6 +2,7 @@
 #include <ctime>
 
 #include "game.h"
+#include "scoreboard.h"
 #include <iostream>
 using namespace std;
 
@@ -10,14 +11,17 @@ int main() {
     // Seed the random number generator
     srand(time(0));
 
-    game();
+    // initialize scoreboard
+    Scoreboard gameScoreboard;
+    Scoreboard* pScoreboard = &gameScoreboard;
+    
+
+    game(pScoreboard);
 
     /*
         Features to add
-        1. scoreboard
-        2. character set up of class system
-        3. implement player class based attacks in combat
-        6. battle.cpp - line 47 - shouldn't have 3 IFs like that
+        1. character set up of class system
+        2. implement player class based attacks in combat
 
         Final Features to add
         1. format display to assessment 2
@@ -28,8 +32,10 @@ int main() {
 
 
         Fixed
-        1. changed exp display in stats menu option to show how much exp the player needs to reach the next lvl
-        2. fixed the issue where combat text would display in the wrong order (turns out I was just dumn and not clearing screen effectivly)
+        1. added scoreboard class to hold all game victorys which has a vector to hold all data
+        2. scoreboard holds player name, class, lvl and a line break for each iteration of a victory
+        3. scoreboard is initialized in main and gets passed as a pointer to game func
+        4. scoreboard has a get func to display the vector and an update func to added player stats to the vector on victory
 
 
         // to leave in main

@@ -1,6 +1,7 @@
 #include "battle.h"
 #include "display.h"
 #include "setup.h"
+#include "scoreboard.h"
 
 #include <iostream>
 using namespace std;
@@ -20,7 +21,7 @@ using namespace std;
 */
 
 // func to handle game flow
-bool game() {
+bool game(Scoreboard* scoreboard) {
     // welcome player and get player name
     string playerName;
     playerName = welcomePlayer();
@@ -49,9 +50,10 @@ bool game() {
         // display menu and handle player choice
         cout << "\033[2J\033[1;1H";
         menuChoice = menu();
+
         switch (menuChoice) {
+        // === Boss Fight === //
         case 1: {
-            // === Boss Fight === //
             cout << "\033[2J\033[1;1H";
 
             // check if bossLock is active (> 0)
@@ -75,16 +77,22 @@ bool game() {
                 Player combatPlayer = *pPlayer;
                 Player* pCombatPlayer = &combatPlayer;
                 // create pointer for boss instance
-                Dragon* dDragon = bossSetup(player.getLevel());
+                Dragon* pDragon = bossSetup(player.getLevel());
                 
                 // handle boss fight
-                victory = bossFight(pCombatPlayer, dDragon);
+                victory = bossFight(pCombatPlayer, pDragon);
 
                 // handle boss fight results
                 if (victory) {
                     cout << "\033[2J\033[1;1H";
+                    
                     // display victory
                     displayVictory();
+                    
+                    // update scoreboard
+                    scoreboard->updateScoreboard(player.getName(), player.getClass(), player.getLevel());
+
+                    // update variables to end game loop
                     gameWon = true;
                     gameIsActive = false;
                 }
@@ -94,21 +102,22 @@ bool game() {
             }
             break;
         }
+
+        // === Train === //
         case 2: {
-            // === Train === //
             cout << "\033[2J\033[1;1H";
 
             // create pointer for enemy instance
-            Enemy* eEnemy = enemySetup(player.getLevel());
+            Enemy* pEnemy = enemySetup(player.getLevel());
             // create copy of player instance to use for combat where stats are altered
             Player combatPlayer = *pPlayer;
             Player* pCombatPlayer = &combatPlayer;
             // handle class or non calss based combat
             if (gameWon) {
-                train(pPlayer, pCombatPlayer, eEnemy, true);
+                train(pPlayer, pCombatPlayer, pEnemy, true);
             } 
             else {
-                train(pPlayer, pCombatPlayer, eEnemy, false);
+                train(pPlayer, pCombatPlayer, pEnemy, false);
             }
             // delete combat player
 
@@ -116,20 +125,23 @@ bool game() {
             bossLock -= 1;
             break;
         }
+
+        // === View Stats === //
         case 3: {
-            // === View Stats === //
             cout << "\033[2J\033[1;1H";
             displayStats(*pPlayer);
             break;
         }
+
+        // === Scoreboard === //
         case 4: {
-            // === Scoreboard === //
             cout << "\033[2J\033[1;1H";
-            cout << "This is the scoreboard" << endl;
+            scoreboard->getScoreboard();
             break;
         }
+
+        // === Quit === //
         case 5: {
-            // === Quit === //
             cout << "\033[2J\033[1;1H";
             char quit;
             // warn player they will loose all progress

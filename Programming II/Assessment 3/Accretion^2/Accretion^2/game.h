@@ -3,10 +3,11 @@
 #define game_HEADER_GUARD
 
 #pragma once
+#include "scoreboard.h"
 #include <string>
 using namespace std;
 
-bool game();
+bool game(Scoreboard* scoreboard);
 
 
 
