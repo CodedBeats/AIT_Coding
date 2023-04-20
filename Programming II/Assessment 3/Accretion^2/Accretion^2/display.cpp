@@ -39,14 +39,16 @@ string welcomePlayer() {
         " / ____ \\  | (__  | (__  | |    |  __/ | |_  | | | (_) | | | | |       / /_ \n" <<
         "/_/    \\_\\  \\___|  \\___| |_|     \\___|  \\__| |_|  \\___/  |_| |_|      |____|" <<
         "\n\n";
+
     // display welcome message
     cout <<
         "Brave hero, a dragon has terrorized our land for far too long.\n" <<
         "You are our only hope to vanquish this fearsome foe and restore peace to our kingdom.\n" <<
         "Tell us your name\n" <<
         "> ";
+
     // get player name (can be multiple words)
-    getline(cin, playerName);
+    getline(cin >> ws, playerName);
 
     return playerName;
 }

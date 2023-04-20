@@ -5,37 +5,139 @@
 using namespace std;
 
 // ============================ Player Turn ============================ //
-int getPlayerInput(Player* player) {
+int getPlayerInput(Player* player, bool gameWon, string className) {
     // get player combat choice
     int playerCombatChoice;
-    cout << "\nWhat's your choice " << player->getName() << "?" << endl;
-    cout << "1 -> Attack\n"
-        << "Spells\n"
-        << "2 -> Shielding Aura\n"
-        << "> ";
-    cin >> playerCombatChoice;
+
+    // handle if game has been won
+    if (gameWon) {
+        // class = Berserker
+        if (className == "Berserker") {
+            // display choices
+            cout << "\n\n-Abilities-\n"
+                << "\t(1) Attack\n"
+                << "\t(2) Vengeful Vortex\n"
+                << "\t(3) Battle Fury\n";
+            
+            cout << "\nWhat's your choice " << player->getName() << "?\n"
+                << "> ";
+            // get player choice
+            cin >> playerCombatChoice;
+        }
+
+        // class = Mage
+        else if (className == "Mage") {
+            // display choices
+            cout << "\n\n-Abilities-\n"
+                << "\t(1) Attack\n" 
+                << "-Spells-\n"
+                << "\t(2) Meteor Shower\n"
+                << "\t(3) Mind Blast\n"
+                << "\t(4) Arcane Surge\n";
+            
+            cout << "\nWhat's your choice " << player->getName() << "?\n"
+                << "> ";
+            // get player choice
+            cin >> playerCombatChoice;
+        }
+
+        // class = Paladin
+        else if (className == "Paladin") {
+            // display choices
+            cout << "\n\n-Abilities-\n"
+                << "\t(1) Attack\n"
+                << "\t(2) Holy Strike\n"
+                << "-Spells-\n"
+                << "\t(3) Shield of Light\n";
+            
+            cout << "\nWhat's your choice " << player->getName() << "?\n"
+                << "> ";
+            // get player choice
+            cin >> playerCombatChoice;
+        }
+
+        // class = Ranger
+        else if (className == "Ranger") {
+            // display choices
+            cout << "\n\n-Abilities-\n"
+                << "\t(1) Attack\n"
+                << "\t(2) Lethal Arrow\n"
+                << "\t(3) Rain of Pain\n"
+                << "-Spells-\n"
+                << "\t(4) Camouflage\n";
+            
+            cout << "\nWhat's your choice " << player->getName() << "?\n"
+                << "> ";
+            // get player choice
+            cin >> playerCombatChoice;
+        }
+    } 
+    else {
+        // display choices
+        cout << "\n\n-Abilities-\n"
+            << "\t(1) Attack\n"
+            << "-Spells-\n"
+            << "\t(2) Shielding Aura\n";
+        
+        cout << "\nWhat's your choice " << player->getName() << "?\n"
+            << "> ";
+        // get player choice
+        cin >> playerCombatChoice;
+    }
 
     return playerCombatChoice;
 }
 
-void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice) {
-    // calc player attack damage and apply to enemy
-    if (playerCombatChoice == 1) {
-        cout << player->getName() << " attacks" << endl;
-        int damage = player->attack();
-        enemy->takeDamage(damage, enemy->getDef(), false, "none");
+
+
+void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameWon) {
+    // class based combat
+    if (gameWon) {
+
+        // handle Berserker turn
+        if (Berserker* berserker = dynamic_cast<Berserker*>(player)) {
+            // Attack
+            if (playerCombatChoice == 1) {
+                cout << berserker->getName() << " attacks" << endl;
+                int damage = berserker->attack();
+                enemy->takeDamage(damage, berserker->getDef(), false, "none");
+            }
+            // Vengeful Vortex
+            else if (playerCombatChoice == 2) {
+                cout << berserker->getName() << " uses Vengeful Vortex" << endl;
+                int damage = berserker->vengefulVortex();
+                player->takeDamage(damage, player->getDef(), false, "none");
+            }
+        }
+        else {
+            cout << "player is not a Berserker. actual class is " << typeid(*player).name() << endl;
+        }
+
+
     }
-    // increase block chance
-    else if (playerCombatChoice == 2) {
-        player->shieldingAura();
-        cout << player->getName() << " uses Sheilding Aura\n"
-            << "Block chance increases to " << player->getBlockChance() << "%"
-            << endl;
-    }
+
+    // non class based combat
     else {
-        cout << "Invalid choice!" << endl;
+        // calc player attack damage and apply to enemy
+        if (playerCombatChoice == 1) {
+            cout << player->getName() << " attacks" << endl;
+            int damage = player->attack();
+            enemy->takeDamage(damage, enemy->getDef(), false, "none");
+        }
+        // increase block chance
+        else if (playerCombatChoice == 2) {
+            player->shieldingAura();
+            cout << player->getName() << " uses Sheilding Aura\n"
+                << "Block chance increases to " << player->getBlockChance() << "%"
+                << endl;
+        }
+        else {
+            cout << "Invalid choice!" << endl;
+        }
     }
 }
+
+
 
 // ============================ Enemy Turn ============================ //
 void enemyTurn(Player* player, Enemy* enemy) {
@@ -133,6 +235,8 @@ void enemyTurn(Player* player, Enemy* enemy) {
     }
 }
 
+
+
 // ============================ Boss Turn ============================ //
 void bossTurn(Player* player, Dragon* dragon) {
     // get random number between 1 and 100 for enemy choice
@@ -163,13 +267,15 @@ void bossTurn(Player* player, Dragon* dragon) {
     }
 }
 
+
+
 // ============================ Handle Combat ============================ //
-void handleCombat(Player* player, int playerChoice, Enemy* enemy) {
+void handleCombat(Player* player, int playerChoice, Enemy* enemy, bool gameWon) {
     // clear screen
     cout << "\033[2J\033[1;1H";
 
     if (player->getSpd() >= enemy->getSpd()) {
-        playerTurn(player, enemy, playerChoice);
+        playerTurn(player, enemy, playerChoice, gameWon);
         // exit combat loop if enemy is dead
         if (enemy->getHealth() <= 0) {
             return;
@@ -183,17 +289,19 @@ void handleCombat(Player* player, int playerChoice, Enemy* enemy) {
         if (player->getHealth() <= 0) {
             return;
         }
-        playerTurn(player, enemy, playerChoice);
+        playerTurn(player, enemy, playerChoice, gameWon);
     }
 }
 
-void handleBossFight(Player* player, int playerChoice, Dragon* dragon) {
+
+
+void handleBossFight(Player* player, int playerChoice, Dragon* dragon, bool gameWon) {
     // clear screen
     cout << "\033[2J\033[1;1H";
 
     // ===================== Something Wrong Here ===================== //
     if (player->getSpd() >= dragon->getSpd()) {
-        playerTurn(player, dragon, playerChoice);
+        playerTurn(player, dragon, playerChoice, gameWon);
         // exit combat loop if dragon is dead
         if (dragon->getHealth() <= 0) {
             return;
@@ -207,9 +315,11 @@ void handleBossFight(Player* player, int playerChoice, Dragon* dragon) {
         if (player->getHealth() <= 0) {
             return;
         }
-        playerTurn(player, dragon, playerChoice);
+        playerTurn(player, dragon, playerChoice, gameWon);
     }
 }
+
+
 
 bool isFighting(Player* player, Enemy* enemy) {
     // check if player or enemy are dead

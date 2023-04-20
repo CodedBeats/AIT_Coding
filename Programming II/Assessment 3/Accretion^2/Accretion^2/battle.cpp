@@ -18,11 +18,21 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
         // display player and enemy battle stats
         displayBattleStats(combatPlayer, enemy);
 
-        // get player combat choice
-        playerChoice = getPlayerInput(player);
+        // handle if game has been won
+        if (gameWon) {
+            // get player combat choice
+            playerChoice = getPlayerInput(player, true, player->getClass());
 
-        // handle player and enemy turn
-        handleCombat(combatPlayer, playerChoice, enemy);
+            // handle player and enemy turn
+            handleCombat(combatPlayer, playerChoice, enemy, true);
+        }
+        else {
+            // get player combat choice
+            playerChoice = getPlayerInput(player, false, "none");
+
+            // handle player and enemy turn
+            handleCombat(combatPlayer, playerChoice, enemy, false);
+        }
 
         // check to see if battle is still active
         combatActive = isFighting(combatPlayer, enemy);
@@ -79,7 +89,7 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
 
 
 // Boss Fight Battle
-bool bossFight(Player* player, Dragon* dragon) {
+bool bossFight(Player* player, Dragon* dragon, bool gameWon) {
     int playerChoice;
     // declare random variable just to continue throught text
     string cont;
@@ -91,11 +101,21 @@ bool bossFight(Player* player, Dragon* dragon) {
         // display player and dragon battle stats
         displayBattleStats(player, dragon);
 
-        // get player combat choice
-        playerChoice = getPlayerInput(player);
+        // handle if game has been won
+        if (gameWon) {
+            // get player combat choice
+            playerChoice = getPlayerInput(player, true, player->getClass());
 
-        // handle player and dragon turn
-        handleBossFight(player, playerChoice, dragon);
+            // handle player and dragon turn
+            handleBossFight(player, playerChoice, dragon, true);
+        }
+        else {
+            // get player combat choice
+            playerChoice = getPlayerInput(player, false, "none");
+
+            // handle player and dragon turn
+            handleBossFight(player, playerChoice, dragon, false);
+        }
 
         // just use the class since it should be updated from combat()
         combatActive = isFighting(player, dragon);

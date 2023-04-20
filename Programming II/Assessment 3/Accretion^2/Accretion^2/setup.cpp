@@ -8,7 +8,7 @@ using namespace std;
 
 
 // setup game instance
-Player gameSetup(bool gameWon) {
+Player* gameSetup(bool gameWon) {
     // welcome player and get player name
     string playerName;
     playerName = welcomePlayer();
@@ -22,22 +22,16 @@ Player gameSetup(bool gameWon) {
 
     // check if game has been won yet
     if (gameWon) {
-        // xx
-        string cont;
-        cout << "\n\nType (0) to continue\n" <<
-            "> ";
-        cin >> cont;
-
         cout << "\033[2J\033[1;1H";
 
         classVal = getPlayerClass();
-        Player player = playerSetup(playerName, true, classVal);
+        Player* player = playerSetup(playerName, true, classVal);
 
         // return player instance
         return player;
     }
     else {
-        Player player = playerSetup(playerName, false, classVal);
+        Player* player = playerSetup(playerName, false, classVal);
 
         // return player instance
         return player;
@@ -47,34 +41,34 @@ Player gameSetup(bool gameWon) {
 
 
 // setup player instance
-Player playerSetup(string playerName, bool gameWon, int classVal) {
+Player* playerSetup(string playerName, bool gameWon, int classVal) {
     // create player object
     if (gameWon) {
         // create player with class and different stats
         switch (classVal) {
         case 1: {
             // === Berserker === //
-            Berserker player(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 0);
+            Berserker* player = new Berserker(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 0);
             return player;
         }
         case 2: {
             // === Mage === //
-            Mage player(playerName, "Mage", 110, 1, 0, 25, 20, 25, 10, 60);
+            Mage* player = new Mage(playerName, "Mage", 110, 1, 0, 25, 20, 25, 10, 60);
             return player;
         }
         case 3: {
             // === Paladin === //
-            Paladin player(playerName, "Paladin", 130, 1, 0, 45, 60, 20, 10, 20);
+            Paladin* player = new Paladin(playerName, "Paladin", 130, 1, 0, 45, 60, 20, 10, 20);
             return player;
         }
         case 4: {
             // === Ranger === //
-            Ranger player(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
+            Ranger* player = new Ranger(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
             return player;
         }
         default: {
             // something went wrong, classVal should only be 1-4, create default player
-            Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            Player* player = new Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
             return player;
         }
         }
@@ -83,12 +77,12 @@ Player playerSetup(string playerName, bool gameWon, int classVal) {
         // create god player
         if (classVal == 69) {
             // use absurdly high stats
-            Player player(playerName, "none", 1000, 1, 0, 1000, 1000, 1000, 1000, 1000);
+            Player* player = new Player(playerName, "none", 1000, 1, 0, 1000, 1000, 1000, 1000, 1000);
             return player;
         }
         // create player with no class
         else {
-            Player player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            Player* player = new Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
             return player;
         }
     }

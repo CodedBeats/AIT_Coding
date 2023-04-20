@@ -9,17 +9,17 @@
 
 
 // pass class reference so pointers can be passed as params
-int getPlayerInput(Player* player);
+int getPlayerInput(Player* player, bool gameWon, string className);
 
-void handleCombat(Player* player, int playerChoice, Enemy* enemy);
+void handleCombat(Player* player, int playerChoice, Enemy* enemy, bool gameWon);
 
-void handleBossFight(Player* player, int playerChoice, Dragon* dragon);
+void handleBossFight(Player* player, int playerChoice, Dragon* dragon, bool gameWon);
 
 bool isFighting(Player* player, Enemy* enemy);
 
 void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon);
 
-bool bossFight(Player* player, Dragon* dragon);
+bool bossFight(Player* player, Dragon* dragon, bool gameWon);
 
 
 

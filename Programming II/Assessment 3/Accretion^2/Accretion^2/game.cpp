@@ -44,13 +44,20 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
                 bool victory;
 
                 // create copy of player instance to use for combat where stats are altered
-                Player combatPlayer = *player;
-                Player* pCombatPlayer = &combatPlayer;
+                // ========== DEBUG: changing inheriting class back to player class...rip ========== //
+                Player* pCombatPlayer = new Player(*player);
                 // create pointer for boss instance
                 Dragon* pDragon = bossSetup(player->getLevel());
                 
-                // handle boss fight
-                victory = bossFight(pCombatPlayer, pDragon);
+                // handle class or non calss based combat
+                if (gameWon) {
+                    // handle boss fight
+                    victory = bossFight(pCombatPlayer, pDragon, true);
+                }
+                else {
+                    // handle boss fight
+                    victory = bossFight(pCombatPlayer, pDragon, false);
+                }
 
                 // handle boss fight results
                 if (victory) {
@@ -69,6 +76,10 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
                 else {
                     bossLock = 3;
                 }
+
+                // delete combat player and enemy
+                delete pCombatPlayer;
+                delete pDragon;
             }
             break;
         }
@@ -77,11 +88,12 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
         case 2: {
             cout << "\033[2J\033[1;1H";
 
+            // create copy of player instance to use for combat where stats are altered
+            // ========== DEBUG: changing inheriting class back to player class...rip ========== //
+            Player* pCombatPlayer = new Player(*player);
             // create pointer for enemy instance
             Enemy* pEnemy = enemySetup(player->getLevel());
-            // create copy of player instance to use for combat where stats are altered
-            Player combatPlayer = *player;
-            Player* pCombatPlayer = &combatPlayer;
+
             // handle class or non calss based combat
             if (gameWon) {
                 train(player, pCombatPlayer, pEnemy, true);
@@ -89,7 +101,10 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
             else {
                 train(player, pCombatPlayer, pEnemy, false);
             }
-            // delete combat player
+
+            // delete combat player and enemy
+            delete pCombatPlayer;
+            delete pEnemy;
 
             // decrement bossLock
             bossLock -= 1;
