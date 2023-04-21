@@ -8,13 +8,14 @@ using namespace std;
 // display stats screen for combat
 void displayBattleStats(Player* player, Enemy* enemy) {
     cout << player->getName()
-        << "\t (HP: " << player->getHealth()
+        << "\t\t (HP: " << player->getHealth()
         << ", Lvl: " << player->getLevel()
         << ", Str: " << player->getStr()
         << ", Def: " << player->getDef()
         << ", Spd: " << player->getSpd()
         // Dfnd being defend chance
         << ", Dfnd: " << player->getBlockChance() << "%"
+        << ", MgclMght " << player->getMgcMht()
         << ")" << endl;
 
     cout << enemy->getName()

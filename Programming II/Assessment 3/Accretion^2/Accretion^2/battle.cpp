@@ -67,7 +67,7 @@ void train(Player* player, Player* combatPlayer, Enemy* enemy, bool gameWon) {
                 cout << "\033[2J\033[1;1H \n"
                     << "Health:\t\t" << player->getHealth() << "\n"
                     << "Strength:\t" << player->getStr() << "\n"
-                    << "Defence:\t\t" << player->getDef() << "\n"
+                    << "Defence:\t" << player->getDef() << "\n"
                     << "Speed:\t\t" << player->getSpd() << "\n"
                     << "Magical Might:\t" << player->getMgcMht() << "\n"
                     << endl;

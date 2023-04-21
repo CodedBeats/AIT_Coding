@@ -185,8 +185,8 @@ void Player::lvlUp(bool isClass) {
 
             // display how much stats are increased by
             cout << "Health\t\t+30\n"
-                << "Strength\t\t+25\n"
-                << "Defence\t+40\n"
+                << "Strength\t+25\n"
+                << "Defence\t\t+40\n"
                 << "Speed\t\t+5\n"
                 << "Magical Might\t+15\n"
                 << endl;
@@ -238,9 +238,9 @@ void Player::takeDamage(int damage, int defence, bool isDebuff, string debuffSta
     else {
         // reduce enemy health by (enemy damage - (player defense / 2))
         int applyDamage = (damage - (defence / 2));
-        // stop damage being less than 0 and increasing player health
-        if (applyDamage < 0) {
-            applyDamage = 0;
+        // stop damage being less than 0 and increasing player health, also set damage to always be at least 1
+        if (applyDamage <= 0) {
+            applyDamage = 1;
         }
         m_health -= applyDamage;
         cout << m_name << " takes " << applyDamage << " damage" << endl;
@@ -318,8 +318,12 @@ int Ranger::lethalArrow(int speed) const {
     }
 }
 int Ranger::rainOfPain() const {
-    // attack that hits 5 times with rand below and above a threshold
-    return 0;
+    int playerDamage;
+    // get rand number between 2 and 5
+    int chance = 2 + rand() % 5;
+    // attack hits chance times
+    playerDamage = getStr() * chance;
+    return playerDamage;
 }
 void Ranger::camouflage() {
     // increase speed

@@ -28,7 +28,6 @@ int main() {
 
         // initialize player
         Player* pPlayer = gameSetup(gameWon);
-        // Player* pPlayer = &player;
 
         // call game func and
         gameWon = game(pScoreboard, pPlayer, gameWon);
@@ -56,8 +55,7 @@ int main() {
 
     /*
         Features to add
-        1. implement player class based attacks in combat
-        3. change min damage to be 1 in take damage func
+        1. 
 
         Final Features to add
         1. format display to assessment 2
@@ -67,15 +65,21 @@ int main() {
         5. balance game
 
         Fixed
-        1. fixed the amount stats would increase and decrease (boss was increasing atk by 50 on buff move since 5*10=50) from (lvl * 5) to (lvl + 4)
-        2. fixed the problem where combatPlayer was the wrong child class when cloned after gameWon (it was technically an ez fix, ty Aeron for helping so much)
-        3. combat player is now created in a setup func
+        1. minimum damage is now 1 instead of 0
+        2. added all function definitions for player class moves
+        3. implemented player moves into combat (handles slightly differently to different enemy turns)
+        4. fixed some \t display on battle stats and lvl up display
+        5. added magical might to battle stats display
+        6. FINISHED THE GAME
+
 
 
         // ==============   to leave in main
         Potential Future Improvements:
-        1. prompt player to train again after battle so they don't have to go through menu every time
+        1. Prompt player to train again after battle so they don't have to go through menu every time
         2. Add information about what moves do specifically in player's view stats screen
+        3. Add party system (recruit up to 3 bot players) with distributed exp
+        4. Add increase chance for multiple enemies to apear the higher lvl you are
 
 
         Game Notes:

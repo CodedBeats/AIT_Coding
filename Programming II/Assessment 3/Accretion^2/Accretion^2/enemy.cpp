@@ -92,9 +92,9 @@ void Enemy::debuff(string stat) {
 void Enemy::takeDamage(int damage, int defence, bool isDebuff, string debuffStat) {
     // reduce enemy health by (player damage - (enemy defense / 2))
     int applyDamage = (damage - (defence / 2));
-    // stop damage being less than 0 and increasing enemy health
-    if (applyDamage < 0) {
-        applyDamage = 0;
+    // stop damage being less than 0 and increasing player health, also set damage to always be at least 1
+    if (applyDamage <= 0) {
+        applyDamage = 1;
     }
     m_health -= applyDamage;
     cout << m_name << " takes " << applyDamage << " damage" << endl;

@@ -95,7 +95,6 @@ Player* combatPlayerSetup(Player* player, string className) {
 
     if (className == "Berserker") {
         Berserker* combatPlayer = new Berserker(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
-        cout << "A berserker was created" << endl;
         return combatPlayer;
     }
     else if (className == "Mage") {
@@ -112,7 +111,6 @@ Player* combatPlayerSetup(Player* player, string className) {
     }
     else {
         Player* combatPlayer = new Player(*player);
-        cout << "A regular player was created" << endl;
         return combatPlayer;
     }
 }

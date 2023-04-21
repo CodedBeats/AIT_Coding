@@ -112,13 +112,96 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
             else if (playerCombatChoice == 3) {
                 cout << berserker->getName() << " uses Vengeful Vortex" << endl;
                 berserker->battleFury();
+                // display debuffed stat
+                cout << player->getName() << "'s Strength increased" << endl;
             }
         }
-        else {
-            cout << "player is not a Berserker. actual class is " << typeid(*player).name() << endl;
+
+        // handle Mage Turn
+        else if (Mage* mage = dynamic_cast<Mage*>(player)) {
+            // Attack
+            if (playerCombatChoice == 1) {
+                cout << mage->getName() << " attacks" << endl;
+                int damage = mage->attack();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Meteor Shower
+            else if (playerCombatChoice == 2) {
+                cout << mage->getName() << " uses Meteor Shower" << endl;
+                int damage = mage->meteorShower();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Mind Blast
+            else if (playerCombatChoice == 3) {
+                cout << mage->getName() << " uses Mind Blast" << endl;
+                int damage = mage->mindBlast();;
+                enemy->takeDamage(damage, enemy->getDef(), true, "def");
+            }
+            // Arcane Surge
+            else if (playerCombatChoice == 4) {
+                cout << mage->getName() << " uses Vengeful Vortex" << endl;
+                mage->arcaneSurge();
+                // display debuffed stat
+                cout << player->getName() << "'s Magical Might increased" << endl;
+            }
         }
 
+        // handle Paladin Turn
+        else if (Paladin* paladin = dynamic_cast<Paladin*>(player)) {
+            // Attack
+            if (playerCombatChoice == 1) {
+                cout << paladin->getName() << " attacks" << endl;
+                int damage = paladin->attack();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Holy Strike
+            else if (playerCombatChoice == 2) {
+                cout << paladin->getName() << " uses Holy Strike" << endl;
+                int damage = paladin->holyStrike();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Shield of Light
+            else if (playerCombatChoice == 3) {
+                cout << paladin->getName() << " uses Shield of Light" << endl;
+                paladin->shieldOfLight();
+                // display debuffed stat
+                cout << player->getName() << "'s Defence and Block Chance increased" << endl;
+            }
+        }
 
+        // handle Ranger Turn
+        else if (Ranger* ranger = dynamic_cast<Ranger*>(player)) {
+            // Attack
+            if (playerCombatChoice == 1) {
+                cout << ranger->getName() << " attacks" << endl;
+                int damage = ranger->attack();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Lethal Arrow
+            else if (playerCombatChoice == 2) {
+                cout << ranger->getName() << " uses Lethal Arrow" << endl;
+                int damage = ranger->lethalArrow(player->getSpd());
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Rain of Pain
+            else if (playerCombatChoice == 3) {
+                cout << ranger->getName() << " uses Rain of Pain" << endl;
+                int damage = ranger->rainOfPain();
+                enemy->takeDamage(damage, enemy->getDef(), false, "def");
+            }
+            // Camouflage
+            else if (playerCombatChoice == 4) {
+                cout << ranger->getName() << " uses Camouflage" << endl;
+                ranger->camouflage();
+                // display debuffed stat
+                cout << player->getName() << "'s Speed increased" << endl;
+            }
+        }
+
+        // throw exception here
+        else {
+
+        }
     }
 
     // non class based combat
