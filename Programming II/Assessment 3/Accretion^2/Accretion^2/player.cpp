@@ -72,25 +72,25 @@ void Player::shieldingAura() {
 
 // buff player stats while in battle
 void Player::buff(string stat) {
-    // increase strength by lvl * 5
+    // increase strength by (lvl + 4)
     if (stat == "str") {
-        m_str += (m_lvl * 5);
+        m_str += (m_lvl + 4);
     }
-    // increase defence by lvl * 5
+    // increase defence by (lvl + 4)
     else if (stat == "def") {
-        m_def += (m_lvl * 5);
+        m_def += (m_lvl + 4);
     }
-    // increase speed by lvl * 5
+    // increase speed by (lvl + 4)
     else if (stat == "spd") {
-        m_spd += (m_lvl * 5);
+        m_spd += (m_lvl + 4);
     }
-    // increase block chance by lvl * 5
+    // increase block chance by (lvl + 4)
     else if (stat == "blockChance") {
-        m_blockChance += (m_lvl * 5);
+        m_blockChance += (m_lvl + 4);
     }
-    // increase magical might by lvl * 5
+    // increase magical might by (lvl + 4)
     else if (stat == "mgcMht") {
-        m_mgcMht += (m_lvl * 5);
+        m_mgcMht += (m_lvl + 4);
     }
 }
 
@@ -120,7 +120,7 @@ void Player::debuff(string stat) {
     if (*currentStat <= 5) {
         return;
     }
-    // decrease stat by (lvl * 5)
+    // decrease stat by (lvl + 4)
     else {
         *currentStat -= (m_lvl + 4);
     }
@@ -149,7 +149,7 @@ void Player::lvlUp(bool isClass) {
             m_spd += 15;
             // redundant line here to show difference between classes
             m_mgcMht += 0;
-            
+
             // display how much stats are increased by
             cout << "Health\t\t+15\n"
                 << "Strength\t+40\n"
@@ -265,38 +265,57 @@ void Player::takeDamage(int damage, int defence, bool isDebuff, string debuffSta
 // Berserker
 int Berserker::vengefulVortex() const {
     // high damage attack
-    return 0;
+    int playerDamage = getStr() * 1.5;
+    return playerDamage;
 }
 void Berserker::battleFury() {
     // raises attack
+    buff("str");
 }
 
 // Mage
 int Mage::meteorShower() const {
     // high damage attack
-    return 0;
+    int playerDamage = getMgcMht() * 1.5;
+    return playerDamage;
 }
 int Mage::mindBlast() const {
-    // reduce enemy defence
-    return 0;
+    // attack and reduce enemy defence
+    int playerDamage = getMgcMht();
+    return playerDamage;
 }
 void Mage::arcaneSurge() {
     // increase magical might
+    buff("mgcMht");
 }
 
 // Paladin
 int Paladin::holyStrike() const {
     // high damage attack
-    return 0;
+    int playerDamage = getStr() * 1.5;
+    return playerDamage;
 }
 void Paladin::shieldOfLight() {
     // increase defence and block chance
+    buff("def");
+    buff("blockChance");
 }
 
 // Ranger
-int Ranger::lethalArrow() const {
+int Ranger::lethalArrow(int speed) const {
+    int playerDamage;
+    // get rand number between 0 and 1000
+    int chance = rand() % 2000;
     // chance based off speed to 1 shot enemy
-    return 0;
+    if (speed >= chance) {
+        playerDamage = 1000000;
+        return playerDamage;
+    }
+    // else do 1 damage
+    else {
+        playerDamage = 1000000;
+        return playerDamage;
+    }
 }
 int Ranger::rainOfPain() const {
     // attack that hits 5 times with rand below and above a threshold
@@ -304,4 +323,5 @@ int Ranger::rainOfPain() const {
 }
 void Ranger::camouflage() {
     // increase speed
+    buff("spd");
 }

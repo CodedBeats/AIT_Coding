@@ -5,14 +5,16 @@
 #include "scoreboard.h"
 #include "setup.h"
 #include <iostream>
+
 using namespace std;
+
 
 int main() {
 
     // Seed the random number generator
     srand(time(0));
 
-    // xxx
+    // initialize game loop variables
     bool gameWon = false;
     bool gameContinue = true;
 
@@ -50,14 +52,12 @@ int main() {
 
     } while (gameWon && gameContinue);
 
-    
+
 
     /*
         Features to add
         1. implement player class based attacks in combat
-        2. amount stats increase or decrease chnage too much? on buff and debuff
-        3. creating pCombatPlayer is creating a player class rather than an inheriting player class when game has been won and therefore doesn't handle class system combat
-        3. ^^^ HELP ^^^
+        3. change min damage to be 1 in take damage func
 
         Final Features to add
         1. format display to assessment 2
@@ -67,23 +67,23 @@ int main() {
         5. balance game
 
         Fixed
-        1. fixed the odd issue of getline() not waiting for user input
-        2. added some comments to be left in main to give Game notes to user
-        3. added a comment humbly bragging about project
-        4. deallocate memory for dynamically allocated objects by delete them when they are no longer needed (at end of scope they are declared in)
-        5. added classes for player input in combat
-        6. started implementing the class attacks (copying the enemy turn style) but something isn't working (it is mapped out) and so combat doesn't work in the class system
+        1. fixed the amount stats would increase and decrease (boss was increasing atk by 50 on buff move since 5*10=50) from (lvl * 5) to (lvl + 4)
+        2. fixed the problem where combatPlayer was the wrong child class when cloned after gameWon (it was technically an ez fix, ty Aeron for helping so much)
+        3. combat player is now created in a setup func
 
 
         // ==============   to leave in main
-        Future Potential Improvements:
+        Potential Future Improvements:
         1. prompt player to train again after battle so they don't have to go through menu every time
-        2. refactor IFs nested 3 times
+        2. Add information about what moves do specifically in player's view stats screen
 
 
         Game Notes:
         1. Use "Laura" as your player name for god-level stats so you can instantly beat the boss and unlock the class system
-        2. Git history for code: https://github.com/CodedBeats/AIT_Coding/commits/master/Programming%20II/Assessment%203/Accretion%5E2
+        2. The game has an exponential curve for progression thanks to how much exp is required for increasing lvls and the lvl of enemy you run into
+        3. The enemies you run into while training are randomised each with their own special attacks (which can temporarily debuff the players stats, level (up to the players) and stats (based on level)
+        4. Check out the 4 available classes after beating the game to experience different moves and player progression
+        5. Git history for code: https://github.com/CodedBeats/AIT_Coding/commits/master/Programming%20II/Assessment%203/Accretion%5E2
             I really did a massive amount of work on this :3
     */
 

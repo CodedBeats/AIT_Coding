@@ -46,17 +46,17 @@ int Enemy::attack() const {
 
 // buff enemy stats while in battle
 void Enemy::buff(string stat) {
-    // increase strength by lvl * 5
+    // increase strength by (lvl + 4)
     if (stat == "str") {
-        m_str += (m_lvl * 5);
+        m_str += (m_lvl + 4);
     }
-    // increase defence by lvl * 5
+    // increase defence by (lvl + 4)
     else if (stat == "def") {
-        m_def += (m_lvl * 5);
+        m_def += (m_lvl + 4);
     }
-    // increase speed by lvl * 5
+    // increase speed by (lvl + 4)
     else if (stat == "spd") {
-        m_spd += (m_lvl * 5);
+        m_spd += (m_lvl + 4);
     }
 }
 
@@ -82,7 +82,7 @@ void Enemy::debuff(string stat) {
     if (*currentStat <= 5) {
         return;
     }
-    // decrease stat by (lvl * 5)
+    // decrease stat by (lvl + 4)
     else {
         *currentStat -= (m_lvl + 4);
     }

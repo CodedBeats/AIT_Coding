@@ -18,7 +18,7 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
                 << "\t(1) Attack\n"
                 << "\t(2) Vengeful Vortex\n"
                 << "\t(3) Battle Fury\n";
-            
+
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
             // get player choice
@@ -29,12 +29,12 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
         else if (className == "Mage") {
             // display choices
             cout << "\n\n-Abilities-\n"
-                << "\t(1) Attack\n" 
+                << "\t(1) Attack\n"
                 << "-Spells-\n"
                 << "\t(2) Meteor Shower\n"
                 << "\t(3) Mind Blast\n"
                 << "\t(4) Arcane Surge\n";
-            
+
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
             // get player choice
@@ -49,7 +49,7 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
                 << "\t(2) Holy Strike\n"
                 << "-Spells-\n"
                 << "\t(3) Shield of Light\n";
-            
+
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
             // get player choice
@@ -65,20 +65,20 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
                 << "\t(3) Rain of Pain\n"
                 << "-Spells-\n"
                 << "\t(4) Camouflage\n";
-            
+
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
             // get player choice
             cin >> playerCombatChoice;
         }
-    } 
+    }
     else {
         // display choices
         cout << "\n\n-Abilities-\n"
             << "\t(1) Attack\n"
             << "-Spells-\n"
             << "\t(2) Shielding Aura\n";
-        
+
         cout << "\nWhat's your choice " << player->getName() << "?\n"
             << "> ";
         // get player choice
@@ -100,13 +100,18 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
             if (playerCombatChoice == 1) {
                 cout << berserker->getName() << " attacks" << endl;
                 int damage = berserker->attack();
-                enemy->takeDamage(damage, berserker->getDef(), false, "none");
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
             }
             // Vengeful Vortex
             else if (playerCombatChoice == 2) {
                 cout << berserker->getName() << " uses Vengeful Vortex" << endl;
                 int damage = berserker->vengefulVortex();
-                player->takeDamage(damage, player->getDef(), false, "none");
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // Battle Fury
+            else if (playerCombatChoice == 3) {
+                cout << berserker->getName() << " uses Vengeful Vortex" << endl;
+                berserker->battleFury();
             }
         }
         else {

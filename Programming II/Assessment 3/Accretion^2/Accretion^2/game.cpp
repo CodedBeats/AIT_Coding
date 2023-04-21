@@ -22,12 +22,12 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
         menuChoice = menu();
 
         switch (menuChoice) {
-        // === Boss Fight === //
+            // === Boss Fight === //
         case 1: {
             cout << "\033[2J\033[1;1H";
 
             // check if bossLock is active (> 0)
-            if (bossLock > 0) { 
+            if (bossLock > 0) {
                 string cont;
 
                 // display to player that they are locked out of challenging the boss
@@ -42,13 +42,12 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
             else {
                 // boss fight
                 bool victory;
-
-                // create copy of player instance to use for combat where stats are altered
-                // ========== DEBUG: changing inheriting class back to player class...rip ========== //
-                Player* pCombatPlayer = new Player(*player);
+        
+                // create copy of player for combat
+                Player* pCombatPlayer = combatPlayerSetup(player, player->getClass());
                 // create pointer for boss instance
                 Dragon* pDragon = bossSetup(player->getLevel());
-                
+
                 // handle class or non calss based combat
                 if (gameWon) {
                     // handle boss fight
@@ -62,42 +61,43 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
                 // handle boss fight results
                 if (victory) {
                     cout << "\033[2J\033[1;1H";
-                    
+
                     // display victory
                     displayVictory();
-                    
+
                     // update scoreboard
                     scoreboard->updateScoreboard(player->getName(), player->getClass(), player->getLevel());
 
                     // update variables to end game loop
                     gameWon = true;
+
+                    // delete combat player and enemy
+                    delete pCombatPlayer;
+                    delete pDragon;
+
+                    // return true
                     return gameWon;
                 }
                 else {
                     bossLock = 3;
                 }
-
-                // delete combat player and enemy
-                delete pCombatPlayer;
-                delete pDragon;
             }
             break;
         }
 
-        // === Train === //
+              // === Train === //
         case 2: {
             cout << "\033[2J\033[1;1H";
 
-            // create copy of player instance to use for combat where stats are altered
-            // ========== DEBUG: changing inheriting class back to player class...rip ========== //
-            Player* pCombatPlayer = new Player(*player);
             // create pointer for enemy instance
             Enemy* pEnemy = enemySetup(player->getLevel());
+            // create copy of player for combat
+            Player* pCombatPlayer = combatPlayerSetup(player, player->getClass());
 
             // handle class or non calss based combat
             if (gameWon) {
                 train(player, pCombatPlayer, pEnemy, true);
-            } 
+            }
             else {
                 train(player, pCombatPlayer, pEnemy, false);
             }
@@ -111,21 +111,21 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
             break;
         }
 
-        // === View Stats === //
+              // === View Stats === //
         case 3: {
             cout << "\033[2J\033[1;1H";
             displayStats(player);
             break;
         }
 
-        // === Scoreboard === //
+              // === Scoreboard === //
         case 4: {
             cout << "\033[2J\033[1;1H";
             scoreboard->getScoreboard();
             break;
         }
 
-        // === Quit === //
+              // === Quit === //
         case 5: {
             cout << "\033[2J\033[1;1H";
             char quit;

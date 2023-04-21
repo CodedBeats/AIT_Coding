@@ -114,7 +114,7 @@ public:
     // give Ranger the Player constructor
     using Player::Player;
     // Ranger spells and abilities
-    int lethalArrow() const;
+    int lethalArrow(int speed) const;
     int rainOfPain() const;
     void camouflage();
 };

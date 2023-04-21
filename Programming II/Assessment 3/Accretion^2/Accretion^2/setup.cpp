@@ -90,6 +90,35 @@ Player* playerSetup(string playerName, bool gameWon, int classVal) {
 
 
 
+// setup combat player for training and boss fight
+Player* combatPlayerSetup(Player* player, string className) {
+
+    if (className == "Berserker") {
+        Berserker* combatPlayer = new Berserker(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        cout << "A berserker was created" << endl;
+        return combatPlayer;
+    }
+    else if (className == "Mage") {
+        Mage* combatPlayer = new Mage(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        return combatPlayer;
+    }
+    else if (className == "Paladin") {
+        Paladin* combatPlayer = new Paladin(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        return combatPlayer;
+    }
+    else if (className == "Ranger") {
+        Ranger* combatPlayer = new Ranger(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        return combatPlayer;
+    }
+    else {
+        Player* combatPlayer = new Player(*player);
+        cout << "A regular player was created" << endl;
+        return combatPlayer;
+    }
+}
+
+
+
 // setup class choice if game has been won
 int getPlayerClass() {
     int classVal;

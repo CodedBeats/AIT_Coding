@@ -12,9 +12,11 @@ using namespace std;
 
 Player* gameSetup(bool gameWon);
 
-int getPlayerClass();
-
 Player* playerSetup(string playerName, bool gameWon, int classVal);
+
+Player* combatPlayerSetup(Player* player, string className);
+
+int getPlayerClass();
 
 Enemy* enemySetup(int playerLvl);
 
