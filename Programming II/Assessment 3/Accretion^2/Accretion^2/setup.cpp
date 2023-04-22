@@ -48,27 +48,27 @@ Player* playerSetup(string playerName, bool gameWon, int classVal) {
         switch (classVal) {
         case 1: {
             // === Berserker === //
-            Berserker* player = new Berserker(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 0);
+            Berserker* player = new (nothrow) Berserker(playerName, "Berserker", 115, 1, 0, 60, 15, 30, 10, 0);
             return player;
         }
         case 2: {
             // === Mage === //
-            Mage* player = new Mage(playerName, "Mage", 110, 1, 0, 25, 20, 25, 10, 60);
+            Mage* player = new (nothrow) Mage(playerName, "Mage", 110, 1, 0, 25, 20, 25, 10, 60);
             return player;
         }
         case 3: {
             // === Paladin === //
-            Paladin* player = new Paladin(playerName, "Paladin", 130, 1, 0, 45, 60, 20, 10, 20);
+            Paladin* player = new (nothrow) Paladin(playerName, "Paladin", 130, 1, 0, 45, 60, 20, 10, 20);
             return player;
         }
         case 4: {
             // === Ranger === //
-            Ranger* player = new Ranger(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
+            Ranger* player = new (nothrow) Ranger(playerName, "Ranger", 115, 1, 0, 35, 25, 60, 10, 15);
             return player;
         }
         default: {
             // something went wrong, classVal should only be 1-4, create default player
-            Player* player = new Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            Player* player = new (nothrow) Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
             return player;
         }
         }
@@ -77,12 +77,12 @@ Player* playerSetup(string playerName, bool gameWon, int classVal) {
         // create god player
         if (classVal == 69) {
             // use absurdly high stats
-            Player* player = new Player(playerName, "none", 1000, 1, 0, 1000, 1000, 1000, 1000, 1000);
+            Player* player = new (nothrow) Player(playerName, "none", 1000, 1, 0, 1000, 1000, 1000, 1000, 1000);
             return player;
         }
         // create player with no class
         else {
-            Player* player = new Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
+            Player* player = new (nothrow) Player(playerName, "none", 100, 1, 0, 20, 10, 15, 10, 5);
             return player;
         }
     }
@@ -94,23 +94,23 @@ Player* playerSetup(string playerName, bool gameWon, int classVal) {
 Player* combatPlayerSetup(Player* player, string className) {
 
     if (className == "Berserker") {
-        Berserker* combatPlayer = new Berserker(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        Berserker* combatPlayer = new (nothrow) Berserker(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
         return combatPlayer;
     }
     else if (className == "Mage") {
-        Mage* combatPlayer = new Mage(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        Mage* combatPlayer = new (nothrow) Mage(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
         return combatPlayer;
     }
     else if (className == "Paladin") {
-        Paladin* combatPlayer = new Paladin(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        Paladin* combatPlayer = new (nothrow) Paladin(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
         return combatPlayer;
     }
     else if (className == "Ranger") {
-        Ranger* combatPlayer = new Ranger(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
+        Ranger* combatPlayer = new (nothrow) Ranger(player->getName(), player->getClass(), player->getHealth(), player->getLevel(), player->getExp(), player->getStr(), player->getDef(), player->getSpd(), player->getBlockChance(), player->getMgcMht());
         return combatPlayer;
     }
     else {
-        Player* combatPlayer = new Player(*player);
+        Player* combatPlayer = new (nothrow) Player(*player);
         return combatPlayer;
     }
 }
@@ -130,10 +130,29 @@ int getPlayerClass() {
         << "Stand tall as a bulwark against the enemy. With strong defense and mighty strength, you can take on anything. Just don't expect to outrun it.\n\n"
         << "---Ranger---\n"
         << "Quick on your feet, and even quicker with a bow. You might not be the strongest or the toughest, but your agility is unmatched.\n\n"
-        << "1 = Berserker, 2 = Mage, 3 = Paladin, 4 = Ranger\n"
+        << "1 = Berserker, 2 = Mage, 3 = Paladin, 4 = Ranger, (Any other number = no class)\n"
         << "Please enter your choice (1 - 4)\n"
         << "> ";
-    cin >> classVal;
+    
+    
+    // get player class choice
+    try {
+        cin >> classVal;
+
+        // check if input was an int
+        if (!cin) {
+            // input was not an integer
+            throw 1;
+        }
+    }
+    // catch exception
+    catch (int n) {
+        cin.clear();
+        cin.ignore(512, '\n');
+        // scroll up to see exception message
+        cout << "Player class choice was not an integer";
+        classVal = 5;
+    }
 
     return classVal;
 }
@@ -164,27 +183,27 @@ Enemy* enemySetup(int playerLvl) {
     // Create an instance of the selected enemy class based on its name
     // Slime enemy
     if (randEnemyName == "Slime") {
-        Slime* enemy = new Slime("Slime", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        Slime* enemy = new (nothrow) Slime("Slime", randHealth, randLvl, randExp, randStr, randDef, randSpd);
         return enemy;
     }
     // Hydra enemy
     else if (randEnemyName == "Hydra") {
-        Hydra* enemy = new Hydra("Hydra", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        Hydra* enemy = new (nothrow) Hydra("Hydra", randHealth, randLvl, randExp, randStr, randDef, randSpd);
         return enemy;
     }
     // Harpy enemy
     else if (randEnemyName == "Harpy") {
-        Harpy* enemy = new Harpy("Harpy", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        Harpy* enemy = new (nothrow) Harpy("Harpy", randHealth, randLvl, randExp, randStr, randDef, randSpd);
         return enemy;
     }
     // Specter enemy
     else if (randEnemyName == "Specter") {
-        Specter* enemy = new Specter("Specter", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        Specter* enemy = new (nothrow) Specter("Specter", randHealth, randLvl, randExp, randStr, randDef, randSpd);
         return enemy;
     }
     // Orc enemy
     else if (randEnemyName == "Orc") {
-        Orc* enemy = new Orc("Orc", randHealth, randLvl, randExp, randStr, randDef, randSpd);
+        Orc* enemy = new (nothrow) Orc("Orc", randHealth, randLvl, randExp, randStr, randDef, randSpd);
         return enemy;
     }
 }
@@ -200,6 +219,6 @@ Dragon* bossSetup(int playerLvl) {
     int bossDef = 100;
     int bossSpd = 100;
 
-    Dragon* boss = new Dragon("Abyssalix", bossHealth, bossLvl, 0, bossStr, bossDef, bossSpd);
+    Dragon* boss = new (nothrow) Dragon("Abyssalix", bossHealth, bossLvl, 0, bossStr, bossDef, bossSpd);
     return boss;
 }

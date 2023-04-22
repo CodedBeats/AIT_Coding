@@ -29,7 +29,7 @@ int main() {
         // initialize player
         Player* pPlayer = gameSetup(gameWon);
 
-        // call game func and
+        // call game func and return true if/when game is won
         gameWon = game(pScoreboard, pPlayer, gameWon);
 
         // check if player wants to continue
@@ -57,20 +57,14 @@ int main() {
         Features to add
         1. 
 
-        Final Features to add
-        1. format display to assessment 2
-        2. implement assessment 3 notes
-        3. give comment for string quit variables
-        4. format code consistently
-        5. balance game
-
         Fixed
-        1. minimum damage is now 1 instead of 0
-        2. added all function definitions for player class moves
-        3. implemented player moves into combat (handles slightly differently to different enemy turns)
-        4. fixed some \t display on battle stats and lvl up display
-        5. added magical might to battle stats display
-        6. FINISHED THE GAME
+        1. added destructors to all classes
+        2. added "nothrow" to all "new" object creations
+        3. changed getPlayerInput so playerCombatChoice is got at the end of the func once (instead of having it on multiple lines)
+        4. added a missed colon (lol) to magical might in display battle stats
+        5. wrapped all int inputs in try-catch-throw to stop the repeated spam bug
+        6. added some extra else's inside combat so player gets created with no class if a weird input is given in player class selection
+        7. implemented custom exceptions for non int inputs (where int was expected)
 
 
 

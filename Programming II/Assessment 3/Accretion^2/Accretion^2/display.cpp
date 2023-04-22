@@ -1,5 +1,6 @@
 #include "player.h"
 #include "enemy.h"
+#include "exception.h"
 
 #include <iostream>
 using namespace std;
@@ -8,14 +9,14 @@ using namespace std;
 // display stats screen for combat
 void displayBattleStats(Player* player, Enemy* enemy) {
     cout << player->getName()
-        << "\t\t (HP: " << player->getHealth()
+        << "\t (HP: " << player->getHealth()
         << ", Lvl: " << player->getLevel()
         << ", Str: " << player->getStr()
         << ", Def: " << player->getDef()
         << ", Spd: " << player->getSpd()
         // Dfnd being defend chance
         << ", Dfnd: " << player->getBlockChance() << "%"
-        << ", MgclMght " << player->getMgcMht()
+        << ", MgclMght: " << player->getMgcMht()
         << ")" << endl;
 
     cout << enemy->getName()
@@ -70,8 +71,25 @@ int menu() {
         "(5) - Quit\n\n" <<
         "Enter your choice (1 - 5)\n" <<
         "> ";
+    
     // get player choice
-    cin >> playerInput;
+    try {
+        cin >> playerInput;
+
+        // check if input was an int
+        if (!cin) {
+            // input was not an integer
+            throw nonIntException();
+        }
+    }
+    // catch exception
+    catch (nonIntException& e) {
+        cin.clear(); 
+        cin.ignore(512, '\n');
+        // scroll up to see exception message
+        cout << "\n___Exception___\n";
+        cout << e.what() << endl;
+    }
 
     return playerInput;
 }

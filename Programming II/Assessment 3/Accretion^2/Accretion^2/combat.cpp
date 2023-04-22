@@ -1,5 +1,6 @@
 #include "enemy.h"
 #include "player.h"
+#include "exception.h"
 
 #include <iostream>
 using namespace std;
@@ -21,8 +22,6 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
 
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
-            // get player choice
-            cin >> playerCombatChoice;
         }
 
         // class = Mage
@@ -37,8 +36,6 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
 
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
-            // get player choice
-            cin >> playerCombatChoice;
         }
 
         // class = Paladin
@@ -52,8 +49,6 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
 
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
-            // get player choice
-            cin >> playerCombatChoice;
         }
 
         // class = Ranger
@@ -68,8 +63,17 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
 
             cout << "\nWhat's your choice " << player->getName() << "?\n"
                 << "> ";
-            // get player choice
-            cin >> playerCombatChoice;
+        }
+        // class = none
+        else {
+            // display choices
+            cout << "\n\n-Abilities-\n"
+                << "\t(1) Attack\n"
+                << "-Spells-\n"
+                << "\t(2) Shielding Aura\n";
+
+            cout << "\nWhat's your choice " << player->getName() << "?\n"
+                << "> ";
         }
     }
     else {
@@ -81,8 +85,25 @@ int getPlayerInput(Player* player, bool gameWon, string className) {
 
         cout << "\nWhat's your choice " << player->getName() << "?\n"
             << "> ";
-        // get player choice
+    }
+
+    // get player choice
+    try {
         cin >> playerCombatChoice;
+
+        // check if input was an int
+        if (!cin) {
+            // input was not an integer
+            throw nonIntException();
+        }
+    }
+    // catch exception
+    catch (nonIntException& e) {
+        cin.clear();
+        cin.ignore(512, '\n');
+        // scroll up to see exception message
+        cout << "\n___Exception___\n";
+        cout << e.what() << endl;
     }
 
     return playerCombatChoice;
@@ -115,6 +136,9 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
                 // display debuffed stat
                 cout << player->getName() << "'s Strength increased" << endl;
             }
+            else {
+                cout << "Invalid choice!" << endl;
+            }
         }
 
         // handle Mage Turn
@@ -144,6 +168,9 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
                 // display debuffed stat
                 cout << player->getName() << "'s Magical Might increased" << endl;
             }
+            else {
+                cout << "Invalid choice!" << endl;
+            }
         }
 
         // handle Paladin Turn
@@ -166,6 +193,9 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
                 paladin->shieldOfLight();
                 // display debuffed stat
                 cout << player->getName() << "'s Defence and Block Chance increased" << endl;
+            }
+            else {
+                cout << "Invalid choice!" << endl;
             }
         }
 
@@ -196,11 +226,28 @@ void playerTurn(Player* player, Enemy* enemy, int playerCombatChoice, bool gameW
                 // display debuffed stat
                 cout << player->getName() << "'s Speed increased" << endl;
             }
+            else {
+                cout << "Invalid choice!" << endl;
+            }
         }
-
-        // throw exception here
+        // non class based combat
         else {
-
+            // calc player attack damage and apply to enemy
+            if (playerCombatChoice == 1) {
+                cout << player->getName() << " attacks" << endl;
+                int damage = player->attack();
+                enemy->takeDamage(damage, enemy->getDef(), false, "none");
+            }
+            // increase block chance
+            else if (playerCombatChoice == 2) {
+                player->shieldingAura();
+                cout << player->getName() << " uses Sheilding Aura\n"
+                    << "Block chance increases to " << player->getBlockChance() << "%"
+                    << endl;
+            }
+            else {
+                cout << "Invalid choice!" << endl;
+            }
         }
     }
 

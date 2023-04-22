@@ -43,6 +43,9 @@ public:
 
     void takeDamage(int damage, int defence, bool isDebuff, string debuff);
 
+    // destructor
+    ~Enemy();
+
 
 private:
     // Enemy variables

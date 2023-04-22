@@ -3,6 +3,12 @@
 using namespace std;
 
 // === Base Class === //
+// destructor 
+Player::~Player() {
+    // un-comment this line when debugging and scroll up
+    // cout << "Player instance destructed successfully" << endl;
+}
+
 // use const for get() funcs since they don't modify class variables
 // get player name
 string Player::getName() const {
@@ -62,7 +68,7 @@ int Player::attack() const {
 // increase player block chance
 void Player::shieldingAura() {
     // cap block chance at 50%
-    if (m_blockChance == 50) {
+    if (m_blockChance >= 50) {
         cout << "Your block chance is already at it's max" << endl;
     }
     else {
@@ -296,9 +302,16 @@ int Paladin::holyStrike() const {
     return playerDamage;
 }
 void Paladin::shieldOfLight() {
-    // increase defence and block chance
+    // increase defence
     buff("def");
-    buff("blockChance");
+    // increase block chance
+    // cap block chance at 75%
+    if (getBlockChance() >= 50) {
+        cout << "Your block chance is already at it's max" << endl;
+    }
+    else {
+        buff("blockChance");
+    }
 }
 
 // Ranger

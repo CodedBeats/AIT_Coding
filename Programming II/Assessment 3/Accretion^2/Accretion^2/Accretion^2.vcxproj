@@ -141,6 +141,7 @@
     <ClInclude Include="battle.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="exception.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="scoreboard.h" />

@@ -3,6 +3,12 @@
 using namespace std;
 
 // === Base Class === //
+// destructor 
+Enemy::~Enemy() {
+    // un-comment this line when debugging and scroll up
+    // cout << "Enemy instance destructed successfully" << endl;
+}
+
 // use const for get() funcs since they don't modify class variables
 // get enemy name
 string Enemy::getName() const {

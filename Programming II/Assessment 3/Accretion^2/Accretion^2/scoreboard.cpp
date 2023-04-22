@@ -3,9 +3,18 @@
 using namespace std;
 
 // === Base Class === //
+// constructor
+Scoreboard::Scoreboard() {}
+
+
+// destructor 
+Scoreboard::~Scoreboard() {
+    // un-comment this line when debugging and scroll up
+    // cout << "Scoreboard instance destructed successfully" << endl;
+}
+
+
 // use const for get() func since it doesn't modify class variables
-
-
 // display scoreboard
 void Scoreboard::getScoreboard() const {
     string exit;

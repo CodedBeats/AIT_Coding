@@ -9,10 +9,16 @@ using namespace std;
 
 class Scoreboard {
 public:
+    // constructor
+    Scoreboard();
+
     // Scoreboard functions
     void getScoreboard() const;
 
     void updateScoreboard(string name, string className, int lvl);
+
+    // destructor
+    ~Scoreboard();
 
 
 private:

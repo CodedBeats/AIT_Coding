@@ -135,7 +135,7 @@ bool game(Scoreboard* scoreboard, Player* player, bool gameWon) {
                 "> ";
             cin >> quit;
 
-            // if 'y' stop program, else do nothing
+            // if 'y' stop program, else display menu again
             if (quit == 'y') {
                 bool continueGame = false;
                 return continueGame;
