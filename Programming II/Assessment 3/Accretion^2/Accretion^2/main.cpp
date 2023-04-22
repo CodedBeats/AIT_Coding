@@ -54,21 +54,6 @@ int main() {
 
 
     /*
-        Features to add
-        1. 
-
-        Fixed
-        1. added destructors to all classes
-        2. added "nothrow" to all "new" object creations
-        3. changed getPlayerInput so playerCombatChoice is got at the end of the func once (instead of having it on multiple lines)
-        4. added a missed colon (lol) to magical might in display battle stats
-        5. wrapped all int inputs in try-catch-throw to stop the repeated spam bug
-        6. added some extra else's inside combat so player gets created with no class if a weird input is given in player class selection
-        7. implemented custom exceptions for non int inputs (where int was expected)
-
-
-
-        // ==============   to leave in main
         Potential Future Improvements:
         1. Prompt player to train again after battle so they don't have to go through menu every time
         2. Add information about what moves do specifically in player's view stats screen
