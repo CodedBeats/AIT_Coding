@@ -1,0 +1,5 @@
+trader,type,base_currency,assert,unit_price,amount,total
+Tim Jacob,BUY,AUD,BTC,21000.23,1,21000.23
+Tim Jacob,SELL,BTC,AUD,22000.00,1,22000.00
+Anna Chill,BUY,,XMR,200,2,400
+Anna Chill,SELL,XMR,AUD,250,2,500
