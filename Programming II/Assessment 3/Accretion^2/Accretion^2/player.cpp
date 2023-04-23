@@ -326,7 +326,7 @@ int Ranger::lethalArrow(int speed) const {
     }
     // else do 1 damage
     else {
-        playerDamage = 1000000;
+        playerDamage = 1;
         return playerDamage;
     }
 }
