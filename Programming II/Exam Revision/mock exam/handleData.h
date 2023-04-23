@@ -13,4 +13,4 @@ using namespace std;
 
 vector<Trader> readDataFromFile(const string& filename);
 
-#endif // trader_HEADER_GUARD
+#endif // handle_data_HEADER_GUARD

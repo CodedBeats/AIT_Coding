@@ -130,10 +130,17 @@
   <ItemGroup>
     <ClCompile Include="handleData.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="overloading.cpp" />
+    <ClCompile Include="sorting.cpp" />
+    <ClCompile Include="stringManipulation.cpp" />
     <ClCompile Include="trader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="exception.h" />
     <ClInclude Include="handleData.h" />
+    <ClInclude Include="overloading.h" />
+    <ClInclude Include="sorting.h" />
+    <ClInclude Include="stringManipulation.h" />
     <ClInclude Include="trader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
