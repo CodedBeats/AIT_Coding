@@ -1,17 +1,13 @@
 package shapes;
 
-import javax.swing.JOptionPane;
-
 public class Circle {
     // attributes
     private double radius;
     private double area;
 
     // input radius
-    public void setRadius() {
-        String sRadius;
-        sRadius = JOptionPane.showInputDialog("Enter circle radius");
-        radius = Double.parseDouble(sRadius);
+    public void setRadius(String radius) {
+        this.radius = Double.parseDouble(radius);
     }
 
     // calculate area
