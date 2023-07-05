@@ -2,16 +2,16 @@ package accounts;
 
 public class NetSaverAccount extends Account {
     // attributes
-    private float withdrawLimit;
+    private float dailyWithdrawLimit;
     private float dailyWithdrawed;
     private boolean canWithdraw;
 
 
     // constructor
-    public NetSaverAccount(float balance, int accountNumber, String accountName, String transactionHistory[], float withdrawLimit, float dailyWithdrawed, boolean canWithdraw) {
+    public NetSaverAccount(float balance, int accountNumber, String accountName, String transactionHistory[], float dailyWithdrawLimit, float dailyWithdrawed, boolean canWithdraw) {
         super(balance, accountNumber, accountName, transactionHistory);
 
-        this.withdrawLimit = withdrawLimit;
+        this.dailyWithdrawLimit = dailyWithdrawLimit;
         this.dailyWithdrawed = dailyWithdrawed;
         this.canWithdraw = canWithdraw;
     }
@@ -32,6 +32,11 @@ public class NetSaverAccount extends Account {
     // NetSaverAccount methods
     // calculate and apply interest rate
     public void calcInterest() {
+
+    }
+
+    // handle if user can still withdraw after sucessfull withdrawl
+    public void handleWithdrawLimit() {
 
     }
 }

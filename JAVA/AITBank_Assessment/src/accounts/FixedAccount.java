@@ -32,4 +32,9 @@ public class FixedAccount extends Account {
     public void calcInterest() {
 
     }
+
+    // handle if user can still withdraw after sucessfull withdrawl
+    public void handleWithdrawLimit() {
+
+    }
 }

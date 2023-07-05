@@ -30,11 +30,11 @@ public class ChequeAccount extends Account {
         // get user input
         String input = JOptionPane.showInputDialog(null, "How much would you like to Withdraw?\n(100/50/20)");
 
-        // check if input a valid amount
+        // check if user input a valid amount
         if (Integer.parseInt(input) != 100 && Integer.parseInt(input) != 50 && Integer.parseInt(input) != 20) {
             JOptionPane.showMessageDialog(null, "You input an invalid amount");
         }
-        // process withdraw request
+        // process withdrawl
         else {
             // check if user has enough to withdraw this amount
             if (balance - Integer.parseInt(input) < 0) {
