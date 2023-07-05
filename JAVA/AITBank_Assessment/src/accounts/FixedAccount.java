@@ -1,0 +1,40 @@
+package accounts;
+
+public class FixedAccount extends Account {
+    // attributes
+    private boolean canWithdraw;
+    private boolean earlyWithdrawl;
+
+
+    // constructor
+    public FixedAccount(float balance, int accountNumber, String accountName, String transactionHistory[], boolean canWithdraw, boolean earlyWithdrawl) {
+        super(balance, accountNumber, accountName, transactionHistory);
+
+        this.canWithdraw = canWithdraw;
+        this.earlyWithdrawl = earlyWithdrawl;
+    }
+
+
+    // overide abstract methods
+    @Override
+    public void deposit() {
+
+    }
+
+    @Override
+    public void withdraw() {
+
+    }
+
+    @Override
+    public void closeAcc() {
+
+    }
+
+
+    // NetSaverAccount methods
+    // calculate and apply interest rate
+    public void calcInterest() {
+
+    }
+}
