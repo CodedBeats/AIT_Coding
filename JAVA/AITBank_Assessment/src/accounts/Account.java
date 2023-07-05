@@ -22,8 +22,6 @@ public abstract class Account {
 
     public abstract void withdraw();
 
-    public abstract void closeAcc();
-
     
     // getter methods
     public float getBalance() {
@@ -36,11 +34,6 @@ public abstract class Account {
 
     public String getAccName() {
         return accountName;
-    }
-
-    // test method
-    public void test() {
-        System.out.println("IM ALIVE\nAAHHHHHHHHHHHHHHH\n");
     }
 
 }

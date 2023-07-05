@@ -28,11 +28,6 @@ public class SavingsAccount extends Account {
 
     }
 
-    @Override
-    public void closeAcc() {
-
-    }
-
 
     // SavingsAccount methods
     // calculate and apply interest rate

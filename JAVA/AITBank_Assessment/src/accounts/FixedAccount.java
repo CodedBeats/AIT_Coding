@@ -26,11 +26,6 @@ public class FixedAccount extends Account {
 
     }
 
-    @Override
-    public void closeAcc() {
-
-    }
-
 
     // NetSaverAccount methods
     // calculate and apply interest rate

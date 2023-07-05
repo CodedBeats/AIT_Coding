@@ -4,6 +4,11 @@ import accounts.FixedAccount;
 import accounts.NetSaverAccount;
 import accounts.SavingsAccount;
 
+/*
+    ===== ASSUMPTION NOTES =====
+    1. Only a demonstration of functions is required, the tester is required to run the code testing different inputs (there are no loops asking for inputs)
+*/
+
 public class App {
     public static void main(String[] args) throws Exception {
         // test each class creation
@@ -12,10 +17,9 @@ public class App {
         NetSaverAccount a3 = new NetSaverAccount(600, 3, "BoyWonder", null, 50, 0, true);
         SavingsAccount a4 = new SavingsAccount(1000, 3, "BoyWonder", null, 50, 0, true);
 
-        a1.test();
-        a2.test();
-        a3.test();
-        a4.test();
+        a1.deposit();
+        a1.withdraw();
+        a1.reorderChequeBook();
 
     }
 }
