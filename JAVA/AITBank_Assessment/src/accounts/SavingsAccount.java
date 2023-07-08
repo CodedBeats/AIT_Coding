@@ -6,6 +6,7 @@ public class SavingsAccount extends Account {
     private float dailyWithdrawLimit;
     private float dailyWithdrawed;
     private boolean canWithdraw = true;
+    private double interestRate = 0.035;
 
 
     // constructor
@@ -38,7 +39,7 @@ public class SavingsAccount extends Account {
         if (Integer.parseInt(input) != 100 && Integer.parseInt(input) != 50 && Integer.parseInt(input) != 20) {
             JOptionPane.showMessageDialog(null, "You input an invalid amount");
         }
-        // check if user has hit their daily withdrawl limit
+        // check if user has hit (or will exceed) their daily withdrawl limit
         else if (!canWithdraw || dailyWithdrawed + Integer.parseInt(input) > dailyWithdrawLimit) {
             JOptionPane.showMessageDialog(null, "You can't withdraw becuase you have hit (or will exceed) your daily withdrawl limit.\n" + 
             "(Daily Withdrawed: " + dailyWithdrawed + " / Daily Withdrawl limit: " + dailyWithdrawLimit + ")"
@@ -71,7 +72,9 @@ public class SavingsAccount extends Account {
     public void calcInterest() {
         // ASSUMPTION: this function would be called after a set period (but will be called in main just for testing purposes)
         // ASSUMPTION: saving account rate is 3.5% of balance every {set period}
-        balance += (balance * 0.035);
+
+        // apply interest
+        balance += (balance * interestRate);
         JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
     }
 

@@ -36,4 +36,10 @@ public abstract class Account {
         return accountName;
     }
 
+    public void getTransactionHistory() {
+        for (int i = 0; i < transactionHistory.length; i++) {
+            System.out.println(transactionHistory[i]);
+        }
+    }
+
 }
