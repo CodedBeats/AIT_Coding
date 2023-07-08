@@ -1,4 +1,8 @@
 /*
+    ===== Project Notes =====
+    1. The project was coded on the VS Code IDE, I don't beleive there are any changes needed when converting to Netbeans, but please be open to potential difference they have that could cause errors
+
+    
     ===== ASSUMPTION NOTES =====
     1. Only a demonstration of functions is required, the tester is required to run the code testing different inputs (there are no loops asking for inputs)
     2. Since these are just tests to show functionality, edge cases such as negative numbers or letters instead of numbers (etc.) won't be checked for (but will be implemente in the final version)
