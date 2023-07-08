@@ -75,7 +75,7 @@ public class NetSaverAccount extends Account {
 
         // apply interest
         balance += (balance * interestRate);
-        JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
+        JOptionPane.showMessageDialog(null, "Account Balance after interest: $" + balance);
     }
 
     // handle if user can still withdraw after sucessfull withdrawl

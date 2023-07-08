@@ -12,5 +12,11 @@ public class App {
         Testing testSystem = new Testing();
         
         testSystem.testInheritence();
+        testSystem.testWithdrawAmounts();
+        testSystem.testEmptyBalanceWithdrawl();
+        testSystem.testDailyWithdrawLimit();
+        testSystem.testSetWithdrawLimit();
+        testSystem.testCorrectInterestCalculation();
+        testSystem.testFixedAccountInterest();
     }
 }

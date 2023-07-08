@@ -69,7 +69,7 @@ public class FixedAccount extends Account {
         // ASSUMPTION: The period until interest is calculated only has to be waited once (it doen't need to be reset after interest has been calculated and given)
 
         // check if user withdrew too early
-        if (earlyWithdrawl) {
+        if (earlyWithdrawl && interestPeriod < 30) {
             JOptionPane.showMessageDialog(null, "You won't recieve interest becuase you withdrew before your fixed period was up");
         }
         // check if user has waited fixed period
@@ -79,7 +79,7 @@ public class FixedAccount extends Account {
         // apply interest
         else {
             balance += (balance * interestRate);
-            JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
+            JOptionPane.showMessageDialog(null, "Account Balance after interest: $" + balance);
         }
     }
 }

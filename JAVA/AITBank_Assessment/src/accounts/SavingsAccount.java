@@ -75,7 +75,7 @@ public class SavingsAccount extends Account {
 
         // apply interest
         balance += (balance * interestRate);
-        JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
+        JOptionPane.showMessageDialog(null, "Account Balance after interest: $" + balance);
     }
 
     // let user set withdraw limit
