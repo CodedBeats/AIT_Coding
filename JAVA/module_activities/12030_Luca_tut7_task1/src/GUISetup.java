@@ -11,7 +11,9 @@ public class GUISetup implements ActionListener {
 
     // init buttons and text field
     JButton btnAdd, btnSubtract, btnMultiply, btnDivide, btnEquals, btnClear, btnExit;
-    JTextField inputField;
+    JTextField inputField, ansField;
+    // init calc info
+    JLabel operatorVal;
     
     public void createGUI() {
         JFrame jframe = new JFrame(); 
@@ -20,7 +22,9 @@ public class GUISetup implements ActionListener {
         jframe.setLayout(flow);
         jframe.setSize(300, 250);
         
-        inputField = new JTextField(25); 
+        inputField = new JTextField(15); 
+        ansField = new JTextField(7); 
+        ansField.setEditable(false);
         
         btnAdd = new JButton("+");
         btnSubtract = new JButton("-");
@@ -29,8 +33,11 @@ public class GUISetup implements ActionListener {
         btnEquals = new JButton("=");
         btnClear = new JButton("Clear");
         btnExit = new JButton("Exit");
+
+        operatorVal = new JLabel("Operator: ");
         
         jframe.add(inputField);
+        jframe.add(ansField);
         
         jframe.add(btnAdd);    
         jframe.add(btnSubtract);
@@ -39,6 +46,8 @@ public class GUISetup implements ActionListener {
         jframe.add(btnEquals);    
         jframe.add(btnClear);
         jframe.add(btnExit);  
+
+        jframe.add(operatorVal);
         
         // add event listeners to each button
         btnAdd.addActionListener(this);
@@ -49,6 +58,8 @@ public class GUISetup implements ActionListener {
         btnClear.addActionListener(this);
         btnExit.addActionListener(this);
         // add even listeners to input field
+        inputField.addActionListener(this);
+        ansField.addActionListener(this);
         
         jframe.setVisible(true);
     }  
@@ -58,30 +69,36 @@ public class GUISetup implements ActionListener {
     public void actionPerformed(ActionEvent e) { 
         // xx
         if (e.getSource() == btnAdd) {
-            // System.out.println("+");
+            handleNumInput();
             operator = "+";
+            operatorVal.setText("Operator: +");
         }
         else if (e.getSource() == btnSubtract) {
-            // System.out.println("-");
+            handleNumInput();
             operator = "-";
+            operatorVal.setText("Operator: -");
         }
         else if (e.getSource() == btnMultiply) {
-            // System.out.println("*");
+            handleNumInput();
             operator = "*";
+            operatorVal.setText("Operator: x");
         }
         else if (e.getSource() == btnDivide) {
-            // System.out.println("/");
+            handleNumInput();
             operator = "/";
+            operatorVal.setText("Operator: /");
         }
         else if (e.getSource() == btnEquals) {
-            // System.out.println("=");
-            double ans = handleOperations(2, 2, "+");
-            System.out.println(ans);
+            handleNumInput();
+            double ans = handleOperations(operator);
+            ansField.setText(String.format("%f", ans));
+            
         }
         else if (e.getSource() == btnClear) {
-            // System.out.println("clear");
             // clear field and reset variables
             inputField.setText("");
+            ansField.setText("");
+            operatorVal.setText("Operator: ");
             num1 = 0;
             num2 = 0;
             operator = "";
@@ -90,11 +107,13 @@ public class GUISetup implements ActionListener {
             // System.out.println("exit");
             System.exit(0);
         }
+
+        System.out.println(inputField.getText());
     }
     
     
     // handle operations
-    public double handleOperations(double num1, double num2, String operator) {
+    public double handleOperations(String operator) {
         double ans = 0;
         if (operator.equals("+")) {
             ans = num1 + num2;
@@ -109,5 +128,20 @@ public class GUISetup implements ActionListener {
             ans = num1 / num2;
         } 
         return ans;
+    }
+
+
+    // handle num input
+    public void handleNumInput() {
+        if (num1 == 0) {
+            num1 = Double.parseDouble(inputField.getText());
+            System.out.println("Num1: "+ num1);
+            inputField.setText("");
+        }
+        else if (num2 == 0) {
+            num2 = Double.parseDouble(inputField.getText());
+            System.out.println("Num2: "+ num2);
+            inputField.setText("");
+        }
     }
 }
