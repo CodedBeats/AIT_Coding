@@ -97,7 +97,7 @@ public class MultithreadingGUI {
                 // setText1
                 else {
                 // set output text
-                outputText.setText("This is text while thread boi is sleeping");
+                outputText.setText("Hi, I hate File IO");
                 }
             }
         });
@@ -110,17 +110,17 @@ public class MultithreadingGUI {
     private void nonThreadFunc(boolean withSleep) {
         if (withSleep) {
             try {
-                System.out.println("program going to sleep");
+                System.out.println("Program going to sleep");
                 TimeUnit.SECONDS.sleep(5); // Sleep for 5 seconds
-                System.out.println("program woke up");
+                System.out.println("Program woke up");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        // setText1
+        // setText2
         else {
             // set output text
-            outputText.setText("This is annoying wait text");
+            outputText.setText("Hi, I love lambda functions");
         }
     }
 
