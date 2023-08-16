@@ -1,6 +1,6 @@
 **Home Screen**
 Welcome to AITBank
-Please enter your card to behind
+Please enter your card to begin
 (style = display inline)
     <button>enter Cheque card </button>
     <button>enter Fixed card </button>
@@ -15,6 +15,7 @@ input field
 4 5 6
 7 8 9
 0 del
+error message text field
 
 
 **Welcome User**
