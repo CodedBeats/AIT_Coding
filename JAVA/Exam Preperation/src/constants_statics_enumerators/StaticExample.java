@@ -15,8 +15,8 @@ public class StaticExample {
     }
     
     public static void main(String[] args) {
-        StaticExample obj1 = new StaticExample();
-        StaticExample obj2 = new StaticExample();
+        StaticExample obj1 = new StaticExample(); // counter = 1;
+        StaticExample obj2 = new StaticExample(); // counter = 2;
         
         System.out.println("Counter: " + StaticExample.getCounter());
     }
