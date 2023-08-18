@@ -3,6 +3,7 @@ package gui;
 // import classes
 import gui.reusable_components.KeypadPanel;
 import gui.windows.HomeUI;
+import gui.windows.LoginUI;
 
 // import libraries
 import javax.swing.*;
@@ -61,23 +62,25 @@ public class GUIHandler {
     }
 
 
+    // handle login screen
+    public void handleLogin() {
+        LoginUI loginUI = new LoginUI();
+    }
+
+
     // just for testing purposes
     public static void main(String[] args) {
 
         /* ============================================================= */
-        // JFrame frame1 = new JFrame("Frame 1");
-        // frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // frame1.setSize(300, 400);
+        JFrame frame1 = new JFrame("Frame 1");
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.setSize(300, 400);
         
-        // KeypadPanel keypadPanel = new KeypadPanel();
-        // JButton btn = new JButton("xx");
-        
-        // // keypadPanel.setTxtFieldType();
+        KeypadPanel keypadPanel = new KeypadPanel(true, false);
 
-        // frame1.add(btn);
-        // frame1.add(keypadPanel);
+        frame1.add(keypadPanel);
         
-        // frame1.setVisible(true);
+        frame1.setVisible(true);
         /* ============================================================= */
     }
 }

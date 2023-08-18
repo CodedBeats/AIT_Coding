@@ -7,19 +7,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class KeypadPanel extends JPanel {
+    // init JFrame elements
+    JPanel buttonPanel;
     private JTextField textField;
-    private boolean hasDecimalPoint = false;
-    private boolean isMoney = false;
 
-    public KeypadPanel() {
+    // class attributes
+    private boolean hasDecimalPoint = false;
+
+    public KeypadPanel(boolean isMoney, boolean isLogin) {
+
+        // set layout
         setLayout(new BorderLayout());
 
         // Create the text field at the top
         textField = new JTextField();
         textField.setEditable(false); // Make the text field non-editable
         add(textField, BorderLayout.NORTH);
+        // add "$" at the start if this is a money field
+        if (isMoney) {
+            textField.setText("$");
+        }
 
-        JPanel buttonPanel = new JPanel(new GridLayout(4, 3)); // 4 rows, 3 columns
+        // create panel
+        buttonPanel = new JPanel(new GridLayout(4, 3)); // 4 rows, 3 columns
 
         String[] keypadBtns = {
             "1", "2", "3",
@@ -59,13 +69,25 @@ public class KeypadPanel extends JPanel {
                     }
                     // only allow 1 decimal point
                     else if (btnTxt.equals(".") && hasDecimalPoint) {
-                        getTextField();
+                        getMoneyValue();
                         return;
                     }  
                     else {
-                        // set hasDecimalPoint to true if btn was "."
-                        if (btnTxt.equals(".")) {
+                        // get length of text field
+                        String currentText = textField.getText();
+
+                        // set hasDecimalPoint to true if btn was "." and !login mode
+                        if (btnTxt.equals(".") && !isLogin) {
                             hasDecimalPoint = true;
+                        }
+                        // don't allow "." in login mode
+                        else if (btnTxt.equals(".") && isLogin) {
+                            getPINValue();
+                            return;
+                        }
+                        // don't allow more than 4 digits in login mode
+                        else if (isLogin && currentText.length() == 4) {
+                            return;
                         }
 
                         // Append the btn text to the text field
@@ -80,28 +102,16 @@ public class KeypadPanel extends JPanel {
         add(buttonPanel, BorderLayout.CENTER);
     }
 
-    public double getTextField() {
-        double txtFieldVal;
-        
-        // remove "$" from start of text field
-        if (isMoney) {
-            // convert text field data to double
-            txtFieldVal = Double.parseDouble(textField.getText().substring(1));
-        }
-        else {
-            // convert text field data to double
-            txtFieldVal = Double.parseDouble(textField.getText());
-        }
+    public double getMoneyValue() {
+        double txtFieldVal = Double.parseDouble(textField.getText().substring(1));
         System.out.println(txtFieldVal);
         return txtFieldVal;
     }
 
-    public void setTxtFieldType() {
-        isMoney = true;
-
-        String currentTxt = textField.getText();
-        String newText = "$" + currentTxt;
-        textField.setText(newText);
+    public int getPINValue() {
+        int txtFieldVal = Integer.parseInt(textField.getText());
+            System.out.println(txtFieldVal);
+            return txtFieldVal;
     }
 }
 
