@@ -1,17 +1,23 @@
 package gui.windows;
 
+// import libraries
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeUI {
-    // init JFrame elements (that need to be accessed outside the constructor)
-    JFrame frame;
-    JButton enterChequeCardBtn;
-    JButton enterFixedCardBtn;
-    JButton enterNetSaverCardBtn;
-    JButton enterSavingsCardBtn;
+    // init JFrame
+    private JFrame frame;
+    // panel
+    private JPanel panel;
+    // labels
+    private JLabel welcomeLabel;
+    private JLabel promptLabel;
+    // buttons
+    private JButton enterChequeCardBtn;
+    private JButton enterFixedCardBtn;
+    private JButton enterNetSaverCardBtn;
+    private JButton enterSavingsCardBtn;
 
     // constructor
     public HomeUI() {
@@ -24,7 +30,7 @@ public class HomeUI {
         frame.getContentPane().setBackground(Color.WHITE);
 
         // put everything on a pannel
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         // set layout
         panel.setLayout(new GridBagLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -34,8 +40,8 @@ public class HomeUI {
         constraints.anchor = GridBagConstraints.CENTER;
 
         // create labels
-        JLabel welcomeLabel = new JLabel("Welcome to AITBank");
-        JLabel promptLabel = new JLabel("Please enter your card to begin");
+        welcomeLabel = new JLabel("Welcome to AITBank");
+        promptLabel = new JLabel("Please enter your card to begin");
         // set label layout
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         promptLabel.setHorizontalAlignment(SwingConstants.CENTER);
