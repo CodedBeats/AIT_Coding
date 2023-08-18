@@ -7,10 +7,11 @@
 *    1. 
 */
 
-
+import gui.GUIHandler;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //
+        GUIHandler guiHandler = new GUIHandler();
+        guiHandler.handleHomeUI();
     }
 }

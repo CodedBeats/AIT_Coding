@@ -9,16 +9,17 @@ Please enter your card to begin
 
 
 **Password screen**
-please enter PIN
+please enter 4 digit PIN
 input field
 1 2 3
 4 5 6
 7 8 9
-0 del
+0 . del
 error message text field
 
 
-**Welcome User**
+**Dashboard**
+Welcome (account name)
 (style = display grid)
     <button>withdraw</button>
     <button>deposit</button>
@@ -56,12 +57,18 @@ text field
 
 
 **account details screen**
-(style = display grid)
-    Your card number
-    text field = card number
+(style = display inline-grid)
+    Account number
+    text field = account number
+
+    Account type
+    text field = account type
 
     Account Name
     text field = account name
+
+    Account Interest
+    text field = *monthly*
 
     Card type fields
         Cheque
