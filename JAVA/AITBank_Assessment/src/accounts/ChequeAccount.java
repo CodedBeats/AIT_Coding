@@ -16,16 +16,6 @@ public class ChequeAccount extends Account {
 
     // overide abstract methods
     @Override
-    public void deposit() {
-        // get user input
-        String depositInput = JOptionPane.showInputDialog(null, "How much would you like to Deposit?");
-        // update balance
-        balance += Float.parseFloat(depositInput);
-        // show updated balance
-        JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
-    }
-
-    @Override
     public void withdraw() {
         // get user input
         String input = JOptionPane.showInputDialog(null, "How much would you like to Withdraw?\n(100/50/20)");
