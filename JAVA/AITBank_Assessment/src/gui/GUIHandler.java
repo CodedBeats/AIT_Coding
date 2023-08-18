@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 
 
 public class GUIHandler {
+    // handler attributes
+    String accountType;
 
     // constructor
     public GUIHandler() {
@@ -27,29 +29,33 @@ public class GUIHandler {
         homeUI.addChequeCardBtnListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("addChequeCardBtnListener");
-                // 
+                accountType = "cheque";
+                homeUI.closeWindow();
+                System.out.println(accountType);
             }
         });
-        homeUI.addCFixedCardBtnListener(new ActionListener() {
+        homeUI.addFixedCardBtnListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("addCFixedCardBtnListener");
-                // 
+                accountType = "fixed";
+                homeUI.closeWindow();
+                System.out.println(accountType);
             }
         });
         homeUI.addNetSaverCardBtnListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("addNetSaverCardBtnListener");
-                // 
+                accountType = "netSaver";
+                homeUI.closeWindow();
+                System.out.println(accountType);
             }
         });
         homeUI.addSavingsCardBtnListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("addSavingsCardBtnListener");
-                // 
+                accountType = "savings";
+                homeUI.closeWindow();
+                System.out.println(accountType);
             }
         });
     }

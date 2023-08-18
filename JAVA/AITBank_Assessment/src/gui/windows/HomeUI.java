@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeUI {
-    // class attributes
-    private String accountType;
-    // init btns
+    // init JFrame elements (that need to be accessed outside the constructor)
+    JFrame frame;
     JButton enterChequeCardBtn;
     JButton enterFixedCardBtn;
     JButton enterNetSaverCardBtn;
@@ -17,7 +16,7 @@ public class HomeUI {
     // constructor
     public HomeUI() {
         // create frame
-        JFrame frame = new JFrame("Home Screen");
+        frame = new JFrame("Home Screen");
         // close on x
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set frame style
@@ -86,46 +85,13 @@ public class HomeUI {
         // add panel to frame
         frame.add(panel);
         frame.setVisible(true);
-
-        // Add action listeners to buttons to set account type to btn pressed
-        enterChequeCardBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                accountType = "cheque";
-                // close window
-            }
-        });
-
-        enterFixedCardBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                accountType = "fixed";
-                // close window
-            }
-        });
-
-        enterNetSaverCardBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                accountType = "netSaver";
-                // close window
-            }
-        });
-
-        enterSavingsCardBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                accountType = "savings";
-                // close window
-            }
-        });
     }
 
     // button action listeners for outside implementation
     public void addChequeCardBtnListener(ActionListener listener) {
         enterChequeCardBtn.addActionListener(listener);
     }
-    public void addCFixedCardBtnListener(ActionListener listener) {
+    public void addFixedCardBtnListener(ActionListener listener) {
         enterFixedCardBtn.addActionListener(listener);
     }
     public void addNetSaverCardBtnListener(ActionListener listener) {
@@ -135,8 +101,8 @@ public class HomeUI {
         enterSavingsCardBtn.addActionListener(listener);
     }
 
-    // get account type
-    public String getAccountType() {
-        return accountType;
+    // close window
+    public void closeWindow() {
+        frame.dispose();
     }
 }
