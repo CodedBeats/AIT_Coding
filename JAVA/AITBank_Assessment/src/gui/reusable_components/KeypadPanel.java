@@ -110,8 +110,7 @@ public class KeypadPanel extends JPanel {
 
     public int getPINValue() {
         int txtFieldVal = Integer.parseInt(textField.getText());
-            System.out.println(txtFieldVal);
-            return txtFieldVal;
+        return txtFieldVal;
     }
 }
 

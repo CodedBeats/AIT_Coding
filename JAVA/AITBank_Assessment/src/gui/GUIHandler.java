@@ -65,6 +65,17 @@ public class GUIHandler {
     // handle login screen
     public void handleLogin() {
         LoginUI loginUI = new LoginUI();
+
+        // add functionality to PIN submit btn
+        loginUI.submitPIN(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int pin = loginUI.getPIN();
+                System.out.println(pin);
+                // verify PIN
+                // close window
+            }
+        });
     }
 
 
@@ -72,15 +83,15 @@ public class GUIHandler {
     public static void main(String[] args) {
 
         /* ============================================================= */
-        JFrame frame1 = new JFrame("Frame 1");
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame1.setSize(300, 400);
+        // JFrame frame1 = new JFrame("Frame 1");
+        // frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame1.setSize(300, 400);
         
-        KeypadPanel keypadPanel = new KeypadPanel(true, false);
+        // KeypadPanel keypadPanel = new KeypadPanel(true, false);
 
-        frame1.add(keypadPanel);
+        // frame1.add(keypadPanel);
         
-        frame1.setVisible(true);
+        // frame1.setVisible(true);
         /* ============================================================= */
     }
 }

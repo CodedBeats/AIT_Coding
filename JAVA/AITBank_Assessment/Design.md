@@ -16,6 +16,7 @@ input field
 7 8 9
 0 . del
 error message text field
+<button>OK</button>
 
 
 **Dashboard**
