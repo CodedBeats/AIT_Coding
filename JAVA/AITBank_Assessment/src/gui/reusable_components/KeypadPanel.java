@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class KeypadPanel extends JPanel {
     private JTextField textField;
     private boolean hasDecimalPoint = false;
+    private boolean isMoney = false;
 
     public KeypadPanel() {
         setLayout(new BorderLayout());
@@ -40,8 +41,13 @@ public class KeypadPanel extends JPanel {
                     // delete single value
                     if (btnTxt.equals("Del")) {
                         String currentText = textField.getText();
+
+                        // don't delete "$" text
+                        if (currentText.equals("$")) {
+                            return;
+                        }
                         // make sure text field isn't empty
-                        if (!currentText.isEmpty()) {
+                        else if (!currentText.isEmpty()) {
                             // Remove the last character from the text field
                             textField.setText(currentText.substring(0, currentText.length() - 1));
 
@@ -62,8 +68,8 @@ public class KeypadPanel extends JPanel {
                             hasDecimalPoint = true;
                         }
 
-                        // Append the button's label to the text field
-                        textField.setText(textField.getText() + btnTxt); // add number to text field
+                        // Append the btn text to the text field
+                        textField.setText(textField.getText() + btnTxt);
                     }
                 }
             });
@@ -74,8 +80,28 @@ public class KeypadPanel extends JPanel {
         add(buttonPanel, BorderLayout.CENTER);
     }
 
-    public void getTextField() {
-        System.out.println(Double.parseDouble(textField.getText()));
+    public double getTextField() {
+        double txtFieldVal;
+        
+        // remove "$" from start of text field
+        if (isMoney) {
+            // convert text field data to double
+            txtFieldVal = Double.parseDouble(textField.getText().substring(1));
+        }
+        else {
+            // convert text field data to double
+            txtFieldVal = Double.parseDouble(textField.getText());
+        }
+        System.out.println(txtFieldVal);
+        return txtFieldVal;
+    }
+
+    public void setTxtFieldType() {
+        isMoney = true;
+
+        String currentTxt = textField.getText();
+        String newText = "$" + currentTxt;
+        textField.setText(newText);
     }
 }
 

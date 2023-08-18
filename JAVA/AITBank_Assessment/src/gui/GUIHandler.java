@@ -17,6 +17,8 @@ public class GUIHandler {
         
         KeypadPanel keypadPanel = new KeypadPanel();
         JButton btn = new JButton("xx");
+        
+        // keypadPanel.setTxtFieldType();
 
         frame1.add(btn);
         frame1.add(keypadPanel);
