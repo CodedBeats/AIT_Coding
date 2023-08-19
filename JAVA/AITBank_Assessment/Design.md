@@ -21,11 +21,9 @@ error message text field
 
 **Dashboard**
 Welcome (account name)
-(style = display grid)
-    <button>withdraw</button>
-    <button>deposit</button>
-    <button>check balance</button>
-    <button>Check account details</button>
+<button>Withdraw</button>           <button>Deposit</button>
+<button>Check Balance</button>      <button>Check Account Details</button>
+    
 
 
 **Withdraw screen**
