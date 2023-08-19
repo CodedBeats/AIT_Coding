@@ -105,16 +105,4 @@ public class HomeUI extends WindowUI {
     public void savingsCardEvent(ActionListener listener) {
         enterSavingsCardBtn.addActionListener(listener);
     }
-
-    // set frame visibility
-    public void setFrameVisibility() {
-        // set frame visible if it's hidden
-        if (!frame.isShowing()) {
-            frame.setVisible(true);
-        }
-        // hide frame
-        else {
-            frame.setVisible(false);
-        }
-    }
 }

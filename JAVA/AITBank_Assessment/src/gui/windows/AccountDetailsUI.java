@@ -168,6 +168,7 @@ public class AccountDetailsUI extends WindowUI {
         // cheque
         if (accType == "cheque") {
             hasChequeBookLabel.setText(hasChequeBookLabel.getText() + "    " + hasChequeBook);
+            accountInterestLabel.setText("You don't receive interest on this account");
         }
         // fixed
         else if (accType == "fixed") {

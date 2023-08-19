@@ -6,9 +6,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class DashboardUI extends WindowUI {
-    // class attributes
-    private String accName;
-
     // init JFrame elements
     private JLabel welcomeLabel;
     private JPanel buttonPanel;
