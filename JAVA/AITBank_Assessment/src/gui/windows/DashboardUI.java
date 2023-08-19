@@ -55,16 +55,16 @@ public class DashboardUI extends WindowUI {
     }
 
     // button action listeners for outside implementation
-    public void withdrawEvent(ActionListener listener) {
+    public void withdrawOptionEvent(ActionListener listener) {
         withdrawbtn.addActionListener(listener);
     }
-    public void depositEvent(ActionListener listener) {
+    public void depositOptionEvent(ActionListener listener) {
         depositbtn.addActionListener(listener);
     }
-    public void checkBalanceEvent(ActionListener listener) {
+    public void checkBalanceOptionEvent(ActionListener listener) {
         checkBalancebtn.addActionListener(listener);
     }
-    public void checkDetailsEvent(ActionListener listener) {
+    public void checkDetailsOptionEvent(ActionListener listener) {
         checkDetailsbtn.addActionListener(listener);
     }
 

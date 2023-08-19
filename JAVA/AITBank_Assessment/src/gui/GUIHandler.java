@@ -5,6 +5,7 @@ import gui.reusable_components.KeypadPanel;
 import gui.windows.DashboardUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
+import gui.windows.WithdrawUI;
 
 // import libraries
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class GUIHandler {
     private HomeUI homeUI;
     private LoginUI loginUI;
     private DashboardUI dashboardUI;
+    private WithdrawUI withdrawUI;
 
     // constructor
     public GUIHandler() {
@@ -113,8 +115,8 @@ public class GUIHandler {
     public void handleDashbaord(String accName) {
         dashboardUI = new DashboardUI(accName);
 
-        // add functionality to dashboard menu btns (perhaps an unconventional way to do this but it makes sense to me)
-        dashboardUI.withdrawEvent(new ActionListener() {
+        // add functionality to dashboard menu btns
+        dashboardUI.withdrawOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // set menuOption
@@ -122,9 +124,12 @@ public class GUIHandler {
                 System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
+
+                // display menuUption's ui
+                withdrawUI.setFrameVisibility();
             }
         });
-        dashboardUI.depositEvent(new ActionListener() {
+        dashboardUI.depositOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // set menuOption
@@ -132,9 +137,11 @@ public class GUIHandler {
                 System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
+
+                // display menuUption's ui
             }
         });
-        dashboardUI.checkBalanceEvent(new ActionListener() {
+        dashboardUI.checkBalanceOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // set menuOption
@@ -142,9 +149,11 @@ public class GUIHandler {
                 System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
+
+                // display menuUption's ui
             }
         });
-        dashboardUI.checkDetailsEvent(new ActionListener() {
+        dashboardUI.checkDetailsOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // set menuOption
@@ -152,6 +161,28 @@ public class GUIHandler {
                 System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
+
+                // display menuUption's ui
+            }
+        });
+    }
+
+
+    // handle withdraw screen
+    public void handleWithdraw() {
+        withdrawUI = new WithdrawUI();
+
+        // add functionality to withdraw btns
+        withdrawUI.backEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("back");
+            }
+        });
+        withdrawUI.withdrawEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("withdraw");
             }
         });
     }
@@ -171,6 +202,6 @@ public class GUIHandler {
         
         // frame1.setVisible(true);
         /* ============================================================= */
-        
+
     }
 }

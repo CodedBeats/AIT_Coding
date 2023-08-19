@@ -19,5 +19,6 @@ public class App {
         guiHandler.handleHomeUI();
         guiHandler.handleLogin(acc.getAccPIN());
         guiHandler.handleDashbaord(acc.getAccName());
+        guiHandler.handleWithdraw();
     }
 }
