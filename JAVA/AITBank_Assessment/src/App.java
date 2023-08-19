@@ -21,5 +21,6 @@ public class App {
         guiHandler.handleDashbaord(acc.getAccName());
         guiHandler.handleWithdraw();
         guiHandler.handleDeposit();
+        guiHandler.handleBalance(acc.getBalance());
     }
 }

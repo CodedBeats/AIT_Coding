@@ -2,6 +2,7 @@ package gui;
 
 // import classes
 import gui.reusable_components.KeypadPanel;
+import gui.windows.BalanceUI;
 import gui.windows.DashboardUI;
 import gui.windows.DepositUI;
 import gui.windows.HomeUI;
@@ -26,6 +27,7 @@ public class GUIHandler {
     private DashboardUI dashboardUI;
     private WithdrawUI withdrawUI;
     private DepositUI depositUI;
+    private BalanceUI balanceUI;
 
     // constructor
     public GUIHandler() {
@@ -154,6 +156,7 @@ public class GUIHandler {
                 dashboardUI.setFrameVisibility();
 
                 // display menuOption's ui
+                balanceUI.setFrameVisibility();
             }
         });
         dashboardUI.checkDetailsOptionEvent(new ActionListener() {
@@ -206,6 +209,21 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("deposit");
+            }
+        });
+    }
+
+
+    // handle balance screen
+    public void handleBalance(double balance) {
+        balanceUI = new BalanceUI();
+        balanceUI.setBalance(balance);
+
+        // add functionality to withdraw btns
+        balanceUI.backEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("back");
             }
         });
     }
