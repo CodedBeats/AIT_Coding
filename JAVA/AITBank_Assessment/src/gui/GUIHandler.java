@@ -61,7 +61,14 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // create cheque account
-                chequeAccount = new ChequeAccount(rand.generateRandomInt(200, 1000), 1, rand.generateRandomName(), "cheque", 7777, false);
+                chequeAccount = new ChequeAccount(
+                    rand.generateRandomInt(200, 1000), 
+                    1, 
+                    rand.generateRandomName(), 
+                    "cheque", 
+                    7777, 
+                    false
+                );
                 accType = chequeAccount.getAccType();
                 accPIN = chequeAccount.getAccPIN();
                 accName = chequeAccount.getAccName();
@@ -78,7 +85,15 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // create fixed account
-                fixedAccount = new FixedAccount(rand.generateRandomInt(200, 1000), 2, rand.generateRandomName(), "fixed", 5555, false, 20);
+                fixedAccount = new FixedAccount(
+                    rand.generateRandomInt(200, 1000), 
+                    2, 
+                    rand.generateRandomName(), 
+                    "fixed", 
+                    5555, 
+                    false, 
+                    20
+                );
                 accType = fixedAccount.getAccType();
                 accPIN = fixedAccount.getAccPIN();
                 accName = fixedAccount.getAccName();
@@ -95,7 +110,16 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // create Net-Saver account
-                netSaverAccount = new NetSaverAccount(rand.generateRandomInt(200, 1000), 3, rand.generateRandomName(), "netSaver", 2020, 150, 0, true);
+                netSaverAccount = new NetSaverAccount(
+                    rand.generateRandomInt(200, 1000), 
+                    3, 
+                    rand.generateRandomName(), 
+                    "netSaver", 
+                    2020, 
+                    150, 
+                    0, 
+                    true
+                );
                 accType = netSaverAccount.getAccType();
                 accPIN = netSaverAccount.getAccPIN();
                 accName = netSaverAccount.getAccName();
@@ -113,7 +137,16 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // create savings account
-                savingsAccount = new SavingsAccount(rand.generateRandomInt(200, 1000), 4, rand.generateRandomName(), "savings", 1234, 50, 0, true);
+                savingsAccount = new SavingsAccount(
+                    rand.generateRandomInt(200, 1000), 
+                    4, 
+                    rand.generateRandomName(), 
+                    "savings", 
+                    1234, 
+                    50, 
+                    0, 
+                    true
+                );
                 accType = savingsAccount.getAccType();
                 accPIN = savingsAccount.getAccPIN();
                 accName = savingsAccount.getAccName();
@@ -186,7 +219,7 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuOption's ui
+                // display balance ui
                 handleBalanceUI();
                 balanceUI.setFrameVisibility();
             }
@@ -197,7 +230,7 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuOption's ui
+                // display account details
                 accountDetailsUI = new AccountDetailsUI(accType);
                 handleAccountDetailsUI();
                 accountDetailsUI.setFrameVisibility();
@@ -210,7 +243,7 @@ public class GUIHandler {
     public void handleWithdrawUI() {
         withdrawUI = new WithdrawUI();
 
-        // add functionality to withdraw btns
+        // back to dashboard btn
         withdrawUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -220,6 +253,7 @@ public class GUIHandler {
                 dashboardUI.setFrameVisibility();
             }
         });
+        // handle withdraw
         withdrawUI.withdrawEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -233,7 +267,7 @@ public class GUIHandler {
     public void handleDepositUI() {
         depositUI = new DepositUI();
 
-        // add functionality to deposit btns
+        // back to dashboard btn
         depositUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -243,6 +277,7 @@ public class GUIHandler {
                 dashboardUI.setFrameVisibility();
             }
         });
+        // handle deposit
         depositUI.depositEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -258,7 +293,7 @@ public class GUIHandler {
 
         balanceUI.setBalance(accBalance);
 
-        // add functionality to balance btns
+        // back to dashboard btn
         balanceUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -273,7 +308,51 @@ public class GUIHandler {
 
     // handle account details screen
     public void handleAccountDetailsUI() {
-        // add functionality to account details btns
+        // populate data fields
+        switch (accType) {
+            case "cheque":
+                accountDetailsUI.setAccountDetailValues(
+                    chequeAccount.getHasChequeBook(), 
+                    false, 
+                    0, 
+                    0, 
+                    0, 
+                    false
+                );
+                break;
+            case "fixed":
+                accountDetailsUI.setAccountDetailValues(
+                    false, 
+                    fixedAccount.getEarlyWithdrawl(), 
+                    fixedAccount.getInterestRate(), 
+                    0, 
+                    0, 
+                    false
+                );
+                break;
+            case "netSaver":
+                accountDetailsUI.setAccountDetailValues(
+                    false, 
+                    false, 
+                    netSaverAccount.getInterestRate(), 
+                    netSaverAccount.getDailyWithdrawLimit(), 
+                    netSaverAccount.getDailyWithdrawed(), 
+                    netSaverAccount.getCanWithdraw()
+                );
+                break;
+            case "savings":
+                accountDetailsUI.setAccountDetailValues(
+                    false, 
+                    false, 
+                    savingsAccount.getInterestRate(), 
+                    savingsAccount.getDailyWithdrawLimit(), 
+                    savingsAccount.getDailyWithdrawed(), 
+                    savingsAccount.getCanWithdraw()
+                );
+                break;
+        }
+
+        // back to dashboard btn
         accountDetailsUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -283,12 +362,5 @@ public class GUIHandler {
                 dashboardUI.setFrameVisibility();
             }
         });
-    }
-
-
-    // just for testing purposes
-    public static void main(String[] args) {
-
-
     }
 }

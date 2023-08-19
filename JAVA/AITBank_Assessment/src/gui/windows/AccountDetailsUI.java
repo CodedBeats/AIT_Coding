@@ -2,15 +2,11 @@ package gui.windows;
 
 // import libraries
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class AccountDetailsUI extends WindowUI {
     // class attributes
@@ -124,7 +120,7 @@ public class AccountDetailsUI extends WindowUI {
             dailyWithdrawalLimitLabel = new JLabel("Daily Withdrawal Limit:");
             dailyWithdrawedLabel = new JLabel("Daily Withdrawed:");
             canWithdrawLabel = new JLabel("Can Withdraw:");
-            interestRateLabel = new JLabel("Interest Rate:");
+            interestRateLabel = new JLabel("Interest Rate per month:");
             // add labels to acc type frame
             accountTypeDetailsPanel.add(dailyWithdrawalLimitLabel);
             accountTypeDetailsPanel.add(dailyWithdrawedLabel);
@@ -161,7 +157,23 @@ public class AccountDetailsUI extends WindowUI {
     }
 
     // set field values
-    public void setAccountDetailValues(boolean hasChequeBook, boolean earlyWithdrawl, String interestRate, double dailyWithdrawlLimit, double dailyWithdrawed, boolean canWithdraw) {
-
+    public void setAccountDetailValues(boolean hasChequeBook, boolean earlyWithdrawl, double interestRate, double dailyWithdrawlLimit, double dailyWithdrawed, boolean canWithdraw) {
+        if (accType == "cheque") {
+            // add passed values to text fields
+            hasChequeBookLabel.setText(hasChequeBookLabel.getText() + "    " + hasChequeBook);
+        }
+        else if (accType == "fixed") {
+            // add passed values to text fields
+            earlyWithdrawalLabel.setText(earlyWithdrawalLabel.getText() + "    " + earlyWithdrawl);
+            interestRateLabel.setText(interestRateLabel.getText() + "    " + interestRate);
+        }
+        // both netSaver and savings gave the same fields
+        else {
+            // add passed values to text fields
+            interestRateLabel.setText(interestRateLabel.getText() + "    " + interestRate);
+            dailyWithdrawalLimitLabel.setText(dailyWithdrawalLimitLabel.getText() + "    " + dailyWithdrawlLimit);
+            dailyWithdrawedLabel.setText(dailyWithdrawedLabel.getText() + "    " + dailyWithdrawed);
+            canWithdrawLabel.setText(canWithdrawLabel.getText() + "    " + canWithdraw);
+        }
     }
 }
