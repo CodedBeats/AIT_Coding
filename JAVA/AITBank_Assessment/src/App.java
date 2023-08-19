@@ -18,5 +18,6 @@ public class App {
         GUIHandler guiHandler = new GUIHandler();
         guiHandler.handleHomeUI();
         guiHandler.handleLogin(acc.getAccPIN());
+        guiHandler.handleDashbaord(acc.getAccName());
     }
 }

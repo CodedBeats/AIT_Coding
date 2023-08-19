@@ -2,6 +2,7 @@ package gui;
 
 // import classes
 import gui.reusable_components.KeypadPanel;
+import gui.windows.DashboardUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
 
@@ -15,6 +16,7 @@ import java.awt.event.ActionListener;
 public class GUIHandler {
     // handler attributes
     String accountType;
+    String menuOption;
 
     // constructor
     public GUIHandler() {
@@ -84,8 +86,50 @@ public class GUIHandler {
 
 
     // handle dashbaord screen
-    public void handleDashbaord() {
+    public void handleDashbaord(String accName) {
+        DashboardUI dashboardUI = new DashboardUI(accName);
 
+        // add functionality to dashboard menu btns (perhaps an unconventional way to do this but it makes sense to me)
+        dashboardUI.withdrawEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // set menuOption
+                menuOption = "withdraw";
+                System.out.println(menuOption);
+                // hide window
+                dashboardUI.setFrameVisibility();
+            }
+        });
+        dashboardUI.depositEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // set menuOption
+                menuOption = "deposit";
+                System.out.println(menuOption);
+                // hide window
+                dashboardUI.setFrameVisibility();
+            }
+        });
+        dashboardUI.checkBalanceEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // set menuOption
+                menuOption = "checkBalance";
+                System.out.println(menuOption);
+                // hide window
+                dashboardUI.setFrameVisibility();
+            }
+        });
+        dashboardUI.checkDetailsEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // set menuOption
+                menuOption = "checkDetails";
+                System.out.println(menuOption);
+                // hide window
+                dashboardUI.setFrameVisibility();
+            }
+        });
     }
 
 
