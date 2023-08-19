@@ -27,7 +27,7 @@ public class GUIHandler {
         HomeUI homeUI = new HomeUI();
         
         // add functionality to home card type btns (perhaps an unconventional way to do this but it makes sense to me)
-        homeUI.addChequeCardBtnListener(new ActionListener() {
+        homeUI.chequeCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "cheque";
@@ -35,7 +35,7 @@ public class GUIHandler {
                 System.out.println(accountType);
             }
         });
-        homeUI.addFixedCardBtnListener(new ActionListener() {
+        homeUI.fixedCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "fixed";
@@ -43,7 +43,7 @@ public class GUIHandler {
                 System.out.println(accountType);
             }
         });
-        homeUI.addNetSaverCardBtnListener(new ActionListener() {
+        homeUI.netSaverCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "netSaver";
@@ -51,7 +51,7 @@ public class GUIHandler {
                 System.out.println(accountType);
             }
         });
-        homeUI.addSavingsCardBtnListener(new ActionListener() {
+        homeUI.savingsCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "savings";
@@ -80,6 +80,12 @@ public class GUIHandler {
                 }
             }
         });
+    }
+
+
+    // handle dashbaord screen
+    public void handleDashbaord() {
+
     }
 
 

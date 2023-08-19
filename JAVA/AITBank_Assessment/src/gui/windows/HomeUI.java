@@ -94,16 +94,16 @@ public class HomeUI {
     }
 
     // button action listeners for outside implementation
-    public void addChequeCardBtnListener(ActionListener listener) {
+    public void chequeCardEvent(ActionListener listener) {
         enterChequeCardBtn.addActionListener(listener);
     }
-    public void addFixedCardBtnListener(ActionListener listener) {
+    public void fixedCardEvent(ActionListener listener) {
         enterFixedCardBtn.addActionListener(listener);
     }
-    public void addNetSaverCardBtnListener(ActionListener listener) {
+    public void netSaverCardEvent(ActionListener listener) {
         enterNetSaverCardBtn.addActionListener(listener);
     }
-    public void addSavingsCardBtnListener(ActionListener listener) {
+    public void savingsCardEvent(ActionListener listener) {
         enterSavingsCardBtn.addActionListener(listener);
     }
 
