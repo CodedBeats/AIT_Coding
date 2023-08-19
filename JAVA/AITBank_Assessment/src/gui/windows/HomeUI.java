@@ -6,14 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class HomeUI {
-    // init JFrame
+    // init JFrame elements
     private JFrame frame;
-    // panel
     private JPanel panel;
-    // labels
     private JLabel welcomeLabel;
     private JLabel promptLabel;
-    // buttons
     private JButton enterChequeCardBtn;
     private JButton enterFixedCardBtn;
     private JButton enterNetSaverCardBtn;

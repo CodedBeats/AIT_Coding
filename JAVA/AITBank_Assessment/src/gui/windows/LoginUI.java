@@ -9,17 +9,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginUI {
-    // init JFrame
+    // init JFrame elements
     private JFrame frame;
-    // label 
     private JLabel promptLabel;
-    // keypad
     private KeypadPanel keypadPanel;
-    // err message and submit btn panel
     private JPanel bottomPanel;
-    // err message text field
     private JTextField errMessageField;
-    // submit btn
     private JPanel buttonPanel;
     private JButton submitBtn;
     
