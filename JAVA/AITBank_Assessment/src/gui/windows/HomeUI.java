@@ -105,7 +105,14 @@ public class HomeUI {
     }
 
     // set frame visibility
-    public void hideWindow() {
-        frame.setVisible(false);
+    public void setFrameVisibility() {
+        // set frame visible if it's hidden
+        if (!frame.isShowing()) {
+            frame.setVisible(true);
+        }
+        // hide frame
+        else {
+            frame.setVisible(false);
+        }
     }
 }

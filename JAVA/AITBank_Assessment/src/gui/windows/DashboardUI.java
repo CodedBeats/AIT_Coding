@@ -42,7 +42,7 @@ public class DashboardUI {
         frame.add(buttonPanel);
 
         // set frame visible
-        frame.setVisible(true);
+        frame.setVisible(false);
     }
 
     // button action listeners for outside implementation

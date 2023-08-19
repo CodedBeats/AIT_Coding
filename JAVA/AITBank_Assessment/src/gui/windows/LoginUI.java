@@ -53,7 +53,7 @@ public class LoginUI {
         // Add combined panel to the SOUTH position
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
-        frame.setVisible(true);
+        frame.setVisible(false);
     }
 
     // button action listeners for outside implementation
@@ -92,7 +92,14 @@ public class LoginUI {
     }
 
     // set frame visibility
-    public void hideWindow() {
-        frame.setVisible(false);
+    public void setFrameVisibility() {
+        // set frame visible if it's hidden
+        if (!frame.isShowing()) {
+            frame.setVisible(true);
+        }
+        // hide frame
+        else {
+            frame.setVisible(false);
+        }
     }
 }

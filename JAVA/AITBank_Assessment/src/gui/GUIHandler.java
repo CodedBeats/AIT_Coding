@@ -18,6 +18,11 @@ public class GUIHandler {
     String accountType;
     String menuOption;
 
+    // init ui windows
+    private HomeUI homeUI;
+    private LoginUI loginUI;
+    private DashboardUI dashboardUI;
+
     // constructor
     public GUIHandler() {
 
@@ -26,39 +31,55 @@ public class GUIHandler {
 
     // handle home screen
     public void handleHomeUI() {
-        HomeUI homeUI = new HomeUI();
+        homeUI = new HomeUI();
         
         // add functionality to home card type btns (perhaps an unconventional way to do this but it makes sense to me)
         homeUI.chequeCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "cheque";
-                homeUI.hideWindow();
+                // hide home ui
+                homeUI.setFrameVisibility();
                 System.out.println(accountType);
+
+                // display login ui
+                loginUI.setFrameVisibility();
             }
         });
         homeUI.fixedCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "fixed";
-                homeUI.hideWindow();
+                // hide home ui
+                homeUI.setFrameVisibility();
                 System.out.println(accountType);
+
+                // display login ui
+                loginUI.setFrameVisibility();
             }
         });
         homeUI.netSaverCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "netSaver";
-                homeUI.hideWindow();
+                // hide home ui
+                homeUI.setFrameVisibility();
                 System.out.println(accountType);
+
+                // display login ui
+                loginUI.setFrameVisibility();
             }
         });
         homeUI.savingsCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "savings";
-                homeUI.hideWindow();
+                // hide home ui
+                homeUI.setFrameVisibility();
                 System.out.println(accountType);
+
+                // display login ui
+                loginUI.setFrameVisibility();
             }
         });
     }
@@ -66,7 +87,7 @@ public class GUIHandler {
 
     // handle login screen
     public void handleLogin(int accPIN) {
-        LoginUI loginUI = new LoginUI();
+        loginUI = new LoginUI();
 
         // add functionality to PIN submit btn
         loginUI.submitPIN(new ActionListener() {
@@ -77,8 +98,11 @@ public class GUIHandler {
                 // verify PIN
                 boolean verified = loginUI.verifyPIN(accPIN, pin);
                 if (verified) {
-                    // hide window
-                    loginUI.hideWindow();
+                    // hide login ui
+                    loginUI.setFrameVisibility();
+
+                    // display dashboard ui
+                    dashboardUI.setFrameVisibility();
                 }
             }
         });
@@ -87,7 +111,7 @@ public class GUIHandler {
 
     // handle dashbaord screen
     public void handleDashbaord(String accName) {
-        DashboardUI dashboardUI = new DashboardUI(accName);
+        dashboardUI = new DashboardUI(accName);
 
         // add functionality to dashboard menu btns (perhaps an unconventional way to do this but it makes sense to me)
         dashboardUI.withdrawEvent(new ActionListener() {
@@ -96,7 +120,7 @@ public class GUIHandler {
                 // set menuOption
                 menuOption = "withdraw";
                 System.out.println(menuOption);
-                // hide window
+                // hide dashboard ui
                 dashboardUI.setFrameVisibility();
             }
         });
@@ -106,7 +130,7 @@ public class GUIHandler {
                 // set menuOption
                 menuOption = "deposit";
                 System.out.println(menuOption);
-                // hide window
+                // hide dashboard ui
                 dashboardUI.setFrameVisibility();
             }
         });
@@ -116,7 +140,7 @@ public class GUIHandler {
                 // set menuOption
                 menuOption = "checkBalance";
                 System.out.println(menuOption);
-                // hide window
+                // hide dashboard ui
                 dashboardUI.setFrameVisibility();
             }
         });
@@ -126,7 +150,7 @@ public class GUIHandler {
                 // set menuOption
                 menuOption = "checkDetails";
                 System.out.println(menuOption);
-                // hide window
+                // hide dashboard ui
                 dashboardUI.setFrameVisibility();
             }
         });
