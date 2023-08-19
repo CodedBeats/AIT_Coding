@@ -22,5 +22,6 @@ public class App {
         guiHandler.handleWithdraw();
         guiHandler.handleDeposit();
         guiHandler.handleBalance(acc.getBalance());
+        guiHandler.handleAccountDetails("cheque");
     }
 }

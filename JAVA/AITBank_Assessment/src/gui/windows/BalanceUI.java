@@ -21,6 +21,7 @@ public class BalanceUI extends WindowUI {
     // override abstract parent method
     @Override
     protected void initComponents() {
+        // set frame layout
         frame.setLayout(new BorderLayout());
 
         JLabel titleLabel = new JLabel("Your Balance");

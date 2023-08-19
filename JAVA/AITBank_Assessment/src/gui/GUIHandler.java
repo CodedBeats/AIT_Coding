@@ -1,24 +1,22 @@
 package gui;
 
 // import classes
-import gui.reusable_components.KeypadPanel;
-import gui.windows.BalanceUI;
 import gui.windows.DashboardUI;
-import gui.windows.DepositUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
 import gui.windows.WithdrawUI;
+import gui.windows.DepositUI;
+import gui.windows.BalanceUI;
+import gui.windows.AccountDetailsUI;
 
 // import libraries
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class GUIHandler {
     // handler attributes
-    String accountType;
+    String accountType = "";
     String menuOption;
 
     // init ui windows
@@ -28,6 +26,7 @@ public class GUIHandler {
     private WithdrawUI withdrawUI;
     private DepositUI depositUI;
     private BalanceUI balanceUI;
+    private AccountDetailsUI accountDetailsUI;
 
     // constructor
     public GUIHandler() {
@@ -169,6 +168,7 @@ public class GUIHandler {
                 dashboardUI.setFrameVisibility();
 
                 // display menuOption's ui
+                accountDetailsUI.setFrameVisibility();
             }
         });
     }
@@ -229,20 +229,16 @@ public class GUIHandler {
     }
 
 
+    // handle account details screen
+    public void handleAccountDetails(String accType) {
+        accountDetailsUI = new AccountDetailsUI(accType);
+        
+    }
+
+
     // just for testing purposes
     public static void main(String[] args) {
 
-        /* ============================================================= */
-        // JFrame frame1 = new JFrame("Frame 1");
-        // frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // frame1.setSize(300, 400);
-        
-        // KeypadPanel keypadPanel = new KeypadPanel(true, false);
-
-        // frame1.add(keypadPanel);
-        
-        // frame1.setVisible(true);
-        /* ============================================================= */
 
     }
 }
