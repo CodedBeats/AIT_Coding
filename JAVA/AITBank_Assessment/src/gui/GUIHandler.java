@@ -3,6 +3,7 @@ package gui;
 // import classes
 import gui.reusable_components.KeypadPanel;
 import gui.windows.DashboardUI;
+import gui.windows.DepositUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
 import gui.windows.WithdrawUI;
@@ -24,6 +25,7 @@ public class GUIHandler {
     private LoginUI loginUI;
     private DashboardUI dashboardUI;
     private WithdrawUI withdrawUI;
+    private DepositUI depositUI;
 
     // constructor
     public GUIHandler() {
@@ -125,7 +127,7 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuUption's ui
+                // display menuOption's ui
                 withdrawUI.setFrameVisibility();
             }
         });
@@ -138,7 +140,8 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuUption's ui
+                // display menuOption's ui
+                depositUI.setFrameVisibility();
             }
         });
         dashboardUI.checkBalanceOptionEvent(new ActionListener() {
@@ -150,7 +153,7 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuUption's ui
+                // display menuOption's ui
             }
         });
         dashboardUI.checkDetailsOptionEvent(new ActionListener() {
@@ -162,7 +165,7 @@ public class GUIHandler {
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
-                // display menuUption's ui
+                // display menuOption's ui
             }
         });
     }
@@ -183,6 +186,26 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("withdraw");
+            }
+        });
+    }
+
+
+    // handle deposit screen
+    public void handleDeposit() {
+        depositUI = new DepositUI();
+
+        // add functionality to withdraw btns
+        depositUI.backEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("back");
+            }
+        });
+        depositUI.depositEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("deposit");
             }
         });
     }

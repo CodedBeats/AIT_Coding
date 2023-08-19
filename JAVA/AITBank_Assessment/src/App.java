@@ -20,5 +20,6 @@ public class App {
         guiHandler.handleLogin(acc.getAccPIN());
         guiHandler.handleDashbaord(acc.getAccName());
         guiHandler.handleWithdraw();
+        guiHandler.handleDeposit();
     }
 }

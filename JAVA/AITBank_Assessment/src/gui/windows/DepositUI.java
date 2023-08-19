@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class WithdrawUI extends WindowUI {
+public class DepositUI extends WindowUI {
     // init JFrame elements
     private JLabel promptLabel;
     private KeypadPanel keypadPanel;
@@ -16,11 +16,11 @@ public class WithdrawUI extends WindowUI {
     private JPanel buttonPanel;
     private JTextField errMessageField;
     private JButton backBtn;
-    private JButton withdrawBtn;
+    private JButton depositBtn;
 
     // constructor 
-    public WithdrawUI() {
-        super("Withdraw", 400, 500);
+    public DepositUI() {
+        super("Deposit", 400, 500);
         // add content to frame
         initComponents();
     }
@@ -32,7 +32,7 @@ public class WithdrawUI extends WindowUI {
         frame.setLayout(new BorderLayout());
 
         // Prompt label
-        promptLabel = new JLabel("Enter amount to withdraw");
+        promptLabel = new JLabel("Enter amount to deposit");
         promptLabel.setHorizontalAlignment(JLabel.CENTER);
         frame.add(promptLabel, BorderLayout.NORTH);
 
@@ -55,9 +55,9 @@ public class WithdrawUI extends WindowUI {
         // back to dashboard btn
         backBtn = new JButton("<- Back");
         // withdraw btn
-        withdrawBtn = new JButton("Withdraw");
+        depositBtn = new JButton("Deposit");
         buttonPanel.add(backBtn);
-        buttonPanel.add(withdrawBtn);
+        buttonPanel.add(depositBtn);
         bottomPanel.add(buttonPanel, BorderLayout.CENTER);
 
         // Add combined panel to the SOUTH position
@@ -70,7 +70,7 @@ public class WithdrawUI extends WindowUI {
     public void backEvent(ActionListener listener) {
         backBtn.addActionListener(listener);
     }
-    public void withdrawEvent(ActionListener listener) {
-        withdrawBtn.addActionListener(listener);
+    public void depositEvent(ActionListener listener) {
+        depositBtn.addActionListener(listener);
     }
 }
