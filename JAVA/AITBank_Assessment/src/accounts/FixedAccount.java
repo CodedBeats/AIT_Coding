@@ -72,4 +72,12 @@ public class FixedAccount extends Account {
             JOptionPane.showMessageDialog(null, "Account Balance after interest: $" + balance);
         }
     }
+
+    // getters
+    public boolean getEarlyWithdrawl() {
+        return earlyWithdrawl;
+    }
+    public double getInterestRate() {
+        return interestRate;
+    }
 }

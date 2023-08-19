@@ -91,4 +91,18 @@ public class SavingsAccount extends Account {
         }
         // no need for an else becuase default value is true
     }
+
+    // getters
+    public double getInterestRate() {
+        return interestRate;
+    }
+    public double getDailyWithdrawLimit() {
+        return dailyWithdrawLimit;
+    }
+    public double getDailyWithdrawed() {
+        return dailyWithdrawed;
+    }
+    public boolean getCanWithdraw() {
+        return canWithdraw;
+    }
 }

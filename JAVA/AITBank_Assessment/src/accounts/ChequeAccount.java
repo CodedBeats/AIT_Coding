@@ -66,4 +66,9 @@ public class ChequeAccount extends Account {
             }
         }
     }
+
+    // getters
+    public boolean getHasChequeBook() {
+        return hasChequeBook;
+    }
 }
