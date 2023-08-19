@@ -8,9 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class LoginUI {
+public class LoginUI extends WindowUI {
     // init JFrame elements
-    private JFrame frame;
     private JLabel promptLabel;
     private KeypadPanel keypadPanel;
     private JPanel bottomPanel;
@@ -20,9 +19,15 @@ public class LoginUI {
     
     // constructor 
     public LoginUI() {
-        frame = new JFrame("Password Screen");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        super("Login", 400, 500);
+        // add content to frame
+        initComponents();
+    }
+
+    // override abstract parent method
+    @Override
+    protected void initComponents() {
+        // set frame layout
         frame.setLayout(new BorderLayout());
 
         // Prompt label

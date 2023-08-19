@@ -5,9 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class HomeUI {
+public class HomeUI extends WindowUI {
     // init JFrame elements
-    private JFrame frame;
     private JPanel panel;
     private JLabel welcomeLabel;
     private JLabel promptLabel;
@@ -18,12 +17,15 @@ public class HomeUI {
 
     // constructor
     public HomeUI() {
-        // create frame
-        frame = new JFrame("Home Screen");
-        // close on x
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super("Home", 700, 200);
+        // add content to frame
+        initComponents();
+    }
+
+    // override abstract parent method
+    @Override
+    protected void initComponents() {
         // set frame style
-        frame.setSize(700, 300);
         frame.getContentPane().setBackground(Color.WHITE);
 
         // put everything on a pannel

@@ -5,9 +5,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class DashboardUI {
+public class DashboardUI extends WindowUI {
+    // class attributes
+    private String accName;
+
     // init JFrame elements
-    private JFrame frame;
     private JLabel welcomeLabel;
     private JPanel buttonPanel;
     private JButton withdrawbtn;
@@ -15,11 +17,18 @@ public class DashboardUI {
     private JButton checkBalancebtn;
     private JButton checkDetailsbtn;
 
+    // constructor
     public DashboardUI(String accName) {
-        // Create JFrame
-        frame = new JFrame("Dashboard");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        super("Dashboard", 400, 200);
+        this.accName = accName;
+        // add content to frame
+        initComponents();
+    }
+
+    // override abstract parent method 
+    @Override
+    protected void initComponents() {
+        // set frame layout
         frame.setLayout(new GridLayout(2, 2)); // 2 rows, 2 columns
 
         // set up welcome label
