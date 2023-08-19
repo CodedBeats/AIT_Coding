@@ -182,7 +182,10 @@ public class GUIHandler {
         withdrawUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("back");
+                // hide window
+                withdrawUI.setFrameVisibility();
+                // display dashboard
+                dashboardUI.setFrameVisibility();
             }
         });
         withdrawUI.withdrawEvent(new ActionListener() {
@@ -198,11 +201,14 @@ public class GUIHandler {
     public void handleDeposit() {
         depositUI = new DepositUI();
 
-        // add functionality to withdraw btns
+        // add functionality to deposit btns
         depositUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("back");
+                // hide window
+                depositUI.setFrameVisibility();
+                // display dashboard
+                dashboardUI.setFrameVisibility();
             }
         });
         depositUI.depositEvent(new ActionListener() {
@@ -219,11 +225,14 @@ public class GUIHandler {
         balanceUI = new BalanceUI();
         balanceUI.setBalance(balance);
 
-        // add functionality to withdraw btns
+        // add functionality to balance btns
         balanceUI.backEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("back");
+                // hide window
+                balanceUI.setFrameVisibility();
+                // display dashboard
+                dashboardUI.setFrameVisibility();
             }
         });
     }
@@ -233,6 +242,16 @@ public class GUIHandler {
     public void handleAccountDetails(String accType) {
         accountDetailsUI = new AccountDetailsUI(accType);
         
+        // add functionality to account details btns
+        accountDetailsUI.backEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // hide window
+                accountDetailsUI.setFrameVisibility();
+                // display dashboard
+                dashboardUI.setFrameVisibility();
+            }
+        });
     }
 
 
