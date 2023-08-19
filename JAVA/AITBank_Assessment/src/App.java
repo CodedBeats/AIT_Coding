@@ -12,8 +12,8 @@ import gui.GUIHandler;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // create test account
-        SavingsAccount acc = new SavingsAccount(100, 1, "Luca", null, "savings", 1234, 50, 0, true);
+        // create differet type accounts
+        SavingsAccount acc = new SavingsAccount(100, 1, "Luca", "savings", 1234, 50, 0, true);
 
         GUIHandler guiHandler = new GUIHandler();
         guiHandler.handleHomeUI();

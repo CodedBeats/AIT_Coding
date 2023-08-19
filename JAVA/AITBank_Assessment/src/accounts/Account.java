@@ -7,17 +7,15 @@ public abstract class Account {
     protected float balance;
     protected int accountNumber;
     protected String accountName;
-    protected String[] transactionHistory;
     protected String accountType;
     protected int accountPIN;
 
 
     // constructor
-    public Account(float balance, int accountNumber, String accountName, String[] transactionHistory, String accountType, int accountPIN) {
+    public Account(float balance, int accountNumber, String accountName, String accountType, int accountPIN) {
         this.balance = balance;
         this.accountNumber = accountNumber;
         this.accountName = accountName;
-        this.transactionHistory = transactionHistory;
         this.accountType = accountType;
         this.accountPIN = accountPIN;
     }
@@ -48,12 +46,6 @@ public abstract class Account {
 
     public String getAccName() {
         return accountName;
-    }
-
-    public void getTransactionHistory() {
-        for (int i = 0; i < transactionHistory.length; i++) {
-            System.out.println(transactionHistory[i]);
-        }
     }
 
     public String getAccType() {

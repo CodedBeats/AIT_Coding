@@ -7,8 +7,8 @@ public class ChequeAccount extends Account {
 
 
     // constructor
-    public ChequeAccount(float balance, int accountNumber, String accountName, String[] transactionHistory, String accountType, int accountPIN, boolean hasChequeBook) {
-        super(balance, accountNumber, accountName, transactionHistory, accountType, accountPIN);
+    public ChequeAccount(float balance, int accountNumber, String accountName, String accountType, int accountPIN, boolean hasChequeBook) {
+        super(balance, accountNumber, accountName, accountType, accountPIN);
 
         this.hasChequeBook = hasChequeBook;
     }

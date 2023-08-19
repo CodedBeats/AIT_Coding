@@ -10,8 +10,8 @@ public class SavingsAccount extends Account {
 
 
     // constructor
-    public SavingsAccount(float balance, int accountNumber, String accountName, String transactionHistory[], String accountType, int accountPIN, float dailyWithdrawLimit, float dailyWithdrawed, boolean canWithdraw) {
-        super(balance, accountNumber, accountName, transactionHistory, accountType, accountPIN);
+    public SavingsAccount(float balance, int accountNumber, String accountName, String accountType, int accountPIN, float dailyWithdrawLimit, float dailyWithdrawed, boolean canWithdraw) {
+        super(balance, accountNumber, accountName, accountType, accountPIN);
 
         this.dailyWithdrawLimit = dailyWithdrawLimit;
         this.dailyWithdrawed = dailyWithdrawed;
