@@ -7,21 +7,19 @@
 *    1. 
 */
 
-import accounts.SavingsAccount;
+
+// import gui
 import gui.GUIHandler;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // create differet type accounts
-        SavingsAccount acc = new SavingsAccount(100, 1, "Luca", "savings", 1234, 50, 0, true);
-
+        // create gui handler
         GUIHandler guiHandler = new GUIHandler();
+        // handle each ui window
         guiHandler.handleHomeUI();
-        guiHandler.handleLogin(acc.getAccPIN());
-        guiHandler.handleDashbaord(acc.getAccName());
-        guiHandler.handleWithdraw();
-        guiHandler.handleDeposit();
-        guiHandler.handleBalance(acc.getBalance());
-        guiHandler.handleAccountDetails("cheque");
+        guiHandler.handleLoginUI();
+        guiHandler.handleDashbaordUI();
+        guiHandler.handleWithdrawUI();
+        guiHandler.handleDepositUI();
     }
 }

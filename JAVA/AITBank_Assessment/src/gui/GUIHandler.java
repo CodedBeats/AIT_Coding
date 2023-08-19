@@ -1,23 +1,38 @@
 package gui;
 
-// import classes
+// import gui classes
 import gui.windows.DashboardUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
 import gui.windows.WithdrawUI;
+import misc.RandGenerator;
 import gui.windows.DepositUI;
 import gui.windows.BalanceUI;
 import gui.windows.AccountDetailsUI;
+//import account classes
+import accounts.ChequeAccount;
+import accounts.FixedAccount;
+import accounts.NetSaverAccount;
+import accounts.SavingsAccount;
 
 // import libraries
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+
 public class GUIHandler {
+    // init accounts
+    protected ChequeAccount chequeAccount;
+    protected FixedAccount fixedAccount;
+    protected NetSaverAccount netSaverAccount;
+    protected SavingsAccount savingsAccount;
+
     // handler attributes
-    String accountType = "";
-    String menuOption;
+    private String accType;
+    private int accPIN;
+    private String accName;
+    private double accBalance;
 
     // init ui windows
     private HomeUI homeUI;
@@ -27,6 +42,9 @@ public class GUIHandler {
     private DepositUI depositUI;
     private BalanceUI balanceUI;
     private AccountDetailsUI accountDetailsUI;
+
+    // init randGenerator
+    private RandGenerator rand = new RandGenerator();
 
     // constructor
     public GUIHandler() {
@@ -42,10 +60,15 @@ public class GUIHandler {
         homeUI.chequeCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                accountType = "cheque";
+                // create cheque account
+                chequeAccount = new ChequeAccount(rand.generateRandomInt(200, 1000), 1, rand.generateRandomName(), "cheque", 7777, false);
+                accType = chequeAccount.getAccType();
+                accPIN = chequeAccount.getAccPIN();
+                accName = chequeAccount.getAccName();
+                accBalance = chequeAccount.getBalance();
+                
                 // hide home ui
                 homeUI.setFrameVisibility();
-                System.out.println(accountType);
 
                 // display login ui
                 loginUI.setFrameVisibility();
@@ -54,10 +77,15 @@ public class GUIHandler {
         homeUI.fixedCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                accountType = "fixed";
+                // create fixed account
+                fixedAccount = new FixedAccount(rand.generateRandomInt(200, 1000), 2, rand.generateRandomName(), "fixed", 5555, false, 20);
+                accType = fixedAccount.getAccType();
+                accPIN = fixedAccount.getAccPIN();
+                accName = fixedAccount.getAccName();
+                accBalance = fixedAccount.getBalance();
+                
                 // hide home ui
                 homeUI.setFrameVisibility();
-                System.out.println(accountType);
 
                 // display login ui
                 loginUI.setFrameVisibility();
@@ -66,10 +94,16 @@ public class GUIHandler {
         homeUI.netSaverCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                accountType = "netSaver";
+                // create Net-Saver account
+                netSaverAccount = new NetSaverAccount(rand.generateRandomInt(200, 1000), 3, rand.generateRandomName(), "netSaver", 2020, 150, 0, true);
+                accType = netSaverAccount.getAccType();
+                accPIN = netSaverAccount.getAccPIN();
+                accName = netSaverAccount.getAccName();
+                accBalance = netSaverAccount.getBalance();
+                
+                
                 // hide home ui
                 homeUI.setFrameVisibility();
-                System.out.println(accountType);
 
                 // display login ui
                 loginUI.setFrameVisibility();
@@ -78,10 +112,16 @@ public class GUIHandler {
         homeUI.savingsCardEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                accountType = "savings";
+                // create savings account
+                savingsAccount = new SavingsAccount(rand.generateRandomInt(200, 1000), 4, rand.generateRandomName(), "savings", 1234, 50, 0, true);
+                accType = savingsAccount.getAccType();
+                accPIN = savingsAccount.getAccPIN();
+                accName = savingsAccount.getAccName();
+                accBalance = savingsAccount.getBalance();
+                
+                
                 // hide home ui
                 homeUI.setFrameVisibility();
-                System.out.println(accountType);
 
                 // display login ui
                 loginUI.setFrameVisibility();
@@ -91,7 +131,7 @@ public class GUIHandler {
 
 
     // handle login screen
-    public void handleLogin(int accPIN) {
+    public void handleLoginUI() {
         loginUI = new LoginUI();
 
         // add functionality to PIN submit btn
@@ -115,16 +155,14 @@ public class GUIHandler {
 
 
     // handle dashbaord screen
-    public void handleDashbaord(String accName) {
+    public void handleDashbaordUI() {
+
         dashboardUI = new DashboardUI(accName);
 
         // add functionality to dashboard menu btns
         dashboardUI.withdrawOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // set menuOption
-                menuOption = "withdraw";
-                System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
@@ -135,9 +173,6 @@ public class GUIHandler {
         dashboardUI.depositOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // set menuOption
-                menuOption = "deposit";
-                System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
@@ -148,26 +183,23 @@ public class GUIHandler {
         dashboardUI.checkBalanceOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // set menuOption
-                menuOption = "checkBalance";
-                System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
                 // display menuOption's ui
+                handleBalanceUI();
                 balanceUI.setFrameVisibility();
             }
         });
         dashboardUI.checkDetailsOptionEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // set menuOption
-                menuOption = "checkDetails";
-                System.out.println(menuOption);
                 // hide dashboard ui
                 dashboardUI.setFrameVisibility();
 
                 // display menuOption's ui
+                accountDetailsUI = new AccountDetailsUI(accType);
+                handleAccountDetailsUI();
                 accountDetailsUI.setFrameVisibility();
             }
         });
@@ -175,7 +207,7 @@ public class GUIHandler {
 
 
     // handle withdraw screen
-    public void handleWithdraw() {
+    public void handleWithdrawUI() {
         withdrawUI = new WithdrawUI();
 
         // add functionality to withdraw btns
@@ -191,14 +223,14 @@ public class GUIHandler {
         withdrawUI.withdrawEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("withdraw");
+                //
             }
         });
     }
 
 
     // handle deposit screen
-    public void handleDeposit() {
+    public void handleDepositUI() {
         depositUI = new DepositUI();
 
         // add functionality to deposit btns
@@ -214,16 +246,17 @@ public class GUIHandler {
         depositUI.depositEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("deposit");
+                //
             }
         });
     }
 
 
     // handle balance screen
-    public void handleBalance(double balance) {
+    public void handleBalanceUI() {
         balanceUI = new BalanceUI();
-        balanceUI.setBalance(balance);
+
+        balanceUI.setBalance(accBalance);
 
         // add functionality to balance btns
         balanceUI.backEvent(new ActionListener() {
@@ -239,9 +272,7 @@ public class GUIHandler {
 
 
     // handle account details screen
-    public void handleAccountDetails(String accType) {
-        accountDetailsUI = new AccountDetailsUI(accType);
-        
+    public void handleAccountDetailsUI() {
         // add functionality to account details btns
         accountDetailsUI.backEvent(new ActionListener() {
             @Override
