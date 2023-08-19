@@ -107,8 +107,8 @@ public class HomeUI {
         enterSavingsCardBtn.addActionListener(listener);
     }
 
-    // close window
-    public void closeWindow() {
-        frame.dispose();
+    // set frame visibility
+    public void hideWindow() {
+        frame.setVisible(false);
     }
 }

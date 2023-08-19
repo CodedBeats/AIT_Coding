@@ -15,8 +15,10 @@ public class LoginUI {
     private JLabel promptLabel;
     // keypad
     private KeypadPanel keypadPanel;
-    // error message text field
-    private JTextField errorMessageField;
+    // err message and submit btn panel
+    private JPanel bottomPanel;
+    // err message text field
+    private JTextField errMessageField;
     // submit btn
     private JPanel buttonPanel;
     private JButton submitBtn;
@@ -37,18 +39,24 @@ public class LoginUI {
         keypadPanel = new KeypadPanel(false, true);
         frame.add(keypadPanel, BorderLayout.CENTER);
 
-        // Error message text field
-        errorMessageField = new JTextField();
-        errorMessageField.setEditable(false);
-        errorMessageField.setForeground(Color.RED);
-        errorMessageField.setHorizontalAlignment(JTextField.CENTER);
-        frame.add(errorMessageField, BorderLayout.SOUTH);
+        // Combined panel for error message field and button
+        bottomPanel = new JPanel(new BorderLayout());
 
-        // submit btn panel
-        buttonPanel = new JPanel(new BorderLayout());
+        // Err message text field
+        errMessageField = new JTextField();
+        errMessageField.setEditable(false);
+        errMessageField.setForeground(Color.RED);
+        errMessageField.setHorizontalAlignment(JTextField.CENTER);
+        bottomPanel.add(errMessageField, BorderLayout.NORTH);
+
+        // Submit button
+        buttonPanel = new JPanel(new FlowLayout()); // Use FlowLayout for button alignment
         submitBtn = new JButton("OK");
-        buttonPanel.add(submitBtn, BorderLayout.CENTER);
-        frame.add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.add(submitBtn);
+        bottomPanel.add(buttonPanel, BorderLayout.CENTER);
+
+        // Add combined panel to the SOUTH position
+        frame.add(bottomPanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -64,4 +72,32 @@ public class LoginUI {
     }
 
     // verify PIN
+    public boolean verifyPIN(int accPIN, int pin) {
+        boolean verified = false;
+        // get length of pin
+        int pinLength = String.valueOf(pin).length();
+        
+        // verify if pin is equal to account pin
+        if (pin == accPIN) {
+            verified = true;
+        }
+        // handle different incorrect pin and display unverified message
+        else {
+            // pin less than 4 digits
+            if (pinLength < 4) {
+                errMessageField.setText("PIN must be 4 digits");
+            }
+            // pin not equal to account pin
+            else {
+                errMessageField.setText("Incorrect PIN");
+            }
+        }
+
+        return verified;
+    }
+
+    // set frame visibility
+    public void hideWindow() {
+        frame.setVisible(false);
+    }
 }

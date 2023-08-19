@@ -8,10 +8,10 @@ public class Testing {
     String[] transactionHistory1 = {"Deposit - 110", "Withdraw - 20"};
 
     // ===== Objects Created for multiple tests ===== //
-    ChequeAccount chequeAccount = new ChequeAccount(100, 1, "Luca", null, false);
-    FixedAccount fixedAccount = new FixedAccount(400, 2, "ManEagle", null, true, 30);
-    NetSaverAccount netSaverAccount = new NetSaverAccount(600, 3, "BoyWonder", null, 250, 0, true);
-    SavingsAccount savingsAccount = new SavingsAccount(200, 3, "BoyWonder", transactionHistory1, 200, 0, true);
+    ChequeAccount chequeAccount = new ChequeAccount(100, 1, "Luca", null, "x", 1234, false);
+    FixedAccount fixedAccount = new FixedAccount(400, 2, "ManEagle", null, "x", 1234, true, 30);
+    NetSaverAccount netSaverAccount = new NetSaverAccount(600, 3, "BoyWonder", null, "x", 1234, 250, 0, true);
+    SavingsAccount savingsAccount = new SavingsAccount(200, 3, "BoyWonder", transactionHistory1, "x", 1234, 200, 0, true);
 
     
 
@@ -45,10 +45,10 @@ public class Testing {
         System.out.println("\n=== Test Empty Balance Withdrawl ===");
 
         // create objects with 0 balance just for this test
-        ChequeAccount emptyChequeAccount = new ChequeAccount(0, 1, "Luca", null, false);
-        FixedAccount emptyFixedAccount = new FixedAccount(0, 2, "ManEagle", null, true, 30);
-        NetSaverAccount emptyNetSaverAccount = new NetSaverAccount(0, 3, "BoyWonder", null, 250, 0, true);
-        SavingsAccount emptySavingsAccount = new SavingsAccount(0, 3, "BoyWonder", transactionHistory1, 200, 0, true);
+        ChequeAccount emptyChequeAccount = new ChequeAccount(0, 1, "Luca", null, "x", 1234, false);
+        FixedAccount emptyFixedAccount = new FixedAccount(0, 2, "ManEagle", null, "x", 1234, true, 30);
+        NetSaverAccount emptyNetSaverAccount = new NetSaverAccount(0, 3, "BoyWonder", null, "x", 1234, 250, 0, true);
+        SavingsAccount emptySavingsAccount = new SavingsAccount(0, 3, "BoyWonder", transactionHistory1, "x", 1234, 200, 0, true);
 
         // input any possitive integer value
         emptyChequeAccount.withdraw();
@@ -63,8 +63,8 @@ public class Testing {
         System.out.println("\n=== Test Daily Withdraw Limit on Savings Account and NetSaver Account ===");
 
         // create objects with lower daily withdraw limits just for this test
-        NetSaverAccount limitedNetSaverAccount = new NetSaverAccount(500, 3, "BoyWonder", null, 20, 0, true);
-        SavingsAccount limitedSavingsAccount = new SavingsAccount(500, 3, "BoyWonder", transactionHistory1, 50, 0, true);
+        NetSaverAccount limitedNetSaverAccount = new NetSaverAccount(500, 3, "BoyWonder", null, "x", 1234, 20, 0, true);
+        SavingsAccount limitedSavingsAccount = new SavingsAccount(500, 3, "BoyWonder", transactionHistory1, "x", 1234, 50, 0, true);
 
         // input 20
         limitedNetSaverAccount.withdraw();
@@ -100,8 +100,8 @@ public class Testing {
         System.out.println("\n=== Test Interest calculation on Fixed Account ===");
 
         // create objects with different interestPeriods just for this test
-        FixedAccount interestPeriodFixedAccount1 = new FixedAccount(400, 2, "ManEagle", null, true, 31);
-        FixedAccount interestPeriodFixedAccount2 = new FixedAccount(400, 2, "ManEagle", null, true, 10);
+        FixedAccount interestPeriodFixedAccount1 = new FixedAccount(400, 2, "ManEagle", null, "x", 1234, true, 31);
+        FixedAccount interestPeriodFixedAccount2 = new FixedAccount(400, 2, "ManEagle", null, "x", 1234, true, 10);
 
         interestPeriodFixedAccount1.withdraw();
         interestPeriodFixedAccount1.calcInterest();

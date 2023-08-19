@@ -31,7 +31,7 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "cheque";
-                homeUI.closeWindow();
+                homeUI.hideWindow();
                 System.out.println(accountType);
             }
         });
@@ -39,7 +39,7 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "fixed";
-                homeUI.closeWindow();
+                homeUI.hideWindow();
                 System.out.println(accountType);
             }
         });
@@ -47,7 +47,7 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "netSaver";
-                homeUI.closeWindow();
+                homeUI.hideWindow();
                 System.out.println(accountType);
             }
         });
@@ -55,7 +55,7 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 accountType = "savings";
-                homeUI.closeWindow();
+                homeUI.hideWindow();
                 System.out.println(accountType);
             }
         });
@@ -63,7 +63,7 @@ public class GUIHandler {
 
 
     // handle login screen
-    public void handleLogin() {
+    public void handleLogin(int accPIN) {
         LoginUI loginUI = new LoginUI();
 
         // add functionality to PIN submit btn
@@ -73,7 +73,11 @@ public class GUIHandler {
                 int pin = loginUI.getPIN();
                 System.out.println(pin);
                 // verify PIN
-                // close window
+                boolean verified = loginUI.verifyPIN(accPIN, pin);
+                if (verified) {
+                    // hide window
+                    loginUI.hideWindow();
+                }
             }
         });
     }
