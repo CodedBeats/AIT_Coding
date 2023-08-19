@@ -1,5 +1,8 @@
 package accounts;
-import javax.swing.*; 
+import javax.swing.*;
+
+import exceptions.IncorrectWithdrawAmountException;
+import exceptions.InssuficientBalanceException; 
 
 public class ChequeAccount extends Account {
     // attributes
@@ -16,27 +19,20 @@ public class ChequeAccount extends Account {
 
     // overide abstract methods
     @Override
-    public void withdraw() {
-        // get user input
-        String input = JOptionPane.showInputDialog(null, "How much would you like to Withdraw?\n(100/50/20)");
-
-        // check if user input a valid amount
-        if (Integer.parseInt(input) != 100 && Integer.parseInt(input) != 50 && Integer.parseInt(input) != 20) {
-            JOptionPane.showMessageDialog(null, "You input an invalid amount");
+    public void withdraw(int input) throws IncorrectWithdrawAmountException, InssuficientBalanceException {
+         // check if user input a valid amount
+        if (input != 100 && input != 50 && input != 20) {
+            throw new IncorrectWithdrawAmountException("You input an invalid amount");
         }
         // process withdrawl
         else {
             // check if user has enough to withdraw this amount
-            if (balance - Integer.parseInt(input) < 0) {
-                JOptionPane.showMessageDialog(null, "Your balance insn't high enough to withdraw this amount");
-                return;
+            if (balance - input < 0) {
+                throw new InssuficientBalanceException("Your balance isn't high enough to withdraw this amount");
             }
 
-            // handle withdrawl
             // update balance
-            balance -= Integer.parseInt(input);
-            // show updated balance
-            JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
+            balance -= input;
         }
     }
 

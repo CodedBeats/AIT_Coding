@@ -1,6 +1,9 @@
 package accounts;
 import javax.swing.JOptionPane;
 
+import exceptions.IncorrectWithdrawAmountException;
+import exceptions.InssuficientBalanceException;
+
 public class FixedAccount extends Account {
     // attributes
     private boolean earlyWithdrawl = false;
@@ -20,33 +23,25 @@ public class FixedAccount extends Account {
 
     // overide abstract methods
     @Override
-    public void withdraw() {
-        // get user input
-        String input = JOptionPane.showInputDialog(null, "How much would you like to Withdraw?\n(100/50/20)");
-
+    public void withdraw(int input) throws IncorrectWithdrawAmountException, InssuficientBalanceException {
         // check if user input a valid amount
-        if (Integer.parseInt(input) != 100 && Integer.parseInt(input) != 50 && Integer.parseInt(input) != 20) {
-            JOptionPane.showMessageDialog(null, "You input an invalid amount");
+        if (input != 100 && input != 50 && input != 20) {
+            throw new IncorrectWithdrawAmountException("You input an invalid amount");
         }
         // process withdrawl
         else {
             // check if user has enough to withdraw this amount
-            if (balance - Integer.parseInt(input) < 0) {
-                JOptionPane.showMessageDialog(null, "Your balance insn't high enough to withdraw this amount");
-                return;
+            if (balance - input < 0) {
+                throw new InssuficientBalanceException("Your balance isn't high enough to withdraw this amount");
             }
 
-            // handle withdrawl
             // update balance
-            balance -= Integer.parseInt(input);
+            balance -= input;
 
             // update earlyWithdrawl if interestPeriod is < 30 (the assumed fixed period needed to be waited to recieve interest)
             if (interestPeriod < 30) {
                 earlyWithdrawl = true;
             }
-
-            // show updated balance
-            JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
         }
     }
 
@@ -54,8 +49,8 @@ public class FixedAccount extends Account {
     // NetSaverAccount methods
     // calculate and apply interest rate
     public void calcInterest() {
-        // ASSUMPTION: this function would be called after a set period (but will be called in main just for testing purposes)
-        // ASSUMPTION: Fixed account rate is 5% of balance every {set period}
+        // ASSUMPTION: this function would be called after a set period
+        // ASSUMPTION: Fixed account rate is 5% of balance every 30 days/month
         // ASSUMPTION: The period until interest is calculated only has to be waited once (it doen't need to be reset after interest has been calculated and given)
 
         // check if user withdrew too early

@@ -20,7 +20,7 @@ public class WithdrawUI extends WindowUI {
 
     // constructor 
     public WithdrawUI() {
-        super("Withdraw", 400, 500);
+        super("Withdraw", 500, 500);
         // add content to frame
         initComponents();
     }
@@ -72,5 +72,24 @@ public class WithdrawUI extends WindowUI {
     }
     public void withdrawEvent(ActionListener listener) {
         withdrawBtn.addActionListener(listener);
+    }
+
+    // get input amount
+    public int getInputAmount() {
+        return (int)keypadPanel.getMoneyValue();
+    }
+
+    // set error message
+    public void setErrorMessage(String errorMessage, boolean isError) {
+        // set error message
+        if (isError) {
+            errMessageField.setForeground(Color.RED);
+            errMessageField.setText(errorMessage);
+        }
+        // set successful withdraw message
+        else {
+            errMessageField.setForeground(Color.GREEN);
+            errMessageField.setText(errorMessage);
+        }
     }
 }

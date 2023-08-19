@@ -1,6 +1,10 @@
 package accounts;
 import javax.swing.JOptionPane;
 
+import exceptions.ExceedWithdrawlLimitException;
+import exceptions.IncorrectWithdrawAmountException;
+import exceptions.InssuficientBalanceException;
+
 public class NetSaverAccount extends Account {
     // attributes
     private float dailyWithdrawLimit;
@@ -21,38 +25,28 @@ public class NetSaverAccount extends Account {
 
     // overide abstract methods
     @Override
-    public void withdraw() {
-        // get user input
-        String input = JOptionPane.showInputDialog(null, "How much would you like to Withdraw?\n(100/50/20)");
-
+    public void withdraw(int input) throws IncorrectWithdrawAmountException, InssuficientBalanceException, ExceedWithdrawlLimitException {
         // check if user input a valid amount
-        if (Integer.parseInt(input) != 100 && Integer.parseInt(input) != 50 && Integer.parseInt(input) != 20) {
-            JOptionPane.showMessageDialog(null, "You input an invalid amount");
+        if (input != 100 && input != 50 && input != 20) {
+            throw new IncorrectWithdrawAmountException("You input an invalid amount");
         }
         // check if user has hit (or will exceed) their daily withdrawl limit
-        else if (!canWithdraw || dailyWithdrawed + Integer.parseInt(input) > dailyWithdrawLimit) {
-            JOptionPane.showMessageDialog(null, "You can't withdraw becuase you have hit (or will exceed) your daily withdrawl limit.\n" + 
-            "(Daily Withdrawed: " + dailyWithdrawed + " / Daily Withdrawl limit: " + dailyWithdrawLimit + ")"
-            );
+        else if (!canWithdraw || dailyWithdrawed + input > dailyWithdrawLimit) {
+            throw new ExceedWithdrawlLimitException("You can't withdraw becuase you have hit (or will exceed) your daily withdrawl limit.");
         }
         // process withdrawl
         else {
             // check if user has enough to withdraw this amount
-            if (balance - Integer.parseInt(input) < 0) {
-                JOptionPane.showMessageDialog(null, "Your balance insn't high enough to withdraw this amount");
-                return;
+            if (balance - input < 0) {
+                throw new InssuficientBalanceException("Your balance isn't high enough to withdraw this amount");
             }
 
-            // handle withdrawl
             // update balance
-            balance -= Integer.parseInt(input);
+            balance -= input;
             // increase dailyWithdrawed
-            dailyWithdrawed += Integer.parseInt(input);
+            dailyWithdrawed += input;
             // check if user can still withdraw
             handleWithdrawLimit();
-
-            // show updated balance
-            JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
         }
     }
 
@@ -60,8 +54,8 @@ public class NetSaverAccount extends Account {
     // NetSaverAccount methods
     // calculate and apply interest rate
     public void calcInterest() {
-        // ASSUMPTION: this function would be called after a set period (but will be called in main just for testing purposes)
-        // ASSUMPTION: Net-Saver Account rate is 4% of balance every {set period}
+        // ASSUMPTION: this function would be called after a set period 
+        // ASSUMPTION: Net-Saver Account rate is 4% of balance every 30 days/month
 
         // apply interest
         balance += (balance * interestRate);

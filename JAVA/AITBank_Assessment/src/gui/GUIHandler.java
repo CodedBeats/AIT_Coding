@@ -14,6 +14,9 @@ import accounts.ChequeAccount;
 import accounts.FixedAccount;
 import accounts.NetSaverAccount;
 import accounts.SavingsAccount;
+import exceptions.ExceedWithdrawlLimitException;
+import exceptions.IncorrectWithdrawAmountException;
+import exceptions.InssuficientBalanceException;
 
 // import libraries
 import java.awt.event.ActionEvent;
@@ -257,7 +260,60 @@ public class GUIHandler {
         withdrawUI.withdrawEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //
+                // get input amount
+                int input = withdrawUI.getInputAmount();
+
+                // call account withdraw method
+                switch (accType) {
+                    case "cheque":
+                        try {
+                            chequeAccount.withdraw(input);
+                            accBalance = chequeAccount.getBalance();
+                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                        } catch (IncorrectWithdrawAmountException e1) {
+                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                        } catch (InssuficientBalanceException e2) {
+                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                        }
+                        break;
+                    case "fixed":
+                        try {
+                            fixedAccount.withdraw(input);
+                            accBalance = fixedAccount.getBalance();
+                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                        } catch (IncorrectWithdrawAmountException e1) {
+                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                        } catch (InssuficientBalanceException e2) {
+                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                        }
+                        break; 
+                    case "netSaver":
+                        try {
+                            netSaverAccount.withdraw(input);
+                            accBalance = netSaverAccount.getBalance();
+                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                        } catch (IncorrectWithdrawAmountException e1) {
+                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                        } catch (InssuficientBalanceException e2) {
+                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                        } catch (ExceedWithdrawlLimitException e3) {
+                            withdrawUI.setErrorMessage(e3.getMessage(), true);
+                        }
+                        break;
+                    case "savings":
+                        try {
+                            savingsAccount.withdraw(input);
+                            accBalance = savingsAccount.getBalance();
+                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                        } catch (IncorrectWithdrawAmountException e1) {
+                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                        } catch (InssuficientBalanceException e2) {
+                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                        } catch (ExceedWithdrawlLimitException e3) {
+                            withdrawUI.setErrorMessage(e3.getMessage(), true);
+                        }
+                        break;
+                }
             }
         });
     }

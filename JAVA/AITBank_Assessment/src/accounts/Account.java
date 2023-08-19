@@ -1,5 +1,9 @@
 package accounts;
 
+import exceptions.ExceedWithdrawlLimitException;
+import exceptions.IncorrectWithdrawAmountException;
+import exceptions.InssuficientBalanceException;
+
 public abstract class Account {
     // abstract attributes
     protected float balance;
@@ -20,7 +24,7 @@ public abstract class Account {
 
 
     // abstract methods
-    public abstract void withdraw();
+    public abstract void withdraw(int amount) throws IncorrectWithdrawAmountException, InssuficientBalanceException, ExceedWithdrawlLimitException;
 
 
     // depost won't change across different account types so implement here
