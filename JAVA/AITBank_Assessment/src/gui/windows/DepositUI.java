@@ -46,7 +46,7 @@ public class DepositUI extends WindowUI {
         // Err message text field
         errMessageField = new JTextField();
         errMessageField.setEditable(false);
-        errMessageField.setForeground(Color.RED);
+        errMessageField.setForeground(Color.GREEN);
         errMessageField.setHorizontalAlignment(JTextField.CENTER);
         bottomPanel.add(errMessageField, BorderLayout.NORTH);
 
@@ -72,5 +72,15 @@ public class DepositUI extends WindowUI {
     }
     public void depositEvent(ActionListener listener) {
         depositBtn.addActionListener(listener);
+    }
+
+    // get input amount
+    public double getInputAmount() {
+        return keypadPanel.getMoneyValue();
+    }
+    
+    // set successfull deposit message (it's actually impossible to not deposit successfully lol)
+    public void setSuccessfullDeposit(double input) {
+        errMessageField.setText("Successfully deposited $" + input);
     }
 }

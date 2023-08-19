@@ -1,7 +1,5 @@
 package accounts;
 
-import javax.swing.JOptionPane;
-
 public abstract class Account {
     // abstract attributes
     protected float balance;
@@ -26,13 +24,9 @@ public abstract class Account {
 
 
     // depost won't change across different account types so implement here
-    public void deposit() {
-        // get user input
-        String depositInput = JOptionPane.showInputDialog(null, "How much would you like to Deposit?");
+    public void deposit(double amount) {
         // update balance
-        balance += Float.parseFloat(depositInput);
-        // show updated balance
-        JOptionPane.showMessageDialog(null, "Account Balance: $" + balance);
+        balance += amount;
     }
     
     // getter methods

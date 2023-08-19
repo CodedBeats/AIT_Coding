@@ -281,7 +281,30 @@ public class GUIHandler {
         depositUI.depositEvent(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //
+                // get input amount
+                double input = depositUI.getInputAmount();
+
+                // call account deposit method
+                switch (accType) {
+                    case "cheque":
+                        chequeAccount.deposit(input);
+                        accBalance = chequeAccount.getBalance();
+                        break;
+                    case "fixed":
+                        fixedAccount.deposit(input);
+                        accBalance = fixedAccount.getBalance();
+                        break; 
+                    case "netSaver":
+                        netSaverAccount.deposit(input);
+                        accBalance = netSaverAccount.getBalance();
+                        break;
+                    case "savings":
+                        savingsAccount.deposit(input);
+                        accBalance = savingsAccount.getBalance();
+                        break;
+                }
+                // show successfull deposit message
+                depositUI.setSuccessfullDeposit(input);
             }
         });
     }
