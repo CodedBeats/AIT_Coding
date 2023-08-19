@@ -10,8 +10,8 @@ public class FixedAccount extends Account {
 
 
     // constructor
-    public FixedAccount(float balance, int accountNumber, String accountName, String transactionHistory[], boolean earlyWithdrawl, int interestPeriod) {
-        super(balance, accountNumber, accountName, transactionHistory);
+    public FixedAccount(float balance, int accountNumber, String accountName, String transactionHistory[], String accountType, int accountPIN, boolean earlyWithdrawl, int interestPeriod) {
+        super(balance, accountNumber, accountName, transactionHistory, accountType, accountPIN);
 
         this.earlyWithdrawl = earlyWithdrawl;
         this.interestPeriod = interestPeriod;
