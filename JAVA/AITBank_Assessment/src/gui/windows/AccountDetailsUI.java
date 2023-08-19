@@ -157,19 +157,26 @@ public class AccountDetailsUI extends WindowUI {
     }
 
     // set field values
-    public void setAccountDetailValues(boolean hasChequeBook, boolean earlyWithdrawl, double interestRate, double dailyWithdrawlLimit, double dailyWithdrawed, boolean canWithdraw) {
+    public void setAccountDetailValues(int accNum, String accType, String accName, boolean hasChequeBook, boolean earlyWithdrawl, double interestRate, double dailyWithdrawlLimit, double dailyWithdrawed, boolean canWithdraw) {
+        // add common account data
+        accountNumberLabel.setText(accountNumberLabel.getText() + "    " + accNum);
+        accountTypeLabel.setText(accountTypeLabel.getText() + "    " + accType);
+        accountNameLabel.setText(accountNameLabel.getText() + "    " + accName);
+        accountInterestLabel.setText(accountInterestLabel.getText() + "    " + "30 days/1 month");
+
+        // add account specific values
+        // cheque
         if (accType == "cheque") {
-            // add passed values to text fields
             hasChequeBookLabel.setText(hasChequeBookLabel.getText() + "    " + hasChequeBook);
         }
+        // fixed
         else if (accType == "fixed") {
-            // add passed values to text fields
             earlyWithdrawalLabel.setText(earlyWithdrawalLabel.getText() + "    " + earlyWithdrawl);
             interestRateLabel.setText(interestRateLabel.getText() + "    " + interestRate);
         }
         // both netSaver and savings gave the same fields
         else {
-            // add passed values to text fields
+            // add account specific values
             interestRateLabel.setText(interestRateLabel.getText() + "    " + interestRate);
             dailyWithdrawalLimitLabel.setText(dailyWithdrawalLimitLabel.getText() + "    " + dailyWithdrawlLimit);
             dailyWithdrawedLabel.setText(dailyWithdrawedLabel.getText() + "    " + dailyWithdrawed);

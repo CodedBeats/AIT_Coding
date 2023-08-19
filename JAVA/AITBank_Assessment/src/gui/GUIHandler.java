@@ -391,6 +391,9 @@ public class GUIHandler {
         switch (accType) {
             case "cheque":
                 accountDetailsUI.setAccountDetailValues(
+                    chequeAccount.getAccNumber(),
+                    chequeAccount.getAccType(),
+                    chequeAccount.getAccName(),
                     chequeAccount.getHasChequeBook(), 
                     false, 
                     0, 
@@ -401,6 +404,9 @@ public class GUIHandler {
                 break;
             case "fixed":
                 accountDetailsUI.setAccountDetailValues(
+                    chequeAccount.getAccNumber(),
+                    chequeAccount.getAccType(),
+                    chequeAccount.getAccName(),
                     false, 
                     fixedAccount.getEarlyWithdrawl(), 
                     fixedAccount.getInterestRate(), 
@@ -411,6 +417,9 @@ public class GUIHandler {
                 break;
             case "netSaver":
                 accountDetailsUI.setAccountDetailValues(
+                    chequeAccount.getAccNumber(),
+                    chequeAccount.getAccType(),
+                    chequeAccount.getAccName(),
                     false, 
                     false, 
                     netSaverAccount.getInterestRate(), 
@@ -421,6 +430,9 @@ public class GUIHandler {
                 break;
             case "savings":
                 accountDetailsUI.setAccountDetailValues(
+                    chequeAccount.getAccNumber(),
+                    chequeAccount.getAccType(),
+                    chequeAccount.getAccName(),
                     false, 
                     false, 
                     savingsAccount.getInterestRate(), 
