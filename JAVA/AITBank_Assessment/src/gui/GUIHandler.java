@@ -75,6 +75,8 @@ public class GUIHandler {
                 accType = chequeAccount.getAccType();
                 accPIN = chequeAccount.getAccPIN();
                 accName = chequeAccount.getAccName();
+                // add accName to dashboard
+                dashboardUI.setAccountName(accName);
                 accBalance = chequeAccount.getBalance();
                 
                 // hide home ui
@@ -100,6 +102,8 @@ public class GUIHandler {
                 accType = fixedAccount.getAccType();
                 accPIN = fixedAccount.getAccPIN();
                 accName = fixedAccount.getAccName();
+                // add accName to dashboard
+                dashboardUI.setAccountName(accName);
                 accBalance = fixedAccount.getBalance();
                 
                 // hide home ui
@@ -126,6 +130,8 @@ public class GUIHandler {
                 accType = netSaverAccount.getAccType();
                 accPIN = netSaverAccount.getAccPIN();
                 accName = netSaverAccount.getAccName();
+                // add accName to dashboard
+                dashboardUI.setAccountName(accName);
                 accBalance = netSaverAccount.getBalance();
                 
                 
@@ -153,6 +159,8 @@ public class GUIHandler {
                 accType = savingsAccount.getAccType();
                 accPIN = savingsAccount.getAccPIN();
                 accName = savingsAccount.getAccName();
+                // add accName to dashboard
+                dashboardUI.setAccountName(accName);
                 accBalance = savingsAccount.getBalance();
                 
                 
@@ -192,8 +200,8 @@ public class GUIHandler {
 
     // handle dashbaord screen
     public void handleDashbaordUI() {
-
-        dashboardUI = new DashboardUI(accName);
+        // create dashboard screen
+        dashboardUI = new DashboardUI();
 
         // add functionality to dashboard menu btns
         dashboardUI.withdrawOptionEvent(new ActionListener() {
@@ -393,7 +401,7 @@ public class GUIHandler {
                 accountDetailsUI.setAccountDetailValues(
                     chequeAccount.getAccNumber(),
                     chequeAccount.getAccType(),
-                    chequeAccount.getAccName(),
+                    accName,
                     chequeAccount.getHasChequeBook(), 
                     false, 
                     0, 
@@ -404,9 +412,9 @@ public class GUIHandler {
                 break;
             case "fixed":
                 accountDetailsUI.setAccountDetailValues(
-                    chequeAccount.getAccNumber(),
-                    chequeAccount.getAccType(),
-                    chequeAccount.getAccName(),
+                    fixedAccount.getAccNumber(),
+                    fixedAccount.getAccType(),
+                    accName,
                     false, 
                     fixedAccount.getEarlyWithdrawl(), 
                     fixedAccount.getInterestRate(), 
@@ -417,9 +425,9 @@ public class GUIHandler {
                 break;
             case "netSaver":
                 accountDetailsUI.setAccountDetailValues(
-                    chequeAccount.getAccNumber(),
-                    chequeAccount.getAccType(),
-                    chequeAccount.getAccName(),
+                    netSaverAccount.getAccNumber(),
+                    netSaverAccount.getAccType(),
+                    accName,
                     false, 
                     false, 
                     netSaverAccount.getInterestRate(), 
@@ -430,9 +438,9 @@ public class GUIHandler {
                 break;
             case "savings":
                 accountDetailsUI.setAccountDetailValues(
-                    chequeAccount.getAccNumber(),
-                    chequeAccount.getAccType(),
-                    chequeAccount.getAccName(),
+                    savingsAccount.getAccNumber(),
+                    savingsAccount.getAccType(),
+                    accName,
                     false, 
                     false, 
                     savingsAccount.getInterestRate(), 

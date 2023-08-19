@@ -18,9 +18,8 @@ public class DashboardUI extends WindowUI {
     private JButton checkDetailsbtn;
 
     // constructor
-    public DashboardUI(String accName) {
+    public DashboardUI() {
         super("Dashboard", 400, 200);
-        this.accName = accName;
         // add content to frame
         initComponents();
     }
@@ -32,7 +31,7 @@ public class DashboardUI extends WindowUI {
         frame.setLayout(new GridLayout(2, 2)); // 2 rows, 2 columns
 
         // set up welcome label
-        welcomeLabel = new JLabel("Welcome " + accName);
+        welcomeLabel = new JLabel("Welcome ");
         welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
         frame.add(welcomeLabel);
 
@@ -68,15 +67,8 @@ public class DashboardUI extends WindowUI {
         checkDetailsbtn.addActionListener(listener);
     }
 
-    // set frame visibility
-    public void setFrameVisibility() {
-        // set frame visible if it's hidden
-        if (!frame.isShowing()) {
-            frame.setVisible(true);
-        }
-        // hide frame
-        else {
-            frame.setVisible(false);
-        }
+    // set account name 
+    public void setAccountName(String accountName) {
+        welcomeLabel.setText(welcomeLabel.getText() + accountName);
     }
 }
