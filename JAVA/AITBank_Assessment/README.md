@@ -1,0 +1,1 @@
+Open App.java and read the "Project Notes" and "Account Details" to undertand the application and how to use it
