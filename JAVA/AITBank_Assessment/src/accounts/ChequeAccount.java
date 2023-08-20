@@ -1,5 +1,4 @@
 package accounts;
-import javax.swing.*;
 
 import exceptions.ExistingChequeBookException;
 import exceptions.IncorrectWithdrawAmountException;
