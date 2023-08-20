@@ -23,6 +23,8 @@ public class SetWithdrawlLimitUI extends WindowUI {
         super("Set Withdrawl Limit", 500, 500);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
     
     // override abstract parent method
@@ -64,6 +66,21 @@ public class SetWithdrawlLimitUI extends WindowUI {
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
         frame.setVisible(false);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style labels
+        Font customFont = new Font("Arial", Font.BOLD, 20);
+        promptLabel.setFont(customFont);
+        promptLabel.setForeground(Color.BLACK);
+
+        // style btns
+        updateWithdrawLimitBtn.setBackground(Color.BLACK);
+        updateWithdrawLimitBtn.setForeground(Color.WHITE);
+        backBtn.setBackground(Color.BLACK);
+        backBtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

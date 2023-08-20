@@ -38,5 +38,7 @@ public abstract class WindowUI {
 
     // Abstract method for initializing UI components
     protected abstract void initComponents();
+    // Abstract method for styling components
+    protected abstract void setComponentStyle();
 }
 

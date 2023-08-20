@@ -23,6 +23,8 @@ public class DepositUI extends WindowUI {
         super("Deposit", 400, 500);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
     
     // override abstract parent method
@@ -64,6 +66,21 @@ public class DepositUI extends WindowUI {
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
         frame.setVisible(false);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style labels
+        Font customFont = new Font("Arial", Font.BOLD, 20);
+        promptLabel.setFont(customFont);
+        promptLabel.setForeground(Color.BLACK);
+
+        // style btns
+        depositBtn.setBackground(Color.BLACK);
+        depositBtn.setForeground(Color.WHITE);
+        backBtn.setBackground(Color.BLACK);
+        backBtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

@@ -4,6 +4,7 @@
         I don't beleive there are any changes needed when converting to Netbeans, but please be open to potential difference they have that could cause errors
 *   2. Interest hasn't changed since assessment 1, all tests of it passed then so it wont be checked here. Since this is just UI it won't be called anywhere
         If you still want to check, just call the function on the necessary account type in GUIHandler.java
+*   3. Project style isn't supposed to be ideal in UX, it's more just a demonstraction of different colors
 *
 *    
 *   ===== Account Details =====

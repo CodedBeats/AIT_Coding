@@ -2,6 +2,8 @@ package gui.windows;
 
 // import libraries
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -41,6 +43,8 @@ public class AccountDetailsUI extends WindowUI {
         this.accType = accType;
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
     
     // override abstract parent method
@@ -155,6 +159,25 @@ public class AccountDetailsUI extends WindowUI {
         frame.setVisible(false);
     }
 
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style labels
+        Font customFont1 = new Font("Arial", Font.PLAIN, 15);
+        accountNumberLabel.setFont(customFont1);
+        accountTypeLabel.setFont(customFont1);
+        accountNameLabel.setFont(customFont1);
+        accountInterestLabel.setFont(customFont1);
+        
+        // style btns
+        backBtn.setBackground(Color.BLACK);
+        backBtn.setForeground(Color.WHITE);
+        orderChequeBookBtn.setBackground(Color.BLACK);
+        orderChequeBookBtn.setForeground(Color.WHITE);
+        setWithdrawLimitBtn.setBackground(Color.BLACK);
+        setWithdrawLimitBtn.setForeground(Color.WHITE);
+    }
+
     // button action listeners for outside implementation
     public void backEvent(ActionListener listener) {
         backBtn.addActionListener(listener);
@@ -179,11 +202,21 @@ public class AccountDetailsUI extends WindowUI {
         if (accType == "cheque") {
             hasChequeBookLabel.setText(hasChequeBookLabel.getText() + "    " + hasChequeBook);
             accountInterestLabel.setText("You don't receive interest on this account");
+            
+            // style labels
+            Font customFont = new Font("Arial", Font.PLAIN, 15);
+            accountInterestLabel.setFont(customFont);
+            hasChequeBookLabel.setFont(customFont);
         }
         // fixed
         else if (accType == "fixed") {
             earlyWithdrawalLabel.setText(earlyWithdrawalLabel.getText() + "    " + earlyWithdrawl);
             interestRateLabel.setText(interestRateLabel.getText() + "    " + interestRate);
+            
+            // style labels
+            Font customFont = new Font("Arial", Font.PLAIN, 15);
+            earlyWithdrawalLabel.setFont(customFont);
+            interestRateLabel.setFont(customFont);
         }
         // both netSaver and savings gave the same fields
         else {
@@ -192,6 +225,13 @@ public class AccountDetailsUI extends WindowUI {
             dailyWithdrawalLimitLabel.setText(dailyWithdrawalLimitLabel.getText() + "    " + dailyWithdrawlLimit);
             dailyWithdrawedLabel.setText(dailyWithdrawedLabel.getText() + "    " + dailyWithdrawed);
             canWithdrawLabel.setText(canWithdrawLabel.getText() + "    " + canWithdraw);
+            
+            // style labels
+            Font customFont = new Font("Arial", Font.PLAIN, 15);
+            interestRateLabel.setFont(customFont);
+            dailyWithdrawalLimitLabel.setFont(customFont);
+            dailyWithdrawedLabel.setFont(customFont);
+            canWithdrawLabel.setFont(customFont);
         }
     }
 

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class BalanceUI extends WindowUI {
     // init JFrame elements
     private JPanel buttonPanel;
+    private JLabel titleLabel;
     private JTextField balanceField;
     private JButton backBtn;
 
@@ -16,6 +17,8 @@ public class BalanceUI extends WindowUI {
         super("Balance", 200, 200);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
     
     // override abstract parent method
@@ -24,7 +27,7 @@ public class BalanceUI extends WindowUI {
         // set frame layout
         frame.setLayout(new BorderLayout());
 
-        JLabel titleLabel = new JLabel("Your Balance");
+        titleLabel = new JLabel("Your Balance");
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         frame.add(titleLabel, BorderLayout.NORTH);
 
@@ -39,6 +42,28 @@ public class BalanceUI extends WindowUI {
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
         frame.setVisible(false);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style frame
+        frame.setBackground(Color.GRAY);
+
+        // style label
+        Font customFont1 = new Font("Arial", Font.BOLD, 20);
+        titleLabel.setFont(customFont1);
+        titleLabel.setForeground(Color.BLACK);
+
+        // style field
+        Font customFont2 = new Font("Arial", Font.PLAIN, 30);
+        balanceField.setFont(customFont2);
+        balanceField.setForeground(Color.BLACK);
+        balanceField.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        // style btn
+        backBtn.setBackground(Color.BLACK);
+        backBtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

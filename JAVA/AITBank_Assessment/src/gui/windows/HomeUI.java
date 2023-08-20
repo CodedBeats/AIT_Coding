@@ -20,6 +20,8 @@ public class HomeUI extends WindowUI {
         super("Home", 700, 200);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
 
     // override abstract parent method
@@ -90,6 +92,30 @@ public class HomeUI extends WindowUI {
         // add panel to frame
         frame.add(panel);
         frame.setVisible(true);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style panel
+        panel.setBackground(Color.GRAY);
+
+        // style labels
+        Font customFont = new Font("Arial", Font.BOLD, 15);
+        welcomeLabel.setFont(customFont);
+        welcomeLabel.setForeground(Color.WHITE);
+        promptLabel.setFont(customFont);
+        promptLabel.setForeground(Color.WHITE);
+
+        // style btns
+        enterChequeCardBtn.setBackground(Color.BLACK);
+        enterChequeCardBtn.setForeground(Color.WHITE);
+        enterFixedCardBtn.setBackground(Color.BLACK);
+        enterFixedCardBtn.setForeground(Color.WHITE);
+        enterNetSaverCardBtn.setBackground(Color.BLACK);
+        enterNetSaverCardBtn.setForeground(Color.WHITE);
+        enterSavingsCardBtn.setBackground(Color.BLACK);
+        enterSavingsCardBtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

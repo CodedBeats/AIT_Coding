@@ -22,6 +22,8 @@ public class LoginUI extends WindowUI {
         super("Login", 400, 500);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
 
     // override abstract parent method
@@ -45,7 +47,6 @@ public class LoginUI extends WindowUI {
         // Err message text field
         errMessageField = new JTextField();
         errMessageField.setEditable(false);
-        errMessageField.setForeground(Color.RED);
         errMessageField.setHorizontalAlignment(JTextField.CENTER);
         bottomPanel.add(errMessageField, BorderLayout.NORTH);
 
@@ -59,6 +60,24 @@ public class LoginUI extends WindowUI {
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
         frame.setVisible(false);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style panel
+        bottomPanel.setBackground(Color.GRAY);
+
+        // style labels
+        Font customFont = new Font("Arial", Font.BOLD, 20);
+        promptLabel.setFont(customFont);
+
+        // style text fields
+        errMessageField.setForeground(Color.RED);
+
+        // style btns
+        submitBtn.setBackground(Color.BLACK);
+        submitBtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

@@ -19,6 +19,8 @@ public class DashboardUI extends WindowUI {
         super("Dashboard", 400, 200);
         // add content to frame
         initComponents();
+        // style components
+        setComponentStyle();
     }
 
     // override abstract parent method 
@@ -48,6 +50,25 @@ public class DashboardUI extends WindowUI {
 
         // set frame visible
         frame.setVisible(false);
+    }
+
+    // style components
+    @Override
+    public void setComponentStyle() {
+        // style labels
+        Font customFont = new Font("Arial", Font.BOLD, 20);
+        welcomeLabel.setFont(customFont);
+        welcomeLabel.setForeground(Color.BLACK);
+
+        // style btns
+        withdrawbtn.setBackground(Color.BLACK);
+        withdrawbtn.setForeground(Color.WHITE);
+        depositbtn.setBackground(Color.BLACK);
+        depositbtn.setForeground(Color.WHITE);
+        checkBalancebtn.setBackground(Color.BLACK);
+        checkBalancebtn.setForeground(Color.WHITE);
+        checkDetailsbtn.setBackground(Color.BLACK);
+        checkDetailsbtn.setForeground(Color.WHITE);
     }
 
     // button action listeners for outside implementation

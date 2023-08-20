@@ -2,6 +2,8 @@ package gui.reusable_components;
 
 // import libraries
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +42,14 @@ public class KeypadPanel extends JPanel {
 
         for (String label : keypadBtns) {
             JButton button = new JButton(label);
+            
+            // style button
+            Font customFont = new Font("Arial", Font.BOLD, 30);
+            Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+            button.setBackground(Color.GRAY);
+            button.setForeground(Color.WHITE);
+            button.setFont(customFont);
+            button.setBorder(border);
 
             // Add event on button click
             button.addActionListener(new ActionListener() {
