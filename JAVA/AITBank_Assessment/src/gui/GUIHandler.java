@@ -188,7 +188,6 @@ public class GUIHandler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int pin = loginUI.getPIN();
-                System.out.println(pin);
                 // verify PIN
                 boolean verified = loginUI.verifyPIN(accPIN, pin);
                 if (verified) {

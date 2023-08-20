@@ -46,7 +46,7 @@ public class KeypadPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String btnTxt = e.getActionCommand();
-                    System.out.println(btnTxt);
+                    // System.out.println(btnTxt);
                     
                     // delete single value
                     if (btnTxt.equals("Del")) {
@@ -69,7 +69,6 @@ public class KeypadPanel extends JPanel {
                     }
                     // only allow 1 decimal point
                     else if (btnTxt.equals(".") && hasDecimalPoint) {
-                        getMoneyValue();
                         return;
                     }  
                     else {
@@ -82,7 +81,6 @@ public class KeypadPanel extends JPanel {
                         }
                         // don't allow "." in login mode
                         else if (btnTxt.equals(".") && isLogin) {
-                            getPINValue();
                             return;
                         }
                         // don't allow more than 4 digits in login mode
@@ -104,7 +102,6 @@ public class KeypadPanel extends JPanel {
 
     public double getMoneyValue() {
         double txtFieldVal = Double.parseDouble(textField.getText().substring(1));
-        System.out.println(txtFieldVal);
         return txtFieldVal;
     }
 
