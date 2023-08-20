@@ -5,18 +5,22 @@ import gui.windows.DashboardUI;
 import gui.windows.HomeUI;
 import gui.windows.LoginUI;
 import gui.windows.WithdrawUI;
-import misc.RandGenerator;
 import gui.windows.DepositUI;
 import gui.windows.BalanceUI;
 import gui.windows.AccountDetailsUI;
+import gui.windows.SetWithdrawlLimitUI;
 //import account classes
 import accounts.ChequeAccount;
 import accounts.FixedAccount;
 import accounts.NetSaverAccount;
 import accounts.SavingsAccount;
+// import custom exceptions
 import exceptions.ExceedWithdrawlLimitException;
+import exceptions.ExistingChequeBookException;
 import exceptions.IncorrectWithdrawAmountException;
 import exceptions.InssuficientBalanceException;
+// import misc
+import misc.RandGenerator;
 
 // import libraries
 import java.awt.event.ActionEvent;
@@ -45,6 +49,7 @@ public class GUIHandler {
     private DepositUI depositUI;
     private BalanceUI balanceUI;
     private AccountDetailsUI accountDetailsUI;
+    private SetWithdrawlLimitUI setWithdrawlLimitUI;
 
     // init randGenerator
     private RandGenerator rand = new RandGenerator();
@@ -122,7 +127,7 @@ public class GUIHandler {
                     3, 
                     rand.generateRandomName(), 
                     "netSaver", 
-                    2020, 
+                    1397, 
                     150, 
                     0, 
                     true
@@ -459,6 +464,73 @@ public class GUIHandler {
                 accountDetailsUI.setFrameVisibility();
                 // display dashboard
                 dashboardUI.setFrameVisibility();
+            }
+        });
+        // reorder cheque book btn
+        accountDetailsUI.reorderChequeBookEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // call cheque acc function
+                    chequeAccount.reorderChequeBook();
+                    // update cheque book staatus
+                    accountDetailsUI.setChequebookStatus(true);
+                } catch (ExistingChequeBookException e1) {
+                    // show exception message
+                    accountDetailsUI.setChequeExceptionStatus(e1.getMessage());
+                }
+            }
+        });
+        // set daily withdraw limit btn
+        accountDetailsUI.setWithdrawLimitEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // create and handle setWithdrawlLimitUI screen
+                setWithdrawlLimitUI = new SetWithdrawlLimitUI();
+                handleSetWithdrawLimitUI();
+                // hide account details screen and show set withdraw limit screen
+                accountDetailsUI.setFrameVisibility();
+                setWithdrawlLimitUI.setFrameVisibility();
+            }
+        });
+    }
+
+
+    // handle set new withdraw limit screen
+    public void handleSetWithdrawLimitUI() {
+        // back to account details btn
+        setWithdrawlLimitUI.backEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // hide window
+                setWithdrawlLimitUI.setFrameVisibility();
+                // display account details
+                accountDetailsUI.setFrameVisibility();
+            }
+        });
+        // update withdraw limit btn
+        setWithdrawlLimitUI.updateWithdrawLimitEvent(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // init input
+                double input = savingsAccount.getDailyWithdrawLimit();
+
+                // get input
+                input = setWithdrawlLimitUI.getInputAmount();
+                
+                // handle set withdraw limit
+                try {
+                    // call savings acc function
+                    savingsAccount.setWithdrawLimit(input);
+                    // update savings withdraw limit status on account details screen
+                    accountDetailsUI.setDailyWithdrawLimitStatus(input);
+                    // hide set withdraw limit screen and show account details screen
+                    setWithdrawlLimitUI.setFrameVisibility();
+                    accountDetailsUI.setFrameVisibility();
+                } catch (ExceedWithdrawlLimitException e1) {
+                    // show exception message
+                    setWithdrawlLimitUI.setErrorMessage(e1.getMessage());
+                }
             }
         });
     }

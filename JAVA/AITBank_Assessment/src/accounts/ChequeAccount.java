@@ -1,6 +1,7 @@
 package accounts;
 import javax.swing.*;
 
+import exceptions.ExistingChequeBookException;
 import exceptions.IncorrectWithdrawAmountException;
 import exceptions.InssuficientBalanceException; 
 
@@ -38,28 +39,15 @@ public class ChequeAccount extends Account {
 
 
     // ChequeAccount methods
-    public void reorderChequeBook() {
+    public void reorderChequeBook() throws ExistingChequeBookException {
         // check if user already has cheque book
         if (hasChequeBook) {
-            JOptionPane.showMessageDialog(null, "You already have a cheque book");
+            throw new ExistingChequeBookException("You already have a cheque book");
         }
         // hanlde reorderChequeBook
         else {
-            // ask user if they want to order a new cheque book
-            String input = JOptionPane.showInputDialog(null, "Would you like to order a new cheque book?\n(yes/no)");
-
-            // handle reorder
-            if (input.equals("yes")) {
-                hasChequeBook = true;
-                JOptionPane.showMessageDialog(null, "Your new cheque book is on its way");
-            }
-            else if (input.equals("no")) {
-                return;
-            }
-            else {
-                // handle invalid input
-                JOptionPane.showMessageDialog(null, "You input an invalid answer");
-            }
+            // change status
+            hasChequeBook = true;
         }
     }
 

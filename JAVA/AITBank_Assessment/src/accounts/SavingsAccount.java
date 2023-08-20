@@ -63,16 +63,14 @@ public class SavingsAccount extends Account {
     }
 
     // let user set withdraw limit
-    public void setWithdrawLimit(int input) {
+    public void setWithdrawLimit(double input) throws ExceedWithdrawlLimitException {
         // ASSUMPTION: users can't set a new withdrawl limit if they have already hit their daily withdraw limit
         if (!canWithdraw) {
-            JOptionPane.showMessageDialog(null, "You can't set a new withdraw limit because you already hit your daily withdrawl limit");
-            return;
+            throw new ExceedWithdrawlLimitException("You can't set a new withdraw limit because you already hit your daily withdrawl limit");
         }
 
         // update daily withdraw limit
-        dailyWithdrawLimit = input;
-        JOptionPane.showMessageDialog(null, "New daily Withdrawl Limit: " + dailyWithdrawLimit);
+        dailyWithdrawLimit = (int)input;
     }
 
     // handle if user can still withdraw after sucessfull withdrawl

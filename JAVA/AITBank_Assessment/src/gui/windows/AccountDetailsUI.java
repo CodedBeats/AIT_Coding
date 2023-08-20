@@ -75,6 +75,10 @@ public class AccountDetailsUI extends WindowUI {
         btnPanel = new JPanel(new GridLayout(1, 0, 10, 5)); // 1 row, any number of columns
         // add back btn
         backBtn = new JButton("<< Back");
+        // special cheque account functionality
+        orderChequeBookBtn = new JButton("Reorder Cheque Book");
+        // special savings account functionality
+        setWithdrawLimitBtn = new JButton("Set Withdraw Limit");
         // add back btn to button panel
         btnPanel.add(backBtn);
 
@@ -87,8 +91,6 @@ public class AccountDetailsUI extends WindowUI {
 
             // define elements
             hasChequeBookLabel = new JLabel("Has Cheque Book:");
-            // special cheque account functionality
-            orderChequeBookBtn = new JButton("Reorder Cheque Book");
             // add labels to acc type frame
             accountTypeDetailsPanel.add(hasChequeBookLabel);
             // add btn to btnPanel
@@ -132,8 +134,6 @@ public class AccountDetailsUI extends WindowUI {
             dailyWithdrawedLabel = new JLabel("Daily Withdrawed:");
             canWithdrawLabel = new JLabel("Can Withdraw:");
             interestRateLabel = new JLabel("Interest Rate per month:");
-            // special savings account functionality
-            setWithdrawLimitBtn = new JButton("Set Withdraw Limit");
             // add labels to acc type frame
             accountTypeDetailsPanel.add(dailyWithdrawalLimitLabel);
             accountTypeDetailsPanel.add(dailyWithdrawedLabel);
@@ -158,6 +158,12 @@ public class AccountDetailsUI extends WindowUI {
     // button action listeners for outside implementation
     public void backEvent(ActionListener listener) {
         backBtn.addActionListener(listener);
+    }
+    public void reorderChequeBookEvent(ActionListener listener) {
+        orderChequeBookBtn.addActionListener(listener);
+    }
+    public void setWithdrawLimitEvent(ActionListener listener) {
+        setWithdrawLimitBtn.addActionListener(listener);
     }
 
     // set field values
@@ -187,5 +193,19 @@ public class AccountDetailsUI extends WindowUI {
             dailyWithdrawedLabel.setText(dailyWithdrawedLabel.getText() + "    " + dailyWithdrawed);
             canWithdrawLabel.setText(canWithdrawLabel.getText() + "    " + canWithdraw);
         }
+    }
+
+    // update chequebook status
+    public void setChequebookStatus(boolean status) {
+        hasChequeBookLabel.setText("Has Cheque Book:" + "    " + status);
+    }
+    // update daily withdraw limit status
+    public void setDailyWithdrawLimitStatus(double limit) {
+        dailyWithdrawalLimitLabel.setText("Daily Withdrawal Limit:" + "    " + limit);
+    }
+
+    // display cheque exception status
+    public void setChequeExceptionStatus(String message) {
+        hasChequeBookLabel.setText("Has Cheque Book:" + "    " + "You already have a cheque book");
     }
 }

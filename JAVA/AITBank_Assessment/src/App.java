@@ -12,7 +12,7 @@
 *   3. Account PINs are as follows:
     *       Cheque Accout - 7777
     *       Fixed Accout - 5555
-    *       Net-Saver Accout - 2020
+    *       Net-Saver Accout - 1397
     *       Savings Accout - 1234
 */
 
