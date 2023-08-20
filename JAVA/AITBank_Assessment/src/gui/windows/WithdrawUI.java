@@ -14,7 +14,7 @@ public class WithdrawUI extends WindowUI {
     private KeypadPanel keypadPanel;
     private JPanel bottomPanel;
     private JPanel buttonPanel;
-    private JTextField errMessageField;
+    private JTextField withdrawStatusField;
     private JButton backBtn;
     private JButton withdrawBtn;
 
@@ -44,11 +44,11 @@ public class WithdrawUI extends WindowUI {
         bottomPanel = new JPanel(new BorderLayout());
 
         // Err message text field
-        errMessageField = new JTextField();
-        errMessageField.setEditable(false);
-        errMessageField.setForeground(Color.RED);
-        errMessageField.setHorizontalAlignment(JTextField.CENTER);
-        bottomPanel.add(errMessageField, BorderLayout.NORTH);
+        withdrawStatusField = new JTextField();
+        withdrawStatusField.setEditable(false);
+        withdrawStatusField.setForeground(Color.RED);
+        withdrawStatusField.setHorizontalAlignment(JTextField.CENTER);
+        bottomPanel.add(withdrawStatusField, BorderLayout.NORTH);
 
         // buttons
         buttonPanel = new JPanel(new FlowLayout()); // Use FlowLayout for button alignment
@@ -80,16 +80,16 @@ public class WithdrawUI extends WindowUI {
     }
 
     // set error message
-    public void setErrorMessage(String errorMessage, boolean isError) {
+    public void setWithdrawStatus(String message, boolean isError) {
         // set error message
         if (isError) {
-            errMessageField.setForeground(Color.RED);
-            errMessageField.setText(errorMessage);
+            withdrawStatusField.setForeground(Color.RED);
+            withdrawStatusField.setText(message);
         }
         // set successful withdraw message
         else {
-            errMessageField.setForeground(Color.GREEN);
-            errMessageField.setText(errorMessage);
+            withdrawStatusField.setForeground(Color.GREEN);
+            withdrawStatusField.setText(message);
         }
     }
 }

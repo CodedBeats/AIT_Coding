@@ -277,48 +277,48 @@ public class GUIHandler {
                         try {
                             chequeAccount.withdraw(input);
                             accBalance = chequeAccount.getBalance();
-                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                            withdrawUI.setWithdrawStatus("Successfully withdrawed $" + input, false);
                         } catch (IncorrectWithdrawAmountException e1) {
-                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e1.getMessage(), true);
                         } catch (InssuficientBalanceException e2) {
-                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e2.getMessage(), true);
                         }
                         break;
                     case "fixed":
                         try {
                             fixedAccount.withdraw(input);
                             accBalance = fixedAccount.getBalance();
-                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                            withdrawUI.setWithdrawStatus("Successfully withdrawed $" + input, false);
                         } catch (IncorrectWithdrawAmountException e1) {
-                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e1.getMessage(), true);
                         } catch (InssuficientBalanceException e2) {
-                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e2.getMessage(), true);
                         }
                         break; 
                     case "netSaver":
                         try {
                             netSaverAccount.withdraw(input);
                             accBalance = netSaverAccount.getBalance();
-                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                            withdrawUI.setWithdrawStatus("Successfully withdrawed $" + input, false);
                         } catch (IncorrectWithdrawAmountException e1) {
-                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e1.getMessage(), true);
                         } catch (InssuficientBalanceException e2) {
-                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e2.getMessage(), true);
                         } catch (ExceedWithdrawlLimitException e3) {
-                            withdrawUI.setErrorMessage(e3.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e3.getMessage(), true);
                         }
                         break;
                     case "savings":
                         try {
                             savingsAccount.withdraw(input);
                             accBalance = savingsAccount.getBalance();
-                            withdrawUI.setErrorMessage("Successfully withdrawed $" + input, false);
+                            withdrawUI.setWithdrawStatus("Successfully withdrawed $" + input, false);
                         } catch (IncorrectWithdrawAmountException e1) {
-                            withdrawUI.setErrorMessage(e1.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e1.getMessage(), true);
                         } catch (InssuficientBalanceException e2) {
-                            withdrawUI.setErrorMessage(e2.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e2.getMessage(), true);
                         } catch (ExceedWithdrawlLimitException e3) {
-                            withdrawUI.setErrorMessage(e3.getMessage(), true);
+                            withdrawUI.setWithdrawStatus(e3.getMessage(), true);
                         }
                         break;
                 }
