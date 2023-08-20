@@ -54,11 +54,6 @@ public class GUIHandler {
     // init randGenerator
     private RandGenerator rand = new RandGenerator();
 
-    // constructor
-    public GUIHandler() {
-
-    }
-
 
     // handle home screen
     public void handleHomeUI() {

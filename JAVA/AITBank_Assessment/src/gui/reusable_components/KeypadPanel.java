@@ -2,9 +2,8 @@ package gui.reusable_components;
 
 // import libraries
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.*;
+import javax.swing.border.Border;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

@@ -18,14 +18,14 @@
 */
 
 
-// import gui
+// import gui handler
 import gui.GUIHandler;
 
 public class App {
     public static void main(String[] args) throws Exception {
         // create gui handler
         GUIHandler guiHandler = new GUIHandler();
-        // handle each ui window
+        // handle each ui window (not handled themselves within the handler)
         guiHandler.handleHomeUI();
         guiHandler.handleLoginUI();
         guiHandler.handleDashbaordUI();
