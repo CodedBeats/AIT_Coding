@@ -74,7 +74,7 @@ public class AccountDetailsUI extends WindowUI {
         // panel to hold buttons
         btnPanel = new JPanel(new GridLayout(1, 0, 10, 5)); // 1 row, any number of columns
         // add back btn
-        backBtn = new JButton("<- Back");
+        backBtn = new JButton("<< Back");
         // add back btn to button panel
         btnPanel.add(backBtn);
 

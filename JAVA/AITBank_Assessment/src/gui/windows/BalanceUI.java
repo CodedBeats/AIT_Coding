@@ -32,7 +32,7 @@ public class BalanceUI extends WindowUI {
         balanceField.setEditable(false);
         frame.add(balanceField, BorderLayout.CENTER);
 
-        backBtn = new JButton("<- Back");
+        backBtn = new JButton("<< Back");
 
         buttonPanel = new JPanel();
         buttonPanel.add(backBtn);

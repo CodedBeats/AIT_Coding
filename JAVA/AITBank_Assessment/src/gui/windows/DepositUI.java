@@ -53,7 +53,7 @@ public class DepositUI extends WindowUI {
         // buttons
         buttonPanel = new JPanel(new FlowLayout()); // Use FlowLayout for button alignment
         // back to dashboard btn
-        backBtn = new JButton("<- Back");
+        backBtn = new JButton("<< Back");
         // withdraw btn
         depositBtn = new JButton("Deposit");
         buttonPanel.add(backBtn);
