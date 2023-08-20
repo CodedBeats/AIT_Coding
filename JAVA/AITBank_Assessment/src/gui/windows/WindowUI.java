@@ -2,6 +2,7 @@ package gui.windows;
 
 // import libraries
 import javax.swing.JFrame;
+import java.awt.*;
 
 public abstract class WindowUI {
     protected JFrame frame;
@@ -11,6 +12,16 @@ public abstract class WindowUI {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
+
+        // Get the size of the screen
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            
+        // Calculate the center position for the frame
+        int x = (screenSize.width - frame.getWidth()) / 2;
+        int y = (screenSize.height - frame.getHeight()) / 2;
+        
+        // Set the frame's location to the calculated position
+        frame.setLocation(x, y);
     }
 
     // Set frame visibility
