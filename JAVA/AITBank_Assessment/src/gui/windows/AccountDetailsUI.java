@@ -18,8 +18,8 @@ public class AccountDetailsUI extends WindowUI {
     private JPanel btnPanel;
     private JPanel mainPanel;
     private JButton backBtn;
-    private JButton btn1;
-    private JButton btn2;
+    private JButton orderChequeBookBtn;
+    private JButton setWithdrawLimitBtn;
     // account details
     private JLabel accountNumberLabel;
     private JLabel accountTypeLabel;
@@ -71,6 +71,13 @@ public class AccountDetailsUI extends WindowUI {
         mainPanel = new JPanel(new GridLayout(3, 1, 10, 5));
         mainPanel.add(accountDetailsPanel); 
 
+        // panel to hold buttons
+        btnPanel = new JPanel(new GridLayout(1, 0, 10, 5)); // 1 row, any number of columns
+        // add back btn
+        backBtn = new JButton("<- Back");
+        // add back btn to button panel
+        btnPanel.add(backBtn);
+
 
         // Account type fields
         // Cheque
@@ -80,8 +87,12 @@ public class AccountDetailsUI extends WindowUI {
 
             // define elements
             hasChequeBookLabel = new JLabel("Has Cheque Book:");
+            // special cheque account functionality
+            orderChequeBookBtn = new JButton("Reorder Cheque Book");
             // add labels to acc type frame
             accountTypeDetailsPanel.add(hasChequeBookLabel);
+            // add btn to btnPanel
+            btnPanel.add(orderChequeBookBtn);
         } 
         // Fixed
         else if (accType.equals("fixed")) {
@@ -121,26 +132,19 @@ public class AccountDetailsUI extends WindowUI {
             dailyWithdrawedLabel = new JLabel("Daily Withdrawed:");
             canWithdrawLabel = new JLabel("Can Withdraw:");
             interestRateLabel = new JLabel("Interest Rate per month:");
+            // special savings account functionality
+            setWithdrawLimitBtn = new JButton("Set Withdraw Limit");
             // add labels to acc type frame
             accountTypeDetailsPanel.add(dailyWithdrawalLimitLabel);
             accountTypeDetailsPanel.add(dailyWithdrawedLabel);
             accountTypeDetailsPanel.add(canWithdrawLabel);
             accountTypeDetailsPanel.add(interestRateLabel);
+            // add btn to btnPanel
+            btnPanel.add(setWithdrawLimitBtn);
         }
 
         // add acc type details to main frame
         mainPanel.add(accountTypeDetailsPanel);
-
-        // panel to hold buttons
-        btnPanel = new JPanel(new GridLayout(1, 0, 10, 5)); // 1 row, any number of columns
-        // create buttons
-        backBtn = new JButton("<- Back");
-        btn1 = new JButton("Btn1");
-        btn2 = new JButton("Btn2");
-        // add buttons to button panel
-        btnPanel.add(backBtn);
-        btnPanel.add(btn1);
-        btnPanel.add(btn2);
 
         // add btn container to main panel
         mainPanel.add(btnPanel, BorderLayout.CENTER);
