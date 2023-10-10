@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crapulator", "Crapulator\Crapulator.csproj", "{3CF1455F-039E-4A63-9B1F-40FCE3995EFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crapulator_Display", "Crapulator_Display\Crapulator_Display.csproj", "{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CF1455F-039E-4A63-9B1F-40FCE3995EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF1455F-039E-4A63-9B1F-40FCE3995EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF1455F-039E-4A63-9B1F-40FCE3995EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF1455F-039E-4A63-9B1F-40FCE3995EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E0989DF-8780-417C-AD1C-DC25AC6E2A43}
+	EndGlobalSection
+EndGlobal
