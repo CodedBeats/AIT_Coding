@@ -50,6 +50,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button10
@@ -76,6 +77,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "x";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.multiplyBtn);
             // 
             // button3
             // 
@@ -88,7 +90,7 @@
             this.button3.TabIndex = 13;
             this.button3.Text = "-";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.subBtn);
             // 
             // button4
             // 
@@ -101,7 +103,7 @@
             this.button4.TabIndex = 14;
             this.button4.Text = "+";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.addBtn);
             // 
             // button5
             // 
@@ -255,6 +257,7 @@
             this.button17.TabIndex = 26;
             this.button17.Text = ".";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.decimalPointBtn);
             // 
             // textBox2
             // 
@@ -274,6 +277,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(262, 60);
             this.textBox1.TabIndex = 30;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
@@ -299,6 +303,7 @@
             this.button21.TabIndex = 33;
             this.button21.Text = "Del";
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.delBtn);
             // 
             // button22
             // 
@@ -311,6 +316,7 @@
             this.button22.TabIndex = 34;
             this.button22.Text = "/";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.divBtn);
             // 
             // button18
             // 
@@ -324,7 +330,19 @@
             this.button18.TabIndex = 35;
             this.button18.Text = "X";
             this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.exitBtn_click);
+            this.button18.Click += new System.EventHandler(this.exitBtn);
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(31, 182);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(39, 60);
+            this.textBox3.TabIndex = 36;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Form1
             // 
@@ -332,6 +350,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(418, 664);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
@@ -384,6 +403,7 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

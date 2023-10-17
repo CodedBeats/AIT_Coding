@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crapulator", "Crapulator\Cr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crapulator_Display", "Crapulator_Display\Crapulator_Display.csproj", "{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crapulator_Controller", "Crapulator_Controller\Crapulator_Controller.csproj", "{B87CD58C-0CBC-4F44-AE54-F63EE171823C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A5B62E0-F6C1-4E95-9372-DE63ED5A8EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B87CD58C-0CBC-4F44-AE54-F63EE171823C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B87CD58C-0CBC-4F44-AE54-F63EE171823C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B87CD58C-0CBC-4F44-AE54-F63EE171823C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B87CD58C-0CBC-4F44-AE54-F63EE171823C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
