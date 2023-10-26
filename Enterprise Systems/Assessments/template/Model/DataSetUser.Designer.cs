@@ -855,14 +855,14 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT     UID, UserName, Password, UserLevel \r\nFROM       dbo.TabUser\r\nWHERE    " +
-                " (UserName = @Username)";
+            this._commandCollection[1].CommandText = "SELECT UID, UserName, Password, UserLevel FROM dbo.TabUser";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT UID, UserName, Password, UserLevel FROM dbo.TabUser";
+            this._commandCollection[2].CommandText = "SELECT     UID, UserName, Password, UserLevel \r\nFROM       dbo.TabUser\r\nWHERE    " +
+                " (UserName = @Username)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -893,14 +893,8 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetUser.TabUserDataTable FindUser(string Username) {
+        public virtual DataSetUser.TabUserDataTable GetAllUsers() {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((Username == null)) {
-                throw new global::System.ArgumentNullException("Username");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Username));
-            }
             DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -910,8 +904,14 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetUser.TabUserDataTable GetAllUsers() {
+        public virtual DataSetUser.TabUserDataTable ValidateUsername(string Username) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Username == null)) {
+                throw new global::System.ArgumentNullException("Username");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Username));
+            }
             DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

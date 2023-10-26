@@ -49,6 +49,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetBook.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetUser.cs">
+      <DependentUpon>DataSetUser.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetUser.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
