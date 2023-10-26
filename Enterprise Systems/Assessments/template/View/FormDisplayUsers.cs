@@ -21,11 +21,11 @@ namespace View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //connect to the Controller
+            // connect to the Controller
             UserController userController = new UserController();
             List<UserDTO> userDTOs = userController.GetAllUsers();
 
-            //display the data
+            // display the data
             dataGridView1.DataSource = userDTOs;
         }
     }

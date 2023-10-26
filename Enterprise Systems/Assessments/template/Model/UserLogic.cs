@@ -12,17 +12,19 @@ namespace Model
         public List<UserDTO> GetAllUserDTOs()
         {
             UserDAO userDAO = new UserDAO();
+            // create list of User type users with UserDAO function
             List<User> users = userDAO.GetAllUsers();
 
+            // check if no users
             if (users == null)
             {
                 return null;
             }
 
-            // Transform User objects into UserDTO objects
+            // clone User type users' data into UserDTO type users
             List<UserDTO> userDTOs = users.Select(user => new UserDTO
             {
-                UID = user.Uid,
+                UID = user.UID,
                 UserName = user.UserName,
                 Password = user.Password,
                 UserLevel = user.UserLevel

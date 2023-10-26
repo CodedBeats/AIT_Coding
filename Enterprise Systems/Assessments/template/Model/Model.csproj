@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book.cs" />
+    <Compile Include="BookDAO.cs" />
+    <Compile Include="BookLogic.cs" />
+    <Compile Include="DataSetBook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetUser.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -58,6 +66,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataSetBook.xsc">
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBook.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBook.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBook.xss">
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </None>
     <None Include="DataSetUser.xsc">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
     </None>

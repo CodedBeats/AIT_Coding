@@ -8,14 +8,9 @@ namespace Model
 {
     public class User
     {
-        int uid;
-        string userName;
-        string password;
-        int userLevel;
-
-        public int Uid { get => uid; set => uid = value; }
-        public string UserName { get => userName; set => userName = value; }
-        public string Password { get => password; set => password = value; }
-        public int UserLevel { get => userLevel; set => userLevel = value; }
+        public int UID { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public int UserLevel { get; set; }
     }
 }

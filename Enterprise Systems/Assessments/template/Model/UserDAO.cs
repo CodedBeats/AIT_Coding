@@ -12,44 +12,43 @@ namespace Model
     {
         public List<User> GetAllUsers()
         {
-            //connects to the Database
-            //and executing the Query and it return the data into the object tabUserDataTable
+            // connect to the db
             TabUserTableAdapter tabUserTableAdapter = new TabUserTableAdapter();
+            // execute query and store data in object
             DataSetUser.TabUserDataTable tabUserDataTable = tabUserTableAdapter.GetAllUsers();
 
-            //now traverse the tabUserDataTable and get all the data one by one (loop)
-            //1st check if any data is returned
+            // check if there isn't data
             int dataCount = tabUserDataTable.Count;
             if (dataCount == 0)
             {
-                //this means there is not data in the table
+                // no data found
                 return null;
             }
             else
             {
-                //create a List of User objects
+                // create list of users
                 List<User> users = new List<User>();
 
-                //there are data, so now traverse the tabUserDataTable and get all the data one by one (loop)
+                // iterate through data storing each row in a new user
                 foreach (DataRow row in tabUserDataTable)
                 {
+                    // store user data in correct format in variables
                     int uid = Convert.ToInt32(row["UID"]);
                     string userName = row["UserName"].ToString();
                     string password = row["Password"].ToString();
                     int userLevel = Convert.ToInt32(row["UserLevel"]);
 
-                    //encapsulat the above data into a User Object (for this 1st we have to create an Entity class called User)
+                    // set user data with created variables
                     User user = new User();
-                    user.Uid = uid;
+                    user.UID = uid;
                     user.UserName = userName;
                     user.Password = password;
                     user.UserLevel = userLevel;
 
-                    //and then add that User Object into a List
+                    // add user to list
                     users.Add(user);
                 }
 
-                //return the List of User Objects
                 return users;
             }
         }
