@@ -34,10 +34,21 @@ namespace View
             else
             {
                 // show user dashboard
-                FormDisplayBooks formDisplayBooks = new FormDisplayBooks();
-                formDisplayBooks.Visible = true;
+                FormDisplayDashboard formDisplayDashboard = new FormDisplayDashboard();
+                formDisplayDashboard.Visible = true;
                 // hide login screen
                 this.Visible = false;
+            }
+        }
+
+        private void ExitBtn(object sender, EventArgs e)
+        {
+            // confirmation message window
+            DialogResult dr = MessageBox.Show("Are you sure you want to close this form?", "Confirmation of Form Closure", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                // close program
+                Application.Exit();
             }
         }
     }

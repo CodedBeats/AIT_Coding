@@ -15,5 +15,26 @@ namespace Controller
             BookLogic bookLogic = new BookLogic();
             return bookLogic.GetAllBooks();
         }
+
+        public List<BookDTO> Search(string searchInput, int searchCat)
+        {
+            BookLogic bookLogic = new BookLogic();
+
+            // search by book name
+            if (searchCat == 1)
+            {
+                return bookLogic.FindBookByName(searchInput);
+            }
+            // search by author
+            else if (searchCat == 2)
+            {
+                return bookLogic.FindBookByAuthor(searchInput);
+            }
+            // search by category
+            else
+            {
+                return bookLogic.FindBookByCategory(searchInput);
+            }
+        }
     }
 }

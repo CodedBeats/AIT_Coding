@@ -48,17 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDisplayBooks.cs">
+    <Compile Include="FormDisplayDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayBooks.Designer.cs">
-      <DependentUpon>FormDisplayBooks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormDisplayUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDisplayUsers.Designer.cs">
-      <DependentUpon>FormDisplayUsers.cs</DependentUpon>
+    <Compile Include="FormDisplayDashboard.Designer.cs">
+      <DependentUpon>FormDisplayDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDisplayLogin.cs">
       <SubType>Form</SubType>
@@ -68,11 +62,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDisplayBooks.resx">
-      <DependentUpon>FormDisplayBooks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplayUsers.resx">
-      <DependentUpon>FormDisplayUsers.cs</DependentUpon>
+    <EmbeddedResource Include="FormDisplayDashboard.resx">
+      <DependentUpon>FormDisplayDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisplayLogin.resx">
       <DependentUpon>FormDisplayLogin.cs</DependentUpon>

@@ -41,13 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorDAO.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="BookDAO.cs" />
     <Compile Include="BookLogic.cs" />
+    <Compile Include="CategoryDAO.cs" />
+    <Compile Include="DataSetAuthor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetAuthor.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetBook.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetCategory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCategory.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetUser.cs">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
@@ -69,6 +81,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataSetAuthor.xsc">
+      <DependentUpon>DataSetAuthor.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetAuthor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetAuthor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetAuthor.xss">
+      <DependentUpon>DataSetAuthor.xsd</DependentUpon>
+    </None>
     <None Include="DataSetBook.xsc">
       <DependentUpon>DataSetBook.xsd</DependentUpon>
     </None>
@@ -79,6 +102,17 @@
     </None>
     <None Include="DataSetBook.xss">
       <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCategory.xsc">
+      <DependentUpon>DataSetCategory.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCategory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCategory.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetCategory.xss">
+      <DependentUpon>DataSetCategory.xsd</DependentUpon>
     </None>
     <None Include="DataSetUser.xsc">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
