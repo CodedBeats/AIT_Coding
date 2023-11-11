@@ -98,7 +98,6 @@ namespace View
                 this.Visible = false;
             }
         }
-
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window

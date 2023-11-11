@@ -48,11 +48,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDisplayAdminAuthCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayAdminAuthCRUD.Designer.cs">
+      <DependentUpon>FormDisplayAdminAuthCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayAdminBookCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayAdminBookCRUD.Designer.cs">
+      <DependentUpon>FormDisplayAdminBookCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayAdminCatCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayAdminCatCRUD.Designer.cs">
+      <DependentUpon>FormDisplayAdminCatCRUD.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDisplayAdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDisplayAdminDashboard.Designer.cs">
       <DependentUpon>FormDisplayAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayAdminLangCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayAdminLangCRUD.Designer.cs">
+      <DependentUpon>FormDisplayAdminLangCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayAdminUserCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayAdminUserCRUD.Designer.cs">
+      <DependentUpon>FormDisplayAdminUserCRUD.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDisplayUserBookSearch.cs">
       <SubType>Form</SubType>
@@ -80,8 +110,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormDisplayAdminAuthCRUD.resx">
+      <DependentUpon>FormDisplayAdminAuthCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayAdminBookCRUD.resx">
+      <DependentUpon>FormDisplayAdminBookCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayAdminCatCRUD.resx">
+      <DependentUpon>FormDisplayAdminCatCRUD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDisplayAdminDashboard.resx">
       <DependentUpon>FormDisplayAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayAdminLangCRUD.resx">
+      <DependentUpon>FormDisplayAdminLangCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayAdminUserCRUD.resx">
+      <DependentUpon>FormDisplayAdminUserCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisplayUserBookSearch.resx">
       <DependentUpon>FormDisplayUserBookSearch.cs</DependentUpon>

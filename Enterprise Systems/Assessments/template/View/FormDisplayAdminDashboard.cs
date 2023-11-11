@@ -19,6 +19,54 @@ namespace View
             label2.Text = welcome;
         }
 
+
+        private void LanguageBtn(object sender, EventArgs e)
+        {
+            // show Language CRUD window
+            FormDisplayAdminLangCRUD languageWindow = new FormDisplayAdminLangCRUD(label2.Text);
+            languageWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
+        private void CategoryBtn(object sender, EventArgs e)
+        {
+            // show Category CRUD window
+            FormDisplayAdminCatCRUD categoryWindow = new FormDisplayAdminCatCRUD(label2.Text);
+            categoryWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
+        private void AuthorBtn(object sender, EventArgs e)
+        {
+            // show Author CRUD window
+            FormDisplayAdminAuthCRUD authorWindow = new FormDisplayAdminAuthCRUD(label2.Text);
+            authorWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
+        private void UserBtn(object sender, EventArgs e)
+        {
+            // show User CRUD window
+            FormDisplayAdminUserCRUD userWindow = new FormDisplayAdminUserCRUD(label2.Text);
+            userWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
+        private void BookBtn(object sender, EventArgs e)
+        {
+            // show Book CRUD window
+            FormDisplayAdminBookCRUD bookWindow = new FormDisplayAdminBookCRUD(label2.Text);
+            bookWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
+
+
         private void ExitBtn(object sender, EventArgs e)
         {
             // confirmation message window
@@ -29,7 +77,6 @@ namespace View
                 Application.Exit();
             }
         }
-
         private void LogoutBtn(object sender, EventArgs e)
         {
             // confirmation message window
@@ -54,15 +101,12 @@ namespace View
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

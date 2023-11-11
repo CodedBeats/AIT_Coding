@@ -95,7 +95,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "Book";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.BookBtn);
             // 
             // button7
             // 
@@ -124,6 +124,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "Category";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.CategoryBtn);
             // 
             // button3
             // 
@@ -138,6 +139,7 @@
             this.button3.TabIndex = 23;
             this.button3.Text = "Language";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.LanguageBtn);
             // 
             // button5
             // 
@@ -152,6 +154,7 @@
             this.button5.TabIndex = 24;
             this.button5.Text = "Author";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.AuthorBtn);
             // 
             // button6
             // 
@@ -166,6 +169,7 @@
             this.button6.TabIndex = 25;
             this.button6.Text = "User";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.UserBtn);
             // 
             // button8
             // 
