@@ -9,19 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-/*
- * === ASSUMPTIONS ===
- * 1. Search criteria can be displayed as toggled buttons to switch between different criteria.
- * 2. For searching criteria that have string input for other tables but interger for book table, 
- *      they will be searched correctly in code,
- *      but still displayed with their number when displaying all matched books.
- * 3. All book data can just be displayed with the data grid and doesn't need any special formatiing or styling.
-*/
+using System.Xml.Linq;
 
 namespace View
 {
-    public partial class FormDisplayDashboard : Form
+    public partial class FormDisplayUserBookSearch : Form
     {
         // easy way to set search category state for switching and passing
         private int searchCat = 1;
@@ -29,14 +21,10 @@ namespace View
         // connect to the Controller
         BookController bookController = new BookController();
 
-        public FormDisplayDashboard()
+        public FormDisplayUserBookSearch(string name)
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            label2.Text = name;
         }
 
         private void GetAllBooksBtn(object sender, EventArgs e)
@@ -94,6 +82,20 @@ namespace View
             {
                 // close program
                 Application.Exit();
+            }
+        }
+        private void LogoutBtn(object sender, EventArgs e)
+        {
+            // confirmation message window
+            DialogResult dr = MessageBox.Show("Are you sure you'd like to logout?", "Confirmation of Form Closure", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                // show login window
+                FormDisplayLogin loginWindow = new FormDisplayLogin();
+                loginWindow.Visible = true;
+
+                // hide current window
+                this.Visible = false;
             }
         }
     }

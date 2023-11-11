@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using DTO;
+using static Model.UserLogic;
 
 namespace Controller
 {
     public class UserController
     {
-        public bool ValidateLogin(string userNameInput, string passwordInput)
+        UserLogic userLogic = new UserLogic();
+
+        public UserType ValidateLogin(string userNameInput, string passwordInput)
         {
-            UserLogic userLogic = new UserLogic();
             return userLogic.ValidateLogin(userNameInput, passwordInput);
         }
     }

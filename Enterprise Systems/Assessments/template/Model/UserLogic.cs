@@ -9,26 +9,34 @@ namespace Model
 {
     public class UserLogic
     {
-        public bool ValidateLogin(string userNameInput, string passwordInput)
+
+        // return different numbers for different users
+        public UserType ValidateLogin(string userNameInput, string passwordInput)
         {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.ValidateUserName(userNameInput);
 
-            // check user isn't null
+            // No user
             if (user == null)
             {
-                return false;
+                return UserType.NoUser;
             }
-            // check if current user password matches input password
+            // Valid user
             else if (user.Password == passwordInput)
             {
-                return true;
+                // Student user
+                if (user.UserName == "user")
+                {
+                    return UserType.Student;
+                }
+                // Staff or admin user
+                else if (user.UserName == "sup" || user.UserName == "admin")
+                {
+                    return UserType.StaffOrAdmin;
+                }
             }
-            // input password isn't correct for this username
-            else
-            {
-                return false;
-            }
+            // Input password isn't correct for this username
+            return UserType.NoUser;
         }
     }
 }

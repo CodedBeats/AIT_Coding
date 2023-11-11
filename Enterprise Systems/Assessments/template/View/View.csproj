@@ -48,11 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDisplayDashboard.cs">
+    <Compile Include="FormDisplayAdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplayDashboard.Designer.cs">
-      <DependentUpon>FormDisplayDashboard.cs</DependentUpon>
+    <Compile Include="FormDisplayAdminDashboard.Designer.cs">
+      <DependentUpon>FormDisplayAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayUserBookSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayUserBookSearch.Designer.cs">
+      <DependentUpon>FormDisplayUserBookSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayUserBookServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayUserBookServices.Designer.cs">
+      <DependentUpon>FormDisplayUserBookServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDisplayUserDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDisplayUserDashboard.Designer.cs">
+      <DependentUpon>FormDisplayUserDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDisplayLogin.cs">
       <SubType>Form</SubType>
@@ -62,8 +80,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDisplayDashboard.resx">
-      <DependentUpon>FormDisplayDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="FormDisplayAdminDashboard.resx">
+      <DependentUpon>FormDisplayAdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayUserBookSearch.resx">
+      <DependentUpon>FormDisplayUserBookSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayUserBookServices.resx">
+      <DependentUpon>FormDisplayUserBookServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDisplayUserDashboard.resx">
+      <DependentUpon>FormDisplayUserDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisplayLogin.resx">
       <DependentUpon>FormDisplayLogin.cs</DependentUpon>

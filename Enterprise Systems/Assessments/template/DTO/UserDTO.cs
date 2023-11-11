@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+    public enum UserType
+    {
+        NoUser,
+        Student,
+        StaffOrAdmin
+    }
+
     public class UserDTO
     {
         public int UID { get; set; }
