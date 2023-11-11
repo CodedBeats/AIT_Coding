@@ -98,5 +98,15 @@ namespace View
                 this.Visible = false;
             }
         }
+
+        private void BackToDashboardBtn(object sender, EventArgs e)
+        {
+            // show dahsboard window
+            FormDisplayUserDashboard dashboardWindow = new FormDisplayUserDashboard(label2.Text);
+            dashboardWindow.Visible = true;
+
+            // hide current window
+            this.Visible = false;
+        }
     }
 }
