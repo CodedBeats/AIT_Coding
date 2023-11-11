@@ -13,10 +13,10 @@ namespace View
 {
     public partial class FormDisplayAdminDashboard : Form
     {
-        public FormDisplayAdminDashboard(string name)
+        public FormDisplayAdminDashboard(string welcome)
         {
             InitializeComponent();
-            label2.Text = "Welcome " + name;
+            label2.Text = welcome;
         }
 
         private void ExitBtn(object sender, EventArgs e)
@@ -51,6 +51,16 @@ namespace View
 
         }
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
