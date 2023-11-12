@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.DataSetUserTableAdapters;
+using static Model.DataSetAuthor;
 
 namespace Model
 {
@@ -52,6 +53,34 @@ namespace Model
                 }
                 // username not found
                 return null;
+            }
+        }
+
+        public int FindUserIDByName(string usernameInput)
+        {
+            // execute query
+            DataSetUser.TabUserDataTable tabUserDataTable = tabUserTableAdapter.GetUserIDByName(usernameInput);
+
+            // init UID
+            int UID = 0;
+
+            // check if there isn't data
+            int dataCount = tabUserDataTable.Count;
+            if (dataCount == 0)
+            {
+                // no data found
+                return 0;
+            }
+            else
+            {
+                // iterate through data storing each row in a new user (should only be 1)
+                foreach (DataRow row in tabUserDataTable)
+                {
+                    // store user data in correct format in variable
+                    UID = Convert.ToInt32(row["UID"]);
+                }
+
+                return UID;
             }
         }
     }

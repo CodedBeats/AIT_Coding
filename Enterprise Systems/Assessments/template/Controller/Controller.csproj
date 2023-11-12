@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookController.cs" />
+    <Compile Include="BorrowController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RservedController.cs" />
     <Compile Include="UserController.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -30,19 +30,21 @@ namespace View
         // connect to the Controller
         BookController bookController = new BookController();
 
-        public FormDisplayUserDashboard(string welcome)
+        // username
+        string username = "";
+
+        public FormDisplayUserDashboard(string name)
         {
             InitializeComponent();
-            label2.Text = welcome;
+            username = name;
+            label2.Text = "Welcome " + username;
         }
 
 
         private void BookServicesBtn(object sender, EventArgs e)
         {
-            // get username
-            string userUsername = label2.Text;
             // show user book services
-            FormDisplayUserBookServices userBookServices = new FormDisplayUserBookServices(userUsername);
+            FormDisplayUserBookServices userBookServices = new FormDisplayUserBookServices(username);
             userBookServices.Visible = true;
 
             // hide dashboard
@@ -50,10 +52,8 @@ namespace View
         }
         private void BookSearchBtn(object sender, EventArgs e)
         {
-            // get username
-            string userUsername = label2.Text;
             // show user book search
-            FormDisplayUserBookSearch userBookSearch = new FormDisplayUserBookSearch(userUsername);
+            FormDisplayUserBookSearch userBookSearch = new FormDisplayUserBookSearch(username);
             userBookSearch.Visible = true;
 
             // hide dashboard

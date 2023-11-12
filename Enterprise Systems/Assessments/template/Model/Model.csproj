@@ -45,6 +45,9 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookDAO.cs" />
     <Compile Include="BookLogic.cs" />
+    <Compile Include="Borrow.cs" />
+    <Compile Include="BorrowDAO.cs" />
+    <Compile Include="BorrowLogic.cs" />
     <Compile Include="CategoryDAO.cs" />
     <Compile Include="DataSetAuthor.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,10 +59,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetBook.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetBorrow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBorrow.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetCategory.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetCategory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReserved.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReserved.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetUser.cs">
       <DependentUpon>DataSetUser.xsd</DependentUpon>
@@ -75,6 +88,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reserved.cs" />
+    <Compile Include="ReservedDAO.cs" />
+    <Compile Include="ReservedLogic.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="UserLogic.cs" />
@@ -103,6 +119,17 @@
     <None Include="DataSetBook.xss">
       <DependentUpon>DataSetBook.xsd</DependentUpon>
     </None>
+    <None Include="DataSetBorrow.xsc">
+      <DependentUpon>DataSetBorrow.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBorrow.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBorrow.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBorrow.xss">
+      <DependentUpon>DataSetBorrow.xsd</DependentUpon>
+    </None>
     <None Include="DataSetCategory.xsc">
       <DependentUpon>DataSetCategory.xsd</DependentUpon>
     </None>
@@ -113,6 +140,17 @@
     </None>
     <None Include="DataSetCategory.xss">
       <DependentUpon>DataSetCategory.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReserved.xsc">
+      <DependentUpon>DataSetReserved.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReserved.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReserved.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetReserved.xss">
+      <DependentUpon>DataSetReserved.xsd</DependentUpon>
     </None>
     <None Include="DataSetUser.xsc">
       <DependentUpon>DataSetUser.xsd</DependentUpon>

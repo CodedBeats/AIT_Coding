@@ -41,7 +41,7 @@ namespace View
                         // get username
                         string userUsername = textBox1.Text;
                         // show user dashboard
-                        FormDisplayUserDashboard userDashboard = new FormDisplayUserDashboard("Welcome " + userUsername);
+                        FormDisplayUserDashboard userDashboard = new FormDisplayUserDashboard(userUsername);
                         userDashboard.Visible = true;
                         break;
 

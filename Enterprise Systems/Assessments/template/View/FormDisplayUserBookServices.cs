@@ -14,14 +14,31 @@ namespace View
 {
     public partial class FormDisplayUserBookServices : Form
     {
-        // connect to the Controller
+        // connect to the Controllers
         BookController bookController = new BookController();
+        BorrowController borrowController = new BorrowController();
+        RservedController reservedController = new RservedController();
 
+        // username
+        string username = "";
 
         public FormDisplayUserBookServices(string name)
         {
             InitializeComponent();
-            label2.Text = name;
+            // set welcome message
+            username = name;
+            label2.Text = "Welcome " + username;
+
+            // load user's borrowed and reserved books
+            List<BorrowDTO> borrowDTOs = borrowController.FindBorrowByUserID(username);
+            List<ReservedDTO> reservedDTOs = reservedController.FindReservedByUserID(username);
+
+            // display the data
+            dataGridView2.DataSource = borrowDTOs;
+            dataGridView3.DataSource = reservedDTOs;
+
+            // hide error message
+            label1.Visible = false;
         }
 
         private void GetAllBooksBtn(object sender, EventArgs e)
@@ -30,6 +47,60 @@ namespace View
 
             // display the data
             dataGridView1.DataSource = bookDTOs;
+        }
+
+
+        private void BorrowBookBtn(object sender, EventArgs e)
+        {
+            bool successfullBorrow = borrowController.BorrowBook(textBox1.Text, username);
+            if (successfullBorrow)
+            {
+                // reload view to see updated data
+                List<BorrowDTO> borrowDTOs = borrowController.FindBorrowByUserID(username);
+                dataGridView2.DataSource = borrowDTOs;
+                label1.Visible = false;
+            }
+            else
+            {
+                // show error message
+                label1.Visible = true;
+            }
+        }
+
+
+        private void ReserveBookBtn(object sender, EventArgs e)
+        {
+            bool successfullBorrow = reservedController.ReserveBook(textBox1.Text, username);
+            if (successfullBorrow)
+            {
+                // reload view to see updated data
+                List<ReservedDTO> reservedDTOs = reservedController.FindReservedByUserID(username);
+                dataGridView3.DataSource = reservedDTOs;
+                label1.Visible = false;
+            }
+            else
+            {
+                // show error message
+                label1.Visible = true;
+            }
+        }
+
+
+        private void ReturnBookBtn(object sender, EventArgs e)
+        {
+            bool successfullReturn = borrowController.ReturnBook(textBox1.Text, username);
+            if (successfullReturn)
+            {
+                // reload view to see updated data
+                List<BorrowDTO> borrowDTOs = borrowController.FindBorrowByUserID(username);
+                dataGridView2.DataSource = borrowDTOs;
+                label1.Visible = false;
+            }
+            else
+            {
+                // show error message
+                label1.Visible = true;
+            }
         }
 
 
@@ -62,7 +133,7 @@ namespace View
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window
-            FormDisplayUserDashboard dashboardWindow = new FormDisplayUserDashboard(label2.Text);
+            FormDisplayUserDashboard dashboardWindow = new FormDisplayUserDashboard(username);
             dashboardWindow.Visible = true;
 
             // hide current window
@@ -73,5 +144,12 @@ namespace View
         {
 
         }
+
+        private void FormDisplayUserBookServices_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

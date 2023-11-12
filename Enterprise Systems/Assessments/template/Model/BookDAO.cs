@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Model.DataSetBookTableAdapters;
 using static Model.DataSetUser;
 using System.Data;
+using Model.DataSetUserTableAdapters;
 
 namespace Model
 {
@@ -64,7 +65,7 @@ namespace Model
         }
 
 
-        // Book Name
+        // Book Name but fancy
         public List<Book> FindBookByName(string searchInput)
         {
             // connect to the db
@@ -113,6 +114,38 @@ namespace Model
                 }
 
                 return books;
+            }
+        }
+
+
+        // BookID from Name
+        public string FindBookIDByName(string bookName)
+        {
+            // connect to the db
+            TabBookTableAdapter tabBookTableAdapter = new TabBookTableAdapter();
+            // execute query
+            DataSetBook.TabBookDataTable tabBookDataTable = tabBookTableAdapter.FindBookIDByName(bookName);
+
+            // init UID
+            string ISBN = "";
+
+            // check if there isn't data
+            int dataCount = tabBookDataTable.Count;
+            if (dataCount == 0)
+            {
+                // no data found
+                return "n/a";
+            }
+            else
+            {
+                // iterate through data storing each row in a new book (should only be 1)
+                foreach (DataRow row in tabBookDataTable)
+                {
+                    // store user data in correct format in variable
+                    ISBN = row["ISBN"].ToString();
+                }
+
+                return ISBN;
             }
         }
 

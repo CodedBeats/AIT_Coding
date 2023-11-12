@@ -21,10 +21,14 @@ namespace View
         // connect to the Controller
         BookController bookController = new BookController();
 
+        // username
+        string username = "";
+
         public FormDisplayUserBookSearch(string name)
         {
             InitializeComponent();
-            label2.Text = name;
+            username = name;
+            label2.Text = "Welcome " + username;
         }
 
         private void GetAllBooksBtn(object sender, EventArgs e)
@@ -101,7 +105,7 @@ namespace View
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window
-            FormDisplayUserDashboard dashboardWindow = new FormDisplayUserDashboard(label2.Text);
+            FormDisplayUserDashboard dashboardWindow = new FormDisplayUserDashboard(username);
             dashboardWindow.Visible = true;
 
             // hide current window
