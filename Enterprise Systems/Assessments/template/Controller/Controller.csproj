@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorController.cs" />
     <Compile Include="BookController.cs" />
     <Compile Include="BorrowController.cs" />
     <Compile Include="CategoryController.cs" />

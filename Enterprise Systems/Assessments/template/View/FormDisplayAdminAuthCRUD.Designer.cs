@@ -45,7 +45,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
@@ -77,9 +76,9 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(893, 251);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 20);
+            this.label9.Size = new System.Drawing.Size(116, 20);
             this.label9.TabIndex = 105;
-            this.label9.Text = "AID\r\n";
+            this.label9.Text = "AID (AuthorID)";
             // 
             // button11
             // 
@@ -93,6 +92,7 @@
             this.button11.TabIndex = 104;
             this.button11.Text = "Delete";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.DeleteBtn);
             // 
             // label7
             // 
@@ -126,9 +126,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(631, 251);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 20);
+            this.label5.Size = new System.Drawing.Size(116, 20);
             this.label5.TabIndex = 101;
-            this.label5.Text = "AID\r\n";
+            this.label5.Text = "AID (AuthorID)";
             // 
             // textBox4
             // 
@@ -153,6 +153,7 @@
             this.button10.TabIndex = 99;
             this.button10.Text = "Update";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.UpdateBtn);
             // 
             // label4
             // 
@@ -173,11 +174,11 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(122, 118);
+            this.label1.Location = new System.Drawing.Point(101, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 58);
+            this.label1.Size = new System.Drawing.Size(127, 29);
             this.label1.TabIndex = 97;
-            this.label1.Text = "Get All \r\nAuthors\r\n";
+            this.label1.Text = "All Authors\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button9
@@ -192,6 +193,7 @@
             this.button9.TabIndex = 96;
             this.button9.Text = "Create";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.CreateBtn);
             // 
             // label3
             // 
@@ -267,19 +269,6 @@
             this.textBox2.TabIndex = 89;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(55, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 47);
-            this.button1.TabIndex = 88;
-            this.button1.Text = "Get Authors";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
@@ -295,9 +284,9 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 249);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 179);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(298, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(298, 368);
             this.dataGridView1.TabIndex = 86;
             // 
             // button8
@@ -391,7 +380,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button8);
@@ -426,7 +414,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button8;
