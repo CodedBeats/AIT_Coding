@@ -49,7 +49,7 @@ namespace View
                         // get username
                         string adminUsername = textBox1.Text;
                         // show admin dashboard
-                        FormDisplayAdminDashboard adminDashboard = new FormDisplayAdminDashboard("Welcome " + adminUsername);
+                        FormDisplayAdminDashboard adminDashboard = new FormDisplayAdminDashboard(adminUsername);
                         adminDashboard.Visible = true;
                         break;
                 }

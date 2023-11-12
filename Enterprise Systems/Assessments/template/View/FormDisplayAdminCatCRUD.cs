@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTO;
+using Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +14,43 @@ namespace View
 {
     public partial class FormDisplayAdminCatCRUD : Form
     {
+        string username;
+
+        CategoryController categoryController = new CategoryController();
+
         public FormDisplayAdminCatCRUD(string name)
         {
             InitializeComponent();
-            label2.Text = name;
+            // welcome user
+            username = name;
+            label2.Text = "Welcome " + username;
+
+            // load categories
+            dataGridView1.DataSource = categoryController.GetAllCategories();
+        }
+
+
+        private void CreateBtn(object sender, EventArgs e)
+        {
+            categoryController.CreateCategory(textBox1.Text);
+            // load categories
+            dataGridView1.DataSource = categoryController.GetAllCategories();
+        }
+
+
+        private void UpdateBtn(object sender, EventArgs e)
+        {
+            categoryController.UpdateCategory(Int32.Parse(textBox2.Text), textBox4.Text);
+            // load categories
+            dataGridView1.DataSource = categoryController.GetAllCategories();
+        }
+
+
+        private void DeleteBtn(object sender, EventArgs e)
+        {
+            categoryController.DeleteCategory(Int32.Parse(textBox3.Text));
+            // load categories
+            dataGridView1.DataSource = categoryController.GetAllCategories();
         }
 
 
@@ -46,7 +81,7 @@ namespace View
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window
-            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(label2.Text);
+            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(username);
             dashboardWindow.Visible = true;
 
             // hide current window

@@ -13,17 +13,21 @@ namespace View
 {
     public partial class FormDisplayAdminDashboard : Form
     {
-        public FormDisplayAdminDashboard(string welcome)
+        string username;
+
+        public FormDisplayAdminDashboard(string name)
         {
             InitializeComponent();
-            label2.Text = welcome;
+            // welcome user
+            username = name;
+            label2.Text = "Welcome " + username;
         }
 
 
         private void LanguageBtn(object sender, EventArgs e)
         {
             // show Language CRUD window
-            FormDisplayAdminLangCRUD languageWindow = new FormDisplayAdminLangCRUD(label2.Text);
+            FormDisplayAdminLangCRUD languageWindow = new FormDisplayAdminLangCRUD(username);
             languageWindow.Visible = true;
 
             // hide current window
@@ -32,7 +36,7 @@ namespace View
         private void CategoryBtn(object sender, EventArgs e)
         {
             // show Category CRUD window
-            FormDisplayAdminCatCRUD categoryWindow = new FormDisplayAdminCatCRUD(label2.Text);
+            FormDisplayAdminCatCRUD categoryWindow = new FormDisplayAdminCatCRUD(username);
             categoryWindow.Visible = true;
 
             // hide current window
@@ -41,7 +45,7 @@ namespace View
         private void AuthorBtn(object sender, EventArgs e)
         {
             // show Author CRUD window
-            FormDisplayAdminAuthCRUD authorWindow = new FormDisplayAdminAuthCRUD(label2.Text);
+            FormDisplayAdminAuthCRUD authorWindow = new FormDisplayAdminAuthCRUD(username);
             authorWindow.Visible = true;
 
             // hide current window
@@ -50,7 +54,7 @@ namespace View
         private void UserBtn(object sender, EventArgs e)
         {
             // show User CRUD window
-            FormDisplayAdminUserCRUD userWindow = new FormDisplayAdminUserCRUD(label2.Text);
+            FormDisplayAdminUserCRUD userWindow = new FormDisplayAdminUserCRUD(username);
             userWindow.Visible = true;
 
             // hide current window
@@ -59,7 +63,7 @@ namespace View
         private void BookBtn(object sender, EventArgs e)
         {
             // show Book CRUD window
-            FormDisplayAdminBookCRUD bookWindow = new FormDisplayAdminBookCRUD(label2.Text);
+            FormDisplayAdminBookCRUD bookWindow = new FormDisplayAdminBookCRUD(username);
             bookWindow.Visible = true;
 
             // hide current window

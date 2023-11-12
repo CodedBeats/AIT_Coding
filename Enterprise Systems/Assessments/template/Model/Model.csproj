@@ -48,7 +48,9 @@
     <Compile Include="Borrow.cs" />
     <Compile Include="BorrowDAO.cs" />
     <Compile Include="BorrowLogic.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="CategoryDAO.cs" />
+    <Compile Include="CategoryLogic.cs" />
     <Compile Include="DataSetAuthor.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
