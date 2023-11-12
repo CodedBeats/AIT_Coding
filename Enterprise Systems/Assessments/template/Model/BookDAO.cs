@@ -7,6 +7,8 @@ using Model.DataSetBookTableAdapters;
 using static Model.DataSetUser;
 using System.Data;
 using Model.DataSetUserTableAdapters;
+using System.Security.Cryptography;
+using System.Security.Policy;
 
 namespace Model
 {
@@ -261,6 +263,51 @@ namespace Model
 
                 return books;
             }
+        }
+
+
+        // CRUD
+        public void CreateBook(string bookName, int publishYear, int pages, string publisher)
+        {
+            // connect to book db
+            TabBookTableAdapter tabBookTableAdapter = new TabBookTableAdapter();
+
+            // ASSUMPTION: Since Book doesn't have an ID, ISBN and foreign keys will be set at random
+            // set ISBN
+            Random random = new Random();
+            long randomNumber = (long)(random.NextDouble() * (9999999999999 - 1000000000000) + 1000000000000);
+            string randomISBN = randomNumber.ToString();
+
+            // set author (random num between 1 and 2)
+            Random random2 = new Random();
+            int randomNumber2 = random2.Next(1, 4);
+
+            // set category (random num between 1 and 2)
+            Random random3 = new Random();
+            int randomNumber3 = random3.Next(1, 4);
+
+            // set language (random num between 1 and 2)
+            Random random4 = new Random();
+            int randomNumber4 = random4.Next(1, 4);
+
+            // execute query
+            tabBookTableAdapter.CreateBook(randomISBN, bookName, randomNumber2, randomNumber3, randomNumber4, publishYear, pages, publisher);
+        }
+
+        public void UpdateBook(string bookName, string originalBookName)
+        {
+            // connect to book db
+            TabBookTableAdapter tabBookTableAdapter = new TabBookTableAdapter();
+            // execute query
+            tabBookTableAdapter.UpdateBook(bookName, originalBookName);
+        }
+
+        public void DeleteBook(string bookName)
+        {
+            // connect to book db
+            TabBookTableAdapter tabBookTableAdapter = new TabBookTableAdapter();
+            // execute query
+            tabBookTableAdapter.DeleteBook(bookName);
         }
     }
 }

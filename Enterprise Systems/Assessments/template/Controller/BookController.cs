@@ -36,5 +36,25 @@ namespace Controller
                 return bookLogic.FindBookByCategory(searchInput);
             }
         }
+
+
+        // CRUD
+        public void CreateBook(string bookName, int publishYear, int pages, string publisher)
+        {
+            BookLogic bookLogic = new BookLogic();
+            bookLogic.CreateBook(bookName, publishYear, pages, publisher);
+        }
+
+        public void UpdateBook(string bookName, string originalBookName)
+        {
+            BookLogic bookLogic = new BookLogic();
+            bookLogic.UpdateBook(bookName, originalBookName);
+        }
+
+        public void DeleteBook(string bookName)
+        {
+            BookLogic bookLogic = new BookLogic();
+            bookLogic.DeleteBook(bookName);
+        }
     }
 }

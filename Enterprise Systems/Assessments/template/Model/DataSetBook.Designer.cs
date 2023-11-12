@@ -967,7 +967,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
@@ -975,34 +975,61 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
-                "\r\nFROM dbo.TabBook\r\nWHERE (Author = @Author)";
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[TabBook] ([ISBN], [BookName], [Author], [Category], [Language]" +
+                ", [PublishYear], [Pages], [Publisher]) \r\nVALUES (@ISBN, @BookName, @Author, @Cat" +
+                "egory, @Language, @PublishYear, @Pages, @Publisher)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ISBN", global::System.Data.SqlDbType.VarChar, 13, global::System.Data.ParameterDirection.Input, 0, 0, "ISBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Author", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Category", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Language", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Language", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PublishYear", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PublishYear", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pages", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Pages", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Publisher", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Publisher", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
-                "\r\nFROM dbo.TabBook\r\nWHERE (Category = @Category)";
+            this._commandCollection[2].CommandText = "DELETE FROM [dbo].[TabBook] \r\nWHERE (BookName = @BookName)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Category", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
-                "\r\nFROM dbo.TabBook\r\nWHERE BookName COLLATE Latin1_General_CI_AI LIKE \'%\' + @Book" +
-                "Name + \'%\'";
+                "\r\nFROM dbo.TabBook\r\nWHERE (Author = @Author)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Author", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
-                "\r\nFROM dbo.TabBook\r\nWHERE (BookName = @Bookname)";
+                "\r\nFROM dbo.TabBook\r\nWHERE (Category = @Category)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bookname", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Category", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Category", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
-                "\r\nFROM dbo.TabBook";
+                "\r\nFROM dbo.TabBook\r\nWHERE BookName COLLATE Latin1_General_CI_AI LIKE \'%\' + @Book" +
+                "Name + \'%\'";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
+                "\r\nFROM dbo.TabBook\r\nWHERE (BookName = @Bookname)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bookname", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher " +
+                "\r\nFROM dbo.TabBook";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = "UPDATE [dbo].[TabBook] SET [ISBN] = ISBN, [BookName] = @BookName, [Author] = Auth" +
+                "or, [Category] = Category, [Language] = Language, [PublishYear] = PublishYear, [" +
+                "Pages] = Pages, [Publisher] = Publisher \r\nWHERE (BookName = @OriginalBookName)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginalBookName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "BookName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1034,7 +1061,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetBook.TabBookDataTable FindBookByAuthorID(int Author) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Author));
             DataSetBook.TabBookDataTable dataTable = new DataSetBook.TabBookDataTable();
             this.Adapter.Fill(dataTable);
@@ -1046,7 +1073,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetBook.TabBookDataTable FindBookByCategoryID(int Category) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Category));
             DataSetBook.TabBookDataTable dataTable = new DataSetBook.TabBookDataTable();
             this.Adapter.Fill(dataTable);
@@ -1058,7 +1085,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetBook.TabBookDataTable FindBookByName(string BookName) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((BookName == null)) {
                 throw new global::System.ArgumentNullException("BookName");
             }
@@ -1075,7 +1102,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetBook.TabBookDataTable FindBookIDByName(string Bookname) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             if ((Bookname == null)) {
                 throw new global::System.ArgumentNullException("Bookname");
             }
@@ -1092,7 +1119,7 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSetBook.TabBookDataTable GetAllBooks() {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             DataSetBook.TabBookDataTable dataTable = new DataSetBook.TabBookDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1304,6 +1331,116 @@ SELECT ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string BookName, int Author, int Category, int Language, int PublishYear, int Pages, string Publisher, string Original_ISBN, string Original_BookName, int Original_Author, int Original_Category, int Original_Language, int Original_PublishYear, int Original_Pages, string Original_Publisher) {
             return this.Update(Original_ISBN, BookName, Author, Category, Language, PublishYear, Pages, Publisher, Original_ISBN, Original_BookName, Original_Author, Original_Category, Original_Language, Original_PublishYear, Original_Pages, Original_Publisher);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int CreateBook(string ISBN, string BookName, int Author, int Category, int Language, int PublishYear, int Pages, string Publisher) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((ISBN == null)) {
+                throw new global::System.ArgumentNullException("ISBN");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(ISBN));
+            }
+            if ((BookName == null)) {
+                throw new global::System.ArgumentNullException("BookName");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(BookName));
+            }
+            command.Parameters[2].Value = ((int)(Author));
+            command.Parameters[3].Value = ((int)(Category));
+            command.Parameters[4].Value = ((int)(Language));
+            command.Parameters[5].Value = ((int)(PublishYear));
+            command.Parameters[6].Value = ((int)(Pages));
+            if ((Publisher == null)) {
+                throw new global::System.ArgumentNullException("Publisher");
+            }
+            else {
+                command.Parameters[7].Value = ((string)(Publisher));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteBook(string BookName) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((BookName == null)) {
+                throw new global::System.ArgumentNullException("BookName");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(BookName));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateBook(string BookName, string OriginalBookName) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
+            if ((BookName == null)) {
+                throw new global::System.ArgumentNullException("BookName");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(BookName));
+            }
+            if ((OriginalBookName == null)) {
+                throw new global::System.ArgumentNullException("OriginalBookName");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(OriginalBookName));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
