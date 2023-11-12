@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +14,42 @@ namespace View
 {
     public partial class FormDisplayAdminUserCRUD : Form
     {
+        UserController userController = new UserController();
+
+        string username;
+
         public FormDisplayAdminUserCRUD(string name)
         {
             InitializeComponent();
-            label2.Text = name;
+            // welcome user
+            username = name;
+            label2.Text = "Welcome " + username;
+
+            // load user database
+            dataGridView1.DataSource = userController.GetAllUsers();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void CreateBtn(object sender, EventArgs e)
         {
+            userController.CreateUser(textBox1.Text, textBox5.Text, Int32.Parse(textBox6.Text));
+            // reload user database
+            dataGridView1.DataSource = userController.GetAllUsers();
+        }
 
+
+        private void UpdateBtn(object sender, EventArgs e)
+        {
+            userController.UpdateUser(textBox4.Text, textBox7.Text, Int32.Parse(textBox8.Text), Int32.Parse(textBox2.Text));
+            // reload user database
+            dataGridView1.DataSource = userController.GetAllUsers();
+        }
+
+
+        private void DeleteBtn(object sender, EventArgs e)
+        {
+            userController.DeleteUser(Int32.Parse(textBox3.Text));
+            // reload user database
+            dataGridView1.DataSource = userController.GetAllUsers();
         }
 
 
@@ -53,7 +81,7 @@ namespace View
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window
-            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(label2.Text);
+            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(username);
             dashboardWindow.Visible = true;
 
             // hide current window
