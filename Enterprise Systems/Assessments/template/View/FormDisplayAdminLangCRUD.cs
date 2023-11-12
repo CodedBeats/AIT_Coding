@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,43 @@ namespace View
 {
     public partial class FormDisplayAdminLangCRUD : Form
     {
+        LanguageController languageController = new LanguageController();
+
+        string username;
+
         public FormDisplayAdminLangCRUD(string name)
         {
             InitializeComponent();
-            label2.Text = name;
+            // welcome user
+            username = name;
+            label2.Text = "Welcome " + username;
+
+            // load language table
+            dataGridView1.DataSource = languageController.GetAllLanguages();
+        }
+
+
+        private void CreateBtn(object sender, EventArgs e)
+        {
+            languageController.CreateLanguage(textBox1.Text);
+            // reload language table
+            dataGridView1.DataSource = languageController.GetAllLanguages();
+        }
+
+
+        private void UpdateBtn(object sender, EventArgs e)
+        {
+            languageController.UpdateLanguage(textBox4.Text, Int32.Parse(textBox2.Text));
+            // reload language table
+            dataGridView1.DataSource = languageController.GetAllLanguages();
+        }
+
+
+        private void DeleteBtn(object sender, EventArgs e)
+        {
+            languageController.DeleteLanguage(Int32.Parse(textBox3.Text));
+            // reload language table
+            dataGridView1.DataSource = languageController.GetAllLanguages();
         }
 
 
@@ -46,7 +80,7 @@ namespace View
         private void BackToDashboardBtn(object sender, EventArgs e)
         {
             // show dahsboard window
-            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(label2.Text);
+            FormDisplayAdminDashboard dashboardWindow = new FormDisplayAdminDashboard(username);
             dashboardWindow.Visible = true;
 
             // hide current window

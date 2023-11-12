@@ -34,7 +34,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -115,9 +114,9 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 249);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 179);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(298, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(298, 368);
             this.dataGridView1.TabIndex = 35;
             // 
             // textBox1
@@ -130,19 +129,6 @@
             this.textBox1.Size = new System.Drawing.Size(220, 38);
             this.textBox1.TabIndex = 36;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(55, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 47);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Get Languages";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // textBox2
             // 
@@ -243,6 +229,7 @@
             this.button9.TabIndex = 45;
             this.button9.Text = "Create";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.CreateBtn);
             // 
             // label1
             // 
@@ -250,11 +237,11 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(103, 118);
+            this.label1.Location = new System.Drawing.Point(86, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 58);
+            this.label1.Size = new System.Drawing.Size(165, 29);
             this.label1.TabIndex = 46;
-            this.label1.Text = "Get All\r\nLanguages\r\n";
+            this.label1.Text = "All Languages\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -282,6 +269,7 @@
             this.button10.TabIndex = 48;
             this.button10.Text = "Update";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.UpdateBtn);
             // 
             // textBox4
             // 
@@ -302,9 +290,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(631, 251);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 20);
+            this.label5.Size = new System.Drawing.Size(138, 20);
             this.label5.TabIndex = 50;
-            this.label5.Text = "LID\r\n";
+            this.label5.Text = "LID (LanguageID)";
             // 
             // label6
             // 
@@ -338,9 +326,9 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(893, 251);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 20);
+            this.label9.Size = new System.Drawing.Size(138, 20);
             this.label9.TabIndex = 55;
-            this.label9.Text = "LID\r\n";
+            this.label9.Text = "LID (LanguageID)\r\n";
             // 
             // button11
             // 
@@ -354,6 +342,7 @@
             this.button11.TabIndex = 53;
             this.button11.Text = "Delete";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.DeleteBtn);
             // 
             // label8
             // 
@@ -391,7 +380,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button8);
@@ -415,7 +403,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button6;
