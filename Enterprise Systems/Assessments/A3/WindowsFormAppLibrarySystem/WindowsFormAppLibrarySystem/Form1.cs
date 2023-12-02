@@ -22,9 +22,8 @@ namespace WindowsFormAppLibrarySystem
 
         private void GetUserBtn(object sender, EventArgs e)
         {
-            string username = userController.GetUser(Int32.Parse(textBox1.Text));
-
-            textBox2.Text = username;
+            // 
+            dataGridView1.DataSource = userController.GetAllUsers();
         }
     }
 }

@@ -9,9 +9,14 @@ namespace Model
     public class UserLogic
     {
         UserDAO userDAO = new UserDAO();
-        public string GetUser(int uid)
+
+        public List<User> GetAllUsers()
         {
-            return userDAO.GetUser(uid);
+            UserDAO userDAO = new UserDAO();
+            // create list of users
+            List<User> users = userDAO.GetAllUsers();
+
+            return users;
         }
     }
 }

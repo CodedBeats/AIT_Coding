@@ -56,16 +56,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.GetUserResponse.datasource">
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.HelloWorldResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.TestFuncResponse.datasource">
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReferenceLibrarySystem\WebServiceLibrarySystem.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ae637310-2eed-41f2-81e8-073ad931ab21}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReferenceLibrarySystem\" />

@@ -9,47 +9,126 @@
 //------------------------------------------------------------------------------
 
 namespace Controller.ServiceReferenceLibrarySystem {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int UIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        private int UserLevelField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int UID {
+            get {
+                return this.UIDField;
+            }
+            set {
+                if ((this.UIDField.Equals(value) != true)) {
+                    this.UIDField = value;
+                    this.RaisePropertyChanged("UID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int UserLevel {
+            get {
+                return this.UserLevelField;
+            }
+            set {
+                if ((this.UserLevelField.Equals(value) != true)) {
+                    this.UserLevelField = value;
+                    this.RaisePropertyChanged("UserLevel");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap")]
     public interface WebServiceLibrarySystemSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        Controller.ServiceReferenceLibrarySystem.HelloWorldResponse HelloWorld(Controller.ServiceReferenceLibrarySystem.HelloWorldRequest request);
+        // CODEGEN: Generating message contract since element name GetAllUsersResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllUsers", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse GetAllUsers(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.HelloWorldResponse> HelloWorldAsync(Controller.ServiceReferenceLibrarySystem.HelloWorldRequest request);
-        
-        // CODEGEN: Generating message contract since element name GetUserResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUser", ReplyAction="*")]
-        Controller.ServiceReferenceLibrarySystem.GetUserResponse GetUser(Controller.ServiceReferenceLibrarySystem.GetUserRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUser", ReplyAction="*")]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetUserResponse> GetUserAsync(Controller.ServiceReferenceLibrarySystem.GetUserRequest request);
-        
-        // CODEGEN: Generating message contract since element name TestFuncResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TestFunc", ReplyAction="*")]
-        Controller.ServiceReferenceLibrarySystem.TestFuncResponse TestFunc(Controller.ServiceReferenceLibrarySystem.TestFuncRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TestFunc", ReplyAction="*")]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.TestFuncResponse> TestFuncAsync(Controller.ServiceReferenceLibrarySystem.TestFuncRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllUsers", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse> GetAllUsersAsync(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+    public partial class GetAllUsersRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.HelloWorldRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllUsers", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllUsersRequestBody Body;
         
-        public HelloWorldRequest() {
+        public GetAllUsersRequest() {
         }
         
-        public HelloWorldRequest(Controller.ServiceReferenceLibrarySystem.HelloWorldRequestBody Body) {
+        public GetAllUsersRequest(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -58,9 +137,9 @@ namespace Controller.ServiceReferenceLibrarySystem {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
+    public partial class GetAllUsersRequestBody {
         
-        public HelloWorldRequestBody() {
+        public GetAllUsersRequestBody() {
         }
     }
     
@@ -68,15 +147,15 @@ namespace Controller.ServiceReferenceLibrarySystem {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
+    public partial class GetAllUsersResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.HelloWorldResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllUsersResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllUsersResponseBody Body;
         
-        public HelloWorldResponse() {
+        public GetAllUsersResponse() {
         }
         
-        public HelloWorldResponse(Controller.ServiceReferenceLibrarySystem.HelloWorldResponseBody Body) {
+        public GetAllUsersResponse(Controller.ServiceReferenceLibrarySystem.GetAllUsersResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -85,152 +164,16 @@ namespace Controller.ServiceReferenceLibrarySystem {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
+    public partial class GetAllUsersResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
+        public Controller.ServiceReferenceLibrarySystem.User[] GetAllUsersResult;
         
-        public HelloWorldResponseBody() {
+        public GetAllUsersResponseBody() {
         }
         
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetUserRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUser", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.GetUserRequestBody Body;
-        
-        public GetUserRequest() {
-        }
-        
-        public GetUserRequest(Controller.ServiceReferenceLibrarySystem.GetUserRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class GetUserRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int uid;
-        
-        public GetUserRequestBody() {
-        }
-        
-        public GetUserRequestBody(int uid) {
-            this.uid = uid;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetUserResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.GetUserResponseBody Body;
-        
-        public GetUserResponse() {
-        }
-        
-        public GetUserResponse(Controller.ServiceReferenceLibrarySystem.GetUserResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class GetUserResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string GetUserResult;
-        
-        public GetUserResponseBody() {
-        }
-        
-        public GetUserResponseBody(string GetUserResult) {
-            this.GetUserResult = GetUserResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class TestFuncRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="TestFunc", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.TestFuncRequestBody Body;
-        
-        public TestFuncRequest() {
-        }
-        
-        public TestFuncRequest(Controller.ServiceReferenceLibrarySystem.TestFuncRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class TestFuncRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int no1;
-        
-        public TestFuncRequestBody() {
-        }
-        
-        public TestFuncRequestBody(int no1) {
-            this.no1 = no1;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class TestFuncResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="TestFuncResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Controller.ServiceReferenceLibrarySystem.TestFuncResponseBody Body;
-        
-        public TestFuncResponse() {
-        }
-        
-        public TestFuncResponse(Controller.ServiceReferenceLibrarySystem.TestFuncResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class TestFuncResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string TestFuncResult;
-        
-        public TestFuncResponseBody() {
-        }
-        
-        public TestFuncResponseBody(string TestFuncResult) {
-            this.TestFuncResult = TestFuncResult;
+        public GetAllUsersResponseBody(Controller.ServiceReferenceLibrarySystem.User[] GetAllUsersResult) {
+            this.GetAllUsersResult = GetAllUsersResult;
         }
     }
     
@@ -262,76 +205,26 @@ namespace Controller.ServiceReferenceLibrarySystem {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Controller.ServiceReferenceLibrarySystem.HelloWorldResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.HelloWorld(Controller.ServiceReferenceLibrarySystem.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllUsers(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest request) {
+            return base.Channel.GetAllUsers(request);
         }
         
-        public string HelloWorld() {
-            Controller.ServiceReferenceLibrarySystem.HelloWorldRequest inValue = new Controller.ServiceReferenceLibrarySystem.HelloWorldRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.HelloWorldRequestBody();
-            Controller.ServiceReferenceLibrarySystem.HelloWorldResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.HelloWorldResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.HelloWorldAsync(Controller.ServiceReferenceLibrarySystem.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.HelloWorldResponse> HelloWorldAsync() {
-            Controller.ServiceReferenceLibrarySystem.HelloWorldRequest inValue = new Controller.ServiceReferenceLibrarySystem.HelloWorldRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.HelloWorldRequestBody();
-            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).HelloWorldAsync(inValue);
+        public Controller.ServiceReferenceLibrarySystem.User[] GetAllUsers() {
+            Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequestBody();
+            Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllUsers(inValue);
+            return retVal.Body.GetAllUsersResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Controller.ServiceReferenceLibrarySystem.GetUserResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetUser(Controller.ServiceReferenceLibrarySystem.GetUserRequest request) {
-            return base.Channel.GetUser(request);
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllUsersAsync(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest request) {
+            return base.Channel.GetAllUsersAsync(request);
         }
         
-        public string GetUser(int uid) {
-            Controller.ServiceReferenceLibrarySystem.GetUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetUserRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetUserRequestBody();
-            inValue.Body.uid = uid;
-            Controller.ServiceReferenceLibrarySystem.GetUserResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetUser(inValue);
-            return retVal.Body.GetUserResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetUserResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetUserAsync(Controller.ServiceReferenceLibrarySystem.GetUserRequest request) {
-            return base.Channel.GetUserAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetUserResponse> GetUserAsync(int uid) {
-            Controller.ServiceReferenceLibrarySystem.GetUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetUserRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetUserRequestBody();
-            inValue.Body.uid = uid;
-            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetUserAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Controller.ServiceReferenceLibrarySystem.TestFuncResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.TestFunc(Controller.ServiceReferenceLibrarySystem.TestFuncRequest request) {
-            return base.Channel.TestFunc(request);
-        }
-        
-        public string TestFunc(int no1) {
-            Controller.ServiceReferenceLibrarySystem.TestFuncRequest inValue = new Controller.ServiceReferenceLibrarySystem.TestFuncRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.TestFuncRequestBody();
-            inValue.Body.no1 = no1;
-            Controller.ServiceReferenceLibrarySystem.TestFuncResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).TestFunc(inValue);
-            return retVal.Body.TestFuncResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.TestFuncResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.TestFuncAsync(Controller.ServiceReferenceLibrarySystem.TestFuncRequest request) {
-            return base.Channel.TestFuncAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.TestFuncResponse> TestFuncAsync(int no1) {
-            Controller.ServiceReferenceLibrarySystem.TestFuncRequest inValue = new Controller.ServiceReferenceLibrarySystem.TestFuncRequest();
-            inValue.Body = new Controller.ServiceReferenceLibrarySystem.TestFuncRequestBody();
-            inValue.Body.no1 = no1;
-            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).TestFuncAsync(inValue);
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse> GetAllUsersAsync() {
+            Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequestBody();
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllUsersAsync(inValue);
         }
     }
 }

@@ -84,6 +84,10 @@
       <Project>{e458a8ab-8ab2-4239-890a-9639af3d859a}</Project>
       <Name>Controller</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ae637310-2eed-41f2-81e8-073ad931ab21}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

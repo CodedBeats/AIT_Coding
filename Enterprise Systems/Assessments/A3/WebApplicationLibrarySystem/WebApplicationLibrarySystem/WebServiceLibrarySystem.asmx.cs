@@ -17,26 +17,15 @@ namespace WebApplicationLibrarySystem
     // [System.Web.Script.Services.ScriptService]
     public class WebServiceLibrarySystem : System.Web.Services.WebService
     {
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
 
         // User
-        [WebMethod]
-        public string GetUser(int uid)
-        {
-            UserLogic userLogic = new UserLogic();
+        UserLogic userLogic = new UserLogic();
 
-            return userLogic.GetUser(uid);
+        [WebMethod]
+        public List<User> GetAllUsers()
+        {
+            return userLogic.GetAllUsers();
         }
 
-        // test
-        [WebMethod]
-        public string TestFunc(int no1)
-        {
-            return "it's " + no1;
-        }
     }
 }

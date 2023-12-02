@@ -4,7 +4,7 @@ using System.Linq;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-using Model.DataSet1TableAdapters;
+using Model.DataSetUserTableAdapters;
 
 namespace Model
 {
@@ -13,30 +13,44 @@ namespace Model
         // connect to the db
         TabUserTableAdapter tabUserTableAdapter = new TabUserTableAdapter();
 
-        public string GetUser(int uid)
+        public List<User> GetAllUsers()
         {
             // execute query
-            DataSet1.TabUserDataTable tabUserDataTable = tabUserTableAdapter.GetUser(uid);
-
-            string username = "";
+            DataSetUser.TabUserDataTable tabUserDataTable = tabUserTableAdapter.GetAllUsers();
 
             // check if there isn't data
             int dataCount = tabUserDataTable.Count;
             if (dataCount == 0)
             {
                 // no data found
-                return username;
+                return null;
             }
             else
             {
-                // iterate through data storing each row in a new user (should only be 1)
+                // create list of users
+                List<User> users = new List<User>();
+
+                // iterate through data storing each row in a new user
                 foreach (DataRow row in tabUserDataTable)
                 {
-                    // store user data in correct format in variable
-                    username = row["Username"].ToString();
+                    // store user data in correct format in variables
+                    int uid = Convert.ToInt32(row["UID"]);
+                    string userName = row["UserName"].ToString();
+                    string password = row["Password"].ToString();
+                    int userLevel = Convert.ToInt32(row["UserLevel"]);
+
+                    // set user data with created variables
+                    User user = new User();
+                    user.UID = uid;
+                    user.UserName = userName;
+                    user.Password = password;
+                    user.UserLevel = userLevel;
+
+                    // add user to list
+                    users.Add(user);
                 }
 
-                return username;
+                return users;
             }
         }
     }
