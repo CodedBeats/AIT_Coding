@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Controller.ServiceReferenceLibrarySystem;
-using DTO;
 using UserDTO = DTO.UserDTO;
+using UserType = DTO.UserType;
 
 namespace Controller
 {
@@ -37,6 +37,11 @@ namespace Controller
             }
 
             return userDTOs;
+        }
+
+        public UserType ValidateLogin(string userNameInput, string passwordInput)
+        {
+            return (UserType)soapClient.ValidateLogin(userNameInput, passwordInput);
         }
     }
 }

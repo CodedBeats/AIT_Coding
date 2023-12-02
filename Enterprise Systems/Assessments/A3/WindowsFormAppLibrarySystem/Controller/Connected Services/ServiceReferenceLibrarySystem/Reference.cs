@@ -104,6 +104,397 @@ namespace Controller.ServiceReferenceLibrarySystem {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserType", Namespace="http://tempuri.org/")]
+    public enum UserType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoUser = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Student = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        StaffOrAdmin = 2,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Book : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ISBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BookNameField;
+        
+        private int AuthorField;
+        
+        private int CategoryField;
+        
+        private int LanguageField;
+        
+        private int PublishYearField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublisherField;
+        
+        private int PagesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ISBN {
+            get {
+                return this.ISBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ISBNField, value) != true)) {
+                    this.ISBNField = value;
+                    this.RaisePropertyChanged("ISBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string BookName {
+            get {
+                return this.BookNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BookNameField, value) != true)) {
+                    this.BookNameField = value;
+                    this.RaisePropertyChanged("BookName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int Author {
+            get {
+                return this.AuthorField;
+            }
+            set {
+                if ((this.AuthorField.Equals(value) != true)) {
+                    this.AuthorField = value;
+                    this.RaisePropertyChanged("Author");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((this.CategoryField.Equals(value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int Language {
+            get {
+                return this.LanguageField;
+            }
+            set {
+                if ((this.LanguageField.Equals(value) != true)) {
+                    this.LanguageField = value;
+                    this.RaisePropertyChanged("Language");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int PublishYear {
+            get {
+                return this.PublishYearField;
+            }
+            set {
+                if ((this.PublishYearField.Equals(value) != true)) {
+                    this.PublishYearField = value;
+                    this.RaisePropertyChanged("PublishYear");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Publisher {
+            get {
+                return this.PublisherField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublisherField, value) != true)) {
+                    this.PublisherField = value;
+                    this.RaisePropertyChanged("Publisher");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public int Pages {
+            get {
+                return this.PagesField;
+            }
+            set {
+                if ((this.PagesField.Equals(value) != true)) {
+                    this.PagesField = value;
+                    this.RaisePropertyChanged("Pages");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Borrow", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Borrow : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int BIDField;
+        
+        private int UIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ISBNField;
+        
+        private System.DateTime BorrowDateField;
+        
+        private System.DateTime ReturnDateField;
+        
+        private System.DateTime ActualReturnDateField;
+        
+        private double LateFeeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int BID {
+            get {
+                return this.BIDField;
+            }
+            set {
+                if ((this.BIDField.Equals(value) != true)) {
+                    this.BIDField = value;
+                    this.RaisePropertyChanged("BID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int UID {
+            get {
+                return this.UIDField;
+            }
+            set {
+                if ((this.UIDField.Equals(value) != true)) {
+                    this.UIDField = value;
+                    this.RaisePropertyChanged("UID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string ISBN {
+            get {
+                return this.ISBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ISBNField, value) != true)) {
+                    this.ISBNField = value;
+                    this.RaisePropertyChanged("ISBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.DateTime BorrowDate {
+            get {
+                return this.BorrowDateField;
+            }
+            set {
+                if ((this.BorrowDateField.Equals(value) != true)) {
+                    this.BorrowDateField = value;
+                    this.RaisePropertyChanged("BorrowDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime ReturnDate {
+            get {
+                return this.ReturnDateField;
+            }
+            set {
+                if ((this.ReturnDateField.Equals(value) != true)) {
+                    this.ReturnDateField = value;
+                    this.RaisePropertyChanged("ReturnDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime ActualReturnDate {
+            get {
+                return this.ActualReturnDateField;
+            }
+            set {
+                if ((this.ActualReturnDateField.Equals(value) != true)) {
+                    this.ActualReturnDateField = value;
+                    this.RaisePropertyChanged("ActualReturnDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public double LateFee {
+            get {
+                return this.LateFeeField;
+            }
+            set {
+                if ((this.LateFeeField.Equals(value) != true)) {
+                    this.LateFeeField = value;
+                    this.RaisePropertyChanged("LateFee");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reserved", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Reserved : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int RIDField;
+        
+        private int UIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ISBNField;
+        
+        private System.DateTime ReservedDateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int RID {
+            get {
+                return this.RIDField;
+            }
+            set {
+                if ((this.RIDField.Equals(value) != true)) {
+                    this.RIDField = value;
+                    this.RaisePropertyChanged("RID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int UID {
+            get {
+                return this.UIDField;
+            }
+            set {
+                if ((this.UIDField.Equals(value) != true)) {
+                    this.UIDField = value;
+                    this.RaisePropertyChanged("UID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string ISBN {
+            get {
+                return this.ISBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ISBNField, value) != true)) {
+                    this.ISBNField = value;
+                    this.RaisePropertyChanged("ISBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.DateTime ReservedDate {
+            get {
+                return this.ReservedDateField;
+            }
+            set {
+                if ((this.ReservedDateField.Equals(value) != true)) {
+                    this.ReservedDateField = value;
+                    this.RaisePropertyChanged("ReservedDate");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap")]
     public interface WebServiceLibrarySystemSoap {
@@ -114,6 +505,76 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllUsers", ReplyAction="*")]
         System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse> GetAllUsersAsync(Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest request);
+        
+        // CODEGEN: Generating message contract since element name userNameInput from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidateLogin", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse ValidateLogin(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidateLogin", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse> ValidateLoginAsync(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetAllBooksResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBooks", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse GetAllBooks(Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBooks", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse> GetAllBooksAsync(Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest request);
+        
+        // CODEGEN: Generating message contract since element name searchInput from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByName", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse FindBookByName(Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByName", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse> FindBookByNameAsync(Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest request);
+        
+        // CODEGEN: Generating message contract since element name searchInput from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByAuthor", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse FindBookByAuthor(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByAuthor", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse> FindBookByAuthorAsync(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest request);
+        
+        // CODEGEN: Generating message contract since element name searchInput from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByCategory", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse FindBookByCategory(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByCategory", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse> FindBookByCategoryAsync(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest request);
+        
+        // CODEGEN: Generating message contract since element name inputUserID from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBorrowByUserID", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse FindBorrowByUserID(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBorrowByUserID", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse> FindBorrowByUserIDAsync(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BorrowBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.BorrowBookResponse BorrowBook(Controller.ServiceReferenceLibrarySystem.BorrowBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BorrowBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.BorrowBookResponse> BorrowBookAsync(Controller.ServiceReferenceLibrarySystem.BorrowBookRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReturnBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.ReturnBookResponse ReturnBook(Controller.ServiceReferenceLibrarySystem.ReturnBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReturnBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReturnBookResponse> ReturnBookAsync(Controller.ServiceReferenceLibrarySystem.ReturnBookRequest request);
+        
+        // CODEGEN: Generating message contract since element name inputUserID from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindReservedByUserID", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse FindReservedByUserID(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindReservedByUserID", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse> FindReservedByUserIDAsync(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReserveBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.ReserveBookResponse ReserveBook(Controller.ServiceReferenceLibrarySystem.ReserveBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReserveBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReserveBookResponse> ReserveBookAsync(Controller.ServiceReferenceLibrarySystem.ReserveBookRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -177,6 +638,695 @@ namespace Controller.ServiceReferenceLibrarySystem {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ValidateLoginRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ValidateLogin", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ValidateLoginRequestBody Body;
+        
+        public ValidateLoginRequest() {
+        }
+        
+        public ValidateLoginRequest(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ValidateLoginRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userNameInput;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string passwordInput;
+        
+        public ValidateLoginRequestBody() {
+        }
+        
+        public ValidateLoginRequestBody(string userNameInput, string passwordInput) {
+            this.userNameInput = userNameInput;
+            this.passwordInput = passwordInput;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ValidateLoginResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ValidateLoginResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ValidateLoginResponseBody Body;
+        
+        public ValidateLoginResponse() {
+        }
+        
+        public ValidateLoginResponse(Controller.ServiceReferenceLibrarySystem.ValidateLoginResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ValidateLoginResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UserType ValidateLoginResult;
+        
+        public ValidateLoginResponseBody() {
+        }
+        
+        public ValidateLoginResponseBody(Controller.ServiceReferenceLibrarySystem.UserType ValidateLoginResult) {
+            this.ValidateLoginResult = ValidateLoginResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllBooksRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooks", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllBooksRequestBody Body;
+        
+        public GetAllBooksRequest() {
+        }
+        
+        public GetAllBooksRequest(Controller.ServiceReferenceLibrarySystem.GetAllBooksRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllBooksRequestBody {
+        
+        public GetAllBooksRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllBooksResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooksResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllBooksResponseBody Body;
+        
+        public GetAllBooksResponse() {
+        }
+        
+        public GetAllBooksResponse(Controller.ServiceReferenceLibrarySystem.GetAllBooksResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllBooksResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Book[] GetAllBooksResult;
+        
+        public GetAllBooksResponseBody() {
+        }
+        
+        public GetAllBooksResponseBody(Controller.ServiceReferenceLibrarySystem.Book[] GetAllBooksResult) {
+            this.GetAllBooksResult = GetAllBooksResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByNameRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByName", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByNameRequestBody Body;
+        
+        public FindBookByNameRequest() {
+        }
+        
+        public FindBookByNameRequest(Controller.ServiceReferenceLibrarySystem.FindBookByNameRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByNameRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string searchInput;
+        
+        public FindBookByNameRequestBody() {
+        }
+        
+        public FindBookByNameRequestBody(string searchInput) {
+            this.searchInput = searchInput;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByNameResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByNameResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByNameResponseBody Body;
+        
+        public FindBookByNameResponse() {
+        }
+        
+        public FindBookByNameResponse(Controller.ServiceReferenceLibrarySystem.FindBookByNameResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByNameResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByNameResult;
+        
+        public FindBookByNameResponseBody() {
+        }
+        
+        public FindBookByNameResponseBody(Controller.ServiceReferenceLibrarySystem.Book[] FindBookByNameResult) {
+            this.FindBookByNameResult = FindBookByNameResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByAuthorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByAuthor", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequestBody Body;
+        
+        public FindBookByAuthorRequest() {
+        }
+        
+        public FindBookByAuthorRequest(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByAuthorRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string searchInput;
+        
+        public FindBookByAuthorRequestBody() {
+        }
+        
+        public FindBookByAuthorRequestBody(string searchInput) {
+            this.searchInput = searchInput;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByAuthorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByAuthorResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponseBody Body;
+        
+        public FindBookByAuthorResponse() {
+        }
+        
+        public FindBookByAuthorResponse(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByAuthorResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByAuthorResult;
+        
+        public FindBookByAuthorResponseBody() {
+        }
+        
+        public FindBookByAuthorResponseBody(Controller.ServiceReferenceLibrarySystem.Book[] FindBookByAuthorResult) {
+            this.FindBookByAuthorResult = FindBookByAuthorResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByCategoryRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByCategory", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequestBody Body;
+        
+        public FindBookByCategoryRequest() {
+        }
+        
+        public FindBookByCategoryRequest(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByCategoryRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string searchInput;
+        
+        public FindBookByCategoryRequestBody() {
+        }
+        
+        public FindBookByCategoryRequestBody(string searchInput) {
+            this.searchInput = searchInput;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBookByCategoryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBookByCategoryResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponseBody Body;
+        
+        public FindBookByCategoryResponse() {
+        }
+        
+        public FindBookByCategoryResponse(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBookByCategoryResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByCategoryResult;
+        
+        public FindBookByCategoryResponseBody() {
+        }
+        
+        public FindBookByCategoryResponseBody(Controller.ServiceReferenceLibrarySystem.Book[] FindBookByCategoryResult) {
+            this.FindBookByCategoryResult = FindBookByCategoryResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBorrowByUserIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBorrowByUserID", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequestBody Body;
+        
+        public FindBorrowByUserIDRequest() {
+        }
+        
+        public FindBorrowByUserIDRequest(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBorrowByUserIDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string inputUserID;
+        
+        public FindBorrowByUserIDRequestBody() {
+        }
+        
+        public FindBorrowByUserIDRequestBody(string inputUserID) {
+            this.inputUserID = inputUserID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindBorrowByUserIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindBorrowByUserIDResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponseBody Body;
+        
+        public FindBorrowByUserIDResponse() {
+        }
+        
+        public FindBorrowByUserIDResponse(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindBorrowByUserIDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Borrow[] FindBorrowByUserIDResult;
+        
+        public FindBorrowByUserIDResponseBody() {
+        }
+        
+        public FindBorrowByUserIDResponseBody(Controller.ServiceReferenceLibrarySystem.Borrow[] FindBorrowByUserIDResult) {
+            this.FindBorrowByUserIDResult = FindBorrowByUserIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BorrowBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BorrowBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.BorrowBookRequestBody Body;
+        
+        public BorrowBookRequest() {
+        }
+        
+        public BorrowBookRequest(Controller.ServiceReferenceLibrarySystem.BorrowBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BorrowBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string username;
+        
+        public BorrowBookRequestBody() {
+        }
+        
+        public BorrowBookRequestBody(string bookName, string username) {
+            this.bookName = bookName;
+            this.username = username;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BorrowBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BorrowBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.BorrowBookResponseBody Body;
+        
+        public BorrowBookResponse() {
+        }
+        
+        public BorrowBookResponse(Controller.ServiceReferenceLibrarySystem.BorrowBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BorrowBookResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool BorrowBookResult;
+        
+        public BorrowBookResponseBody() {
+        }
+        
+        public BorrowBookResponseBody(bool BorrowBookResult) {
+            this.BorrowBookResult = BorrowBookResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReturnBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReturnBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ReturnBookRequestBody Body;
+        
+        public ReturnBookRequest() {
+        }
+        
+        public ReturnBookRequest(Controller.ServiceReferenceLibrarySystem.ReturnBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReturnBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string username;
+        
+        public ReturnBookRequestBody() {
+        }
+        
+        public ReturnBookRequestBody(string bookName, string username) {
+            this.bookName = bookName;
+            this.username = username;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReturnBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReturnBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ReturnBookResponseBody Body;
+        
+        public ReturnBookResponse() {
+        }
+        
+        public ReturnBookResponse(Controller.ServiceReferenceLibrarySystem.ReturnBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReturnBookResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ReturnBookResult;
+        
+        public ReturnBookResponseBody() {
+        }
+        
+        public ReturnBookResponseBody(bool ReturnBookResult) {
+            this.ReturnBookResult = ReturnBookResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindReservedByUserIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindReservedByUserID", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequestBody Body;
+        
+        public FindReservedByUserIDRequest() {
+        }
+        
+        public FindReservedByUserIDRequest(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindReservedByUserIDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string inputUserID;
+        
+        public FindReservedByUserIDRequestBody() {
+        }
+        
+        public FindReservedByUserIDRequestBody(string inputUserID) {
+            this.inputUserID = inputUserID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class FindReservedByUserIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindReservedByUserIDResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponseBody Body;
+        
+        public FindReservedByUserIDResponse() {
+        }
+        
+        public FindReservedByUserIDResponse(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class FindReservedByUserIDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Reserved[] FindReservedByUserIDResult;
+        
+        public FindReservedByUserIDResponseBody() {
+        }
+        
+        public FindReservedByUserIDResponseBody(Controller.ServiceReferenceLibrarySystem.Reserved[] FindReservedByUserIDResult) {
+            this.FindReservedByUserIDResult = FindReservedByUserIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReserveBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReserveBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ReserveBookRequestBody Body;
+        
+        public ReserveBookRequest() {
+        }
+        
+        public ReserveBookRequest(Controller.ServiceReferenceLibrarySystem.ReserveBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReserveBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string username;
+        
+        public ReserveBookRequestBody() {
+        }
+        
+        public ReserveBookRequestBody(string bookName, string username) {
+            this.bookName = bookName;
+            this.username = username;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ReserveBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ReserveBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.ReserveBookResponseBody Body;
+        
+        public ReserveBookResponse() {
+        }
+        
+        public ReserveBookResponse(Controller.ServiceReferenceLibrarySystem.ReserveBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReserveBookResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ReserveBookResult;
+        
+        public ReserveBookResponseBody() {
+        }
+        
+        public ReserveBookResponseBody(bool ReserveBookResult) {
+            this.ReserveBookResult = ReserveBookResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebServiceLibrarySystemSoapChannel : Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap, System.ServiceModel.IClientChannel {
     }
@@ -225,6 +1375,262 @@ namespace Controller.ServiceReferenceLibrarySystem {
             Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequest();
             inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllUsersRequestBody();
             return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllUsersAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ValidateLogin(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request) {
+            return base.Channel.ValidateLogin(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.UserType ValidateLogin(string userNameInput, string passwordInput) {
+            Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest inValue = new Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ValidateLoginRequestBody();
+            inValue.Body.userNameInput = userNameInput;
+            inValue.Body.passwordInput = passwordInput;
+            Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ValidateLogin(inValue);
+            return retVal.Body.ValidateLoginResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ValidateLoginAsync(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request) {
+            return base.Channel.ValidateLoginAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse> ValidateLoginAsync(string userNameInput, string passwordInput) {
+            Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest inValue = new Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ValidateLoginRequestBody();
+            inValue.Body.userNameInput = userNameInput;
+            inValue.Body.passwordInput = passwordInput;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ValidateLoginAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllBooks(Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest request) {
+            return base.Channel.GetAllBooks(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Book[] GetAllBooks() {
+            Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllBooksRequestBody();
+            Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllBooks(inValue);
+            return retVal.Body.GetAllBooksResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllBooksAsync(Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest request) {
+            return base.Channel.GetAllBooksAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse> GetAllBooksAsync() {
+            Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllBooksRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllBooksRequestBody();
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllBooksAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByName(Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest request) {
+            return base.Channel.FindBookByName(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByName(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByNameRequestBody();
+            inValue.Body.searchInput = searchInput;
+            Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByName(inValue);
+            return retVal.Body.FindBookByNameResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByNameAsync(Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest request) {
+            return base.Channel.FindBookByNameAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse> FindBookByNameAsync(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByNameRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByNameRequestBody();
+            inValue.Body.searchInput = searchInput;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByNameAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByAuthor(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest request) {
+            return base.Channel.FindBookByAuthor(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByAuthor(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequestBody();
+            inValue.Body.searchInput = searchInput;
+            Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByAuthor(inValue);
+            return retVal.Body.FindBookByAuthorResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByAuthorAsync(Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest request) {
+            return base.Channel.FindBookByAuthorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse> FindBookByAuthorAsync(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByAuthorRequestBody();
+            inValue.Body.searchInput = searchInput;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByAuthorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByCategory(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest request) {
+            return base.Channel.FindBookByCategory(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Book[] FindBookByCategory(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequestBody();
+            inValue.Body.searchInput = searchInput;
+            Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByCategory(inValue);
+            return retVal.Body.FindBookByCategoryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBookByCategoryAsync(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest request) {
+            return base.Channel.FindBookByCategoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse> FindBookByCategoryAsync(string searchInput) {
+            Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequestBody();
+            inValue.Body.searchInput = searchInput;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByCategoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBorrowByUserID(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest request) {
+            return base.Channel.FindBorrowByUserID(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Borrow[] FindBorrowByUserID(string inputUserID) {
+            Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequestBody();
+            inValue.Body.inputUserID = inputUserID;
+            Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBorrowByUserID(inValue);
+            return retVal.Body.FindBorrowByUserIDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindBorrowByUserIDAsync(Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest request) {
+            return base.Channel.FindBorrowByUserIDAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse> FindBorrowByUserIDAsync(string inputUserID) {
+            Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDRequestBody();
+            inValue.Body.inputUserID = inputUserID;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBorrowByUserIDAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.BorrowBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.BorrowBook(Controller.ServiceReferenceLibrarySystem.BorrowBookRequest request) {
+            return base.Channel.BorrowBook(request);
+        }
+        
+        public bool BorrowBook(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.BorrowBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.BorrowBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.BorrowBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            Controller.ServiceReferenceLibrarySystem.BorrowBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).BorrowBook(inValue);
+            return retVal.Body.BorrowBookResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.BorrowBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.BorrowBookAsync(Controller.ServiceReferenceLibrarySystem.BorrowBookRequest request) {
+            return base.Channel.BorrowBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.BorrowBookResponse> BorrowBookAsync(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.BorrowBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.BorrowBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.BorrowBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).BorrowBookAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.ReturnBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ReturnBook(Controller.ServiceReferenceLibrarySystem.ReturnBookRequest request) {
+            return base.Channel.ReturnBook(request);
+        }
+        
+        public bool ReturnBook(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.ReturnBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.ReturnBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ReturnBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            Controller.ServiceReferenceLibrarySystem.ReturnBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ReturnBook(inValue);
+            return retVal.Body.ReturnBookResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReturnBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ReturnBookAsync(Controller.ServiceReferenceLibrarySystem.ReturnBookRequest request) {
+            return base.Channel.ReturnBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReturnBookResponse> ReturnBookAsync(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.ReturnBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.ReturnBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ReturnBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ReturnBookAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindReservedByUserID(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest request) {
+            return base.Channel.FindReservedByUserID(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Reserved[] FindReservedByUserID(string inputUserID) {
+            Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequestBody();
+            inValue.Body.inputUserID = inputUserID;
+            Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindReservedByUserID(inValue);
+            return retVal.Body.FindReservedByUserIDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.FindReservedByUserIDAsync(Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest request) {
+            return base.Channel.FindReservedByUserIDAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse> FindReservedByUserIDAsync(string inputUserID) {
+            Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest inValue = new Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDRequestBody();
+            inValue.Body.inputUserID = inputUserID;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindReservedByUserIDAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.ReserveBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ReserveBook(Controller.ServiceReferenceLibrarySystem.ReserveBookRequest request) {
+            return base.Channel.ReserveBook(request);
+        }
+        
+        public bool ReserveBook(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.ReserveBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.ReserveBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ReserveBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            Controller.ServiceReferenceLibrarySystem.ReserveBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ReserveBook(inValue);
+            return retVal.Body.ReserveBookResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReserveBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.ReserveBookAsync(Controller.ServiceReferenceLibrarySystem.ReserveBookRequest request) {
+            return base.Channel.ReserveBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReserveBookResponse> ReserveBookAsync(string bookName, string username) {
+            Controller.ServiceReferenceLibrarySystem.ReserveBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.ReserveBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.ReserveBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.username = username;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ReserveBookAsync(inValue);
         }
     }
 }

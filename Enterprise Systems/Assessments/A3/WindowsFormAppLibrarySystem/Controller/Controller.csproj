@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookController.cs" />
+    <Compile Include="BorrowController.cs" />
     <Compile Include="Connected Services\ServiceReferenceLibrarySystem\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservedController.cs" />
     <Compile Include="UserController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,10 +59,52 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.Book.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.Borrow.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.BorrowBookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.FindBookByAuthorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.FindBookByNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.FindBorrowByUserIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.FindReservedByUserIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.GetAllBooksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.GetAllUsersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.ReserveBookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.Reserved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.ReturnBookResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.UserType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceLibrarySystem\Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReferenceLibrarySystem\WebServiceLibrarySystem.wsdl" />

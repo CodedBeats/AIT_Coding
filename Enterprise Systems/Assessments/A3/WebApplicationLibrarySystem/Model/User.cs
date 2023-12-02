@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    public enum UserType
+    {
+        NoUser,
+        Student,
+        StaffOrAdmin
+    }
+
+
     public class User
     {
         public int UID { get; set; }

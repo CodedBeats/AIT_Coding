@@ -20,17 +20,17 @@ namespace Model {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetUser")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetAuthor")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetUser : global::System.Data.DataSet {
+    public partial class DataSetAuthor : global::System.Data.DataSet {
         
-        private TabUserDataTable tableTabUser;
+        private TabAuthorDataTable tableTabAuthor;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DataSetUser() {
+        public DataSetAuthor() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Model {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DataSetUser(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetAuthor(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Model {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["TabUser"] != null)) {
-                    base.Tables.Add(new TabUserDataTable(ds.Tables["TabUser"]));
+                if ((ds.Tables["TabAuthor"] != null)) {
+                    base.Tables.Add(new TabAuthorDataTable(ds.Tables["TabAuthor"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Model {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TabUserDataTable TabUser {
+        public TabAuthorDataTable TabAuthor {
             get {
-                return this.tableTabUser;
+                return this.tableTabAuthor;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Model {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetUser cln = ((DataSetUser)(base.Clone()));
+            DataSetAuthor cln = ((DataSetAuthor)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Model {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["TabUser"] != null)) {
-                    base.Tables.Add(new TabUserDataTable(ds.Tables["TabUser"]));
+                if ((ds.Tables["TabAuthor"] != null)) {
+                    base.Tables.Add(new TabAuthorDataTable(ds.Tables["TabAuthor"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Model {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableTabUser = ((TabUserDataTable)(base.Tables["TabUser"]));
+            this.tableTabAuthor = ((TabAuthorDataTable)(base.Tables["TabAuthor"]));
             if ((initTable == true)) {
-                if ((this.tableTabUser != null)) {
-                    this.tableTabUser.InitVars();
+                if ((this.tableTabAuthor != null)) {
+                    this.tableTabAuthor.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace Model {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetUser";
+            this.DataSetName = "DataSetAuthor";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetUser.xsd";
+            this.Namespace = "http://tempuri.org/DataSetAuthor.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableTabUser = new TabUserDataTable();
-            base.Tables.Add(this.tableTabUser);
+            this.tableTabAuthor = new TabAuthorDataTable();
+            base.Tables.Add(this.tableTabAuthor);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeTabUser() {
+        private bool ShouldSerializeTabAuthor() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace Model {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetUser ds = new DataSetUser();
+            DataSetAuthor ds = new DataSetAuthor();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,27 +270,23 @@ namespace Model {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void TabUserRowChangeEventHandler(object sender, TabUserRowChangeEvent e);
+        public delegate void TabAuthorRowChangeEventHandler(object sender, TabAuthorRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TabUserDataTable : global::System.Data.TypedTableBase<TabUserRow> {
+        public partial class TabAuthorDataTable : global::System.Data.TypedTableBase<TabAuthorRow> {
             
-            private global::System.Data.DataColumn columnUID;
+            private global::System.Data.DataColumn columnAID;
             
-            private global::System.Data.DataColumn columnUserName;
-            
-            private global::System.Data.DataColumn columnPassword;
-            
-            private global::System.Data.DataColumn columnUserLevel;
+            private global::System.Data.DataColumn columnAuthorName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserDataTable() {
-                this.TableName = "TabUser";
+            public TabAuthorDataTable() {
+                this.TableName = "TabAuthor";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +294,7 @@ namespace Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal TabUserDataTable(global::System.Data.DataTable table) {
+            internal TabAuthorDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,40 +311,24 @@ namespace Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected TabUserDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TabAuthorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UIDColumn {
+            public global::System.Data.DataColumn AIDColumn {
                 get {
-                    return this.columnUID;
+                    return this.columnAID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UserNameColumn {
+            public global::System.Data.DataColumn AuthorNameColumn {
                 get {
-                    return this.columnUserName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PasswordColumn {
-                get {
-                    return this.columnPassword;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UserLevelColumn {
-                get {
-                    return this.columnUserLevel;
+                    return this.columnAuthorName;
                 }
             }
             
@@ -363,55 +343,53 @@ namespace Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRow this[int index] {
+            public TabAuthorRow this[int index] {
                 get {
-                    return ((TabUserRow)(this.Rows[index]));
+                    return ((TabAuthorRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TabUserRowChangeEventHandler TabUserRowChanging;
+            public event TabAuthorRowChangeEventHandler TabAuthorRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TabUserRowChangeEventHandler TabUserRowChanged;
+            public event TabAuthorRowChangeEventHandler TabAuthorRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TabUserRowChangeEventHandler TabUserRowDeleting;
+            public event TabAuthorRowChangeEventHandler TabAuthorRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TabUserRowChangeEventHandler TabUserRowDeleted;
+            public event TabAuthorRowChangeEventHandler TabAuthorRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddTabUserRow(TabUserRow row) {
+            public void AddTabAuthorRow(TabAuthorRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRow AddTabUserRow(string UserName, string Password, int UserLevel) {
-                TabUserRow rowTabUserRow = ((TabUserRow)(this.NewRow()));
+            public TabAuthorRow AddTabAuthorRow(string AuthorName) {
+                TabAuthorRow rowTabAuthorRow = ((TabAuthorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        UserName,
-                        Password,
-                        UserLevel};
-                rowTabUserRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTabUserRow);
-                return rowTabUserRow;
+                        AuthorName};
+                rowTabAuthorRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTabAuthorRow);
+                return rowTabAuthorRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRow FindByUID(int UID) {
-                return ((TabUserRow)(this.Rows.Find(new object[] {
-                            UID})));
+            public TabAuthorRow FindByAID(int AID) {
+                return ((TabAuthorRow)(this.Rows.Find(new object[] {
+                            AID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TabUserDataTable cln = ((TabUserDataTable)(base.Clone()));
+                TabAuthorDataTable cln = ((TabAuthorDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -419,68 +397,59 @@ namespace Model {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TabUserDataTable();
+                return new TabAuthorDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnUID = base.Columns["UID"];
-                this.columnUserName = base.Columns["UserName"];
-                this.columnPassword = base.Columns["Password"];
-                this.columnUserLevel = base.Columns["UserLevel"];
+                this.columnAID = base.Columns["AID"];
+                this.columnAuthorName = base.Columns["AuthorName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnUID = new global::System.Data.DataColumn("UID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUID);
-                this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUserName);
-                this.columnPassword = new global::System.Data.DataColumn("Password", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPassword);
-                this.columnUserLevel = new global::System.Data.DataColumn("UserLevel", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUserLevel);
+                this.columnAID = new global::System.Data.DataColumn("AID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAID);
+                this.columnAuthorName = new global::System.Data.DataColumn("AuthorName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuthorName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnUID}, true));
-                this.columnUID.AutoIncrement = true;
-                this.columnUID.AutoIncrementSeed = -1;
-                this.columnUID.AutoIncrementStep = -1;
-                this.columnUID.AllowDBNull = false;
-                this.columnUID.ReadOnly = true;
-                this.columnUID.Unique = true;
-                this.columnUserName.AllowDBNull = false;
-                this.columnUserName.MaxLength = 8;
-                this.columnPassword.AllowDBNull = false;
-                this.columnPassword.MaxLength = 30;
-                this.columnUserLevel.AllowDBNull = false;
+                                this.columnAID}, true));
+                this.columnAID.AutoIncrement = true;
+                this.columnAID.AutoIncrementSeed = -1;
+                this.columnAID.AutoIncrementStep = -1;
+                this.columnAID.AllowDBNull = false;
+                this.columnAID.ReadOnly = true;
+                this.columnAID.Unique = true;
+                this.columnAuthorName.AllowDBNull = false;
+                this.columnAuthorName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRow NewTabUserRow() {
-                return ((TabUserRow)(this.NewRow()));
+            public TabAuthorRow NewTabAuthorRow() {
+                return ((TabAuthorRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TabUserRow(builder);
+                return new TabAuthorRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TabUserRow);
+                return typeof(TabAuthorRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TabUserRowChanged != null)) {
-                    this.TabUserRowChanged(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
+                if ((this.TabAuthorRowChanged != null)) {
+                    this.TabAuthorRowChanged(this, new TabAuthorRowChangeEvent(((TabAuthorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -488,8 +457,8 @@ namespace Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TabUserRowChanging != null)) {
-                    this.TabUserRowChanging(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
+                if ((this.TabAuthorRowChanging != null)) {
+                    this.TabAuthorRowChanging(this, new TabAuthorRowChangeEvent(((TabAuthorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -497,8 +466,8 @@ namespace Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TabUserRowDeleted != null)) {
-                    this.TabUserRowDeleted(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
+                if ((this.TabAuthorRowDeleted != null)) {
+                    this.TabAuthorRowDeleted(this, new TabAuthorRowChangeEvent(((TabAuthorRow)(e.Row)), e.Action));
                 }
             }
             
@@ -506,14 +475,14 @@ namespace Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TabUserRowDeleting != null)) {
-                    this.TabUserRowDeleting(this, new TabUserRowChangeEvent(((TabUserRow)(e.Row)), e.Action));
+                if ((this.TabAuthorRowDeleting != null)) {
+                    this.TabAuthorRowDeleting(this, new TabAuthorRowChangeEvent(((TabAuthorRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveTabUserRow(TabUserRow row) {
+            public void RemoveTabAuthorRow(TabAuthorRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -522,7 +491,7 @@ namespace Model {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetUser ds = new DataSetUser();
+                DataSetAuthor ds = new DataSetAuthor();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -540,7 +509,7 @@ namespace Model {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TabUserDataTable";
+                attribute2.FixedValue = "TabAuthorDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -584,58 +553,36 @@ namespace Model {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TabUserRow : global::System.Data.DataRow {
+        public partial class TabAuthorRow : global::System.Data.DataRow {
             
-            private TabUserDataTable tableTabUser;
+            private TabAuthorDataTable tableTabAuthor;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal TabUserRow(global::System.Data.DataRowBuilder rb) : 
+            internal TabAuthorRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableTabUser = ((TabUserDataTable)(this.Table));
+                this.tableTabAuthor = ((TabAuthorDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int UID {
+            public int AID {
                 get {
-                    return ((int)(this[this.tableTabUser.UIDColumn]));
+                    return ((int)(this[this.tableTabAuthor.AIDColumn]));
                 }
                 set {
-                    this[this.tableTabUser.UIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string UserName {
-                get {
-                    return ((string)(this[this.tableTabUser.UserNameColumn]));
-                }
-                set {
-                    this[this.tableTabUser.UserNameColumn] = value;
+                    this[this.tableTabAuthor.AIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Password {
+            public string AuthorName {
                 get {
-                    return ((string)(this[this.tableTabUser.PasswordColumn]));
+                    return ((string)(this[this.tableTabAuthor.AuthorNameColumn]));
                 }
                 set {
-                    this[this.tableTabUser.PasswordColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int UserLevel {
-                get {
-                    return ((int)(this[this.tableTabUser.UserLevelColumn]));
-                }
-                set {
-                    this[this.tableTabUser.UserLevelColumn] = value;
+                    this[this.tableTabAuthor.AuthorNameColumn] = value;
                 }
             }
         }
@@ -644,22 +591,22 @@ namespace Model {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class TabUserRowChangeEvent : global::System.EventArgs {
+        public class TabAuthorRowChangeEvent : global::System.EventArgs {
             
-            private TabUserRow eventRow;
+            private TabAuthorRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRowChangeEvent(TabUserRow row, global::System.Data.DataRowAction action) {
+            public TabAuthorRowChangeEvent(TabAuthorRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TabUserRow Row {
+            public TabAuthorRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -675,7 +622,7 @@ namespace Model {
         }
     }
 }
-namespace Model.DataSetUserTableAdapters {
+namespace Model.DataSetAuthorTableAdapters {
     
     
     /// <summary>
@@ -687,7 +634,7 @@ namespace Model.DataSetUserTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TabUserTableAdapter : global::System.ComponentModel.Component {
+    public partial class TabAuthorTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -701,7 +648,7 @@ namespace Model.DataSetUserTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public TabUserTableAdapter() {
+        public TabAuthorTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -798,44 +745,33 @@ namespace Model.DataSetUserTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TabUser";
-            tableMapping.ColumnMappings.Add("UID", "UID");
-            tableMapping.ColumnMappings.Add("UserName", "UserName");
-            tableMapping.ColumnMappings.Add("Password", "Password");
-            tableMapping.ColumnMappings.Add("UserLevel", "UserLevel");
+            tableMapping.DataSetTable = "TabAuthor";
+            tableMapping.ColumnMappings.Add("AID", "AID");
+            tableMapping.ColumnMappings.Add("AuthorName", "AuthorName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TabUser] WHERE (([UID] = @Original_UID) AND ([UserName] = @Ori" +
-                "ginal_UserName) AND ([Password] = @Original_Password) AND ([UserLevel] = @Origin" +
-                "al_UserLevel))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TabAuthor] WHERE (([AID] = @Original_AID) AND ([AuthorName] = " +
+                "@Original_AuthorName))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AuthorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TabUser] ([UserName], [Password], [UserLevel]) VALUES (@UserNa" +
-                "me, @Password, @UserLevel);\r\nSELECT UID, UserName, Password, UserLevel FROM TabU" +
-                "ser WHERE (UID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TabAuthor] ([AuthorName]) VALUES (@AuthorName);\r\nSELECT AID, A" +
+                "uthorName FROM TabAuthor WHERE (AID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AuthorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TabUser] SET [UserName] = @UserName, [Password] = @Password, [UserLevel] = @UserLevel WHERE (([UID] = @Original_UID) AND ([UserName] = @Original_UserName) AND ([Password] = @Original_Password) AND ([UserLevel] = @Original_UserLevel));
-SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TabAuthor] SET [AuthorName] = @AuthorName WHERE (([AID] = @Original" +
+                "_AID) AND ([AuthorName] = @Original_AuthorName));\r\nSELECT AID, AuthorName FROM T" +
+                "abAuthor WHERE (AID = @AID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AuthorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AuthorName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "AID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -848,34 +784,24 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT UID, UserName, Password, UserLevel FROM dbo.TabUser";
+            this._commandCollection[0].CommandText = "SELECT AID, AuthorName FROM dbo.TabAuthor";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT UID, UserName, Password, UserLevel FROM dbo.TabUser";
+            this._commandCollection[1].CommandText = "SELECT AID, AuthorName \r\nFROM dbo.TabAuthor\r\nWHERE AuthorName COLLATE Latin1_Gene" +
+                "ral_CI_AI LIKE \'%\' + @AuthorName + \'%\'";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT UID, UserName, Password, UserLevel\r\nFROM dbo.TabUser\r\nWHERE (UserName = @U" +
-                "sername)";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT     UID, UserName, Password, UserLevel \r\nFROM       dbo.TabUser\r\nWHERE    " +
-                " (UserName = @Username)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AuthorName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetUser.TabUserDataTable dataTable) {
+        public virtual int Fill(DataSetAuthor.TabAuthorDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -888,9 +814,9 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetUser.TabUserDataTable GetData() {
+        public virtual DataSetAuthor.TabAuthorDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
+            DataSetAuthor.TabAuthorDataTable dataTable = new DataSetAuthor.TabAuthorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -899,26 +825,15 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetUser.TabUserDataTable GetAllUsers() {
+        public virtual DataSetAuthor.TabAuthorDataTable FindAuthorByName(string AuthorName) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetUser.TabUserDataTable GetUserIDByName(string Username) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((Username == null)) {
-                throw new global::System.ArgumentNullException("Username");
+            if ((AuthorName == null)) {
+                throw new global::System.ArgumentNullException("AuthorName");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Username));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(AuthorName));
             }
-            DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
+            DataSetAuthor.TabAuthorDataTable dataTable = new DataSetAuthor.TabAuthorDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -926,32 +841,15 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSetUser.TabUserDataTable ValidateUsername(string Username) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((Username == null)) {
-                throw new global::System.ArgumentNullException("Username");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Username));
-            }
-            DataSetUser.TabUserDataTable dataTable = new DataSetUser.TabUserDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetUser.TabUserDataTable dataTable) {
+        public virtual int Update(DataSetAuthor.TabAuthorDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetUser dataSet) {
-            return this.Adapter.Update(dataSet, "TabUser");
+        public virtual int Update(DataSetAuthor dataSet) {
+            return this.Adapter.Update(dataSet, "TabAuthor");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -973,21 +871,14 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_UID, string Original_UserName, string Original_Password, int Original_UserLevel) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_UID));
-            if ((Original_UserName == null)) {
-                throw new global::System.ArgumentNullException("Original_UserName");
+        public virtual int Delete(int Original_AID, string Original_AuthorName) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_AID));
+            if ((Original_AuthorName == null)) {
+                throw new global::System.ArgumentNullException("Original_AuthorName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_UserName));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_AuthorName));
             }
-            if ((Original_Password == null)) {
-                throw new global::System.ArgumentNullException("Original_Password");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Password));
-            }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_UserLevel));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1008,20 +899,13 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string UserName, string Password, int UserLevel) {
-            if ((UserName == null)) {
-                throw new global::System.ArgumentNullException("UserName");
+        public virtual int Insert(string AuthorName) {
+            if ((AuthorName == null)) {
+                throw new global::System.ArgumentNullException("AuthorName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(UserName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(AuthorName));
             }
-            if ((Password == null)) {
-                throw new global::System.ArgumentNullException("Password");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Password));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(UserLevel));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1042,35 +926,21 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string UserName, string Password, int UserLevel, int Original_UID, string Original_UserName, string Original_Password, int Original_UserLevel, int UID) {
-            if ((UserName == null)) {
-                throw new global::System.ArgumentNullException("UserName");
+        public virtual int Update(string AuthorName, int Original_AID, string Original_AuthorName, int AID) {
+            if ((AuthorName == null)) {
+                throw new global::System.ArgumentNullException("AuthorName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(UserName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(AuthorName));
             }
-            if ((Password == null)) {
-                throw new global::System.ArgumentNullException("Password");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Password));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(UserLevel));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_UID));
-            if ((Original_UserName == null)) {
-                throw new global::System.ArgumentNullException("Original_UserName");
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_AID));
+            if ((Original_AuthorName == null)) {
+                throw new global::System.ArgumentNullException("Original_AuthorName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_UserName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_AuthorName));
             }
-            if ((Original_Password == null)) {
-                throw new global::System.ArgumentNullException("Original_Password");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Password));
-            }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_UserLevel));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(UID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(AID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1091,8 +961,8 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string UserName, string Password, int UserLevel, int Original_UID, string Original_UserName, string Original_Password, int Original_UserLevel) {
-            return this.Update(UserName, Password, UserLevel, Original_UID, Original_UserName, Original_Password, Original_UserLevel, Original_UID);
+        public virtual int Update(string AuthorName, int Original_AID, string Original_AuthorName) {
+            return this.Update(AuthorName, Original_AID, Original_AuthorName, Original_AID);
         }
     }
     
@@ -1108,7 +978,7 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         
         private UpdateOrderOption _updateOrder;
         
-        private TabUserTableAdapter _tabUserTableAdapter;
+        private TabAuthorTableAdapter _tabAuthorTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1130,12 +1000,12 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TabUserTableAdapter TabUserTableAdapter {
+        public TabAuthorTableAdapter TabAuthorTableAdapter {
             get {
-                return this._tabUserTableAdapter;
+                return this._tabAuthorTableAdapter;
             }
             set {
-                this._tabUserTableAdapter = value;
+                this._tabAuthorTableAdapter = value;
             }
         }
         
@@ -1158,9 +1028,9 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._tabUserTableAdapter != null) 
-                            && (this._tabUserTableAdapter.Connection != null))) {
-                    return this._tabUserTableAdapter.Connection;
+                if (((this._tabAuthorTableAdapter != null) 
+                            && (this._tabAuthorTableAdapter.Connection != null))) {
+                    return this._tabAuthorTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1175,7 +1045,7 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._tabUserTableAdapter != null)) {
+                if ((this._tabAuthorTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1187,14 +1057,14 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(DataSetUser dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetAuthor dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tabUserTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._tabAuthorTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TabAuthor.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._tabUserTableAdapter.Update(updatedRows));
+                    result = (result + this._tabAuthorTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1206,13 +1076,13 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(DataSetUser dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetAuthor dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tabUserTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._tabAuthorTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TabAuthor.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._tabUserTableAdapter.Update(addedRows));
+                    result = (result + this._tabAuthorTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1224,13 +1094,13 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(DataSetUser dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetAuthor dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._tabUserTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TabUser.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._tabAuthorTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TabAuthor.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._tabUserTableAdapter.Update(deletedRows));
+                    result = (result + this._tabAuthorTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1266,15 +1136,15 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(DataSetUser dataSet) {
+        public virtual int UpdateAll(DataSetAuthor dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._tabUserTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tabUserTableAdapter.Connection) == false))) {
+            if (((this._tabAuthorTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._tabAuthorTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1310,13 +1180,13 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._tabUserTableAdapter != null)) {
-                    revertConnections.Add(this._tabUserTableAdapter, this._tabUserTableAdapter.Connection);
-                    this._tabUserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._tabUserTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._tabUserTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tabUserTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabUserTableAdapter.Adapter);
+                if ((this._tabAuthorTableAdapter != null)) {
+                    revertConnections.Add(this._tabAuthorTableAdapter, this._tabAuthorTableAdapter.Connection);
+                    this._tabAuthorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._tabAuthorTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._tabAuthorTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._tabAuthorTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._tabAuthorTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1377,9 +1247,9 @@ SELECT UID, UserName, Password, UserLevel FROM TabUser WHERE (UID = @UID)";
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._tabUserTableAdapter != null)) {
-                    this._tabUserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tabUserTableAdapter]));
-                    this._tabUserTableAdapter.Transaction = null;
+                if ((this._tabAuthorTableAdapter != null)) {
+                    this._tabAuthorTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tabAuthorTableAdapter]));
+                    this._tabAuthorTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

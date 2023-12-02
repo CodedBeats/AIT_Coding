@@ -17,8 +17,7 @@ namespace WebApplicationLibrarySystem
     // [System.Web.Script.Services.ScriptService]
     public class WebServiceLibrarySystem : System.Web.Services.WebService
     {
-
-        // User
+        // === User === //
         UserLogic userLogic = new UserLogic();
 
         [WebMethod]
@@ -26,6 +25,79 @@ namespace WebApplicationLibrarySystem
         {
             return userLogic.GetAllUsers();
         }
+
+        [WebMethod]
+        public UserType ValidateLogin(string userNameInput, string passwordInput)
+        {
+            return userLogic.ValidateLogin(userNameInput, passwordInput);
+        }
+
+
+        // === Book === //
+        BookLogic bookLogic = new BookLogic();
+
+        [WebMethod]
+        public List<Book> GetAllBooks()
+        {
+            return bookLogic.GetAllBooks();
+        }
+
+        [WebMethod]
+        public List<Book> FindBookByName(string searchInput)
+        {
+            return bookLogic.FindBookByName(searchInput);
+        }
+
+        [WebMethod]
+        public List<Book> FindBookByAuthor(string searchInput)
+        {
+            return bookLogic.FindBookByAuthor(searchInput);
+        }
+
+        [WebMethod]
+        public List<Book> FindBookByCategory(string searchInput)
+        {
+            return bookLogic.FindBookByCategory(searchInput);
+        }
+
+
+        // === Borrow === //
+        BorrowLogic borrowLogic = new BorrowLogic();
+
+        [WebMethod]
+        public List<Borrow> FindBorrowByUserID(string inputUserID)
+        {
+            return borrowLogic.FindBorrowByUserID(inputUserID);
+        }
+
+        [WebMethod]
+        public bool BorrowBook(string bookName, string username)
+        {
+            return borrowLogic.BorrowBook(bookName, username);
+        }
+
+        [WebMethod]
+        public bool ReturnBook(string bookName, string username)
+        {
+            return borrowLogic.ReturnBook(bookName, username);
+        }
+
+
+        // === Reserve === //
+        ReservedLogic reservedLogic = new ReservedLogic();
+
+        [WebMethod]
+        public List<Reserved> FindReservedByUserID(string inputUserID)
+        {
+            return reservedLogic.FindReservedByUserID(inputUserID);
+        }
+
+        [WebMethod]
+        public bool ReserveBook(string bookName, string username)
+        {
+            return reservedLogic.ReserveBook(bookName, username);
+        }
+
 
     }
 }

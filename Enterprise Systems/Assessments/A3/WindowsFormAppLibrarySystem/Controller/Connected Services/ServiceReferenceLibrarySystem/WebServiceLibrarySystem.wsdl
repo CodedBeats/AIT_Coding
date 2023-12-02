@@ -25,6 +25,199 @@
           <s:element minOccurs="1" maxOccurs="1" name="UserLevel" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ValidateLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userNameInput" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passwordInput" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateLoginResult" type="tns:UserType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UserType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoUser" />
+          <s:enumeration value="Student" />
+          <s:enumeration value="StaffOrAdmin" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetAllBooks">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllBooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllBooksResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBook">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Book">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BookName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Author" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Language" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishYear" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Publisher" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pages" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindBookByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchInput" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBookByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBookByNameResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBookByAuthor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchInput" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBookByAuthorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBookByAuthorResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBookByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchInput" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBookByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBookByCategoryResult" type="tns:ArrayOfBook" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBorrowByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inputUserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBorrowByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBorrowByUserIDResult" type="tns:ArrayOfBorrow" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBorrow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Borrow" nillable="true" type="tns:Borrow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Borrow">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BorrowDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActualReturnDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LateFee" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BorrowBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bookName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BorrowBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BorrowBookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bookName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnBookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindReservedByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inputUserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindReservedByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindReservedByUserIDResult" type="tns:ArrayOfReserved" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReserved">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Reserved" nillable="true" type="tns:Reserved" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reserved">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReservedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReserveBook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bookName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReserveBookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReserveBookResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAllUsersSoapIn">
@@ -33,10 +226,110 @@
   <wsdl:message name="GetAllUsersSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="ValidateLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateLogin" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllBooks" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:FindBookByName" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:FindBookByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByAuthorSoapIn">
+    <wsdl:part name="parameters" element="tns:FindBookByAuthor" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByAuthorSoapOut">
+    <wsdl:part name="parameters" element="tns:FindBookByAuthorResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:FindBookByCategory" />
+  </wsdl:message>
+  <wsdl:message name="FindBookByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:FindBookByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindBorrowByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:FindBorrowByUserID" />
+  </wsdl:message>
+  <wsdl:message name="FindBorrowByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:FindBorrowByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="BorrowBookSoapIn">
+    <wsdl:part name="parameters" element="tns:BorrowBook" />
+  </wsdl:message>
+  <wsdl:message name="BorrowBookSoapOut">
+    <wsdl:part name="parameters" element="tns:BorrowBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnBookSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnBook" />
+  </wsdl:message>
+  <wsdl:message name="ReturnBookSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindReservedByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:FindReservedByUserID" />
+  </wsdl:message>
+  <wsdl:message name="FindReservedByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:FindReservedByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReserveBookSoapIn">
+    <wsdl:part name="parameters" element="tns:ReserveBook" />
+  </wsdl:message>
+  <wsdl:message name="ReserveBookSoapOut">
+    <wsdl:part name="parameters" element="tns:ReserveBookResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceLibrarySystemSoap">
     <wsdl:operation name="GetAllUsers">
       <wsdl:input message="tns:GetAllUsersSoapIn" />
       <wsdl:output message="tns:GetAllUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <wsdl:input message="tns:ValidateLoginSoapIn" />
+      <wsdl:output message="tns:ValidateLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBooks">
+      <wsdl:input message="tns:GetAllBooksSoapIn" />
+      <wsdl:output message="tns:GetAllBooksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByName">
+      <wsdl:input message="tns:FindBookByNameSoapIn" />
+      <wsdl:output message="tns:FindBookByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByAuthor">
+      <wsdl:input message="tns:FindBookByAuthorSoapIn" />
+      <wsdl:output message="tns:FindBookByAuthorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByCategory">
+      <wsdl:input message="tns:FindBookByCategorySoapIn" />
+      <wsdl:output message="tns:FindBookByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindBorrowByUserID">
+      <wsdl:input message="tns:FindBorrowByUserIDSoapIn" />
+      <wsdl:output message="tns:FindBorrowByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrowBook">
+      <wsdl:input message="tns:BorrowBookSoapIn" />
+      <wsdl:output message="tns:BorrowBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnBook">
+      <wsdl:input message="tns:ReturnBookSoapIn" />
+      <wsdl:output message="tns:ReturnBookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindReservedByUserID">
+      <wsdl:input message="tns:FindReservedByUserIDSoapIn" />
+      <wsdl:output message="tns:FindReservedByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReserveBook">
+      <wsdl:input message="tns:ReserveBookSoapIn" />
+      <wsdl:output message="tns:ReserveBookSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceLibrarySystemSoap" type="tns:WebServiceLibrarySystemSoap">
@@ -50,11 +343,191 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <soap:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBooks">
+      <soap:operation soapAction="http://tempuri.org/GetAllBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByName">
+      <soap:operation soapAction="http://tempuri.org/FindBookByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByAuthor">
+      <soap:operation soapAction="http://tempuri.org/FindBookByAuthor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByCategory">
+      <soap:operation soapAction="http://tempuri.org/FindBookByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBorrowByUserID">
+      <soap:operation soapAction="http://tempuri.org/FindBorrowByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrowBook">
+      <soap:operation soapAction="http://tempuri.org/BorrowBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnBook">
+      <soap:operation soapAction="http://tempuri.org/ReturnBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindReservedByUserID">
+      <soap:operation soapAction="http://tempuri.org/FindReservedByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveBook">
+      <soap:operation soapAction="http://tempuri.org/ReserveBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebServiceLibrarySystemSoap12" type="tns:WebServiceLibrarySystemSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllUsers">
       <soap12:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <soap12:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBooks">
+      <soap12:operation soapAction="http://tempuri.org/GetAllBooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByName">
+      <soap12:operation soapAction="http://tempuri.org/FindBookByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByAuthor">
+      <soap12:operation soapAction="http://tempuri.org/FindBookByAuthor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBookByCategory">
+      <soap12:operation soapAction="http://tempuri.org/FindBookByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindBorrowByUserID">
+      <soap12:operation soapAction="http://tempuri.org/FindBorrowByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrowBook">
+      <soap12:operation soapAction="http://tempuri.org/BorrowBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnBook">
+      <soap12:operation soapAction="http://tempuri.org/ReturnBook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindReservedByUserID">
+      <soap12:operation soapAction="http://tempuri.org/FindReservedByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReserveBook">
+      <soap12:operation soapAction="http://tempuri.org/ReserveBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
