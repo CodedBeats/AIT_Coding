@@ -33,6 +33,12 @@ namespace WebApplicationLibrarySystem
         }
 
         [WebMethod]
+        public bool CheckIfUserExists(int UID)
+        {
+            return userLogic.CheckIfUserExists(UID);
+        }
+
+        [WebMethod]
         public void CreateUser(string username, string password, int userLevel)
         {
             userLogic.CreateUser(username, password, userLevel);

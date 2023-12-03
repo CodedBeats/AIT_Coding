@@ -29,6 +29,9 @@ namespace WindowsFormAppLibrarySystem
             InitializeComponent();
             username = name;
             label2.Text = "Welcome " + username;
+
+            // hide error message
+            label3.Visible = false;
         }
 
 
@@ -39,6 +42,9 @@ namespace WindowsFormAppLibrarySystem
 
             // display the data
             dataGridView1.DataSource = bookDTOs;
+
+            // hide error message
+            label3.Visible = false;
         }
 
         private void BookNameBtn(object sender, EventArgs e)
@@ -74,10 +80,21 @@ namespace WindowsFormAppLibrarySystem
 
         private void SearchBtn(object sender, EventArgs e)
         {
-            List<BookDTO> bookDTOs = bookController.Search(textBox1.Text, searchCat);
+            try
+            {
+                List<BookDTO> bookDTOs = bookController.Search(textBox1.Text, searchCat);
+                // display the data
+                dataGridView1.DataSource = bookDTOs;
 
-            // display the data
-            dataGridView1.DataSource = bookDTOs;
+                // hide error message
+                label3.Visible = false;
+            }
+            // Handle no books found
+            catch (NoBooksFoundException ex)
+            {
+                // show error message
+                label3.Visible = true;
+            }
         }
 
 

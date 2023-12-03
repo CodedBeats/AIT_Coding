@@ -44,6 +44,11 @@ namespace Controller
             return (UserType)soapClient.ValidateLogin(userNameInput, passwordInput);
         }
 
+        public bool CheckIfUserExists(int UID)
+        {
+            return soapClient.CheckIfUserExists(UID);
+        }
+
 
         // CRUD
         public void CreateUser(string username, string password, int userLevel)
@@ -53,12 +58,41 @@ namespace Controller
 
         public void UpdateUser(string username, string password, int userLevel, int userID)
         {
-            soapClient.UpdateUser(username, password, userLevel, userID);
+            bool userExists = CheckIfUserExists(userID);
+
+            if (userExists)
+            {
+                soapClient.UpdateUser(username, password, userLevel, userID);
+            }
+            else
+            {
+                throw new UserCRUDException($"User with ID {userID} does not exist.");
+            }
         }
 
         public void DeleteUser(int userID)
         {
-            soapClient.DeleteUser(userID);
+            bool userExists = CheckIfUserExists(userID);
+
+            if (userExists)
+            {
+                soapClient.DeleteUser(userID);
+            }
+            else
+            {
+                throw new UserCRUDException($"User with ID {userID} does not exist.");
+            }
         }
+    }
+
+
+
+
+    // Custom exception for no user
+    public class UserCRUDException : Exception
+    {
+        public UserCRUDException() : base() { }
+        public UserCRUDException(string message) : base(message) { }
+        public UserCRUDException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

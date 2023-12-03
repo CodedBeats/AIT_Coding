@@ -46,6 +46,11 @@ namespace Model
             return UserType.NoUser;
         }
 
+        public bool CheckIfUserExists(int UID)
+        {
+            UserDAO userDAO = new UserDAO();
+            return userDAO.CheckIfUserExists(UID);
+        }
 
         // CRUD
         public void CreateUser(string username, string password, int userLevel)

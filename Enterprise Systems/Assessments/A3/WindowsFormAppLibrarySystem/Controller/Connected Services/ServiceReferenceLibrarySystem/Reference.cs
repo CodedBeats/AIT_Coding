@@ -693,6 +693,12 @@ namespace Controller.ServiceReferenceLibrarySystem {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidateLogin", ReplyAction="*")]
         System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse> ValidateLoginAsync(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CheckIfUserExists", ReplyAction="*")]
+        bool CheckIfUserExists(int UID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CheckIfUserExists", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CheckIfUserExistsAsync(int UID);
+        
         // CODEGEN: Generating message contract since element name username from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateUser", ReplyAction="*")]
         Controller.ServiceReferenceLibrarySystem.CreateUserResponse CreateUser(Controller.ServiceReferenceLibrarySystem.CreateUserRequest request);
@@ -2606,6 +2612,14 @@ namespace Controller.ServiceReferenceLibrarySystem {
             inValue.Body.userNameInput = userNameInput;
             inValue.Body.passwordInput = passwordInput;
             return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ValidateLoginAsync(inValue);
+        }
+        
+        public bool CheckIfUserExists(int UID) {
+            return base.Channel.CheckIfUserExists(UID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckIfUserExistsAsync(int UID) {
+            return base.Channel.CheckIfUserExistsAsync(UID);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

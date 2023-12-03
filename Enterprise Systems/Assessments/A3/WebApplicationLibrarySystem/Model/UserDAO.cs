@@ -82,6 +82,24 @@ namespace Model
             }
         }
 
+        public bool CheckIfUserExists(int UID)
+        {
+            // execute query
+            DataSetUser.TabUserDataTable tabUserDataTable = tabUserTableAdapter.CheckIfUserExists(UID);
+
+            // check if no user
+            int dataCount = tabUserDataTable.Count;
+            if (dataCount == 0)
+            {
+                // no user found
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public User ValidateUserName(string userNameInput)
         {
             // execute query and store data in object

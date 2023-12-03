@@ -47,6 +47,20 @@
           <s:enumeration value="StaffOrAdmin" />
         </s:restriction>
       </s:simpleType>
+      <s:element name="CheckIfUserExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIfUserExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckIfUserExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateUser">
         <s:complexType>
           <s:sequence>
@@ -457,6 +471,12 @@
   <wsdl:message name="ValidateLoginSoapOut">
     <wsdl:part name="parameters" element="tns:ValidateLoginResponse" />
   </wsdl:message>
+  <wsdl:message name="CheckIfUserExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckIfUserExists" />
+  </wsdl:message>
+  <wsdl:message name="CheckIfUserExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckIfUserExistsResponse" />
+  </wsdl:message>
   <wsdl:message name="CreateUserSoapIn">
     <wsdl:part name="parameters" element="tns:CreateUser" />
   </wsdl:message>
@@ -628,6 +648,10 @@
       <wsdl:input message="tns:ValidateLoginSoapIn" />
       <wsdl:output message="tns:ValidateLoginSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="CheckIfUserExists">
+      <wsdl:input message="tns:CheckIfUserExistsSoapIn" />
+      <wsdl:output message="tns:CheckIfUserExistsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CreateUser">
       <wsdl:input message="tns:CreateUserSoapIn" />
       <wsdl:output message="tns:CreateUserSoapOut" />
@@ -750,6 +774,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateLogin">
       <soap:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfUserExists">
+      <soap:operation soapAction="http://tempuri.org/CheckIfUserExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1014,6 +1047,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateLogin">
       <soap12:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfUserExists">
+      <soap12:operation soapAction="http://tempuri.org/CheckIfUserExists" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

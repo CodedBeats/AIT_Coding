@@ -51,26 +51,36 @@ namespace Controller
 
             Controller.ServiceReferenceLibrarySystem.Book[] books = soapClient.FindBookByName(searchInput);
 
-            foreach (Book book in books)
+            // check for books
+            if (books != null && books.Length > 0)
             {
-                // create new bookDTO
-                BookDTO bookDTO = new BookDTO();
+                foreach (Book book in books)
+                {
+                    // create new bookDTO
+                    BookDTO bookDTO = new BookDTO();
 
-                // assign values
-                bookDTO.ISBN = book.ISBN;
-                bookDTO.BookName = book.BookName;
-                bookDTO.Author = book.Author;
-                bookDTO.Category = book.Category;
-                bookDTO.Language = book.Language;
-                bookDTO.PublishYear = book.PublishYear;
-                bookDTO.Publisher = book.Publisher;
-                bookDTO.Pages = book.Pages;
+                    // assign values
+                    bookDTO.ISBN = book.ISBN;
+                    bookDTO.BookName = book.BookName;
+                    bookDTO.Author = book.Author;
+                    bookDTO.Category = book.Category;
+                    bookDTO.Language = book.Language;
+                    bookDTO.PublishYear = book.PublishYear;
+                    bookDTO.Publisher = book.Publisher;
+                    bookDTO.Pages = book.Pages;
 
-                // add to list
-                bookDTOs.Add(bookDTO);
+                    // add to list
+                    bookDTOs.Add(bookDTO);
+                }
+
+                return bookDTOs;
             }
-
-            return bookDTOs;
+            // no books
+            else
+            {
+                // Throw a custom exception to indicate no books found
+                throw new NoBooksFoundException("No books found for the given search input.");
+            }
         }
 
         public List<BookDTO> FindBookByAuthor(string searchInput)
@@ -80,26 +90,36 @@ namespace Controller
 
             Controller.ServiceReferenceLibrarySystem.Book[] books = soapClient.FindBookByAuthor(searchInput);
 
-            foreach (Book book in books)
+            // check for books
+            if (books != null && books.Length > 0)
             {
-                // create new bookDTO
-                BookDTO bookDTO = new BookDTO();
+                    foreach (Book book in books)
+                {
+                    // create new bookDTO
+                    BookDTO bookDTO = new BookDTO();
 
-                // assign values
-                bookDTO.ISBN = book.ISBN;
-                bookDTO.BookName = book.BookName;
-                bookDTO.Author = book.Author;
-                bookDTO.Category = book.Category;
-                bookDTO.Language = book.Language;
-                bookDTO.PublishYear = book.PublishYear;
-                bookDTO.Publisher = book.Publisher;
-                bookDTO.Pages = book.Pages;
+                    // assign values
+                    bookDTO.ISBN = book.ISBN;
+                    bookDTO.BookName = book.BookName;
+                    bookDTO.Author = book.Author;
+                    bookDTO.Category = book.Category;
+                    bookDTO.Language = book.Language;
+                    bookDTO.PublishYear = book.PublishYear;
+                    bookDTO.Publisher = book.Publisher;
+                    bookDTO.Pages = book.Pages;
 
-                // add to list
-                bookDTOs.Add(bookDTO);
+                    // add to list
+                    bookDTOs.Add(bookDTO);
+                }
+
+                return bookDTOs;
             }
-
-            return bookDTOs;
+            // no books
+            else
+            {
+                // Throw a custom exception to indicate no books found
+                throw new NoBooksFoundException("No books found for the given search input.");
+            }
         }
 
         public List<BookDTO> FindBookByCategory(string searchInput)
@@ -109,26 +129,36 @@ namespace Controller
 
             Controller.ServiceReferenceLibrarySystem.Book[] books = soapClient.FindBookByCategory(searchInput);
 
-            foreach (Book book in books)
+            // check for books
+            if (books != null && books.Length > 0)
             {
-                // create new bookDTO
-                BookDTO bookDTO = new BookDTO();
+                foreach (Book book in books)
+                {
+                    // create new bookDTO
+                    BookDTO bookDTO = new BookDTO();
 
-                // assign values
-                bookDTO.ISBN = book.ISBN;
-                bookDTO.BookName = book.BookName;
-                bookDTO.Author = book.Author;
-                bookDTO.Category = book.Category;
-                bookDTO.Language = book.Language;
-                bookDTO.PublishYear = book.PublishYear;
-                bookDTO.Publisher = book.Publisher;
-                bookDTO.Pages = book.Pages;
+                    // assign values
+                    bookDTO.ISBN = book.ISBN;
+                    bookDTO.BookName = book.BookName;
+                    bookDTO.Author = book.Author;
+                    bookDTO.Category = book.Category;
+                    bookDTO.Language = book.Language;
+                    bookDTO.PublishYear = book.PublishYear;
+                    bookDTO.Publisher = book.Publisher;
+                    bookDTO.Pages = book.Pages;
 
-                // add to list
-                bookDTOs.Add(bookDTO);
+                    // add to list
+                    bookDTOs.Add(bookDTO);
+                }
+
+                return bookDTOs;
             }
-
-            return bookDTOs;
+            // no books
+            else
+            {
+                // Throw a custom exception to indicate no books found
+                throw new NoBooksFoundException("No books found for the given search input.");
+            }
         }
 
 
@@ -168,5 +198,15 @@ namespace Controller
         {
             soapClient.DeleteBook(bookName);
         }
+    }
+
+
+
+    // custom exception for no books found
+    public class NoBooksFoundException : Exception
+    {
+        public NoBooksFoundException() : base() { }
+        public NoBooksFoundException(string message) : base(message) { }
+        public NoBooksFoundException(string message, Exception innerException) : base(message, innerException) { }
     }
 }
