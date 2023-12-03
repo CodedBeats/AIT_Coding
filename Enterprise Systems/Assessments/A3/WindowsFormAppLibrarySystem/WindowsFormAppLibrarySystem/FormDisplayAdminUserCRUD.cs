@@ -78,6 +78,11 @@ namespace WindowsFormAppLibrarySystem
                 // Handle scenario where the user was not found
                 MessageBox.Show(ex.Message, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (Exception ex)
+            {
+                // Handle incorrect input
+                MessageBox.Show("An inputted value was not in the correct format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

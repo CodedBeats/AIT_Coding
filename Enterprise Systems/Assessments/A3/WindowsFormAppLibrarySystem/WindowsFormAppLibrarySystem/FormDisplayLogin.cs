@@ -10,6 +10,7 @@ namespace WindowsFormAppLibrarySystem
         public FormDisplayLogin()
         {
             InitializeComponent();
+
             label4.Visible = false;
         }
 
