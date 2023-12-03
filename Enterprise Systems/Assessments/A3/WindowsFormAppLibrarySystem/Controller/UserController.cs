@@ -43,5 +43,22 @@ namespace Controller
         {
             return (UserType)soapClient.ValidateLogin(userNameInput, passwordInput);
         }
+
+
+        // CRUD
+        public void CreateUser(string username, string password, int userLevel)
+        {
+            soapClient.CreateUser(username, password, userLevel);
+        }
+
+        public void UpdateUser(string username, string password, int userLevel, int userID)
+        {
+            soapClient.UpdateUser(username, password, userLevel, userID);
+        }
+
+        public void DeleteUser(int userID)
+        {
+            soapClient.DeleteUser(userID);
+        }
     }
 }

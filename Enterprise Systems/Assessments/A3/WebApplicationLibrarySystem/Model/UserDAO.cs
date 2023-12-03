@@ -123,5 +123,25 @@ namespace Model
                 return null;
             }
         }
+
+
+        // CRUD
+        public void CreateUser(string username, string password, int userLevel)
+        {
+            // execute query
+            tabUserTableAdapter.CreateUser(username, password, userLevel);
+        }
+
+        public void UpdateUser(string username, string password, int userLevel, int userID)
+        {
+            // execute query
+            tabUserTableAdapter.UpdateUser(username, password, userLevel, userID);
+        }
+
+        public void DeleteUser(int userID)
+        {
+            // execute query
+            tabUserTableAdapter.DeleteUser(userID);
+        }
     }
 }

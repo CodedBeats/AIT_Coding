@@ -43,8 +43,8 @@ namespace WindowsFormAppLibrarySystem
                         // get username
                         string adminUsername = textBox1.Text;
                         // show admin dashboard
-                        //FormDisplayAdminDashboard adminDashboard = new FormDisplayAdminDashboard(adminUsername);
-                        //adminDashboard.Visible = true;
+                        FormDisplayAdminDashboard adminDashboard = new FormDisplayAdminDashboard(adminUsername);
+                        adminDashboard.Visible = true;
                         break;
                 }
 

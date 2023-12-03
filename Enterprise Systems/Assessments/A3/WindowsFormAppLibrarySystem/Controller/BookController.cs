@@ -152,5 +152,21 @@ namespace Controller
             }
         }
 
+
+        // CRUD
+        public void CreateBook(string bookName, int publishYear, int pages, string publisher)
+        {
+            soapClient.CreateBook(bookName, publishYear, pages, publisher);
+        }
+
+        public void UpdateBook(string bookName, string originalBookName)
+        {
+            soapClient.UpdateBook(bookName, originalBookName);
+        }
+
+        public void DeleteBook(string bookName)
+        {
+            soapClient.DeleteBook(bookName);
+        }
     }
 }

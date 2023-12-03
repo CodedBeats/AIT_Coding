@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorDTO.cs" />
     <Compile Include="BookDTO.cs" />
     <Compile Include="BorrowDTO.cs" />
+    <Compile Include="CategoryDTO.cs" />
+    <Compile Include="LanguageDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservedDTO.cs" />
     <Compile Include="UserDTO.cs" />

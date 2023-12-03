@@ -495,6 +495,186 @@ namespace Controller.ServiceReferenceLibrarySystem {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Language", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Language : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int LIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LanguageNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int LID {
+            get {
+                return this.LIDField;
+            }
+            set {
+                if ((this.LIDField.Equals(value) != true)) {
+                    this.LIDField = value;
+                    this.RaisePropertyChanged("LID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string LanguageName {
+            get {
+                return this.LanguageNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LanguageNameField, value) != true)) {
+                    this.LanguageNameField = value;
+                    this.RaisePropertyChanged("LanguageName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int CIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int CID {
+            get {
+                return this.CIDField;
+            }
+            set {
+                if ((this.CIDField.Equals(value) != true)) {
+                    this.CIDField = value;
+                    this.RaisePropertyChanged("CID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Author", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Author : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int AIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AuthorNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int AID {
+            get {
+                return this.AIDField;
+            }
+            set {
+                if ((this.AIDField.Equals(value) != true)) {
+                    this.AIDField = value;
+                    this.RaisePropertyChanged("AID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string AuthorName {
+            get {
+                return this.AuthorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorNameField, value) != true)) {
+                    this.AuthorNameField = value;
+                    this.RaisePropertyChanged("AuthorName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap")]
     public interface WebServiceLibrarySystemSoap {
@@ -512,6 +692,26 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidateLogin", ReplyAction="*")]
         System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ValidateLoginResponse> ValidateLoginAsync(Controller.ServiceReferenceLibrarySystem.ValidateLoginRequest request);
+        
+        // CODEGEN: Generating message contract since element name username from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateUser", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.CreateUserResponse CreateUser(Controller.ServiceReferenceLibrarySystem.CreateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateUser", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateUserResponse> CreateUserAsync(Controller.ServiceReferenceLibrarySystem.CreateUserRequest request);
+        
+        // CODEGEN: Generating message contract since element name username from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateUser", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.UpdateUserResponse UpdateUser(Controller.ServiceReferenceLibrarySystem.UpdateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateUser", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateUserResponse> UpdateUserAsync(Controller.ServiceReferenceLibrarySystem.UpdateUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteUser", ReplyAction="*")]
+        void DeleteUser(int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteUser", ReplyAction="*")]
+        System.Threading.Tasks.Task DeleteUserAsync(int userID);
         
         // CODEGEN: Generating message contract since element name GetAllBooksResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBooks", ReplyAction="*")]
@@ -540,6 +740,27 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBookByCategory", ReplyAction="*")]
         System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.FindBookByCategoryResponse> FindBookByCategoryAsync(Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.CreateBookResponse CreateBook(Controller.ServiceReferenceLibrarySystem.CreateBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateBookResponse> CreateBookAsync(Controller.ServiceReferenceLibrarySystem.CreateBookRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.UpdateBookResponse UpdateBook(Controller.ServiceReferenceLibrarySystem.UpdateBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateBookResponse> UpdateBookAsync(Controller.ServiceReferenceLibrarySystem.UpdateBookRequest request);
+        
+        // CODEGEN: Generating message contract since element name bookName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBook", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.DeleteBookResponse DeleteBook(Controller.ServiceReferenceLibrarySystem.DeleteBookRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBook", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.DeleteBookResponse> DeleteBookAsync(Controller.ServiceReferenceLibrarySystem.DeleteBookRequest request);
         
         // CODEGEN: Generating message contract since element name inputUserID from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/FindBorrowByUserID", ReplyAction="*")]
@@ -575,6 +796,87 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReserveBook", ReplyAction="*")]
         System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.ReserveBookResponse> ReserveBookAsync(Controller.ServiceReferenceLibrarySystem.ReserveBookRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetAllLanguagesResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllLanguages", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse GetAllLanguages(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllLanguages", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse> GetAllLanguagesAsync(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest request);
+        
+        // CODEGEN: Generating message contract since element name languageName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateLanguage", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse CreateLanguage(Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateLanguage", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse> CreateLanguageAsync(Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest request);
+        
+        // CODEGEN: Generating message contract since element name languageName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateLanguage", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse UpdateLanguage(Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateLanguage", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse> UpdateLanguageAsync(Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteLanguage", ReplyAction="*")]
+        void DeleteLanguage(int languageID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteLanguage", ReplyAction="*")]
+        System.Threading.Tasks.Task DeleteLanguageAsync(int languageID);
+        
+        // CODEGEN: Generating message contract since element name GetAllCategoriesResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllCategories", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse GetAllCategories(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllCategories", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse> GetAllCategoriesAsync(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest request);
+        
+        // CODEGEN: Generating message contract since element name categoryName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateCategory", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse CreateCategory(Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateCategory", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse> CreateCategoryAsync(Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest request);
+        
+        // CODEGEN: Generating message contract since element name categoryName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateCategory", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse UpdateCategory(Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateCategory", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse> UpdateCategoryAsync(Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteCategory", ReplyAction="*")]
+        void DeleteCategory(int categoryID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteCategory", ReplyAction="*")]
+        System.Threading.Tasks.Task DeleteCategoryAsync(int categoryID);
+        
+        // CODEGEN: Generating message contract since element name GetAllAuthorsResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllAuthors", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse GetAllAuthors(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllAuthors", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse> GetAllAuthorsAsync(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest request);
+        
+        // CODEGEN: Generating message contract since element name authorName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateAuthor", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse CreateAuthor(Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreateAuthor", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse> CreateAuthorAsync(Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest request);
+        
+        // CODEGEN: Generating message contract since element name authorName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateAuthor", ReplyAction="*")]
+        Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse UpdateAuthor(Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateAuthor", ReplyAction="*")]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse> UpdateAuthorAsync(Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteAuthor", ReplyAction="*")]
+        void DeleteAuthor(int authorID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteAuthor", ReplyAction="*")]
+        System.Threading.Tasks.Task DeleteAuthorAsync(int authorID);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -707,6 +1009,148 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         public ValidateLoginResponseBody(Controller.ServiceReferenceLibrarySystem.UserType ValidateLoginResult) {
             this.ValidateLoginResult = ValidateLoginResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateUser", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateUserRequestBody Body;
+        
+        public CreateUserRequest() {
+        }
+        
+        public CreateUserRequest(Controller.ServiceReferenceLibrarySystem.CreateUserRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreateUserRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string username;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int userLevel;
+        
+        public CreateUserRequestBody() {
+        }
+        
+        public CreateUserRequestBody(string username, string password, int userLevel) {
+            this.username = username;
+            this.password = password;
+            this.userLevel = userLevel;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateUserResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateUserResponseBody Body;
+        
+        public CreateUserResponse() {
+        }
+        
+        public CreateUserResponse(Controller.ServiceReferenceLibrarySystem.CreateUserResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CreateUserResponseBody {
+        
+        public CreateUserResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateUser", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateUserRequestBody Body;
+        
+        public UpdateUserRequest() {
+        }
+        
+        public UpdateUserRequest(Controller.ServiceReferenceLibrarySystem.UpdateUserRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class UpdateUserRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string username;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int userLevel;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int userID;
+        
+        public UpdateUserRequestBody() {
+        }
+        
+        public UpdateUserRequestBody(string username, string password, int userLevel, int userID) {
+            this.username = username;
+            this.password = password;
+            this.userLevel = userLevel;
+            this.userID = userID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateUserResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateUserResponseBody Body;
+        
+        public UpdateUserResponse() {
+        }
+        
+        public UpdateUserResponse(Controller.ServiceReferenceLibrarySystem.UpdateUserResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class UpdateUserResponseBody {
+        
+        public UpdateUserResponseBody() {
         }
     }
     
@@ -972,6 +1416,205 @@ namespace Controller.ServiceReferenceLibrarySystem {
         
         public FindBookByCategoryResponseBody(Controller.ServiceReferenceLibrarySystem.Book[] FindBookByCategoryResult) {
             this.FindBookByCategoryResult = FindBookByCategoryResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateBookRequestBody Body;
+        
+        public CreateBookRequest() {
+        }
+        
+        public CreateBookRequest(Controller.ServiceReferenceLibrarySystem.CreateBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreateBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int publishYear;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int pages;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string publisher;
+        
+        public CreateBookRequestBody() {
+        }
+        
+        public CreateBookRequestBody(string bookName, int publishYear, int pages, string publisher) {
+            this.bookName = bookName;
+            this.publishYear = publishYear;
+            this.pages = pages;
+            this.publisher = publisher;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateBookResponseBody Body;
+        
+        public CreateBookResponse() {
+        }
+        
+        public CreateBookResponse(Controller.ServiceReferenceLibrarySystem.CreateBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CreateBookResponseBody {
+        
+        public CreateBookResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateBookRequestBody Body;
+        
+        public UpdateBookRequest() {
+        }
+        
+        public UpdateBookRequest(Controller.ServiceReferenceLibrarySystem.UpdateBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class UpdateBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string originalBookName;
+        
+        public UpdateBookRequestBody() {
+        }
+        
+        public UpdateBookRequestBody(string bookName, string originalBookName) {
+            this.bookName = bookName;
+            this.originalBookName = originalBookName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateBookResponseBody Body;
+        
+        public UpdateBookResponse() {
+        }
+        
+        public UpdateBookResponse(Controller.ServiceReferenceLibrarySystem.UpdateBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class UpdateBookResponseBody {
+        
+        public UpdateBookResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteBookRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBook", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.DeleteBookRequestBody Body;
+        
+        public DeleteBookRequest() {
+        }
+        
+        public DeleteBookRequest(Controller.ServiceReferenceLibrarySystem.DeleteBookRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DeleteBookRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string bookName;
+        
+        public DeleteBookRequestBody() {
+        }
+        
+        public DeleteBookRequestBody(string bookName) {
+            this.bookName = bookName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteBookResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.DeleteBookResponseBody Body;
+        
+        public DeleteBookResponse() {
+        }
+        
+        public DeleteBookResponse(Controller.ServiceReferenceLibrarySystem.DeleteBookResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class DeleteBookResponseBody {
+        
+        public DeleteBookResponseBody() {
         }
     }
     
@@ -1327,6 +1970,567 @@ namespace Controller.ServiceReferenceLibrarySystem {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllLanguagesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllLanguages", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequestBody Body;
+        
+        public GetAllLanguagesRequest() {
+        }
+        
+        public GetAllLanguagesRequest(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllLanguagesRequestBody {
+        
+        public GetAllLanguagesRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllLanguagesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllLanguagesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponseBody Body;
+        
+        public GetAllLanguagesResponse() {
+        }
+        
+        public GetAllLanguagesResponse(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllLanguagesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Language[] GetAllLanguagesResult;
+        
+        public GetAllLanguagesResponseBody() {
+        }
+        
+        public GetAllLanguagesResponseBody(Controller.ServiceReferenceLibrarySystem.Language[] GetAllLanguagesResult) {
+            this.GetAllLanguagesResult = GetAllLanguagesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateLanguageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateLanguage", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateLanguageRequestBody Body;
+        
+        public CreateLanguageRequest() {
+        }
+        
+        public CreateLanguageRequest(Controller.ServiceReferenceLibrarySystem.CreateLanguageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreateLanguageRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string languageName;
+        
+        public CreateLanguageRequestBody() {
+        }
+        
+        public CreateLanguageRequestBody(string languageName) {
+            this.languageName = languageName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateLanguageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateLanguageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateLanguageResponseBody Body;
+        
+        public CreateLanguageResponse() {
+        }
+        
+        public CreateLanguageResponse(Controller.ServiceReferenceLibrarySystem.CreateLanguageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CreateLanguageResponseBody {
+        
+        public CreateLanguageResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateLanguageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateLanguage", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequestBody Body;
+        
+        public UpdateLanguageRequest() {
+        }
+        
+        public UpdateLanguageRequest(Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class UpdateLanguageRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string languageName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int languageID;
+        
+        public UpdateLanguageRequestBody() {
+        }
+        
+        public UpdateLanguageRequestBody(string languageName, int languageID) {
+            this.languageName = languageName;
+            this.languageID = languageID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateLanguageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateLanguageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponseBody Body;
+        
+        public UpdateLanguageResponse() {
+        }
+        
+        public UpdateLanguageResponse(Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class UpdateLanguageResponseBody {
+        
+        public UpdateLanguageResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCategoriesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCategories", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequestBody Body;
+        
+        public GetAllCategoriesRequest() {
+        }
+        
+        public GetAllCategoriesRequest(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllCategoriesRequestBody {
+        
+        public GetAllCategoriesRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCategoriesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCategoriesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponseBody Body;
+        
+        public GetAllCategoriesResponse() {
+        }
+        
+        public GetAllCategoriesResponse(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllCategoriesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Category[] GetAllCategoriesResult;
+        
+        public GetAllCategoriesResponseBody() {
+        }
+        
+        public GetAllCategoriesResponseBody(Controller.ServiceReferenceLibrarySystem.Category[] GetAllCategoriesResult) {
+            this.GetAllCategoriesResult = GetAllCategoriesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateCategoryRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateCategory", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateCategoryRequestBody Body;
+        
+        public CreateCategoryRequest() {
+        }
+        
+        public CreateCategoryRequest(Controller.ServiceReferenceLibrarySystem.CreateCategoryRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreateCategoryRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string categoryName;
+        
+        public CreateCategoryRequestBody() {
+        }
+        
+        public CreateCategoryRequestBody(string categoryName) {
+            this.categoryName = categoryName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateCategoryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateCategoryResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateCategoryResponseBody Body;
+        
+        public CreateCategoryResponse() {
+        }
+        
+        public CreateCategoryResponse(Controller.ServiceReferenceLibrarySystem.CreateCategoryResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CreateCategoryResponseBody {
+        
+        public CreateCategoryResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateCategoryRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateCategory", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequestBody Body;
+        
+        public UpdateCategoryRequest() {
+        }
+        
+        public UpdateCategoryRequest(Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class UpdateCategoryRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int categoryID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string categoryName;
+        
+        public UpdateCategoryRequestBody() {
+        }
+        
+        public UpdateCategoryRequestBody(int categoryID, string categoryName) {
+            this.categoryID = categoryID;
+            this.categoryName = categoryName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateCategoryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateCategoryResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponseBody Body;
+        
+        public UpdateCategoryResponse() {
+        }
+        
+        public UpdateCategoryResponse(Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class UpdateCategoryResponseBody {
+        
+        public UpdateCategoryResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllAuthorsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllAuthors", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequestBody Body;
+        
+        public GetAllAuthorsRequest() {
+        }
+        
+        public GetAllAuthorsRequest(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllAuthorsRequestBody {
+        
+        public GetAllAuthorsRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllAuthorsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllAuthorsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponseBody Body;
+        
+        public GetAllAuthorsResponse() {
+        }
+        
+        public GetAllAuthorsResponse(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllAuthorsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.Author[] GetAllAuthorsResult;
+        
+        public GetAllAuthorsResponseBody() {
+        }
+        
+        public GetAllAuthorsResponseBody(Controller.ServiceReferenceLibrarySystem.Author[] GetAllAuthorsResult) {
+            this.GetAllAuthorsResult = GetAllAuthorsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateAuthorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateAuthor", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateAuthorRequestBody Body;
+        
+        public CreateAuthorRequest() {
+        }
+        
+        public CreateAuthorRequest(Controller.ServiceReferenceLibrarySystem.CreateAuthorRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CreateAuthorRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string authorName;
+        
+        public CreateAuthorRequestBody() {
+        }
+        
+        public CreateAuthorRequestBody(string authorName) {
+            this.authorName = authorName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CreateAuthorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CreateAuthorResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.CreateAuthorResponseBody Body;
+        
+        public CreateAuthorResponse() {
+        }
+        
+        public CreateAuthorResponse(Controller.ServiceReferenceLibrarySystem.CreateAuthorResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CreateAuthorResponseBody {
+        
+        public CreateAuthorResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateAuthorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateAuthor", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequestBody Body;
+        
+        public UpdateAuthorRequest() {
+        }
+        
+        public UpdateAuthorRequest(Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class UpdateAuthorRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string authorName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int authorID;
+        
+        public UpdateAuthorRequestBody() {
+        }
+        
+        public UpdateAuthorRequestBody(string authorName, int authorID) {
+            this.authorName = authorName;
+            this.authorID = authorID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateAuthorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateAuthorResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponseBody Body;
+        
+        public UpdateAuthorResponse() {
+        }
+        
+        public UpdateAuthorResponse(Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class UpdateAuthorResponseBody {
+        
+        public UpdateAuthorResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebServiceLibrarySystemSoapChannel : Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap, System.ServiceModel.IClientChannel {
     }
@@ -1402,6 +2606,72 @@ namespace Controller.ServiceReferenceLibrarySystem {
             inValue.Body.userNameInput = userNameInput;
             inValue.Body.passwordInput = passwordInput;
             return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ValidateLoginAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.CreateUserResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateUser(Controller.ServiceReferenceLibrarySystem.CreateUserRequest request) {
+            return base.Channel.CreateUser(request);
+        }
+        
+        public void CreateUser(string username, string password, int userLevel) {
+            Controller.ServiceReferenceLibrarySystem.CreateUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateUserRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateUserRequestBody();
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            inValue.Body.userLevel = userLevel;
+            Controller.ServiceReferenceLibrarySystem.CreateUserResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateUser(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateUserResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateUserAsync(Controller.ServiceReferenceLibrarySystem.CreateUserRequest request) {
+            return base.Channel.CreateUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateUserResponse> CreateUserAsync(string username, string password, int userLevel) {
+            Controller.ServiceReferenceLibrarySystem.CreateUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateUserRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateUserRequestBody();
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            inValue.Body.userLevel = userLevel;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.UpdateUserResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateUser(Controller.ServiceReferenceLibrarySystem.UpdateUserRequest request) {
+            return base.Channel.UpdateUser(request);
+        }
+        
+        public void UpdateUser(string username, string password, int userLevel, int userID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateUserRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateUserRequestBody();
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            inValue.Body.userLevel = userLevel;
+            inValue.Body.userID = userID;
+            Controller.ServiceReferenceLibrarySystem.UpdateUserResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateUser(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateUserResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateUserAsync(Controller.ServiceReferenceLibrarySystem.UpdateUserRequest request) {
+            return base.Channel.UpdateUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateUserResponse> UpdateUserAsync(string username, string password, int userLevel, int userID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateUserRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateUserRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateUserRequestBody();
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            inValue.Body.userLevel = userLevel;
+            inValue.Body.userID = userID;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateUserAsync(inValue);
+        }
+        
+        public void DeleteUser(int userID) {
+            base.Channel.DeleteUser(userID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(int userID) {
+            return base.Channel.DeleteUserAsync(userID);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1500,6 +2770,86 @@ namespace Controller.ServiceReferenceLibrarySystem {
             inValue.Body = new Controller.ServiceReferenceLibrarySystem.FindBookByCategoryRequestBody();
             inValue.Body.searchInput = searchInput;
             return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).FindBookByCategoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.CreateBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateBook(Controller.ServiceReferenceLibrarySystem.CreateBookRequest request) {
+            return base.Channel.CreateBook(request);
+        }
+        
+        public void CreateBook(string bookName, int publishYear, int pages, string publisher) {
+            Controller.ServiceReferenceLibrarySystem.CreateBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.publishYear = publishYear;
+            inValue.Body.pages = pages;
+            inValue.Body.publisher = publisher;
+            Controller.ServiceReferenceLibrarySystem.CreateBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateBook(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateBookAsync(Controller.ServiceReferenceLibrarySystem.CreateBookRequest request) {
+            return base.Channel.CreateBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateBookResponse> CreateBookAsync(string bookName, int publishYear, int pages, string publisher) {
+            Controller.ServiceReferenceLibrarySystem.CreateBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.publishYear = publishYear;
+            inValue.Body.pages = pages;
+            inValue.Body.publisher = publisher;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateBookAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.UpdateBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateBook(Controller.ServiceReferenceLibrarySystem.UpdateBookRequest request) {
+            return base.Channel.UpdateBook(request);
+        }
+        
+        public void UpdateBook(string bookName, string originalBookName) {
+            Controller.ServiceReferenceLibrarySystem.UpdateBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.originalBookName = originalBookName;
+            Controller.ServiceReferenceLibrarySystem.UpdateBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateBook(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateBookAsync(Controller.ServiceReferenceLibrarySystem.UpdateBookRequest request) {
+            return base.Channel.UpdateBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateBookResponse> UpdateBookAsync(string bookName, string originalBookName) {
+            Controller.ServiceReferenceLibrarySystem.UpdateBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateBookRequestBody();
+            inValue.Body.bookName = bookName;
+            inValue.Body.originalBookName = originalBookName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateBookAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.DeleteBookResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.DeleteBook(Controller.ServiceReferenceLibrarySystem.DeleteBookRequest request) {
+            return base.Channel.DeleteBook(request);
+        }
+        
+        public void DeleteBook(string bookName) {
+            Controller.ServiceReferenceLibrarySystem.DeleteBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.DeleteBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.DeleteBookRequestBody();
+            inValue.Body.bookName = bookName;
+            Controller.ServiceReferenceLibrarySystem.DeleteBookResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).DeleteBook(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.DeleteBookResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.DeleteBookAsync(Controller.ServiceReferenceLibrarySystem.DeleteBookRequest request) {
+            return base.Channel.DeleteBookAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.DeleteBookResponse> DeleteBookAsync(string bookName) {
+            Controller.ServiceReferenceLibrarySystem.DeleteBookRequest inValue = new Controller.ServiceReferenceLibrarySystem.DeleteBookRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.DeleteBookRequestBody();
+            inValue.Body.bookName = bookName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).DeleteBookAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1631,6 +2981,249 @@ namespace Controller.ServiceReferenceLibrarySystem {
             inValue.Body.bookName = bookName;
             inValue.Body.username = username;
             return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).ReserveBookAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllLanguages(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest request) {
+            return base.Channel.GetAllLanguages(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Language[] GetAllLanguages() {
+            Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequestBody();
+            Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllLanguages(inValue);
+            return retVal.Body.GetAllLanguagesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllLanguagesAsync(Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest request) {
+            return base.Channel.GetAllLanguagesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllLanguagesResponse> GetAllLanguagesAsync() {
+            Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllLanguagesRequestBody();
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllLanguagesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateLanguage(Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest request) {
+            return base.Channel.CreateLanguage(request);
+        }
+        
+        public void CreateLanguage(string languageName) {
+            Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateLanguageRequestBody();
+            inValue.Body.languageName = languageName;
+            Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateLanguage(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateLanguageAsync(Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest request) {
+            return base.Channel.CreateLanguageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateLanguageResponse> CreateLanguageAsync(string languageName) {
+            Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateLanguageRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateLanguageRequestBody();
+            inValue.Body.languageName = languageName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateLanguageAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateLanguage(Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest request) {
+            return base.Channel.UpdateLanguage(request);
+        }
+        
+        public void UpdateLanguage(string languageName, int languageID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequestBody();
+            inValue.Body.languageName = languageName;
+            inValue.Body.languageID = languageID;
+            Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateLanguage(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateLanguageAsync(Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest request) {
+            return base.Channel.UpdateLanguageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateLanguageResponse> UpdateLanguageAsync(string languageName, int languageID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateLanguageRequestBody();
+            inValue.Body.languageName = languageName;
+            inValue.Body.languageID = languageID;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateLanguageAsync(inValue);
+        }
+        
+        public void DeleteLanguage(int languageID) {
+            base.Channel.DeleteLanguage(languageID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteLanguageAsync(int languageID) {
+            return base.Channel.DeleteLanguageAsync(languageID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllCategories(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest request) {
+            return base.Channel.GetAllCategories(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Category[] GetAllCategories() {
+            Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequestBody();
+            Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllCategories(inValue);
+            return retVal.Body.GetAllCategoriesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllCategoriesAsync(Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest request) {
+            return base.Channel.GetAllCategoriesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllCategoriesResponse> GetAllCategoriesAsync() {
+            Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllCategoriesRequestBody();
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllCategoriesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateCategory(Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest request) {
+            return base.Channel.CreateCategory(request);
+        }
+        
+        public void CreateCategory(string categoryName) {
+            Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateCategoryRequestBody();
+            inValue.Body.categoryName = categoryName;
+            Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateCategory(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateCategoryAsync(Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest request) {
+            return base.Channel.CreateCategoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateCategoryResponse> CreateCategoryAsync(string categoryName) {
+            Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateCategoryRequestBody();
+            inValue.Body.categoryName = categoryName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateCategoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateCategory(Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest request) {
+            return base.Channel.UpdateCategory(request);
+        }
+        
+        public void UpdateCategory(int categoryID, string categoryName) {
+            Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequestBody();
+            inValue.Body.categoryID = categoryID;
+            inValue.Body.categoryName = categoryName;
+            Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateCategory(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateCategoryAsync(Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest request) {
+            return base.Channel.UpdateCategoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateCategoryResponse> UpdateCategoryAsync(int categoryID, string categoryName) {
+            Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateCategoryRequestBody();
+            inValue.Body.categoryID = categoryID;
+            inValue.Body.categoryName = categoryName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateCategoryAsync(inValue);
+        }
+        
+        public void DeleteCategory(int categoryID) {
+            base.Channel.DeleteCategory(categoryID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCategoryAsync(int categoryID) {
+            return base.Channel.DeleteCategoryAsync(categoryID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllAuthors(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest request) {
+            return base.Channel.GetAllAuthors(request);
+        }
+        
+        public Controller.ServiceReferenceLibrarySystem.Author[] GetAllAuthors() {
+            Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequestBody();
+            Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllAuthors(inValue);
+            return retVal.Body.GetAllAuthorsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.GetAllAuthorsAsync(Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest request) {
+            return base.Channel.GetAllAuthorsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.GetAllAuthorsResponse> GetAllAuthorsAsync() {
+            Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest inValue = new Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.GetAllAuthorsRequestBody();
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).GetAllAuthorsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateAuthor(Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest request) {
+            return base.Channel.CreateAuthor(request);
+        }
+        
+        public void CreateAuthor(string authorName) {
+            Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateAuthorRequestBody();
+            inValue.Body.authorName = authorName;
+            Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateAuthor(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.CreateAuthorAsync(Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest request) {
+            return base.Channel.CreateAuthorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.CreateAuthorResponse> CreateAuthorAsync(string authorName) {
+            Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.CreateAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.CreateAuthorRequestBody();
+            inValue.Body.authorName = authorName;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).CreateAuthorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateAuthor(Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest request) {
+            return base.Channel.UpdateAuthor(request);
+        }
+        
+        public void UpdateAuthor(string authorName, int authorID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequestBody();
+            inValue.Body.authorName = authorName;
+            inValue.Body.authorID = authorID;
+            Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse retVal = ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateAuthor(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse> Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap.UpdateAuthorAsync(Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest request) {
+            return base.Channel.UpdateAuthorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Controller.ServiceReferenceLibrarySystem.UpdateAuthorResponse> UpdateAuthorAsync(string authorName, int authorID) {
+            Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest inValue = new Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequest();
+            inValue.Body = new Controller.ServiceReferenceLibrarySystem.UpdateAuthorRequestBody();
+            inValue.Body.authorName = authorName;
+            inValue.Body.authorID = authorID;
+            return ((Controller.ServiceReferenceLibrarySystem.WebServiceLibrarySystemSoap)(this)).UpdateAuthorAsync(inValue);
+        }
+        
+        public void DeleteAuthor(int authorID) {
+            base.Channel.DeleteAuthor(authorID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAuthorAsync(int authorID) {
+            return base.Channel.DeleteAuthorAsync(authorID);
         }
     }
 }

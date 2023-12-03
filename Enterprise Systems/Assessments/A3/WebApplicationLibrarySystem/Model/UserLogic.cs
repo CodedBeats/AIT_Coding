@@ -17,7 +17,6 @@ namespace Model
             return users;
         }
 
-
         // return different user types
         public UserType ValidateLogin(string userNameInput, string passwordInput)
         {
@@ -45,6 +44,26 @@ namespace Model
             }
             // Input password isn't correct for this username
             return UserType.NoUser;
+        }
+
+
+        // CRUD
+        public void CreateUser(string username, string password, int userLevel)
+        {
+            UserDAO userDAO = new UserDAO();
+            userDAO.CreateUser(username, password, userLevel);
+        }
+
+        public void UpdateUser(string username, string password, int userLevel, int userID)
+        {
+            UserDAO userDAO = new UserDAO();
+            userDAO.UpdateUser(username, password, userLevel, userID);
+        }
+
+        public void DeleteUser(int userID)
+        {
+            UserDAO userDAO = new UserDAO();
+            userDAO.DeleteUser(userID);
         }
     }
 }
