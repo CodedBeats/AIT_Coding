@@ -82,6 +82,7 @@ namespace Model
         }
 
 
+        // CRUD
         public void CreateAuthor(string authorName)
         {
             // connect to db

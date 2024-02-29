@@ -58,6 +58,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetAuthor.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetBook.cs">
+      <DependentUpon>DataSetBook.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetBook.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

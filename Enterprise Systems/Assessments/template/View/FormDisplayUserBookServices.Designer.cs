@@ -63,6 +63,7 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "!WELCOME!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button7
             // 
@@ -114,6 +115,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(938, 215);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button2
             // 
@@ -136,6 +138,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(389, 31);
             this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -147,6 +150,7 @@
             this.label3.Size = new System.Drawing.Size(123, 25);
             this.label3.TabIndex = 19;
             this.label3.Text = "Book Name";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button3
             // 
@@ -188,6 +192,7 @@
             this.button6.Size = new System.Drawing.Size(19, 355);
             this.button6.TabIndex = 22;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button8
             // 
@@ -201,6 +206,7 @@
             this.button8.Size = new System.Drawing.Size(1186, 19);
             this.button8.TabIndex = 23;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label4
             // 
@@ -224,6 +230,7 @@
             this.label5.Size = new System.Drawing.Size(269, 29);
             this.label5.TabIndex = 25;
             this.label5.Text = "Books You\'ve Reserved";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // dataGridView2
             // 
@@ -233,6 +240,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(625, 115);
             this.dataGridView2.TabIndex = 26;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridView3
             // 
@@ -242,6 +250,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(625, 108);
             this.dataGridView3.TabIndex = 27;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // button9
             // 
@@ -267,6 +276,7 @@
             this.label1.Size = new System.Drawing.Size(144, 16);
             this.label1.TabIndex = 29;
             this.label1.Text = "Book Name Not Found";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormDisplayUserBookServices
             // 

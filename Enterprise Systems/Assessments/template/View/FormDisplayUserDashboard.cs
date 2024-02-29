@@ -24,12 +24,6 @@ namespace View
 {
     public partial class FormDisplayUserDashboard : Form
     {
-        // easy way to set search category state for switching and passing
-        private int searchCat = 1;
-
-        // connect to the Controller
-        BookController bookController = new BookController();
-
         // username
         string username = "";
 

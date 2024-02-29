@@ -9,7 +9,7 @@ namespace Model
 {
     public class UserLogic
     {
-        // return different numbers for different users
+        // return different user types
         public UserType ValidateLogin(string userNameInput, string passwordInput)
         {
             UserDAO userDAO = new UserDAO();
@@ -62,6 +62,7 @@ namespace Model
 
             return userDTOs;
         }
+
 
         // CRUD
         public void CreateUser(string username, string password, int userLevel)
