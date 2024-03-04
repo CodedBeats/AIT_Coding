@@ -20,8 +20,25 @@ let RegisterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData); // Just for testing, you can replace this with your database integration logic
-        // You can send formData to your backend here (e.g., using Axios or Fetch)
+        //console.log(formData); 
+        const url = "http://localhost/chocolatevista_api/formSubmit.php"
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            // Handle response data here, such as showing success or error message to the user
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            // Handle errors here
+        });
     };
 
     return (
