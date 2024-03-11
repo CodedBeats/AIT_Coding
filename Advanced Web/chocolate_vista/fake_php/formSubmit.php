@@ -1,15 +1,26 @@
 <?php
     require_once('serverConnection.php');
 
-    // Allow requests from any origin
-    header("Access-Control-Allow-Origin: *");
+    // === DON'T TOUCH ===
+    header('Access-Control-Allow-Origin: http://localhost:3000');
+    // fancy shit
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        // Allow from any origin
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header("Access-Control-Allow-Origin: *");
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+        }
+        // Access-Control headers are received during OPTIONS requests
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+            header("Access-Control-Allow-Methods: POST, GET, OPTIONS");         
 
-    // Allow certain methods
-    header("Access-Control-Allow-Methods: POST");
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
-    // Allow certain headers
-    header("Access-Control-Allow-Headers: Origin, Content-Type, Accept");
-
+        exit(0);
+    }
+    // === DON'T TOUCH ===
 
 
     // Get the JSON data sent from the React app
@@ -19,9 +30,10 @@
     $email = $data->email;
     $username = $data->username;
     $password = $data->password;
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
     // Perform database operation (insertion, etc.)
-    $sql = "INSERT INTO userstest (email, username, password) VALUES ('$email', '$username', '$password')";
+    $sql = "INSERT INTO userstest (email, username, password) VALUES ('$email', '$username', '$hashedPassword')";
     if ($conn->query($sql) === TRUE) {
         $response = array("success" => true, "message" => "User registered successfully");
     } else {

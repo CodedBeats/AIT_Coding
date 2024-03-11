@@ -21,9 +21,8 @@ let RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(formData); 
-        const url = "http://localhost/chocolatevista_api/formSubmit.php"
 
-        fetch(url, {
+        fetch("http://localhost/chocolatevista_api/formSubmit.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +41,8 @@ let RegisterForm = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <>
+        <Form>
             <Form.Group controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -75,11 +75,12 @@ let RegisterForm = () => {
                     placeholder="Password"
                 />
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
         </Form>
+
+        <Button variant="primary" type="button" onClick={handleSubmit}>
+            Submit
+        </Button>
+        </>
     );
 }
 
