@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile Game Management - Nexus</title>
+        <!-- user page styles -->
+        <link rel="stylesheet" type="text/css" href="userpage.css"/>
+
+        <!-- component styles -->
+        <link rel="stylesheet" type="text/css" href="../reusable_components/navbar/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/header/header.css" />
+        <script type="module" src="../reusable_components/header/loginStatus.js"></script>
+        <script type="module" src="../reusable_components/header/logout.js"></script>
+        <script type="module" src="../reusable_components/header/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="../reusable_components/loading/loading.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/footer/footer.css" />
+        <link rel="stylesheet" type="text/css" href="../DOM/scrollbar.css" />
+
+        <!-- load icons -->
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" type="image/x-icon" href="../images/logo/favicon.png">
+        
+        <!-- load user data -->
+        <!-- <script type="module" src="loadProfileData.js"></script> -->
+
+        <!-- load scripts -->
+        <script src="../DOM/backToTop.js"></script>
+    </head>
+    <body>
+        <!-- reusable components -->
+        <div id="navbar-container"></div>
+        <div id="header-container"></div>
+        <div id="loading-container"></div>
+
+        <div class="profile-page">
+            <div style="margin: 20px 20px 0px 20px;">
+                <div class="btn-group">
+                    <a href="../user_page/userpage-profile.html"><button>Profile</button></a>
+                    <a href="#"><button><b>Game Management</b></button></a>
+                </div>
+            </div>
+            <div class="user-box-games">
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_1.png" alt="Game 1 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 1</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_2.png" alt="Game 2 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 2</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_3.png" alt="Game 3 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 3</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_4.png" alt="Game 4 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 4</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_5.png" alt="Game 5 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 5</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+
+                <div class="user-box-games-indi">
+                    <div class="user-box-games-indi1">
+                        <img class="game-pic" src="../images/game_title/game_pic_6.png" alt="Game 6 picture">
+                    </div>
+                    <div class="user-box-games-indi2">
+                        <h3>Title 6</h3>
+                        <select name="visibility">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                        <button class="delete-game-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- work in progress overlay -->
+            <div id="wip" class="wip">
+                <div class="wip-content">
+                    <h2>Work in Progress</h2>
+                    <p>This page is currently under development.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-container"></div>
+
+        <script src="../reusable_components/navbar/navbarComponent.js"></script>
+        <script src="../reusable_components/header/headerComponent.js"></script>
+        <script src="../reusable_components/loading/loadingComponent.js"></script>
+        <script src="../reusable_components/footer/footerComponent.js"></script>
+    </body>
+</html>

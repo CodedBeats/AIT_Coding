@@ -1,0 +1,73 @@
+/* login container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 92vh;
+    background-color: black;
+}
+
+/* form container */
+.login-box {
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    /* max-width: 400px; */
+    width: 400px;
+    transform: translatex(-4.5vw);
+}
+
+/* title */
+.login-box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* form group container */
+.login-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* input */
+.login-form-group input {
+    padding: 12px 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #444;
+    color: white;
+}
+.login-form-group input:focus {
+    outline: 3px solid #7E3EFF;
+}
+.login-form-group ::placeholder {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* submit button */
+.login-box button {
+    font-size: 1em;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4e3b9c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.login-box button:hover {
+    background-color: #8e5fee;
+}
+
+/* error message */
+.login-box #errorMessage {
+    color: red;
+    margin-top: 10px;
+}

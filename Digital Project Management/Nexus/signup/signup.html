@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Signup - Nexus</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- login page style -->
+        <link rel="stylesheet" href="signUp.css">
+
+        <!-- component styles -->
+        <link rel="stylesheet" type="text/css" href="../reusable_components/navbar/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/header/header.css" />
+        <script type="module" src="../reusable_components/header/loginStatus.js"></script>
+        <script type="module" src="../reusable_components/header/logout.js"></script>
+        <script type="module" src="../reusable_components/header/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="../reusable_components/loading/loading.css" />
+        <link rel="stylesheet" type="text/css" href="../DOM/scrollbar.css" />
+
+        <!-- load icons -->
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" type="image/x-icon" href="../images/logo/favicon.png">
+
+        <!-- load scripts -->
+        <script type="module" src="signUp.js"></script>
+    </head>
+    <body>
+        <!-- reusable components -->
+        <div id="navbar-container"></div>
+        <div id="header-container"></div>
+        <div id="loading-container"></div>
+
+        <div class="signup-container">
+            <div class="signup-box">
+                <h1>Sign Up</h1>
+                <form id="signUpForm">
+                    <div class="signup-form-group">
+                        <input type="email" id="email" placeholder="Email" required />
+                    </div>
+                    <div class="signup-form-group">
+                        <input type="password" id="password" placeholder="Password" required />
+                    </div>
+                    <div class="signup-form-group">
+                        <input type="text" id="username" placeholder="Username" required />
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- load header and navbar -->
+        <script src="../reusable_components/navbar/navbarComponent.js"></script>
+        <script src="../reusable_components/header/headerComponent.js"></script>
+        <script src="../reusable_components/loading/loadingComponent.js"></script>
+    </body>
+</html>

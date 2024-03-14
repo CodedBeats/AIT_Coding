@@ -1,0 +1,125 @@
+/* ===== nav ===== */
+body {
+    margin: 0;
+    margin-left: 9vw;
+    margin-top: 70px;
+}
+.side-nav {
+    z-index: 4;
+    top: 70px; 
+    height: 100%;  
+    width: 9vw;
+    position: fixed;            
+    left: 0;
+    background-color: rgb(17, 17, 17); 
+    overflow-x: hidden;
+    /* transition: 0.5s; */
+    white-space: nowrap;
+}
+
+
+/* nav menu */
+.nav-menu {
+    margin: 5px;
+    margin-top: 20px;
+}
+
+
+/* nav menu links */
+.nav-menu a {
+    font-family: 'Quantico', sans-serif;
+    text-align: center;
+    padding: 6px 8px;
+    text-decoration: none;
+    font-size: 2em;
+    display: block;
+    transition: ease-in-out 0.2s;
+}
+.nav-menu a:hover .nav-link-name {
+    transform: translatex(10px);
+    color: rgb(226, 155, 0);
+}
+.nav-menu a.active {
+    border-left: 8px solid #A48EFF;
+    margin-left: -8px;
+}
+.nav-menu a.active .nav-link-name {
+    color: #A48EFF;
+}
+.nav-menu a.active i {
+    color: #A48EFF !important;
+}
+.nav-menu a i {
+    color: #878B9F;
+    width: 21px;
+    font-size: 0.6em;
+    margin: 0px 10px;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+.nav-link-name {
+    font-size: 0.7em;
+    padding-top: 7px;
+    transition: ease-in-out 0.2s;
+    color: white;
+}
+
+
+/* page break */
+.nav-page-break {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 90%;
+    border: 0;
+    border-top: 1px solid #818181;
+}
+
+
+
+/* nav categories */
+.nav-categories {
+    margin: 5px;
+    margin-top: 20px;
+}
+
+/* nav categories links */
+.nav-categories a {
+    font-family: 'Quantico', sans-serif;
+    text-align: center;
+    padding: 6px 8px;
+    text-decoration: none;
+    font-size: 2em;
+    display: block;
+    transition: ease-in-out 0.2s;
+}
+.nav-categories a:hover .nav-categories-name {
+    transform: translatex(10px);
+    color: rgb(226, 155, 0);
+}
+.nav-categories a i {
+    color: #878B9F;
+    width: 21px;
+    font-size: 0.6em;
+    margin: 0px 10px;
+}
+.nav-categories-name {
+    font-size: 0.6em;
+    padding-top: 7px;
+    transition: ease-in-out 0.2s;
+    color: white;
+    text-align: left;
+}
+
+
+/* Animations */
+/* Animation keyframes */
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+}

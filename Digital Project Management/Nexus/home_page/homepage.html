@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home - Nexus</title>
+        <!-- home page styles -->
+        <link rel="stylesheet" type="text/css" href="homepage.css" />
+
+        <!-- component styles -->
+        <link rel="stylesheet" type="text/css" href="../reusable_components/navbar/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/header/header.css" />
+        <script type="module" src="../reusable_components/header/loginStatus.js"></script>
+        <script type="module" src="../reusable_components/header/logout.js"></script>
+        <script type="module" src="../reusable_components/header/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="../reusable_components/loading/loading.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/footer/footer.css" />
+        <link rel="stylesheet" type="text/css" href="../DOM/scrollbar.css" />
+
+        <!-- load icons -->
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" type="image/x-icon" href="../images/logo/favicon.png">
+
+        <!-- load scripts -->
+        <script type="module" src="./loadNewGames.js"></script>
+        <script src="../DOM/activeLinks.js"></script>
+        <script src="../DOM/linkPage.js"></script>
+        <script src="../DOM/backToTop.js"></script>
+    </head>
+    <body>
+        <!-- reusable components -->
+        <div id="navbar-container"></div>
+        <div id="header-container"></div>
+        <div id="loading-container"></div>
+
+        <div class="home-container">
+            <p class="new-games-title">New Games</p>
+            <div class="new-games-container" id="new-games-container">
+                <!-- New games dynamically loaded here -->
+            </div>
+
+            <!-- popular categories -->
+            <p class="categories-title">Popular Categories</p>
+            <div class="categories">
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Puzzle')">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <p class="category-name">Puzzle</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Strategy')">
+                    <i class="fa-solid fa-dice-five"></i>
+                    <p class="category-name">Strategy</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Tower-Defense')">
+                    <i class="fa-regular fa-chess-rook"></i>
+                    <p class="category-name">Tower Defense</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Sci-Fi')">
+                    <i class="fa-solid fa-atom"></i>
+                    <p class="category-name">Sci-Fi</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Space')">
+                    <i class="fa-solid fa-rocket"></i>
+                    <p class="category-name">Space</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Racing')">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                    <p class="category-name">Racing</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Farming')">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <p class="category-name">Farming</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Trivia')">
+                    <i class="fa-solid fa-question"></i>
+                    <p class="category-name">Trivia</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Sport')">
+                    <i class="fa-solid fa-baseball"></i>
+                    <p class="category-name">Sport</p>
+                </div>
+                <div class="category-icon" onclick="redirectToPage('../category_page/categoriespage.html?category=Pirate')">
+                    <i class="fa-solid fa-skull-crossbones"></i>
+                    <p class="category-name">Pirate</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-container"></div>
+        
+        <script src="../reusable_components/navbar/navbarComponent.js"></script>
+        <script src="../reusable_components/header/headerComponent.js"></script>
+        <script src="../reusable_components/loading/loadingComponent.js"></script>
+        <script src="../reusable_components/footer/footerComponent.js"></script>
+    </body>
+</html>

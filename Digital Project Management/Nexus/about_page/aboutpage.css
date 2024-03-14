@@ -1,0 +1,112 @@
+.about-container {
+    background-color: #000000;
+    color: white;
+    min-height: 93vh;
+    padding-top: 10vh;
+    padding-bottom: 100px;
+}
+
+/* sections */
+.section-header {
+    margin: 0 5vw;
+    margin-top: 100px;
+    font-weight: bold;
+    font-size: 2em;
+}
+.section-header:first-of-type {
+    margin-top: 0;
+}
+.section {
+    margin: 0 5vw;
+    margin-top: 10px;
+    background-color: #494949;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.text-container,
+.video-container,
+.creator-container,
+.reference-box {
+    padding: 20px;
+}
+
+/* about nexus */
+.text-container {
+    flex: 1;
+}
+.text-container p {
+    font-size: 1.2em;
+}
+
+/* devs */
+.creator {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+}
+.creator:first-of-type {
+    margin-top: 0;
+}
+/* devs img */
+.image-box {
+    height: 170px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.image-box .creator-pfp {
+    height: 100%;
+}
+/* about devs content */
+.text-box {
+    flex: 1;
+    margin-right: 10px;
+}
+.creator-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+/* devs socials */
+.creator-socials {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.creator-socials-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 10px 0px;
+    text-align: center;
+}
+.creator-solicals-imgs {
+    display: flex;
+}
+.creator-socials img {
+    height: 80px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* references */
+.reference-container {
+    padding: 20px;
+}
+.reference-box {
+    background-color: #585858;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.reference-box h3 {
+    margin: 0;
+}
+.reference-box p {
+    margin: 10px 0;
+}
+.reference-box a {
+    color: rgb(214, 176, 245);
+    font-weight: bold;
+}

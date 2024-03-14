@@ -1,0 +1,30 @@
+.footer {
+    bottom: 0;
+    width: 100%;
+    border-top: 3px solid rgb(43, 43, 43);
+    background-color: #000000;
+    color: #fff;
+    padding: 20px 0px;
+    margin-right: 8px;
+}
+.footer p {
+    margin: 10px;
+    margin-left: 5vw;
+}
+
+/* back to top button */
+#back-to-top-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#back-to-top-button:hover {
+    background-color: #555;
+}

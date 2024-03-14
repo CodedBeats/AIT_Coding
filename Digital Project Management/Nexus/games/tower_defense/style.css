@@ -1,0 +1,9 @@
+body {
+    background: black;
+}
+
+#gameCanvas {
+    border: 2px solid rgb(0, 0, 0);
+    background: white;
+    font-family: 'Orbitron', sans-serif;
+}

@@ -1,0 +1,70 @@
+.trending-container {
+    background-color: black;
+    color: white;
+    min-height: 93vh;
+}
+
+.trending-title {
+    padding-top: 10vh;
+    padding-bottom: 5px;
+    margin: 0;
+    margin-left: 5vw;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-radius: 10px;
+    background-color: rgb(46, 46, 46);
+}
+  
+.game-card {
+    width: 175px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #000000;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+.game-card:hover {
+    border-color: #5e24b4;
+    cursor: pointer;
+}
+
+.game-image-container {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+}
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+  
+.game-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+  
+.game-popularity {
+    margin-top: 5px;
+    color: #888;
+}
+
+.game-release-status {
+    margin-top: 5px;
+    color: #888;
+}

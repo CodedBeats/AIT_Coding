@@ -1,0 +1,291 @@
+.profile-page {
+    min-height: 68vh;
+    padding-top: 5vh;
+    padding-bottom: 5vw;
+    padding-left: 5vw;
+    background-color: black;
+}
+
+.btn-group button {
+    border: none;
+    border-radius: 6px;
+    background-color: #00b3b3;
+    color: white;
+    font-size: 20px;
+    padding: 10px 24px; 
+    margin-left: 10px;
+    cursor: pointer; 
+    float: left; 
+}
+  
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #008080;
+}
+
+.user-box {
+    width: 55vw;
+    min-height: 50vh;
+    color: transparent;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #5e24b4;
+    border-width: 5px;
+    color: rgb(255, 255, 255);
+    margin: 10px 20px 20px 20px;
+    padding: 20px;
+}
+
+.user-box button {
+    background-color: #202020; 
+    color: white;
+    font-size: 13px;
+    padding: 10px 24px; 
+    cursor: pointer; 
+    float: center; 
+}
+
+.user-box button:hover {
+    background-color: #333333;
+}
+
+.change-pfp {
+    background-color: #202020; 
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.divided-user-box-profilepic {
+    width: 33%;
+    min-height: 50vh;
+    border-right: 2px solid rgb(180, 180, 180);
+    padding: 0px 20px 0px 0px;
+    text-align: center;
+    float:left;
+}
+
+.divided-user-box-profileinfo {
+    width: 60%;
+    min-height: 50vh;
+    padding: 0px 20px;
+    text-align: left;
+    float:left;
+}
+
+.divided-user-box3 {
+    width: 47%;
+    min-height: 50vh;
+    border-right: 2px solid black;
+    padding: 0px 20px 0px 0px;
+    text-align: left;
+    float:left;
+}
+
+.divided-user-box4 {
+    width: 45%;
+    min-height: 50vh;
+    padding: 0px 0px 0px 20px;
+    text-align: left;
+    float:left;
+}
+
+.pro-pic {
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+    padding: 40px 20px;
+    margin-bottom: 25px;
+    background-color: #202020;
+}
+
+.user-box h3 {
+    margin: 10px 0px;
+    font-size: 2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.profile-data-form label {
+    padding-left: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00b3b3;
+}
+
+.divided-user-box-profileinfo .form-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: #FF6F61;
+    text-align: center;
+}
+
+.divided-user-box-profileinfo .data-box {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #202020;
+    height: 40px;
+    width: 85%;
+    border: 1px solid #BBBBBB;
+    border-radius: 6px;
+    padding: 5px 20px;
+}
+
+.data-box p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.user-box input[type=text], select {
+    width: 400px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    background-color: #202020;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.user-box input[type=submit] {
+    width: 400px;
+    background-color: #202020;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.user-box input[type=submit]:hover {
+    background-color: #333333;
+}
+
+.user-box-games {
+    width: 55vw;
+    min-height: 50vh;
+    color: transparent;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #5e24b4;
+    border-width: 5px;
+    color: rgb(255, 255, 255);
+    margin: 10px 20px 20px 20px;
+    padding: 20px;
+}
+
+.user-box-games-indi {
+    width: 46vw;
+    min-height: 16vh;
+    color: transparent;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #BBBBBB;
+    border-width: 2px;
+    background-color: #5c5c5c;
+    margin-bottom: 20px;
+    padding: 25px 10px 0px 25px;
+}
+
+.user-box-games-indi h3 {
+    color: #FF6F61;
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.user-box-games-indi1 {
+    width: 13vw;
+    float: left;
+}
+
+.user-box-games-indi2 {
+    width: 30vw;
+    float: right;
+}
+
+.game-pic {
+    height: 108px;
+    width: 192px;
+    border-radius: 5px;
+    border-style: groove;
+    border-color: black;
+}
+
+.user-box-games-indi select {
+    height: 40px;
+    width: 130px;
+}
+
+.user-box-games button {
+    background-color: #202020; 
+    border: none; 
+    color: white;
+    font-size: 13px;
+    padding: 10px 24px; 
+    margin-left: 5px;
+    cursor: pointer; 
+    float: center; 
+}
+
+.user-box-games button:hover {
+    background-color: #333333;
+}
+
+.user-box-games-indi2 .delete-game-btn {
+    background-color: #b80000;
+    border: none;
+    border-radius: 6px;
+}
+.user-box-games-indi2 .delete-game-btn:hover {
+    background-color: #590000;
+}
+
+/* delete acc btn */
+.divided-user-box-profilepic .delete-acc-btn {
+    background-color: #b80000;
+    border: none;
+    border-radius: 6px;
+}
+.divided-user-box-profilepic .delete-acc-btn:hover {
+    background-color: #590000;
+}
+
+/* work in progress */
+.wip {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.795);
+    color: #000000;
+}
+.wip-content {
+    background-image: linear-gradient(to bottom, #ff5f5f, #fdb19e);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+.wip-content h2 {
+    font-weight: bold;
+    font-size: 4em;
+}
+.wip-content p {
+    font-size: 2em;
+}

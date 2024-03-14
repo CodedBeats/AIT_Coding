@@ -1,0 +1,92 @@
+.categories-container {
+    background-color: #000000;
+    color: white;
+    min-height: 93vh;
+}
+
+/* categories */
+.categories {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 20px 0px;
+}
+.categories-title {
+    color: white;
+    padding-top: 10vh;
+    margin: 0;
+    margin-left: 5vw;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+.category-name {
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.category {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-right: 5vw;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    background-color: rgb(46, 46, 46);
+}
+
+/* game */
+.game-card {
+    display: flex;
+    flex-direction: column;
+    width: 175px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #000000;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+.game-card:hover {
+    border-color: #5e24b4;
+    cursor: pointer;
+}
+.game-image-container {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+}
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+.game-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.game-release-status {
+    margin-top: 5px;
+    color: #888;
+}
+
+/* coming soon */
+.coming-soon {
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #979797;
+}
+

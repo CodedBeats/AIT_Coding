@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Categories - Nexus</title>
+        <!-- home page styles -->
+        <link rel="stylesheet" type="text/css" href="categories.css" />
+
+        <!-- component styles -->
+        <link rel="stylesheet" type="text/css" href="../reusable_components/navbar/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/header/header.css" />
+        <script type="module" src="../reusable_components/header/loginStatus.js"></script>
+        <script type="module" src="../reusable_components/header/logout.js"></script>
+        <script type="module" src="../reusable_components/header/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="../reusable_components/loading/loading.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/footer/footer.css" />
+        <link rel="stylesheet" type="text/css" href="../DOM/scrollbar.css" />
+
+        <!-- load icons -->
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" type="image/x-icon" href="../images/logo/favicon.png">
+
+        <!-- load scripts -->
+        <script type="module" src="./loadDOM.js"></script>
+        <script src="../DOM/activeLinks.js"></script>
+        <script src="../DOM/linkPage.js"></script>
+        <script src="../DOM/backToTop.js"></script>
+    </head>
+    <body>
+        <!-- reusable components -->
+        <div id="navbar-container"></div>
+        <div id="header-container"></div>
+        <div id="loading-container"></div>
+
+        <div class="categories-container">
+            <p class="categories-title">Categories</p>
+            <!-- categories list -->
+            <div class="categories">
+
+                <!-- Puzzle category -->
+                <p class="category-name">Puzzle</p>
+                <div class="category" id="Puzzle">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Stratergy category -->
+                <p class="category-name">Strategy</p>
+                <div class="category" id="Strategy">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Tower Defense category -->
+                <p class="category-name">Tower Defense</p>
+                <div class="category" id="Tower-Defense">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Sci-Fi category -->
+                <p class="category-name">Sci-Fi</p>
+                <div class="category" id="Sci-Fi">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Space category -->
+                <p class="category-name">Space</p>
+                <div class="category" id="Space">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Racing category -->
+                <p class="category-name">Racing</p>
+                <div class="category" id="Racing">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Farming category -->
+                <p class="category-name">Farming</p>
+                <div class="category" id="Farming">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Trvia category -->
+                <p class="category-name">Trivia</p>
+                <div class="category" id="Trivia">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Sport category -->
+                <p class="category-name">Sport</p>
+                <div class="category" id="Sport">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+
+                <!-- Pirate category -->
+                <p class="category-name">Pirate</p>
+                <div class="category" id="Pirate">
+                    <!-- Category games will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-container"></div>
+        
+        <script src="../reusable_components/navbar/navbarComponent.js"></script>
+        <script src="../reusable_components/header/headerComponent.js"></script>
+        <script src="../reusable_components/loading/loadingComponent.js"></script>
+        <script src="../reusable_components/footer/footerComponent.js"></script>
+    </body>
+</html>

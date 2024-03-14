@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title id="page-title">Game - Nexus</title>
+        <!-- home page styles -->
+        <link rel="stylesheet" type="text/css" href="gamepage.css" />
+        <link id="gameStylesheet" rel="stylesheet" href="">
+
+        <!-- component styles -->
+        <link rel="stylesheet" type="text/css" href="../reusable_components/navbar/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="../reusable_components/header/header.css" />
+        <script type="module" src="../reusable_components/header/loginStatus.js"></script>
+        <script type="module" src="../reusable_components/header/logout.js"></script>
+        <script type="module" src="../reusable_components/header/search.js"></script>
+        <link rel="stylesheet" type="text/css" href="../reusable_components/loading/loading.css" />
+        <link rel="stylesheet" type="text/css" href="../DOM/scrollbar.css" />
+
+        <!-- load icons -->
+        <script src="https://kit.fontawesome.com/a535b5a3c6.js" crossorigin="anonymous"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" type="image/x-icon" href="../images/logo/favicon.png">
+
+        <!-- load scripts -->
+        <script type="module" src="./gameData.js"></script>
+        <script src="../DOM/activeLinks.js"></script>
+        <script src="../DOM/linkPage.js"></script>
+        <script src="../DOM/backToTop.js"></script>
+    </head>
+    <body>
+        <!-- reusable components -->
+        <div id="navbar-container"></div>
+        <div id="header-container"></div>
+        <div id="loading-container"></div>
+
+        <div class="gamepage-container">
+            <div id="canvas-container" class="canvas-container">
+                <canvas id="gameCanvas"></canvas>
+            </div>
+
+            <!-- game info -->
+            <div id="game-info-container" class="game-info-container">
+                <div class="game-info">
+                    <div class="game-data">
+                        <h2><span id="game-name"></span></h2>
+                        <div class="data-container">
+                            <div class="data-label">Popularity: </div> 
+                            <span id="popularity" class="data-value"></span>
+                        </div>
+                        <div class="data-container">
+                            <div class="data-label">Developer: </div> 
+                            <span id="developer" class="data-value"></span>
+                        </div>
+                        <div class="data-container">
+                            <div class="data-label">Released: </div> 
+                            <span id="released" class="data-value"></span>
+                        </div>
+                        <div class="data-container">
+                            <div class="data-label">Highscore: </div> 
+                            <span id="highscore" class="data-value"></span>
+                        </div>
+                        <div class="data-container">
+                            <div class="data-label">Category: </div> 
+                            <span id="category" class="data-value"></span>
+                        </div>
+                        
+                        <!-- restart -->
+                        <button id="restart-game">Restart Game</button>
+                    </div>
+                    <div class="game-text">
+                        <span id="about" class="about"></span>
+                        <span id="how-to-play" class="xx"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- work in progress overlay -->
+            <div id="wip" class="wip">
+                <div class="wip-content">
+                    <h2>Work in Progress</h2>
+                    <p>This game is currently under development.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- sneaky hidden js -->
+        <p class="session-highscore">Session Highscore: <span id="session-highscore"></span></p>
+        
+        <script src="../reusable_components/navbar/navbarComponent.js"></script>
+        <script src="../reusable_components/header/headerComponent.js"></script>
+        <script src="../reusable_components/loading/loadingComponent.js"></script>
+        <!-- load game -->
+        <script id="gameScript"></script>
+        <script src="./loadGame.js"></script>
+    </body>
+</html>
