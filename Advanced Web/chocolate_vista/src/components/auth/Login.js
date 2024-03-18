@@ -1,12 +1,14 @@
 // dependencies
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Form, Button } from "react-bootstrap";
 
 
-let RegisterForm = () => {
+let LoginForm = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: "",
-        username: "",
         password: "",
     });
 
@@ -20,9 +22,8 @@ let RegisterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(formData); 
 
-        fetch("http://localhost/chocolatevista_api/formSubmit.php", {
+        fetch("http://localhost/chocolatevista_api/loginFormSubmit.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -31,12 +32,16 @@ let RegisterForm = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            // Handle response data here, such as showing success or error message to the user
+            if (data.success) {
+                console.log("Login successful");
+                // console.log(data.message);
+                navigate("/");
+            } else {
+                console.log(data.message);
+            }
         })
         .catch((error) => {
             console.error("Error:", error);
-            // Handle errors here
         });
     };
 
@@ -51,17 +56,6 @@ let RegisterForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter email"
-                />
-            </Form.Group>
-
-            <Form.Group controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    placeholder="Enter your username"
                 />
             </Form.Group>
 
@@ -84,4 +78,4 @@ let RegisterForm = () => {
     );
 }
 
-export default RegisterForm;
+export default LoginForm;
