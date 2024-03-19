@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('serverConnection.php');
 
 // === DON'T TOUCH ===
@@ -14,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     }
     // Access-Control headers are received during OPTIONS requests
     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: POST, GET, OPTIONS");         
+        header("Access-Control-Allow-Methods: POST, OPTIONS");         
 
     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
         header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
@@ -46,7 +45,7 @@ if (isset($data['email']) && isset($data['password'])) {
         if (password_verify($password, $hash)) {
             // password match
             $response['success'] = true;
-            $response['message'] = "Login successful|".$_SESSION["username"];
+            $response['message'] = "Login successful";
         }
         else {
             $response['success'] = false;

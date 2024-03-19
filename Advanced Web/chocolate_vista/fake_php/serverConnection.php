@@ -6,6 +6,6 @@
         exit();
     }
     else {
-        // echo "Success!";
+        // success
     }
 ?>
