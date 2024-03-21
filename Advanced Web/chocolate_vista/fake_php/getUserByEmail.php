@@ -23,28 +23,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // === DON'T TOUCH ===
 
 
+
+
 // Get the JSON data sent from the frontend
-$data = json_decode(file_get_contents('php://input'));
+$data = json_decode(file_get_contents('php://input'), true);
 $response = array();
 
-// Extract the form data
-$email = $data->email;
-$username = $data->username;
-$password = $data->password;
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+if (isset($data['email'])) {
+    $email = $data["email"];
 
-// Perform database operation (insertion, etc.)
-$sql = "INSERT INTO userstest (email, username, password) VALUES ('$email', '$username', '$hashedPassword')";
-if ($conn->query($sql) === TRUE) {
-    $response["success"] = true;
-    $response["message"] = "User registered successfully";
-    $response['userData'] = [$email, $username];
+    $sql = "SELECT * FROM userstest WHERE email = '".$email."'";
+    $results = $conn->query($sql);
+
+    if (mysqli_num_rows($results) > 0) {
+        $row = mysqli_fetch_array($results);
+        $hash = $row["Password"];
+        $username = $row["Username"];
+        $userID = $row["UserID"];
+
+        $response['success'] = true;
+        $response['message'] = "Login successful";
+        $response['userData'] = [$userID, $email, $username];
+    }
+    else {
+        $response['success'] = false;
+        $response['message'] = "Email not found";
+    }
 } else {
-    $response["success"] = false;
-    $response["message"] = "Error: " . $conn->error;
+    $response['success'] = false;
+    $response['message'] = "Email not provided.|".$email;
 }
 
-// Send JSON response back to React app
-header('Content-Type: application/json');
+
 echo json_encode($response);
 ?>
