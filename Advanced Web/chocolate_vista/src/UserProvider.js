@@ -9,12 +9,8 @@ function UserProvider({ children }) {
         isLoggedIn: false,
     });
 
-    const setUser = (userData) => {
-        setUserData(userData);
-    };
-
     return (
-        <UserContext.Provider value={{ userData, setUser }}>
+        <UserContext.Provider value={{ userData, setUserData }}>
             {children}
         </UserContext.Provider>
     );

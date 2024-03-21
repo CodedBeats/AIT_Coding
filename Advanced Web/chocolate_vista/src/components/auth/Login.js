@@ -1,6 +1,6 @@
 // dependencies
 import { useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
 // components
@@ -9,8 +9,7 @@ import UserContext from '../../UserContext';
 
 let LoginForm = () => {
     const navigate = useNavigate();
-    
-    const {userData, setUser} = useContext(UserContext);
+    const {setUserData} = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -24,6 +23,7 @@ let LoginForm = () => {
             [name]: value,
         }));
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,10 +39,10 @@ let LoginForm = () => {
         .then((data) => {
             if (data.success) {
                 console.log("Login successful");
-                console.log(data.userData);
+                // console.log(data.userData);
 
                 // set user data for context
-                setUser({
+                setUserData({
                     userID: data.userData[0],
                     email: data.userData[1],
                     username: data.userData[2],
@@ -59,6 +59,7 @@ let LoginForm = () => {
             console.error("Error:", error);
         });
     };
+
 
     return (
         <>
@@ -89,6 +90,10 @@ let LoginForm = () => {
         <Button variant="primary" type="button" onClick={handleSubmit}>
             Submit
         </Button>
+
+        <Link to="/register">
+            <Button variant="outline-success">Register</Button>
+        </Link>
         </>
     );
 }

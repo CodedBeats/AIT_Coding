@@ -1,10 +1,16 @@
 // dependencies
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// components
+import UserContext from '../../UserContext';
 
 
 let RegisterForm = () => {
+    const navigate = useNavigate();
+    const {setUserData} = useContext(UserContext);
+
     const [formData, setFormData] = useState({
         email: "",
         username: "",
@@ -19,6 +25,39 @@ let RegisterForm = () => {
         }));
     };
 
+
+    const getUserData = () => {
+        fetch("http://localhost/chocolatevista_api/getUserByEmail.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                // console.log(data.userData);
+
+                // set user data for context
+                setUserData({
+                    userID: data.userData[0],
+                    email: data.userData[1],
+                    username: data.userData[2],
+                    isLoggedIn: true,
+                });
+
+                // navigate to home (or maybe last page)
+                navigate("/");
+            } else {
+                console.log(data.message);
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(formData); 
@@ -32,13 +71,21 @@ let RegisterForm = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            // Handle response data
+            if (data.success) {
+                console.log("Register successful");
+                // console.log(data.userData);
+
+                // get user data for context and route somewhere
+                getUserData();
+            } else {
+                console.log(data.message);
+            }
         })
         .catch((error) => {
             console.error("Error:", error);
         });
     };
+
 
     return (
         <>

@@ -9,10 +9,10 @@ import UserContext from '../../UserContext';
 
 const NavbarComponent = () => {
 
-    const {userData, setUser} = useContext(UserContext);
+    const {userData, setUserData} = useContext(UserContext);
 
     const handleLogout = () => {
-        setUser({
+        setUserData({
             userID: "",
             email: "",
             username: "",
