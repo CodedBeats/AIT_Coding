@@ -1,11 +1,16 @@
 // dependencies
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from "react-bootstrap";
+
+// components
+import UserContext from '../../UserContext';
 
 
 let LoginForm = () => {
     const navigate = useNavigate();
+    
+    const {userData, setUser} = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -34,7 +39,17 @@ let LoginForm = () => {
         .then((data) => {
             if (data.success) {
                 console.log("Login successful");
-                // console.log(data.message);
+                console.log(data.userData);
+
+                // set user data for context
+                setUser({
+                    userID: data.userData[0],
+                    email: data.userData[1],
+                    username: data.userData[2],
+                    isLoggedIn: true,
+                });
+
+                // navigate to home (or maybe last page)
                 navigate("/");
             } else {
                 console.log(data.message);

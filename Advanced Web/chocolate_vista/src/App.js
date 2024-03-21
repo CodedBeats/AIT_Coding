@@ -1,5 +1,5 @@
 // dependencies
-import { BrowserRouter as Router, Routes , Route } from "react-router-dom"
+import { Routes , Route } from "react-router-dom"
 
 // home
 import Landing from "./components/landing/Landing";
@@ -8,18 +8,29 @@ import Landing from "./components/landing/Landing";
 import RegisterForm from "./components/auth/Register";
 import LoginForm from "./components/auth/Login";
 
+// nav
+import NavbarComponent from "./components/nav/Navbar";
+
+// data
+import UserProvider from './UserProvider';
+
 
 const App = () => (
-    <Router>
-        <Routes>
-            {/* home */}
-            <Route path="/" element={<Landing />} />
+    <div className="App">
+        <UserProvider>
+            <NavbarComponent />
+            <Routes>
 
-            {/* auth*/}
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/login" element={<LoginForm />} />
-        </Routes>
-    </Router>
+                {/* home */}
+                <Route path="/" element={<Landing />} />
+                <Route exact path="/*" element={<Landing />} /> 
+
+                {/* auth*/}
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/login" element={<LoginForm />} />
+            </Routes>
+        </UserProvider>
+    </div>
 );
 
 export default App;

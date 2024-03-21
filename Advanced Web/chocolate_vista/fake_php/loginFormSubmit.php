@@ -40,12 +40,13 @@ if (isset($data['email']) && isset($data['password'])) {
         $row = mysqli_fetch_array($results);
         $hash = $row["Password"];
         $username = $row["Username"];
-        $_SESSION["username"] = $username;
+        $userID = $row["UserID"];
 
         if (password_verify($password, $hash)) {
             // password match
             $response['success'] = true;
             $response['message'] = "Login successful";
+            $response['userData'] = [$userID, $email, $username];
         }
         else {
             $response['success'] = false;

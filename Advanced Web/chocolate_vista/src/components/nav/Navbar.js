@@ -1,21 +1,24 @@
-import { useState, useEffect } from "react";
+// dependencies
+import { useContext } from "react";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom"
 
-const NavbarComponent = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+// components
+import UserContext from '../../UserContext';
 
-    useEffect(() => {
-        fetch("http://localhost/chocolatevista_api/loggedInStatus.php")
-            .then((response) => response.json())
-            .then((data) => {
-                setIsLoggedIn(data.isLoggedIn);
-                console.log(data)
-            })
-            .catch((error) => {
-                console.error("Error fetching navbar information:", error);
-            });
-    }, []);
+
+const NavbarComponent = () => {
+
+    const {userData, setUser} = useContext(UserContext);
+
+    const handleLogout = () => {
+        setUser({
+            userID: "",
+            email: "",
+            username: "",
+            isLoggedIn: false,
+        });
+    }
 
     return (
         <Navbar bg="light" expand="lg">
@@ -43,10 +46,13 @@ const NavbarComponent = () => {
                     <Nav.Link href="#">About</Nav.Link>
                 </Nav>
                 <Nav>
-                    {isLoggedIn ? (
-                        <Link to="#">
-                            <Button variant="outline-success">Profile</Button>
-                        </Link>
+                    {userData.isLoggedIn ? (
+                        <Nav>
+                            <Link to="#">
+                                <Button variant="outline-success">Profile</Button>
+                            </Link>
+                            <Button variant="danger" onClick={handleLogout}>Logout</Button>
+                        </Nav>
                     ) : (
                         <Link to="/register">
                             <Button variant="outline-success">Register</Button>
