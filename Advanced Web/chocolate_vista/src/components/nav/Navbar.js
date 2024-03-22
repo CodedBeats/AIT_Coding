@@ -42,7 +42,7 @@ const NavbarComponent = () => {
                             className="mr-sm-2"
                         />
                     </Form>
-                    <Nav.Link href="#">Boxed Chocolates</Nav.Link>
+                    <Nav.Link href="/chocolates">Boxed Chocolates</Nav.Link>
                     <Nav.Link href="#">About</Nav.Link>
                 </Nav>
                 <Nav>
