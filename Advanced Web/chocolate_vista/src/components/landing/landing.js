@@ -11,7 +11,10 @@ import "../common/css/carousel.css";
 
 let Landing = () => {
 
-    const carouselImage = ["/imgs/choc1.jpg", "/imgs/choc2.jpg"];
+    const carouselImage = [
+        "/imgs/choc1.jpg", 
+        "/imgs/choc2.jpg",
+    ];
 
     return (
         <div className="landing-page">
