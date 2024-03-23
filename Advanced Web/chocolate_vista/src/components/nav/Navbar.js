@@ -30,7 +30,7 @@ const NavbarComponent = () => {
                     className="d-inline-block align-top"
                     alt="Logo"
                 />{" "}
-                Website Title
+                ChocolateVista
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
