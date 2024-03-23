@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image';
 
 let ImageCarousel = (props) => {
     return (
-        <Carousel fade>
+        <Carousel fade controls={false}>
             {props.images.map((image, index) => (
             <Carousel.Item>
                 <div key={index}>
@@ -13,7 +13,6 @@ let ImageCarousel = (props) => {
                         className={props.imageClass}
                         src={image}
                         alt={[index]}
-                        fluid 
                     />
                 </div>
             </Carousel.Item>
