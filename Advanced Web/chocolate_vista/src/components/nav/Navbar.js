@@ -1,6 +1,7 @@
 // dependencies
 import { useContext } from "react";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import Image from 'react-bootstrap/Image';
 import { Link } from "react-router-dom"
 
 // components
@@ -23,13 +24,13 @@ const NavbarComponent = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Navbar.Brand href="/">
-                <img
-                    src="/imgs/choc1.jpg"
+                <Image 
+                    src="/imgs/logo.png"
                     width="50"
                     height="50"
-                    className="d-inline-block align-top"
                     alt="Logo"
-                />{" "}
+                    rounded 
+                />
                 ChocolateVista
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +44,7 @@ const NavbarComponent = () => {
                         />
                     </Form>
                     <Nav.Link href="/chocolates">Boxed Chocolates</Nav.Link>
-                    <Nav.Link href="#">About</Nav.Link>
+                    <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
                 <Nav>
                     {userData.isLoggedIn ? (

@@ -1,7 +1,7 @@
 // dependencies
 import { Routes , Route } from "react-router-dom"
 
-// home
+// landing
 import Landing from "./components/landing/Landing";
 
 // chocolates
@@ -11,6 +11,9 @@ import Chocolate from "./components/chocolates/Chocolate";
 // auth
 import RegisterForm from "./components/auth/Register";
 import LoginForm from "./components/auth/Login";
+
+// about
+import About from "./components/about/About";
 
 // nav
 import NavbarComponent from "./components/nav/Navbar";
@@ -40,6 +43,9 @@ const App = () => (
                 {/* auth*/}
                 <Route exact path="/register" element={<RegisterForm />} />
                 <Route exact path="/login" element={<LoginForm />} />
+
+                {/* about */}
+                <Route exact path="/about" element={<About />} />
             </Routes>
         </UserProvider>
     </div>

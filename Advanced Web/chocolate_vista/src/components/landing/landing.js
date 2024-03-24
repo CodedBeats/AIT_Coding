@@ -58,8 +58,8 @@ let Landing = () => {
                         <div key={index}>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
-                                    <Card.Img variant="top" src={chocolate.imgUrl} alt={chocolate.name} className="choc-img" />
                                     <Link to="/chocolates/chocolate1">
+                                        <Card.Img variant="top" src={chocolate.imgUrl} alt={chocolate.name} className="choc-img" />
                                         <Card.Title>{chocolate.name}</Card.Title>
                                     </Link>
                                     <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
