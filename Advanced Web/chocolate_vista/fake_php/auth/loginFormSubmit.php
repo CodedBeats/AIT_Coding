@@ -1,5 +1,5 @@
 <?php
-require_once('serverConnection.php');
+require_once('../serverConnection.php');
 
 // === DON'T TOUCH ===
 header('Access-Control-Allow-Origin: http://localhost:3000');

@@ -1,7 +1,7 @@
 // dependencies
 import { Routes , Route } from "react-router-dom"
 
-// home
+// landing
 import Landing from "./components/landing/Landing";
 
 // chocolates
@@ -11,6 +11,12 @@ import Chocolate from "./components/chocolates/Chocolate";
 // auth
 import RegisterForm from "./components/auth/Register";
 import LoginForm from "./components/auth/Login";
+
+// user
+import Profile from "./components/user/Profile";
+
+// about
+import About from "./components/about/About";
 
 // nav
 import NavbarComponent from "./components/nav/Navbar";
@@ -35,11 +41,17 @@ const App = () => (
 
                 {/* chocolates */}
                 <Route exact path="/chocolates" element={<Chocolates />} /> 
-                <Route path="/chocolate1" element={<Chocolate />} /> 
+                <Route path="/chocolates/chocolate1" element={<Chocolate />} /> 
 
                 {/* auth*/}
                 <Route exact path="/register" element={<RegisterForm />} />
                 <Route exact path="/login" element={<LoginForm />} />
+
+                {/* user */}
+                <Route exact path="/profile" element={<Profile />} />
+
+                {/* about */}
+                <Route exact path="/about" element={<About />} />
             </Routes>
         </UserProvider>
     </div>
