@@ -27,7 +27,7 @@ let RegisterForm = () => {
 
 
     const getUserData = () => {
-        fetch("http://localhost/chocolatevista_api/getUserByEmail.php", {
+        fetch("http://localhost/chocolatevista_api/auth/getUserByEmail.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -62,7 +62,7 @@ let RegisterForm = () => {
         e.preventDefault();
         // console.log(formData); 
 
-        fetch("http://localhost/chocolatevista_api/registerFormSubmit.php", {
+        fetch("http://localhost/chocolatevista_api/auth/registerFormSubmit.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

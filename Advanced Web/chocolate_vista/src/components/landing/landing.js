@@ -1,9 +1,13 @@
 // dependencies
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
 
 // components
 import ImageCarousel from "../common/ImageCarousel";
+
+// hooks
+import useFetch from '../../hooks/useFetch';
 
 // style
 import "./css/landing.css";
@@ -11,8 +15,13 @@ import "../common/css/carousel.css";
 
 
 let Landing = () => {
-    // arr of choc objs
+    // choc obj and arr of chocs
     const [chocolates, setChocolates] = useState([]);
+    
+    const { data: chocolatesData, isPending, error } = useFetch(
+        "http://localhost/chocolatevista_api/chocolate/getRandom.php",
+        "POST"
+    );
 
     // imgs for carousel
     const carouselImage = [
@@ -20,29 +29,16 @@ let Landing = () => {
         "/imgs/choc2.jpg",
     ];
 
-    // Hard-coded chocolate object
-    const initialChocolate = {
-        img: '/imgs/choc3.png',
-        title: 'Truffles',
-        favorited: true,
-        stars: 4,
-        reviews: 10
-    };
-
-    // Function to populate chocolates state
-    const fetchRandomChocolates = () => {
-        // custom useFetch hook - getRandomChocolates API call
-
-
-        // temp hard-coded
-        setChocolates(Array(5).fill(initialChocolate));
-    };
-
-    // get random chocolates on load
+    // Fetch random chocolates on load
     useEffect(() => {
-        fetchRandomChocolates();
-    }, []);
-
+        if (chocolatesData && chocolatesData.chocsData) { // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
+            const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
+                const [name, imgUrl, rating] = chocData;
+                return { name, imgUrl, rating };
+            });
+            setChocolates(fetchedChocolates); // Use setChocolates to update the chocolates state with the fetched chocolates
+        }
+    }, [chocolatesData]);
 
 
     return (
@@ -58,15 +54,21 @@ let Landing = () => {
                 <div className="random-chocolates-title">Some Boxed Chocolates You Might Like</div>
                 {/* useFetch to load random here */}
                 <div className="random-chocolates">
-                {chocolates.map((chocolate, index) => (
-                    <div key={index}>
-                    <img src={chocolate.img} alt={chocolate.title} className="choc-img" />
-                    <h2>{chocolate.title}</h2>
-                    <p>Favorited: {chocolate.favorited.toString()}</p>
-                    <p>Stars: {chocolate.stars}</p>
-                    <p>Reviews: {chocolate.reviews}</p>
-                    </div>
-                ))}
+                    {chocolates.map((chocolate, index) => (
+                        <div key={index}>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Img variant="top" src={chocolate.imgUrl} alt={chocolate.name} className="choc-img" />
+                                    <Link to="/chocolates/chocolate1">
+                                        <Card.Title>{chocolate.name}</Card.Title>
+                                    </Link>
+                                    <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
+                                    <Card.Text>Stars: {chocolate.rating}</Card.Text>
+                                    <Card.Text>Reviews: 1</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

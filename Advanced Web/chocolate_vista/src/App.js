@@ -35,7 +35,7 @@ const App = () => (
 
                 {/* chocolates */}
                 <Route exact path="/chocolates" element={<Chocolates />} /> 
-                <Route path="/chocolate1" element={<Chocolate />} /> 
+                <Route path="/chocolates/chocolate1" element={<Chocolate />} /> 
 
                 {/* auth*/}
                 <Route exact path="/register" element={<RegisterForm />} />
