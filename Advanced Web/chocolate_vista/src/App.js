@@ -12,6 +12,9 @@ import Chocolate from "./components/chocolates/Chocolate";
 import RegisterForm from "./components/auth/Register";
 import LoginForm from "./components/auth/Login";
 
+// user
+import Profile from "./components/user/Profile";
+
 // about
 import About from "./components/about/About";
 
@@ -43,6 +46,9 @@ const App = () => (
                 {/* auth*/}
                 <Route exact path="/register" element={<RegisterForm />} />
                 <Route exact path="/login" element={<LoginForm />} />
+
+                {/* user */}
+                <Route exact path="/profile" element={<Profile />} />
 
                 {/* about */}
                 <Route exact path="/about" element={<About />} />

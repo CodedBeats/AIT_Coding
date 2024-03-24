@@ -23,7 +23,7 @@ const NavbarComponent = () => {
 
     return (
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
+            <Link to="/">
                 <Image 
                     src="/imgs/logo.png"
                     width="50"
@@ -32,7 +32,7 @@ const NavbarComponent = () => {
                     rounded 
                 />
                 ChocolateVista
-            </Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -43,13 +43,17 @@ const NavbarComponent = () => {
                             className="mr-sm-2"
                         />
                     </Form>
-                    <Nav.Link href="/chocolates">Boxed Chocolates</Nav.Link>
-                    <Nav.Link href="/about">About</Nav.Link>
+                    <Link to="/chocolates">
+                        <div>Boxed Chocolates</div>
+                    </Link>
+                    <Link to="/about">
+                        <div>About</div>
+                    </Link>
                 </Nav>
                 <Nav>
                     {userData.isLoggedIn ? (
                         <Nav>
-                            <Link to="#">
+                            <Link to="/profile">
                                 <Button variant="outline-success">Profile</Button>
                             </Link>
                             <Button variant="danger" onClick={handleLogout}>Logout</Button>
