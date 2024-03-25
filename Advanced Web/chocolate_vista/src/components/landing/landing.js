@@ -1,7 +1,6 @@
 // dependencies
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
 
 // components
 import ImageCarousel from "../common/ImageCarousel";
@@ -30,14 +29,17 @@ let Landing = () => {
         "/imgs/choc2.jpg",
     ];
 
+
     // Fetch random chocolates on load
     useEffect(() => {
-        if (chocolatesData && chocolatesData.chocsData) { // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
+        // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
+        if (chocolatesData && chocolatesData.chocsData) { 
             const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
                 const [name, imgUrl, rating] = chocData;
                 return { name, imgUrl, rating };
             });
-            setChocolates(fetchedChocolates); // Use setChocolates to update the chocolates state with the fetched chocolates
+            // update the chocolates state with the fetched chocolates
+            setChocolates(fetchedChocolates); 
         }
     }, [chocolatesData]);
 
@@ -53,7 +55,6 @@ let Landing = () => {
 
             <div className="random-chocolates-container">
                 <div className="random-chocolates-title">Some Boxed Chocolates You Might Like</div>
-                {/* useFetch to load random here */}
                 <div className="random-chocolates">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
