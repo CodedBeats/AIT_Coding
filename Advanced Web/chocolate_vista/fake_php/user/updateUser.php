@@ -29,36 +29,23 @@ $response = array();
 
 if ($data && isset($data->email)) {
     $email = $data->email;
+    $username = $data->username;
     $password = $data->password;
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "SELECT * FROM user WHERE email = '".$email."'";
-    $results = $conn->query($sql);
+    $sql = "UPDATE `user` SET `username` = '".$username."', `password` = '".$hashedPassword."' WHERE `email` = '".$email."'";
 
-    if (mysqli_num_rows($results) > 0) {
-        $row = mysqli_fetch_array($results);
-        $imgUrl = $row["ImgUrl"];
-        $hash = $row["Password"];
-        $username = $row["Username"];
-        $userID = $row["UserID"];
-
-        if (password_verify($password, $hash)) {
-            // password match
-            $response['success'] = true;
-            $response['message'] = "Login successful";
-            $response['userData'] = [$userID, $imgUrl, $email, $username];
-        }
-        else {
-            $response['success'] = false;
-            $response['message'] = "Invalid Password";
-        }
+    if (mysqli_query($conn, $sql)) {
+        $response['success'] = true;
+        $response['message'] = "Details updated successfully";
     }
     else {
         $response['success'] = false;
-        $response['message'] = "Email not found";
+        $response['message'] = "Couldn't update";
     }
 } else {
     $response['success'] = false;
-    $response['message'] = "Email and/or password not provided.";
+    $response['message'] = "Data and/or email not provided";
 }
 
 

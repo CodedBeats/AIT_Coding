@@ -44,8 +44,9 @@ let LoginForm = () => {
                 // set user data for context
                 setUserData({
                     userID: data.userData[0],
-                    email: data.userData[1],
-                    username: data.userData[2],
+                    imgUrl: data.userData[1],
+                    email: data.userData[2],
+                    username: data.userData[3],
                     isLoggedIn: true,
                 });
 

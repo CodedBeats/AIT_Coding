@@ -4,6 +4,7 @@ import UserContext from "./UserContext";
 function UserProvider({ children }) {
     const [userData, setUserData] = useState({
         userID: "",
+        imgUrl: "",
         email: "",
         username: "",
         isLoggedIn: false,
