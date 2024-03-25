@@ -8,8 +8,3 @@
 .random-chocolates {
     display: flex;
 }
-.choc-img {
-    height: 200px;
-    border: 2px solid black;
-    border-radius: 5px;
-}

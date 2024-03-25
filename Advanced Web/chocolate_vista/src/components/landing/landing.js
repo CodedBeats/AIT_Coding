@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 // components
 import ImageCarousel from "../common/ImageCarousel";
+import ChocCard from '../common/ChocCard';
 
 // hooks
 import useFetch from '../../hooks/useFetch';
@@ -56,17 +57,7 @@ let Landing = () => {
                 <div className="random-chocolates">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Body>
-                                    <Link to="/chocolates/chocolate1">
-                                        <Card.Img variant="top" src={chocolate.imgUrl} alt={chocolate.name} className="choc-img" />
-                                        <Card.Title>{chocolate.name}</Card.Title>
-                                    </Link>
-                                    <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
-                                    <Card.Text>Stars: {chocolate.rating}</Card.Text>
-                                    <Card.Text>Reviews: 1</Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <ChocCard choc={chocolate} />
                         </div>
                     ))}
                 </div>
