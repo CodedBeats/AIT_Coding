@@ -32,16 +32,15 @@ if (mysqli_num_rows($results) > 0) {
     $response['success'] = true;
     $response['message'] = "random chocolates found";
 
-    // $rows = mysqli_fetch_all($results);
-
     while($row = mysqli_fetch_assoc($results)) {
         // set just required fields
+        $chocID = $row["ChocolateID"];
         $name = $row["Name"];
         $imgUrl = $row["ImgUrl"];
         $rating = $row["Rating"];
 
         $randomChoc = array();
-        array_push($randomChoc,$name,$imgUrl,$rating);
+        array_push($randomChoc,$chocID,$name,$imgUrl,$rating);
         array_push($randomChocsArr,$randomChoc);
     }
 

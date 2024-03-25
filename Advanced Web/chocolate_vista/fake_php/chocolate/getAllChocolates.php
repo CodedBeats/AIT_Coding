@@ -22,7 +22,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 // === DON'T TOUCH ===
 
-$sql = "SELECT * FROM chocolate";
+
+// get input
+$data = json_decode(file_get_contents('php://input'));
+
+// Receive filter vals
+$rating = isset($data->rating) ? intval($data->rating) : null;
+$price = isset($data->price) ? floatval($data->price) : null;
+$weight = isset($data->weight) ? floatval($data->weight) : null;
+
+
+// Prepare SQL query (1=1 condition always evaluates to true, starting point for dynamically building SQL queries)
+$sql = "SELECT * FROM chocolate WHERE 1=1";
+
+// Add filters to query dynamically
+if ($rating !== null) {
+    $sql .= " AND Rating >= $rating";
+}
+
+if ($price !== null) {
+    $sql .= " AND Price < $price";
+}
+
+if ($weight !== null) {
+    $sql .= " AND Weight >= $weight";
+}
+
 $results = $conn->query($sql);
 
 $chocsArr = array();
@@ -30,16 +55,17 @@ $response = array();
 
 if (mysqli_num_rows($results) > 0) {
     $response['success'] = true;
-    $response['message'] = "all chocolates found";
+    $response['message'] = "Chocolates found";
 
     while($row = mysqli_fetch_assoc($results)) {
         // set just required fields
+        $chocID = $row["ChocolateID"];
         $name = $row["Name"];
         $imgUrl = $row["ImgUrl"];
         $rating = $row["Rating"];
 
         $choc = array();
-        array_push($choc,$name,$imgUrl,$rating);
+        array_push($choc,$chocID,$name,$imgUrl,$rating);
         array_push($chocsArr,$choc);
     }
 
@@ -47,7 +73,7 @@ if (mysqli_num_rows($results) > 0) {
 }
 else {
     $response['success'] = false;
-    $response['message'] = "couldn't find all chocolates";
+    $response['message'] = "No chocolates found matching the criteria";
 }
 
 echo json_encode($response);

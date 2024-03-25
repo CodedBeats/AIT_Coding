@@ -35,8 +35,8 @@ let Landing = () => {
         // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
         if (chocolatesData && chocolatesData.chocsData) { 
             const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
-                const [name, imgUrl, rating] = chocData;
-                return { name, imgUrl, rating };
+                const [chocID, name, imgUrl, rating] = chocData;
+                return { chocID, name, imgUrl, rating };
             });
             // update the chocolates state with the fetched chocolates
             setChocolates(fetchedChocolates); 
@@ -58,7 +58,7 @@ let Landing = () => {
                 <div className="random-chocolates">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <ChocCard choc={chocolate} />
+                            <ChocCard chocID={chocolate} choc={chocolate} />
                         </div>
                     ))}
                 </div>
