@@ -56,8 +56,8 @@ let Chocolates = () => {
     
                 // read chocolate data
                 const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
-                    const [name, imgUrl, rating] = chocData;
-                    return { name, imgUrl, rating };
+                    const [chocID, name, imgUrl, rating] = chocData;
+                    return { chocID, name, imgUrl, rating };
                 });
                 // update the chocolates array with fetchedChocolates
                 setChocolates(fetchedChocolates); 
@@ -83,7 +83,7 @@ let Chocolates = () => {
                 : <div className="all-chocolates-container">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <ChocCard choc={chocolate} />
+                            <ChocCard chocID={chocolate} choc={chocolate} />
                         </div>
                     ))}
                 </div>

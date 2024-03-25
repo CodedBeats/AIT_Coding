@@ -1,10 +1,10 @@
 // dependencies
 
-let Chocolate = () => {
+let Chocolate = (props) => {
     
     
     return (
-        <div>Chocolate 1</div>
+        <div>Chocolate {props.chocID}</div>
     )
 }
 
