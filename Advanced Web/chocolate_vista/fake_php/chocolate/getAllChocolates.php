@@ -22,17 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 // === DON'T TOUCH ===
 
-$sql = "SELECT * FROM chocolate ORDER BY RAND() LIMIT 5";
+$sql = "SELECT * FROM chocolate";
 $results = $conn->query($sql);
 
-$randomChocsArr = array();
+$chocsArr = array();
 $response = array();
 
 if (mysqli_num_rows($results) > 0) {
     $response['success'] = true;
-    $response['message'] = "random chocolates found";
-
-    // $rows = mysqli_fetch_all($results);
+    $response['message'] = "all chocolates found";
 
     while($row = mysqli_fetch_assoc($results)) {
         // set just required fields
@@ -40,16 +38,16 @@ if (mysqli_num_rows($results) > 0) {
         $imgUrl = $row["ImgUrl"];
         $rating = $row["Rating"];
 
-        $randomChoc = array();
-        array_push($randomChoc,$name,$imgUrl,$rating);
-        array_push($randomChocsArr,$randomChoc);
+        $choc = array();
+        array_push($choc,$name,$imgUrl,$rating);
+        array_push($chocsArr,$choc);
     }
 
-    $response['chocsData'] = $randomChocsArr;
+    $response['chocsData'] = $chocsArr;
 }
 else {
     $response['success'] = false;
-    $response['message'] = "couldn't find random chocolates";
+    $response['message'] = "couldn't find all chocolates";
 }
 
 echo json_encode($response);
