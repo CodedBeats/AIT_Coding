@@ -16,15 +16,17 @@ let Chocolates = () => {
     // choc obj and arr of chocs
     const [chocolates, setChocolates] = useState([]);
     const [chocolatesLength, setChocolatesLength] = useState(0);
+    const [noChocsDisplay, setNoChocsDisplay] = useState(false);
     const [filterValues, setFilterValues] = useState({
-        filter1: "",
-        filter2: "",
-        filter3: ""
+        rating: null,
+        price: null,
+        weight: null,
     });
     
     const { data: chocolatesData, isPending, error } = useFetch(
         "http://localhost/chocolatevista_api/chocolate/getAllChocolates.php",
-        "POST"
+        "POST",
+        filterValues
     );
 
     const handleFilterChange = (filterName, value) => {
@@ -38,16 +40,30 @@ let Chocolates = () => {
     // Fetch random chocolates on load
     useEffect(() => {
         // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
-        if (chocolatesData && chocolatesData.chocsData) { 
-            setChocolatesLength(Object.keys(chocolatesData).length);
-            const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
-                const [name, imgUrl, rating] = chocData;
-                return { name, imgUrl, rating };
-            });
-            // update the chocolates state with the fetched chocolates
-            setChocolates(fetchedChocolates); 
+        if (chocolatesData) { 
+            // clear and display if no chocolates
+            if (!chocolatesData.success) {
+                setNoChocsDisplay(true);
+                
+                setChocolatesLength(0);
+                setChocolates([]);
+            }
+            else {
+                setNoChocsDisplay(false);
+
+                // read amount of chocolates found
+                setChocolatesLength(Object.keys(chocolatesData).length - 1);
+    
+                // read chocolate data
+                const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
+                    const [name, imgUrl, rating] = chocData;
+                    return { name, imgUrl, rating };
+                });
+                // update the chocolates array with fetchedChocolates
+                setChocolates(fetchedChocolates); 
+            }
         }
-    }, [chocolatesData]);
+    }, [chocolatesData, filterValues]);
 
     
     return (
@@ -57,18 +73,21 @@ let Chocolates = () => {
             <div>
                 <Filters onFilterChange={handleFilterChange} />
                 <div className="filters-preview">
-                    <p>Value: {filterValues.filter1}</p>
-                    <p>Value: {filterValues.filter2}</p>
-                    <p>Value: {filterValues.filter3}</p>
+                    <p>Value: {filterValues.rating}</p>
+                    <p>Value: {filterValues.price}</p>
+                    <p>Value: {filterValues.weight}</p>
                 </div>
             </div>
-            <div className="all-chocolates-container">
-                {chocolates.map((chocolate, index) => (
-                    <div key={index}>
-                        <ChocCard choc={chocolate} />
-                    </div>
-                ))}
-            </div>
+            {noChocsDisplay 
+                ? <div>No Chocolates Found</div>
+                : <div className="all-chocolates-container">
+                    {chocolates.map((chocolate, index) => (
+                        <div key={index}>
+                            <ChocCard choc={chocolate} />
+                        </div>
+                    ))}
+                </div>
+            }
         </div>
         </>
     )

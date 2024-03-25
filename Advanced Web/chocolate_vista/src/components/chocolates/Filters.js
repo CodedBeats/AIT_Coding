@@ -1,19 +1,12 @@
 // dependencies
-import { useState, useEffect } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
-
-// components
-import ChocCard from "../common/ChocCard";
-
-// hooks
-import useFetch from "../../hooks/useFetch";
 
 // style
 import "./css/filters.css";
 
 let Filters = ({ onFilterChange }) => {
 
-    const handleInputChange = (value, filterName) => {
+    const handleInputChange = (filterName, value) => {
         onFilterChange(filterName, value);
     };
 
@@ -21,37 +14,41 @@ let Filters = ({ onFilterChange }) => {
         <div className="filters">
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button1
+                Rating
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item onClick={() => handleInputChange("Action1", "filter1")}>Action1</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action2", "filter1")}>Action2</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action3", "filter1")}>Action3</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 0)}>&gt;=0</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 1)}>&gt;=1</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 2)}>&gt;=2</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 3)}>&gt;=3</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 4)}>&gt;=4</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("rating", 5)}>&gt;=5</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button2
+                Price
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item onClick={() => handleInputChange("Action1", "filter2")}>Action1</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action2", "filter2")}>Action2</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action3", "filter2")}>Action3</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("price", 6)}>&lt;6</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("price", 4)}>&lt;4</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("price", 2)}>&lt;2</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button3
+                Weight
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item onClick={() => handleInputChange("Action1", "filter3")}>Action1</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action2", "filter3")}>Action2</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleInputChange("Action3", "filter3")}>Action3</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("weight", 2)}>&gt;=2</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("weight", 4)}>&gt;=4</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("weight", 6)}>&gt;=6</Dropdown.Item>
+                <Dropdown.Item onClick={() => handleInputChange("weight", 8)}>&gt;=8</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </div>
