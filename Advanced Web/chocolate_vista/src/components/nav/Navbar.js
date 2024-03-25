@@ -15,6 +15,7 @@ const NavbarComponent = () => {
     const handleLogout = () => {
         setUserData({
             userID: "",
+            imgUrl: "",
             email: "",
             username: "",
             isLoggedIn: false,
@@ -53,6 +54,13 @@ const NavbarComponent = () => {
                 <Nav>
                     {userData.isLoggedIn ? (
                         <Nav>
+                            <Image 
+                                src={userData.imgUrl}
+                                width="50"
+                                height="50"
+                                alt="Logo"
+                                rounded 
+                            />
                             <Link to="/profile">
                                 <Button variant="outline-success">Profile</Button>
                             </Link>

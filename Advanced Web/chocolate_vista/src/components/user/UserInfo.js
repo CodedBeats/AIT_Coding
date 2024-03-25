@@ -19,7 +19,7 @@ let UserInfo = () => {
     return (
         <div className="user-info">
             <div className="user-img-container">
-                <Image src="/imgs/logo.png" alt="Logo" className="user-img" rounded />
+                <Image src={user.imgUrl} alt="Logo" className="user-img" rounded />
             </div>
             <div className="email-container">
                 <p>email</p>

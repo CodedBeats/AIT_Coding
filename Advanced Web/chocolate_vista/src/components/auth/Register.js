@@ -12,6 +12,7 @@ let RegisterForm = () => {
     const {setUserData} = useContext(UserContext);
 
     const [formData, setFormData] = useState({
+        imgUrl: "",
         email: "",
         username: "",
         password: "",
@@ -27,7 +28,7 @@ let RegisterForm = () => {
 
 
     const getUserData = () => {
-        fetch("http://localhost/chocolatevista_api/auth/getUserByEmail.php", {
+        fetch("http://localhost/chocolatevista_api/user/getUserByEmail.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -37,13 +38,14 @@ let RegisterForm = () => {
         .then((response) => response.json())
         .then((data) => {
             if (data.success) {
-                // console.log(data.userData);
+                console.log(data.userData);
 
-                // set user data for context
+                // set user data for context (login user)
                 setUserData({
                     userID: data.userData[0],
-                    email: data.userData[1],
-                    username: data.userData[2],
+                    imgUrl: data.userData[1],
+                    email: data.userData[2],
+                    username: data.userData[3],
                     isLoggedIn: true,
                 });
 
@@ -60,6 +62,14 @@ let RegisterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // set random avatar img
+        const randomAvatar = `/imgs/user/${Math.floor(Math.random() * 12) + 1}.png`;
+        setFormData(prevState => ({
+            ...prevState,
+            imgUrl: randomAvatar
+        }));
+
         // console.log(formData); 
 
         fetch("http://localhost/chocolatevista_api/auth/registerFormSubmit.php", {

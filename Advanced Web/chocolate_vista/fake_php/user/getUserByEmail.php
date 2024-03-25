@@ -23,27 +23,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // === DON'T TOUCH ===
 
 
-
-
 // Get the JSON data sent from the frontend
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'));
 $response = array();
 
-if (isset($data['email'])) {
-    $email = $data["email"];
+if ($data && isset($data->email)) {
+    $email = $data->email;
 
-    $sql = "SELECT * FROM userstest WHERE email = '".$email."'";
+    $sql = "SELECT * FROM user WHERE email = '".$email."'";
     $results = $conn->query($sql);
 
     if (mysqli_num_rows($results) > 0) {
         $row = mysqli_fetch_array($results);
+        $imgUrl = $row["ImgUrl"];
         $hash = $row["Password"];
         $username = $row["Username"];
         $userID = $row["UserID"];
 
         $response['success'] = true;
         $response['message'] = "Login successful";
-        $response['userData'] = [$userID, $email, $username];
+        $response['userData'] = [$userID, $imgUrl, $email, $username];
     }
     else {
         $response['success'] = false;
@@ -51,7 +50,7 @@ if (isset($data['email'])) {
     }
 } else {
     $response['success'] = false;
-    $response['message'] = "Email not provided.|".$email;
+    $response['message'] = "Email not provided";
 }
 
 

@@ -28,17 +28,18 @@ $data = json_decode(file_get_contents('php://input'));
 $response = array();
 
 // Extract the form data
+$imgUrl = $data->imgUrl;
 $email = $data->email;
 $username = $data->username;
 $password = $data->password;
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Perform database operation (insertion, etc.)
-$sql = "INSERT INTO userstest (email, username, password) VALUES ('$email', '$username', '$hashedPassword')";
+$sql = "INSERT INTO user (imgUrl, email, username, password) VALUES ('$imgUrl', '$email', '$username', '$hashedPassword')";
 if ($conn->query($sql) === TRUE) {
     $response["success"] = true;
     $response["message"] = "User registered successfully";
-    $response['userData'] = [$email, $username];
+    $response['userData'] = [$imgUrl, $email, $username];
 } else {
     $response["success"] = false;
     $response["message"] = "Error: " . $conn->error;
