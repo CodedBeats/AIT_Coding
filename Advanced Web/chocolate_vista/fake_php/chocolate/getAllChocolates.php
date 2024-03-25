@@ -59,12 +59,13 @@ if (mysqli_num_rows($results) > 0) {
 
     while($row = mysqli_fetch_assoc($results)) {
         // set just required fields
+        $chocID = $row["ChocolateID"];
         $name = $row["Name"];
         $imgUrl = $row["ImgUrl"];
         $rating = $row["Rating"];
 
         $choc = array();
-        array_push($choc,$name,$imgUrl,$rating);
+        array_push($choc,$chocID,$name,$imgUrl,$rating);
         array_push($chocsArr,$choc);
     }
 
