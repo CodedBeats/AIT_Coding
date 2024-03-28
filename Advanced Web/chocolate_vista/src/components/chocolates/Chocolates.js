@@ -1,5 +1,6 @@
 // dependencies
 import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
 
 // components
 import ChocCard from '../common/ChocCard';
@@ -35,6 +36,10 @@ let Chocolates = () => {
             [filterName]: value
         }));
     };
+
+    const clearFilterValues = () => {
+        setFilterValues({ rating: null, price: null, weight: null });
+    }
 
 
     // Fetch random chocolates on load
@@ -72,6 +77,8 @@ let Chocolates = () => {
             <p>{chocolatesLength} Chocolates Found</p>
             <div>
                 <Filters onFilterChange={handleFilterChange} />
+                <Button onClick={clearFilterValues} variant="outline-warning">X Reset Filters</Button>
+
                 <div className="filters-preview">
                     <p>Value: {filterValues.rating}</p>
                     <p>Value: {filterValues.price}</p>
