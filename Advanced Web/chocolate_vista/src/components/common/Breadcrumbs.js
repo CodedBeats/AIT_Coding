@@ -7,7 +7,6 @@ import "./css/breadcrumbs.css";
 let Breadcrumbs = () => {
     const location = useLocation();
 
-    let currentLink = "";
     const homeCrumb = (
         <div className="crumb" key="home">
             <Link to="/">Home</Link>
@@ -32,7 +31,18 @@ let Breadcrumbs = () => {
             if (!isNaN(parseInt(crumb))) {
                 crumb = ""
                 
-            } else {
+            } 
+            // handle multi word chocolates
+            else if (crumb.includes("%20")) {
+                const newCrumbArr = crumb.split("%20")
+                const newCrumb = newCrumbArr.join(" ");
+                return (
+                    <div className="crumb" key={crumb}>
+                        /{capitalizeFirstLetter(newCrumb)}
+                    </div>
+                );
+            }
+            else {
                 // Don't link the final crumb
                 if (index === array.length - 1) {
                     return (
