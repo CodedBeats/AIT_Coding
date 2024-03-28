@@ -1,0 +1,11 @@
+.search-container {
+
+}
+
+.search-results {
+    position: absolute;
+    z-index: 2;
+}
+.search-results div {
+    background-color: rgb(170, 170, 170);
+}
