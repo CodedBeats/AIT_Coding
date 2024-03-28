@@ -2,6 +2,9 @@
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 
+// components
+import StarRating from "./StarRating";
+
 // style
 import "./css/choc-img.css";
 import "./css/carousel.css";
@@ -18,7 +21,9 @@ let ChocCard = (props) => {
                     <Card.Title>{props.choc.name}</Card.Title>
                 </Link>
                 <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
-                <Card.Text>Stars: {props.choc.rating}</Card.Text>
+                <Card.Text>
+                    <StarRating rating={props.choc.rating} id={props.choc.chocID} static={true} />
+                </Card.Text>
                 <Card.Text>Reviews: 1</Card.Text>
             </Card.Body>
         </Card>

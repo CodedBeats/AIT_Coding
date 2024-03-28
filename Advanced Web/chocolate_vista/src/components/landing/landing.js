@@ -58,7 +58,7 @@ let Landing = () => {
                 <div className="random-chocolates">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <ChocCard chocID={chocolate} choc={chocolate} />
+                            <ChocCard chocID={chocolate} choc={chocolate} static={false} />
                         </div>
                     ))}
                 </div>

@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 // components
 import AdditionalInformation from './AdditionalInformation';
+import StarRating from '../common/StarRating';
 
 // style
 import "./css/chocolate.css"
@@ -122,8 +123,8 @@ let Chocolate = () => {
                     <p>--isFavourited</p>
                 </div>
                 <div className="choc-rating-box">
-                    <p>{chocolate.rating}</p>
-                    <p>--{chocolate.numRatings}</p>
+                    <StarRating rating={chocolate.rating} numRatings={chocolate.numRatings} id={chocolate.chocID} static={false} />
+                    <p># reviews</p>
                 </div>
                 <p>Description</p>
                 <p>{chocolate.description}</p>
