@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react"
+// dependencies
+import { useEffect, useState } from "react";
 
 let useFetch = (url, requestMethod, inputData) => {
     const [data, setData] = useState(null);
@@ -6,6 +7,9 @@ let useFetch = (url, requestMethod, inputData) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        // track if component unmounted
+        let ignore = false; 
+
         const fetchData = async () => {
             setIsPending(true);
             setError(null);
@@ -24,18 +28,30 @@ let useFetch = (url, requestMethod, inputData) => {
                 }
 
                 const jsonData = await response.json();
-                setData(jsonData);
+                if (!ignore) {
+                    setData(jsonData);
+                }
             } catch (error) {
-                setError(error.message);
+                if (!ignore) {
+                    setError(error.message);
+                }
             }
 
-            setIsPending(false);
+            if (!ignore) {
+                setIsPending(false);
+            }
         };
 
-        fetchData();
+        // only fetch data if inputData changed
+        if (inputData !== null) {
+            fetchData();
+        }
+
+        // cleanup (handle unmounting)
+        return () => { ignore = true; };
     }, [url, requestMethod, inputData]);
 
-    return { data, isPending, error}
+    return { data, isPending, error };
 }
 
 export default useFetch;

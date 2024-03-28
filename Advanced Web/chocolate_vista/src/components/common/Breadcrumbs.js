@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 // style
 import "./css/breadcrumbs.css";
 
-
 let Breadcrumbs = () => {
     const location = useLocation();
 
@@ -18,27 +17,45 @@ let Breadcrumbs = () => {
     // first letter of path should be capitalized in breadcrumb display
     let capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    };
 
     // split path into individual paths (exclude blank) and create links
-    const crumbs = location.pathname.split("/")
-        .filter(crumb => crumb !== "")
-        .map(crumb => {
-            currentLink += `/${crumb}`
+    const crumbs = location.pathname
+        .split("/")
+        .filter((crumb) => crumb !== "")
+        .map((crumb, index, array) => {
+            let currentLink = "";
+            
+            currentLink += `/${crumb}`;
 
-            return (
-                <div className="crumb" key={crumb}>/ 
-                    <Link to={currentLink}>{capitalizeFirstLetter(crumb)}</Link>
-                </div>
-            )
+            // Attach "chocolate" before the chocolate ID
+            if (!isNaN(parseInt(crumb))) {
+                crumb = ""
+                
+            } else {
+                // Don't link the final crumb
+                if (index === array.length - 1) {
+                    return (
+                        <div className="crumb" key={crumb}>
+                            /{capitalizeFirstLetter(crumb)}
+                        </div>
+                    );
+                }
+    
+                return (
+                    <div className="crumb" key={crumb}>
+                        /<Link to={currentLink}>{capitalizeFirstLetter(crumb)}</Link>
+                    </div>
+                );
+            }
         });
 
-    
     return (
         <div className="breadcrumbs">
-            {homeCrumb}{crumbs}
+            {homeCrumb}
+            {crumbs}
         </div>
-    )
-}
+    );
+};
 
 export default Breadcrumbs;

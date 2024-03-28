@@ -6,6 +6,10 @@ import { Link } from "react-router-dom"
 
 // components
 import UserContext from '../../UserContext';
+import Search from "../common/Search";
+
+// style
+import "./css/navbar.css";
 
 
 const NavbarComponent = () => {
@@ -37,18 +41,14 @@ const NavbarComponent = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Form inline>
-                        <FormControl
-                            type="text"
-                            placeholder="Search"
-                            className="mr-sm-2"
-                        />
-                    </Form>
-                    <Link to="/chocolates">
-                        <div>Boxed Chocolates</div>
+                    <Search />
+                </Nav>
+                <Nav>
+                    <Link to="/chocolates" className="nav-link">
+                        Boxed Chocolates
                     </Link>
-                    <Link to="/about">
-                        <div>About</div>
+                    <Link to="/about" className="nav-link">
+                        About
                     </Link>
                 </Nav>
                 <Nav>
