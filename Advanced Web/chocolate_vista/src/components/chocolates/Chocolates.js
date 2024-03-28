@@ -50,9 +50,6 @@ let Chocolates = () => {
             }
             else {
                 setNoChocsDisplay(false);
-
-                // read amount of chocolates found
-                setChocolatesLength(Object.keys(chocolatesData).length - 1);
     
                 // read chocolate data
                 const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
@@ -61,6 +58,9 @@ let Chocolates = () => {
                 });
                 // update the chocolates array with fetchedChocolates
                 setChocolates(fetchedChocolates); 
+
+                // read amount of chocolates found
+                setChocolatesLength(Object.keys(chocolates).length);
             }
         }
     }, [chocolatesData, filterValues]);
