@@ -8,7 +8,7 @@ import "./css/carousel.css";
 
 
 let ChocCard = (props) => {
-    const chocLink = `/chocolates/${props.choc.chocID}`;
+    const chocLink = `/chocolates/${props.choc.chocID}/${props.choc.name}`;
 
     return (
         <Card style={{ width: '18rem' }}>

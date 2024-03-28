@@ -1,10 +1,15 @@
 // dependencies
+import { useParams } from 'react-router-dom';
 
-let Chocolate = (props) => {
+let Chocolate = () => {
+    const { id, name } = useParams();
     
     
     return (
-        <div>Chocolate {props.chocID}</div>
+        <>
+        <h2>{name}</h2>
+        <p>ID: {id}</p>
+        </>
     )
 }
 
