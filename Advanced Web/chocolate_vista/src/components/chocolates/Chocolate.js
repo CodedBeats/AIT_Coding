@@ -1,6 +1,15 @@
-import React, { useState, useEffect } from 'react';
+// dependencies
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
+import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
+
+// components
+import AdditionalInformation from './AdditionalInformation';
+
+// style
+import "./css/chocolate.css"
+
 
 let Chocolate = () => {
     const { id: currentId } = useParams();
@@ -23,6 +32,11 @@ let Chocolate = () => {
     });
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
+    const [reviewsVisible, setReviewsVisible] = useState(false);
+
+    const handleTabs = () => {
+        setReviewsVisible(prevState => !prevState);
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -96,12 +110,47 @@ let Chocolate = () => {
     }, [currentId]);
 
     return (
-        <div>
-            {/* Render chocolate details using the chocolate state */}
-            <p>{chocolate.name}</p>
-            <p>id: {chocolate.chocID}</p>
-            <p>{chocolate.description}</p>
+        <>
+        <div className="choc-container">
+            <div className="choc-img-container">
+                <Image src={chocolate.imgUrl} className="choc-img" rounded />
+            </div>
+
+            <div className="choc-details-container">
+                <div className="choc-title-box">
+                    <p>{chocolate.name}</p>
+                    <p>--isFavourited</p>
+                </div>
+                <div className="choc-rating-box">
+                    <p>{chocolate.rating}</p>
+                    <p>--{chocolate.numRatings}</p>
+                </div>
+                <p>Description</p>
+                <p>{chocolate.description}</p>
+            </div>
+
+            <div className="details-and-reviews-container">
+                <Button 
+                    variant="outline-secondary" 
+                    onClick={handleTabs}
+                    disabled={!reviewsVisible}
+                >Additional Info</Button>
+                <Button 
+                    variant="outline-secondary" 
+                    onClick={handleTabs}
+                    disabled={reviewsVisible}
+                >Reviews</Button>
+
+                {!reviewsVisible ? 
+                    <div className="additional-details-container">
+                        <AdditionalInformation chocolate={chocolate} />
+                    </div>
+                    :
+                    <div>reviews</div>
+                }
+            </div>
         </div>
+        </>
     );
 }
 
