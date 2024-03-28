@@ -1,5 +1,6 @@
 // dependencies
 import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
 
 // components
 import ChocCard from '../common/ChocCard';
@@ -36,6 +37,10 @@ let Chocolates = () => {
         }));
     };
 
+    const clearFilterValues = () => {
+        setFilterValues({ rating: null, price: null, weight: null });
+    }
+
 
     // Fetch random chocolates on load
     useEffect(() => {
@@ -53,8 +58,8 @@ let Chocolates = () => {
     
                 // read chocolate data
                 const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
-                    const [chocID, name, imgUrl, rating] = chocData;
-                    return { chocID, name, imgUrl, rating };
+                    const [chocID, name, imgUrl, rating, numRatings] = chocData;
+                    return { chocID, name, imgUrl, rating, numRatings };
                 });
                 // update the chocolates array with fetchedChocolates
                 setChocolates(fetchedChocolates); 
@@ -72,6 +77,8 @@ let Chocolates = () => {
             <p>{chocolatesLength} Chocolates Found</p>
             <div>
                 <Filters onFilterChange={handleFilterChange} />
+                <Button onClick={clearFilterValues} variant="outline-warning">X Reset Filters</Button>
+
                 <div className="filters-preview">
                     <p>Value: {filterValues.rating}</p>
                     <p>Value: {filterValues.price}</p>
@@ -83,7 +90,7 @@ let Chocolates = () => {
                 : <div className="all-chocolates-container">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <ChocCard chocID={chocolate} choc={chocolate} />
+                            <ChocCard chocID={chocolate} choc={chocolate} static={false} />
                         </div>
                     ))}
                 </div>

@@ -14,7 +14,6 @@ import "./css/user-info.css";
 
 let UserInfo = () => {
     const {userData: user, setUserData} = useContext(UserContext);
-
     const [modalShow, setModalShow] = useState(false);
 
     

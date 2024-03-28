@@ -1,0 +1,17 @@
+.star-btn {
+    padding: 0;
+}
+
+.star-icon {
+    font-size: 2rem;
+    color: #ffc107;
+    transition: color 0.2s;
+}
+
+.star-icon.filled {
+    color: #f7d516;
+}
+
+.star-icon:hover {
+    color: #f7d516;
+}

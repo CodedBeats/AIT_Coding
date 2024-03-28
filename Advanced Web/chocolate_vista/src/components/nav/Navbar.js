@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
 // components
 import UserContext from '../../UserContext';
@@ -13,7 +13,7 @@ import "./css/navbar.css";
 
 
 const NavbarComponent = () => {
-
+    const navigate = useNavigate();
     const {userData, setUserData} = useContext(UserContext);
 
     const handleLogout = () => {
@@ -24,6 +24,7 @@ const NavbarComponent = () => {
             username: "",
             isLoggedIn: false,
         });
+        navigate("/");
     }
 
     return (
