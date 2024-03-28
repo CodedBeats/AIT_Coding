@@ -37,6 +37,7 @@ if (isset($data->id)) {
         $row = mysqli_fetch_array($results);
         $chocID = $row["ChocolateID"];
         $name = $row["Name"];
+        $description = $row["Description"];
         $imgUrl = $row["ImgUrl"];
         $price = $row["Price"];
         $rating = $row["Rating"];
@@ -56,6 +57,7 @@ if (isset($data->id)) {
         $response['chocData'] = [
             $chocID, 
             $name, 
+            $description,
             $imgUrl, 
             $price,
             $rating,

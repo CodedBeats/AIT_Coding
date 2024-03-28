@@ -7,6 +7,7 @@ let Chocolate = () => {
     const [chocolate, setChocolate] = useState({
         chocID: "",
         name: "",
+        description: "",
         imgUrl: "",
         price: "",
         rating: "",
@@ -49,6 +50,7 @@ let Chocolate = () => {
                 const [
                     chocID,
                     name,
+                    description,
                     imgUrl,
                     price,
                     rating,
@@ -66,6 +68,7 @@ let Chocolate = () => {
                 setChocolate({
                     chocID,
                     name,
+                    description,
                     imgUrl,
                     price,
                     rating,
@@ -97,6 +100,7 @@ let Chocolate = () => {
             {/* Render chocolate details using the chocolate state */}
             <p>{chocolate.name}</p>
             <p>id: {chocolate.chocID}</p>
+            <p>{chocolate.description}</p>
         </div>
     );
 }
