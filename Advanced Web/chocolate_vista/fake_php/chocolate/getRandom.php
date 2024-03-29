@@ -38,9 +38,10 @@ if (mysqli_num_rows($results) > 0) {
         $name = $row["Name"];
         $imgUrl = $row["ImgUrl"];
         $rating = $row["Rating"];
+        $numRatings = $row["NumRatings"];
 
         $randomChoc = array();
-        array_push($randomChoc,$chocID,$name,$imgUrl,$rating);
+        array_push($randomChoc,$chocID,$name,$imgUrl,$rating,$numRatings);
         array_push($randomChocsArr,$randomChoc);
     }
 

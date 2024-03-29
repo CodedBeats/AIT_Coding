@@ -52,18 +52,15 @@ const StarRating = (props) => {
     // set rating on load
     useEffect(() => {
         setRatingAvg((props.rating) / props.numRatings);
+        // console.log(props.rating,props.numRatings)
     }, [ratingAvg, props.rating, props.numRatings]);
 
 
     return (
-        <div>
+        <div className="stars-box">
             {props.static || hasRated ? (
                 [1, 2, 3, 4, 5].map((value) => (
-                    <Button
-                        key={value}
-                        variant="link"
-                        className="star-btn"
-                    >
+                    <div className="star-btn">
                         <FontAwesomeIcon
                             icon={
                                 value <= ratingAvg
@@ -74,7 +71,7 @@ const StarRating = (props) => {
                                 value <= ratingAvg ? "filled" : ""
                             }`}
                         />
-                    </Button>
+                    </div>
                 ))
             ) : (
                 [1, 2, 3, 4, 5].map((value) => (

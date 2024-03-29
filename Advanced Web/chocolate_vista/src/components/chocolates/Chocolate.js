@@ -125,7 +125,6 @@ let Chocolate = () => {
                 </div>
                 <div className="choc-rating-box">
                     <StarRating rating={chocolate.rating} numRatings={chocolate.numRatings} id={chocolate.chocID} static={false} />
-                    <p># reviews</p>
                 </div>
                 <p>Description</p>
                 <p>{chocolate.description}</p>
