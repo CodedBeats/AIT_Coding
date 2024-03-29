@@ -44,6 +44,7 @@ if ($data) {
         if ($reviewResults->num_rows > 0) {
             $reviewsArr = array();
             while ($row = $reviewResults->fetch_assoc()) {
+                $reviewID = $row["ReviewID"];
                 $text = $row["Text"];
                 $userID = $row["UserID"];
 
@@ -63,7 +64,7 @@ if ($data) {
                     // Construct review array
                     $review = array();
                     // append all arrays together
-                    array_push($review,$text,$imgUrl,$username);
+                    array_push($review,$reviewID,$text,$imgUrl,$username);
                     array_push($reviewsArr,$review);
                 }
             }

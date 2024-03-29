@@ -1,5 +1,7 @@
 // dependencies
 import Image from 'react-bootstrap/Image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 // style
 import "./css/review-card.css";
@@ -11,7 +13,12 @@ let ReviewCard = (props) => {
                 <Image src={props.review.imgUrl} alt="Logo" className="review-user-img" rounded />
             </div>
             <div className="review-title">{props.review.username}</div>
-            <div className="review-text">{props.review.text}</div>
+            <div className="review-text">
+                {props.review.text}
+                <button className="delete-btn" onClick={() => props.onClick(props.review.reviewID)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </button>
+            </div>
         </div>
     );
 }

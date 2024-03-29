@@ -22,6 +22,7 @@ const ChocolateReviews = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [inputText, setInputText] = useState("");
     const [reviewAdded, setReviewAdded] = useState(false);
+    const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
@@ -51,8 +52,8 @@ const ChocolateReviews = (props) => {
                 if (jsonData.success) {
                     // read reviews data
                     const fetchedReviews = jsonData.reviewsData.map(reviewData => {
-                        const [text, imgUrl, username] = reviewData;
-                        return { text, imgUrl, username };
+                        const [reviewID, text, imgUrl, username] = reviewData;
+                        return { reviewID, text, imgUrl, username };
                     });
                     // update the reviews array with fetchedReviews
                     setReviews(fetchedReviews);
@@ -71,7 +72,7 @@ const ChocolateReviews = (props) => {
 
         fetchData();
         
-    }, [props.chocID, reviewAdded]);
+    }, [props.chocID, reviewAdded, reviewRemoved]);
 
 
     const toggleCreateReview = () => {
@@ -102,6 +103,28 @@ const ChocolateReviews = (props) => {
                 setIsOpen(prevState => !prevState);
                 setCreatingReview(prevState => !prevState);
                 setReviewAdded(prevState => !prevState);
+                
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+
+    const handleDelete = (reviewID) => {
+        fetch("http://localhost/chocolatevista_api/review/deleteReview.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    reviewID: reviewID
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.message);
+
+                setReviewRemoved(prevState => !prevState);
                 
             })
             .catch((error) => {
@@ -141,7 +164,7 @@ const ChocolateReviews = (props) => {
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => (
                     <div key={index}>
-                        <ReviewCard review={review} />
+                        <ReviewCard review={review} onClick={(value) => handleDelete(value)} />
                     </div>
                 ))
             ) : (
