@@ -1,11 +1,9 @@
 // dependencies
 import { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
 
 // components
 import ReviewCard from "../common/ReviewCard";
-
-// hooks
-import useFetch from '../../hooks/useFetch';
 
 // style
 
@@ -38,13 +36,19 @@ const ChocolateReviews = (props) => {
                 }
 
                 const jsonData = await response.json();
-                // read reviews data
-                const fetchedReviews = jsonData.reviewsData.map(reviewData => {
-                    const [text, imgUrl, username] = reviewData;
-                    return { text, imgUrl, username };
-                });
-                // update the reviews array with fetchedReviews
-                setReviews(fetchedReviews);
+
+                if (response.success) {
+                    // read reviews data
+                    const fetchedReviews = jsonData.reviewsData.map(reviewData => {
+                        const [text, imgUrl, username] = reviewData;
+                        return { text, imgUrl, username };
+                    });
+                    // update the reviews array with fetchedReviews
+                    setReviews(fetchedReviews);
+                }
+                else {
+                    setNoReviewsDisplay(true);
+                }
                 
             } catch (error) {
                 setError(error.message);
@@ -61,11 +65,22 @@ const ChocolateReviews = (props) => {
 
     return (
         <div>
-            {reviews.map((review, index) => (
-                <div key={index}>
-                    <ReviewCard review={review} />
+            <div className="create-review-container">
+                <Button variant="success">Create Review +</Button>
+            </div>
+            <div className="review-cards-container">
+            {!noReviewsDisplay ? (
+                reviews.map((review, index) => (
+                    <div key={index}>
+                        <ReviewCard review={review} />
+                    </div>
+                ))
+            ) : (
+                <div>
+                    This chocolate currently has no reviews
                 </div>
-            ))}
+            )}
+            </div>
         </div>
     );
 };
