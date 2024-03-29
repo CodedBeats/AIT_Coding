@@ -9,19 +9,16 @@ import { Button } from "react-bootstrap";
 import "./css/star-rating.css";
 
 const StarRating = (props) => {
-    const [rating, setRating] = useState(0);
+    const [ratingAvg, setRatingAvg] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
+    const [hasRated, setHasRated] = useState(false);
 
     const handleClick = (value) => {
-        console.log(rating);
+        console.log("clicked");
+        const newRating = (parseInt(props.rating)) + (parseInt(value));
+        console.log(`numRatigs:${props.numRatings}, rating:${props.rating}, ratingAvg:${ratingAvg}, newRating:${newRating}`)
 
-        // Calculate the new rating
-        let newRating = ((rating * props.numRatings) + value) / (props.numRatings + 1);
-        newRating = Math.min(newRating, 5); // Cap the rating at 5
-
-        // Update the rating state
-        setRating(newRating);
-        console.log(newRating);
+        setHasRated(true);
 
         // update choc's rating
         fetch("http://localhost/chocolatevista_api/chocolate/updateRating.php", {
@@ -54,30 +51,27 @@ const StarRating = (props) => {
 
     // set rating on load
     useEffect(() => {
-        setRating(props.rating);
-    }, [props.rating]);
+        setRatingAvg((props.rating) / props.numRatings);
+        // console.log(props.rating,props.numRatings)
+    }, [ratingAvg, props.rating, props.numRatings]);
 
 
     return (
-        <div>
-            {props.static ? (
+        <div className="stars-box">
+            {props.static || hasRated ? (
                 [1, 2, 3, 4, 5].map((value) => (
-                    <Button
-                        key={value}
-                        variant="link"
-                        className="star-btn"
-                    >
+                    <div className="star-btn">
                         <FontAwesomeIcon
                             icon={
-                                value <= rating
+                                value <= ratingAvg
                                     ? solidStar
                                     : regularStar
                             }
                             className={`star-icon ${
-                                value <= rating ? "filled" : ""
+                                value <= ratingAvg ? "filled" : ""
                             }`}
                         />
-                    </Button>
+                    </div>
                 ))
             ) : (
                 [1, 2, 3, 4, 5].map((value) => (
@@ -91,12 +85,12 @@ const StarRating = (props) => {
                     >
                         <FontAwesomeIcon
                             icon={
-                                value <= (hoverRating || rating)
+                                value <= (hoverRating || ratingAvg)
                                     ? solidStar
                                     : regularStar
                             }
                             className={`star-icon ${
-                                value <= (hoverRating || rating) ? "filled" : ""
+                                value <= (hoverRating || ratingAvg) ? "filled" : ""
                             }`}
                         />
                     </Button>

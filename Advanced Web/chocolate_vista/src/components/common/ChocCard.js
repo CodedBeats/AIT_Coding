@@ -22,7 +22,7 @@ let ChocCard = (props) => {
                 </Link>
                 <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
                 <Card.Text>
-                    <StarRating rating={props.choc.rating} id={props.choc.chocID} static={true} />
+                    <StarRating rating={props.choc.rating} numRatings={props.choc.numRatings} id={props.choc.chocID} static={true} />
                 </Card.Text>
                 <Card.Text>Reviews: 1</Card.Text>
             </Card.Body>

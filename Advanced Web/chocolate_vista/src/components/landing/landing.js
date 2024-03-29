@@ -35,8 +35,8 @@ let Landing = () => {
         // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
         if (chocolatesData && chocolatesData.chocsData) { 
             const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
-                const [chocID, name, imgUrl, rating] = chocData;
-                return { chocID, name, imgUrl, rating };
+                const [chocID, name, imgUrl, rating, numRatings] = chocData;
+                return { chocID, name, imgUrl, rating, numRatings };
             });
             // update the chocolates state with the fetched chocolates
             setChocolates(fetchedChocolates); 

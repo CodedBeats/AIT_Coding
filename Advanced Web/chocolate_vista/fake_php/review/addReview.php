@@ -22,34 +22,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 // === DON'T TOUCH ===
 
-$sql = "SELECT * FROM chocolate ORDER BY RAND() LIMIT 5";
-$results = $conn->query($sql);
 
-$randomChocsArr = array();
+// Get the JSON data sent from the frontend
+$data = json_decode(file_get_contents('php://input'));
 $response = array();
 
-if (mysqli_num_rows($results) > 0) {
-    $response['success'] = true;
-    $response['message'] = "random chocolates found";
+if ($data && isset($data->userID) && isset($data->chocID) && isset($data->reviewText)) {
+    // get input user and review data
+    $userID = $data->userID;
+    $chocID = $data->chocID;
+    $reviewText = $data->reviewText;
 
-    while($row = mysqli_fetch_assoc($results)) {
-        // set just required fields
-        $chocID = $row["ChocolateID"];
-        $name = $row["Name"];
-        $imgUrl = $row["ImgUrl"];
-        $rating = $row["Rating"];
-        $numRatings = $row["NumRatings"];
+    // sql query
+    $sql = "INSERT INTO review (UserID, ChocolateID, `Text`) VALUES ('".$userID."', '".$chocID."', '".$reviewText."')";
 
-        $randomChoc = array();
-        array_push($randomChoc,$chocID,$name,$imgUrl,$rating,$numRatings);
-        array_push($randomChocsArr,$randomChoc);
+    // Execute the query
+    if ($conn->query($sql) === TRUE) {
+        $response['success'] = true;
+        $response['message'] = "created review successfully";
     }
-
-    $response['chocsData'] = $randomChocsArr;
+    else {
+        $response['success'] = false;
+        $response['message'] = "Couldn't create review: ". mysqli_error($conn);
+    }
 }
 else {
     $response['success'] = false;
-    $response['message'] = "couldn't find random chocolates";
+    $response['message'] = "No data provided";
 }
 
 echo json_encode($response);
