@@ -1,6 +1,5 @@
 
-
-let AdditionalInformation = (props) => {
+const AdditionalInformation = (props) => {
     // extract array type values
     const ingredientsArr = props.chocolate.ingredients.split(",");
     const flavorsArr = props.chocolate.flavors.split(",");

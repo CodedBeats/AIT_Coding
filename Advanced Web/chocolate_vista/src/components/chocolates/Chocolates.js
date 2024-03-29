@@ -42,9 +42,9 @@ let Chocolates = () => {
     }
 
 
-    // Fetch random chocolates on load
+    // Fetch chocolates on load
     useEffect(() => {
-        // Check if chocolatesData and chocolatesData.chocsData are not null/undefined
+        // Check for chocolatesData
         if (chocolatesData) { 
             // clear and display if no chocolates
             if (!chocolatesData.success) {

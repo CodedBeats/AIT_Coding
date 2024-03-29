@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 // components
 import AdditionalInformation from './AdditionalInformation';
+import ChocolateReviews from './ChocolateReviews';
 import StarRating from '../common/StarRating';
 
 // style
@@ -147,7 +148,9 @@ let Chocolate = () => {
                         <AdditionalInformation chocolate={chocolate} />
                     </div>
                     :
-                    <div>reviews</div>
+                    <div>
+                        <ChocolateReviews chocID={chocolate.chocID} />
+                    </div>
                 }
             </div>
         </div>
