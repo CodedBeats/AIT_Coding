@@ -37,7 +37,7 @@ const ChocolateReviews = (props) => {
 
                 const jsonData = await response.json();
 
-                if (response.success) {
+                if (jsonData.success) {
                     // read reviews data
                     const fetchedReviews = jsonData.reviewsData.map(reviewData => {
                         const [text, imgUrl, username] = reviewData;
@@ -45,9 +45,11 @@ const ChocolateReviews = (props) => {
                     });
                     // update the reviews array with fetchedReviews
                     setReviews(fetchedReviews);
+                    console.log("reviews set")
                 }
                 else {
                     setNoReviewsDisplay(true);
+                    console.log("reviews not set")
                 }
                 
             } catch (error) {
