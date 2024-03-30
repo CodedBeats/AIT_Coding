@@ -95,11 +95,6 @@ let UserReviews = () => {
             });
     }
 
-    const handleEdit = (review) => {
-        const reviewLink = `/chocolates/${review.chocID}/${review.name}`
-        navigate(reviewLink);
-    }
-
     // const chocLink = `/chocolates/${props.choc.chocID}/${props.choc.name}`;
     return (
         <div className="user-reviews">
