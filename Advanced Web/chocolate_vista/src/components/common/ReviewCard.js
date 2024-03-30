@@ -13,19 +13,23 @@ let ReviewCard = (props) => {
             <div className="review-user-img-container">
                 <Image src={props.review.imgUrl} alt="Logo" className="review-user-img" rounded />
             </div>
-            <div className="review-title">{props.review.username}</div>
+            <div className="review-title">
+                {props.review.name}
+            </div>
             <div className="review-text">
                 {props.review.text}
                 {/* can only delete and edit if usernames match */}
                 { props.canEdit &&
                 <div>
-                    <button className="delete-btn" onClick={() => props.onClickEdit(props.review.reviewID)}>
-                        { !props.currentlyEditing ?
-                            <FontAwesomeIcon icon={faPencilAlt} />
-                        :
-                            <div>editing...</div>
-                        }
-                    </button>
+                    { props.chocolateReviews &&
+                        <button className="delete-btn" onClick={() => props.onClickEdit(props.review.reviewID)}>
+                            { !props.currentlyEditing ?
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            :
+                                <div>editing...</div>
+                            }
+                        </button>
+                    }
                     <button className="delete-btn" onClick={() => props.onClickDelete(props.review.reviewID)}>
                         <FontAwesomeIcon icon={faTrash} />
                     </button>

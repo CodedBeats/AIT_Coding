@@ -56,8 +56,8 @@ const ChocolateReviews = (props) => {
                 if (jsonData.success) {
                     // read reviews data
                     const fetchedReviews = jsonData.reviewsData.map(reviewData => {
-                        const [reviewID, text, imgUrl, username] = reviewData;
-                        return { reviewID, text, imgUrl, username };
+                        const [reviewID, text, imgUrl, name] = reviewData;
+                        return { reviewID, text, imgUrl, name };
                     });
                     // update the reviews array with fetchedReviews
                     setReviews(fetchedReviews);
@@ -213,8 +213,9 @@ const ChocolateReviews = (props) => {
                     <div key={index}>
                         <ReviewCard 
                             review={review} 
+                            chocolateReviews={true}
                             currentlyEditing={currentlyEditing}
-                            canEdit={review.username === user.username ? true : false} 
+                            canEdit={review.name === user.username ? true : false} 
                             onClickEdit={(id) => handleEdit(id)} 
                             onClickDelete={(id) => handleDelete(id)} 
                         />
