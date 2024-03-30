@@ -16,6 +16,8 @@
 }
 
 .about-title {
+    font-size: 4em;
+    font-weight: bold;
     justify-self: center;
     align-self: end;
     grid-area: about-title;

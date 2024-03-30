@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 // style
 import "./css/search.css";
@@ -66,12 +68,16 @@ const Search = () => {
 
     return (
         <div className="search-container">
-            <input
-                type="text"
-                value={searchQuery}
-                onChange={handleInputChange}
-                placeholder="Search by name..."
-            />
+            <div className="search-wrapper">
+                <input
+                    className="search-input"
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                    placeholder="Search by name..."
+                />
+                <FontAwesomeIcon icon={faSearch} className="search-icon" />
+            </div>
             <ListGroup className="search-results">
                 {!noChocsDisplay ?
                 chocolates.map((choc) => (

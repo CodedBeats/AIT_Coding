@@ -19,10 +19,13 @@ let Chocolates = () => {
     const [chocolatesLength, setChocolatesLength] = useState(0);
     const [noChocsDisplay, setNoChocsDisplay] = useState(false);
     const [filterValues, setFilterValues] = useState({
-        rating: null,
+        numRatingsFilter: null,
         price: null,
-        weight: null,
+        weight: null
     });
+    const [numRatingsFilterVal, setNumRatingsFilterVal] = useState("");
+    const [priceVal, setPriceVal] = useState("");
+    const [weightVal, setWeightVal] = useState("");
     
     const { data: chocolatesData, isPending, error } = useFetch(
         "http://localhost/chocolatevista_api/chocolate/getAllChocolates.php",
@@ -38,52 +41,48 @@ let Chocolates = () => {
     };
 
     const clearFilterValues = () => {
-        setFilterValues({ rating: null, price: null, weight: null });
+        setFilterValues({ numRatingsFilter: null, price: null, weight: null });
+        setNumRatingsFilterVal("");
+        setPriceVal("");
+        setWeightVal("");
     }
 
 
-    // Fetch chocolates on load
+    // Fetch chocolates on load or filters change
     useEffect(() => {
-        // Check for chocolatesData
         if (chocolatesData) { 
-            // clear and display if no chocolates
             if (!chocolatesData.success) {
                 setNoChocsDisplay(true);
-                
                 setChocolatesLength(0);
                 setChocolates([]);
-            }
-            else {
+            } else {
                 setNoChocsDisplay(false);
-    
-                // read chocolate data
                 const fetchedChocolates = chocolatesData.chocsData.map(chocData => {
                     const [chocID, name, imgUrl, rating, numRatings] = chocData;
                     return { chocID, name, imgUrl, rating, numRatings };
                 });
-                // update the chocolates array with fetchedChocolates
-                setChocolates(fetchedChocolates); 
-
-                // read amount of chocolates found
-                setChocolatesLength(Object.keys(chocolates).length);
+                setChocolates(fetchedChocolates);
+                setChocolatesLength(chocolates.length);
             }
         }
-    }, [chocolatesData, filterValues]);
+    }, [chocolatesData, filterValues, chocolates.length]);
 
     
     return (
         <>
         <div>
-            <p>{chocolatesLength} Chocolates Found</p>
+            <p className="chocolates-found">{chocolatesLength} Chocolates Found</p>
             <div>
-                <Filters onFilterChange={handleFilterChange} />
+                <Filters 
+                    onFilterChange={handleFilterChange} 
+                    numRatingsVal={numRatingsFilterVal}
+                    setNumRatingsVal={setNumRatingsFilterVal}
+                    priceVal={priceVal}
+                    setPriceVal={setPriceVal}
+                    weightVal={weightVal}
+                    setWeightVal={setWeightVal}
+                />
                 <Button onClick={clearFilterValues} variant="outline-warning">X Reset Filters</Button>
-
-                <div className="filters-preview">
-                    <p>Value: {filterValues.rating}</p>
-                    <p>Value: {filterValues.price}</p>
-                    <p>Value: {filterValues.weight}</p>
-                </div>
             </div>
             {noChocsDisplay 
                 ? <div>No Chocolates Found</div>

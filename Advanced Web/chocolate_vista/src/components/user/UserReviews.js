@@ -1,15 +1,13 @@
 // dependencies
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
 
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
 
 // style
-import "./css/user-info.css";
+import "./css/user-review.css";
 
 
 let UserReviews = () => {
@@ -104,13 +102,15 @@ let UserReviews = () => {
                     const currentReviewLink = `/chocolates/${review.chocID}/${review.name}`;
                     return (
                         <div key={index}>
-                            <Link to={currentReviewLink}>
+                            <div className="review-card-link">
                                 <ReviewCard 
                                     review={review} 
                                     canEdit={true} 
                                     onClickDelete={(id) => handleDelete(id)} 
+                                    isLinked={true}
+                                    chocLink={currentReviewLink}
                                 />
-                            </Link>
+                            </div>
                         </div>
                     );
                 })

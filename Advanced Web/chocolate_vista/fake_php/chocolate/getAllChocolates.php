@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 $data = json_decode(file_get_contents('php://input'));
 
 // Receive filter vals
-$rating = isset($data->rating) ? intval($data->rating) : null;
+$numRatingsFilter = isset($data->numRatingsFilter) ? intval($data->numRatingsFilter) : null;
 $price = isset($data->price) ? floatval($data->price) : null;
 $weight = isset($data->weight) ? floatval($data->weight) : null;
 
@@ -36,8 +36,8 @@ $weight = isset($data->weight) ? floatval($data->weight) : null;
 $sql = "SELECT * FROM chocolate WHERE 1=1";
 
 // Add filters to query dynamically
-if ($rating !== null) {
-    $sql .= " AND Rating >= $rating";
+if ($numRatingsFilter !== null) {
+    $sql .= " AND NumRatings > $numRatingsFilter";
 }
 
 if ($price !== null) {
@@ -45,7 +45,7 @@ if ($price !== null) {
 }
 
 if ($weight !== null) {
-    $sql .= " AND Weight >= $weight";
+    $sql .= " AND Weight > $weight";
 }
 
 $results = $conn->query($sql);

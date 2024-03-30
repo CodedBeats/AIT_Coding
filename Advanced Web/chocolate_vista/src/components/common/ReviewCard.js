@@ -1,5 +1,6 @@
 // dependencies
 import Image from 'react-bootstrap/Image';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +15,13 @@ let ReviewCard = (props) => {
                 <Image src={props.review.imgUrl} alt="Logo" className="review-user-img" rounded />
             </div>
             <div className="review-title">
-                {props.review.name}
+                { props.isLinked ?
+                    <Link to={props.chocLink}>
+                        {props.review.name}
+                    </Link>
+                :
+                    props.review.name
+                }
             </div>
             <div className="review-text">
                 {props.review.text}

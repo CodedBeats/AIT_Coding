@@ -25,8 +25,14 @@ let Landing = () => {
 
     // imgs for carousel
     const carouselImage = [
-        "/imgs/choc1.jpg", 
-        "/imgs/choc2.jpg",
+        "/imgs/carousel/1.png", 
+        "/imgs/carousel/2.png", 
+        "/imgs/carousel/3.png", 
+        "/imgs/carousel/4.png", 
+        "/imgs/carousel/5.png", 
+        "/imgs/carousel/6.png", 
+        "/imgs/carousel/7.png", 
+        "/imgs/carousel/8.png", 
     ];
 
 
@@ -48,9 +54,11 @@ let Landing = () => {
         <div className="landing-page">
             <div className="carousel-section-container">
                 <ImageCarousel images={carouselImage} imageClass="landing-carousel-image" />
-                <Link to="/chocolates">
-                    <h4>All Boxed Chocolates</h4>
-                </Link>
+                <div className="chocolates-link-container">
+                    <Link to="/chocolates" className="chocolates-link">
+                        <h4 className="chocolates-link-text">All Chocolates</h4>
+                    </Link>
+                </div>
             </div>
 
             <div className="random-chocolates-container">

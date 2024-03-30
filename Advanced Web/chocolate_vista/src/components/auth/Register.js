@@ -135,12 +135,15 @@ let RegisterForm = () => {
         </Form>
 
         <Button variant="primary" type="button" onClick={handleSubmit}>
-            Submit
+            REGISTER
         </Button>
 
-        <Link to="/login">
-            <Button variant="outline-success">Login</Button>
-        </Link>
+        <div>
+            Already have an account? 
+            <Link to="/login">
+                <Button variant="outline-success">Login</Button>
+            </Link>
+        </div>
         </>
     );
 }

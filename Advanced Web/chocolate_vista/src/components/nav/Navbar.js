@@ -28,25 +28,26 @@ const NavbarComponent = () => {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Link to="/">
+        <Navbar expand="lg" className="navbar-container">
+            <Link to="/" className="logo-img-link">
                 <Image 
+                    className="logo-img"
                     src="/imgs/logo.png"
                     width="50"
                     height="50"
                     alt="Logo"
                     rounded 
                 />
-                ChocolateVista
+                <span className="logo-title">ChocolateVista</span>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav" className="nav-right">
                 <Nav className="mr-auto">
                     <Search />
                 </Nav>
                 <Nav>
                     <Link to="/chocolates" className="nav-link">
-                        Boxed Chocolates
+                        Chocolates
                     </Link>
                     <Link to="/about" className="nav-link">
                         About
@@ -54,22 +55,15 @@ const NavbarComponent = () => {
                 </Nav>
                 <Nav>
                     {userData.isLoggedIn ? (
-                        <Nav>
-                            <Image 
-                                src={userData.imgUrl}
-                                width="50"
-                                height="50"
-                                alt="Logo"
-                                rounded 
-                            />
-                            <Link to="/profile">
-                                <Button variant="outline-success">Profile</Button>
-                            </Link>
-                            <Button variant="danger" onClick={handleLogout}>Logout</Button>
-                        </Nav>
+                        <div>
+                        <Link to="/profile">
+                            <Button variant="dark">Profile</Button>
+                        </Link>
+                        <Button variant="danger" className="logout-btn" onClick={handleLogout}>Logout</Button>
+                        </div>
                     ) : (
                         <Link to="/register">
-                            <Button variant="outline-success">Register</Button>
+                            <Button variant="dark">Register</Button>
                         </Link>
                     )}
                 </Nav>
