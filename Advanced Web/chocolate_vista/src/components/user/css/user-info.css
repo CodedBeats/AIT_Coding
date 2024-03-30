@@ -41,6 +41,6 @@
 
 .update-container {
     justify-self: center;
-    align-self: center;
+    align-self: start;
     grid-area: update-container;
 }

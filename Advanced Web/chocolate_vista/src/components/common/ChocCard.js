@@ -24,7 +24,6 @@ let ChocCard = (props) => {
                 <Card.Text>
                     <StarRating rating={props.choc.rating} numRatings={props.choc.numRatings} id={props.choc.chocID} static={true} />
                 </Card.Text>
-                <Card.Text>Reviews: 1</Card.Text>
             </Card.Body>
         </Card>
     );

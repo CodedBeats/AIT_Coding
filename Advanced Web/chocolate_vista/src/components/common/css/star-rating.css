@@ -1,21 +1,20 @@
 .stars-box {
-    display: flex;
+    /* display: flex; */
 }
 
 .star-btn {
-    padding: 0;
+    padding: 0 !important;
+}
+.static-star-btn {
+    cursor: default !important;
 }
 
 .star-icon {
-    font-size: 2rem;
+    font-size: 1.9rem;
     color: #ffc107;
     transition: color 0.2s;
 }
 
 .star-icon.filled {
-    color: #f7d516;
-}
-
-.star-icon:hover {
     color: #f7d516;
 }

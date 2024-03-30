@@ -12,13 +12,12 @@ const StarRating = (props) => {
     const [ratingAvg, setRatingAvg] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
     const [hasRated, setHasRated] = useState(false);
+    const [ratingInstance, setRatingInstance] = useState(0)
+    const [numRatingsInstance, setNumRatingsInstance] = useState(0);
 
     const handleClick = (value) => {
-        console.log("clicked");
         const newRating = (parseInt(props.rating)) + (parseInt(value));
         console.log(`numRatigs:${props.numRatings}, rating:${props.rating}, ratingAvg:${ratingAvg}, newRating:${newRating}`)
-
-        setHasRated(true);
 
         // update choc's rating
         fetch("http://localhost/chocolatevista_api/chocolate/updateRating.php", {
@@ -34,6 +33,10 @@ const StarRating = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.message);
+                setHasRated(true);
+                // update rating on front end to update display
+                setNumRatingsInstance(parseInt(numRatingsInstance) + parseInt(1));
+                setRatingInstance(parseInt(props.rating) + parseInt(value));
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -51,16 +54,27 @@ const StarRating = (props) => {
 
     // set rating on load
     useEffect(() => {
-        setRatingAvg((props.rating) / props.numRatings);
-        // console.log(props.rating,props.numRatings)
-    }, [ratingAvg, props.rating, props.numRatings]);
+        if (hasRated) {
+            setRatingAvg(ratingInstance / numRatingsInstance);
+            // setNumRatingsInstance(numRatingsInstance);
+        }
+        else {
+            setRatingAvg((props.rating) / props.numRatings);
+            setNumRatingsInstance(props.numRatings);
+        }
+    }, [ratingAvg, props.rating, props.numRatings, hasRated]);
 
 
     return (
-        <div className="stars-box">
-            {props.static || hasRated ? (
-                [1, 2, 3, 4, 5].map((value) => (
-                    <div className="star-btn">
+    <div className="stars-box">
+        {props.static || hasRated ? (
+            <>
+                {[1, 2, 3, 4, 5].map((value) => (
+                    <Button
+                        key={value}
+                        variant="link"
+                        className="star-btn static-star-btn"
+                    >
                         <FontAwesomeIcon
                             icon={
                                 value <= ratingAvg
@@ -71,10 +85,13 @@ const StarRating = (props) => {
                                 value <= ratingAvg ? "filled" : ""
                             }`}
                         />
-                    </div>
-                ))
-            ) : (
-                [1, 2, 3, 4, 5].map((value) => (
+                    </Button>
+                ))}
+                <p>Ratings: {numRatingsInstance}</p>
+            </>
+        ) : (
+            <>
+                {[1, 2, 3, 4, 5].map((value) => (
                     <Button
                         key={value}
                         onClick={() => handleClick(value)}
@@ -94,9 +111,11 @@ const StarRating = (props) => {
                             }`}
                         />
                     </Button>
-                ))
-            )}
-        </div>
+                ))}
+                <p>Ratings: {numRatingsInstance}</p>
+            </>
+        )}
+    </div>
     );
 };
 
