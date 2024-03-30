@@ -2,6 +2,7 @@
 import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 // style
 import "./css/review-card.css";
@@ -15,9 +16,21 @@ let ReviewCard = (props) => {
             <div className="review-title">{props.review.username}</div>
             <div className="review-text">
                 {props.review.text}
-                <button className="delete-btn" onClick={() => props.onClick(props.review.reviewID)}>
-                    <FontAwesomeIcon icon={faTrash} />
-                </button>
+                {/* can only delete and edit if usernames match */}
+                { props.canEdit &&
+                <div>
+                    <button className="delete-btn" onClick={() => props.onClickEdit(props.review.reviewID)}>
+                        { !props.currentlyEditing ?
+                            <FontAwesomeIcon icon={faPencilAlt} />
+                        :
+                            <div>editing...</div>
+                        }
+                    </button>
+                    <button className="delete-btn" onClick={() => props.onClickDelete(props.review.reviewID)}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                </div>
+                }
             </div>
         </div>
     );

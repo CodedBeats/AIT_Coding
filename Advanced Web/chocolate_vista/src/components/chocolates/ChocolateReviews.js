@@ -21,7 +21,11 @@ const ChocolateReviews = (props) => {
     const [creatingReview, setCreatingReview] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [inputText, setInputText] = useState("");
+    const [editingReview, setEditingReview] = useState(false);
+    const [editReviewID, setEditReviewID] = useState(null);
+    const [currentlyEditing, setCurrentlyEditing] = useState(false);
     const [reviewAdded, setReviewAdded] = useState(false);
+    const [reviewUpdated, setReviewUpdated] = useState(false);
     const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
@@ -72,12 +76,14 @@ const ChocolateReviews = (props) => {
 
         fetchData();
         
-    }, [props.chocID, reviewAdded, reviewRemoved]);
+    }, [props.chocID, reviewAdded, reviewUpdated, reviewRemoved]);
 
 
     const toggleCreateReview = () => {
         setIsOpen(prevState => !prevState);
         setCreatingReview(prevState => !prevState);
+        setEditingReview(false);
+        setCurrentlyEditing(false);
     }
 
     const handleInputTextChange = (e) => {
@@ -132,12 +138,49 @@ const ChocolateReviews = (props) => {
             });
     }
 
+    const handleEdit = (reviewID) => {
+        setIsOpen(<FontAwesomeIcon icon={faArrowUp} />);
+        setEditingReview(true);
+        setCreatingReview(true);
+        setEditReviewID(reviewID);
+        setCurrentlyEditing(true);
+    }
+
+    const handleEditSubmit = () => {
+        fetch("http://localhost/chocolatevista_api/review/editReview.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    reviewID: editReviewID,
+                    inputText: inputText
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.message);
+
+                setIsOpen(prevState => !prevState);
+                setCreatingReview(prevState => !prevState);
+                setReviewUpdated(prevState => !prevState);
+                setCurrentlyEditing(false);
+                
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+
 
     return (
         <div>
             { user.isLoggedIn &&
                 <div className="create-review-container">
-                    <Button variant="primary" onClick={toggleCreateReview}>Create Review {isOpen ? <FontAwesomeIcon icon={faArrowUp} /> : <FontAwesomeIcon icon={faArrowDown} />}</Button>
+                    <Button variant="primary" onClick={toggleCreateReview}>
+                        {!editingReview ? "Create" : "Update"} Review 
+                        {isOpen ? <FontAwesomeIcon icon={faArrowUp} /> : <FontAwesomeIcon icon={faArrowDown} />}
+                    </Button>
                     {/* only show on create click */}
                     {creatingReview && 
                         <div className="review-card-container">
@@ -155,7 +198,11 @@ const ChocolateReviews = (props) => {
                             />
                             </Form.Group>
                             </div>
-                            <Button variant="success" onClick={handleReviewSubmit}>Submit</Button>
+                            { !editingReview ?
+                                <Button variant="success" onClick={handleReviewSubmit}>Submit</Button>
+                            :
+                                <Button variant="success" onClick={handleEditSubmit}>Update</Button>
+                            }
                         </div>
                     }
                 </div>
@@ -164,7 +211,13 @@ const ChocolateReviews = (props) => {
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => (
                     <div key={index}>
-                        <ReviewCard review={review} onClick={(value) => handleDelete(value)} />
+                        <ReviewCard 
+                            review={review} 
+                            currentlyEditing={currentlyEditing}
+                            canEdit={review.username === user.username ? true : false} 
+                            onClickEdit={(id) => handleEdit(id)} 
+                            onClickDelete={(id) => handleDelete(id)} 
+                        />
                     </div>
                 ))
             ) : (
