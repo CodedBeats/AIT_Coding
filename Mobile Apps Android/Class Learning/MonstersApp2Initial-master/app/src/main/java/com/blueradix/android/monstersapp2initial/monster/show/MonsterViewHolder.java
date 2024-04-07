@@ -1,5 +1,7 @@
 package com.blueradix.android.monstersapp2initial.monster.show;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,5 +29,25 @@ public class MonsterViewHolder extends RecyclerView.ViewHolder {
 
         int resID = binding.getRoot().getResources().getIdentifier(monster.getImage(), "drawable", binding.getRoot().getContext().getPackageName());
         this.binding.monsterImageView.setImageResource(resID);
+
+        float avgRate;
+        if (monster.getVotes() > 0) {
+            // force stars and votes into float to get real avg
+            avgRate = 1.0f * monster.getStars() / monster.getVotes();
+        }
+        else {
+            avgRate = 0.0f;
+        }
+
+        this.binding.monsterRatingBar.setRating(avgRate);
+    }
+
+    public void bind(Monster monster, OnItemClickListener onItemClickListener) {
+        binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onClick(monster, v);
+            }
+        });
     }
 }

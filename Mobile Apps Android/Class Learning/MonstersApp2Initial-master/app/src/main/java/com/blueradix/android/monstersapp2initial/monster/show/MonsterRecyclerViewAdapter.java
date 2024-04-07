@@ -13,8 +13,11 @@ public class MonsterRecyclerViewAdapter extends ListAdapter<Monster, MonsterView
 
     private RecyclerItemViewBinding binding;
 
-    protected MonsterRecyclerViewAdapter( ) {
+    private OnItemClickListener onItemClickListener;
+
+    protected MonsterRecyclerViewAdapter(OnItemClickListener onItemClickListener) {
         super(DIFF_CALLBACK);
+        this.onItemClickListener = onItemClickListener;
     }
 
     /**
@@ -71,7 +74,7 @@ public class MonsterRecyclerViewAdapter extends ListAdapter<Monster, MonsterView
         Monster monster = getMonsterAt(position);
         //call the method to set the values in the MonsterViewHolder
         holder.updateMonster(monster);
-
+        holder.bind(monster, onItemClickListener);
     }
 
     /**

@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import com.blueradix.android.monstersapp2initial.monster.Monster;
 
 import java.util.List;
 
-public class ShowMonstersFragment extends Fragment {
+public class ShowMonstersFragment extends Fragment implements OnItemClickListener {
 
     private ShowMonstersViewModel mViewModel;
     private ShowMonstersFragmentBinding binding;
@@ -52,12 +53,17 @@ public class ShowMonstersFragment extends Fragment {
             Monster monster = (Monster) bundle.getSerializable("ADD_MONSTER");
             mViewModel.insert(monster);
         }
+        if (bundle != null && bundle.containsKey("RATED_MONSTER")) {
+            Monster monster = (Monster) bundle.getSerializable("RATED_MONSTER");
+            mViewModel.update(monster);
+        }
 
 
-        binding.monstersRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+//        binding.monstersRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        binding.monstersRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.monstersRecyclerView.setHasFixedSize(true);
 
-        MonsterRecyclerViewAdapter adapter = new MonsterRecyclerViewAdapter();
+        MonsterRecyclerViewAdapter adapter = new MonsterRecyclerViewAdapter(this);
         binding.monstersRecyclerView.setAdapter(adapter);
 
         final Observer<List<Monster>> allMonstersObserver = new Observer<List<Monster>>() {
@@ -77,5 +83,17 @@ public class ShowMonstersFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(Monster monster, View view) {
+        // log monster on click/tap
+//        Log.i("xyz", monster.toString());
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("RATE_MONSTER", monster);
+
+        NavController navController = Navigation.findNavController(view);
+        navController.navigate(R.id.action_showMonstersFragment_to_rateMonsterScrollingFragment, bundle);
     }
 }

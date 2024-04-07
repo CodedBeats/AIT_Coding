@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_showMonstersFragment_to_addMonsterScrollingFragment"
             app:destination="@id/addMonsterScrollingFragment" />
+        <action
+            android:id="@+id/action_showMonstersFragment_to_rateMonsterScrollingFragment"
+            app:destination="@id/rateMonsterScrollingFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMonsterScrollingFragment"
@@ -21,6 +24,17 @@
         tools:layout="@layout/add_monster_scrolling_fragment" >
         <action
             android:id="@+id/action_addMonsterScrollingFragment_to_showMonstersFragment"
+            app:destination="@id/showMonstersFragment"
+            app:popUpTo="@id/showMonstersFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/rateMonsterScrollingFragment"
+        android:name="com.blueradix.android.monstersapp2initial.rate.RateMonsterScrollingFragment"
+        android:label="rate_monster_scrolling_fragment"
+        tools:layout="@layout/rate_monster_scrolling_fragment" >
+        <action
+            android:id="@+id/action_rateMonsterScrollingFragment_to_showMonstersFragment"
             app:destination="@id/showMonstersFragment"
             app:popUpTo="@id/showMonstersFragment"
             app:popUpToInclusive="true" />
