@@ -1,4 +1,6 @@
-package com.example.ace.auth.register;
+package com.example.ace.auth.login;
+
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,21 +8,22 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ace.R;
+import com.example.ace.databinding.LoginFragmentBinding;
 import com.example.ace.databinding.RegisterFragmentBinding;
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
+ * A simple {@link Fragment} subclass.
+ * Use the {@link LoginFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
-public class RegisterFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
-    private RegisterFragmentBinding binding;
+    LoginFragmentBinding binding;
 
     @Nullable
     @Override
@@ -28,7 +31,7 @@ public class RegisterFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        binding = RegisterFragmentBinding.inflate(inflater, container, false);
+        binding = LoginFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -38,23 +41,21 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
 
-        // link to login
-        binding.alreadyRegisteredTextView.setOnClickListener(new View.OnClickListener() {
+        // link to register
+        binding.notRegisteredTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_registerFragment_to_loginFragment);
+                navController.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
 
-        // handle register submit
+        // handle login submit
         binding.signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // temp link to home
-                navController.navigate(R.id.action_registerFragment_to_showAffirmationFragment);
+                navController.navigate(R.id.action_loginFragment_to_showAffirmationFragment);
             }
         });
-
-
     }
 }
