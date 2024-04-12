@@ -8,22 +8,29 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.ace.R;
 import com.example.ace.databinding.LoginFragmentBinding;
 import com.example.ace.databinding.RegisterFragmentBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class LoginFragment extends Fragment {
 
     LoginFragmentBinding binding;
+    FirebaseAuth mAuth;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -40,6 +47,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
+        mAuth = FirebaseAuth.getInstance();
 
         // link to register
         binding.notRegisteredTextView.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +61,47 @@ public class LoginFragment extends Fragment {
         binding.signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // temp link to home
-                navController.navigate(R.id.action_loginFragment_to_showAffirmationFragment);
+                // show progress bar
+                binding.progressBar.setVisibility(View.VISIBLE);
+
+                // get text
+                String email, password;
+                email = String.valueOf(binding.emailTextInput.getText());
+                password = String.valueOf(binding.passwordTextInput.getText());
+
+                // validate email and password aren't empty
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getContext(), "Enter Email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getContext(), "Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // hide progress bar
+                                    binding.progressBar.setVisibility(View.GONE);
+
+                                    Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                                    // navigate to home
+                                    navController.navigate(R.id.action_loginFragment_to_showAffirmationFragment);
+
+                                } else {
+                                    // hide progress bar
+                                    binding.progressBar.setVisibility(View.GONE);
+
+                                    String errorMessage = task.getException().getMessage();
+                                    Log.i("XYZ", errorMessage);
+                                    Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
     }
