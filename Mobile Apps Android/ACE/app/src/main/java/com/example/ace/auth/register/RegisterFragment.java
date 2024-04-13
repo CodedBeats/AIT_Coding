@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class RegisterFragment extends Fragment {
     private RegisterFragmentBinding binding;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
+    LinearLayout bottomNav;
 
 
     @Nullable
@@ -49,6 +51,10 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
+
+        // hide nav
+
+
 
         // link to login
         binding.alreadyRegisteredTextView.setOnClickListener(new View.OnClickListener() {
