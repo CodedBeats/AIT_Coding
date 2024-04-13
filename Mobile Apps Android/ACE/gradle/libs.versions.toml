@@ -12,6 +12,10 @@ lifecycleLivedataKtx = "2.7.0"
 lifecycleViewmodelKtx = "2.7.0"
 navigationFragment = "2.7.7"
 roomRuntime = "2.6.1"
+annotation = "1.6.0"
+googleServices = "4.4.1"
+firebaseAuth = "22.3.1"
+firebaseFirestore = "24.11.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -29,6 +33,10 @@ navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "n
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
+annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
