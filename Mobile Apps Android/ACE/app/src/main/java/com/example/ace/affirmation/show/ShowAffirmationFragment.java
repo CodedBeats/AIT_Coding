@@ -1,32 +1,30 @@
-package com.example.ace.affirmation;
+package com.example.ace.affirmation.show;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.ace.R;
-import com.example.ace.databinding.LoginFragmentBinding;
+import com.example.ace.affirmation.Affirmation;
+import com.example.ace.affirmation.AffirmationRepository;
 import com.example.ace.databinding.ShowAffirmationFragmentBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ShowAffirmationFragment extends Fragment {
 
-    private ShowAffirmationViewModel mViewModel;
+    private ShowAffirmationViewModel aViewModel;
     private ShowAffirmationFragmentBinding binding;
     private FirebaseAuth mAuth;
 
@@ -50,6 +48,7 @@ public class ShowAffirmationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
+        aViewModel = new ViewModelProvider(this).get(ShowAffirmationViewModel.class);
 
         // set up navigation
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
@@ -63,9 +62,6 @@ public class ShowAffirmationFragment extends Fragment {
             }
             return false;
         });
-        // set nav menu item state
-//        MenuItem menuItem = binding.bottomNavigation.getMenu().findItem(R.id.navigation_home);
-//        menuItem.setIconTintList(ContextCompat.getColorStateList(getContext(), R.color.black_overlay));
 
         // Check if user is signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -73,6 +69,22 @@ public class ShowAffirmationFragment extends Fragment {
             navController.navigate(R.id.action_showAffirmationFragment_to_registerFragment);
         }
 
+
+        // Observe affirmationsLiveData
+        aViewModel.getAllAffirmations().observe(getViewLifecycleOwner(), affirmations -> {
+            // Handle the updated list of affirmations
+            Log.i("firebase-db", "Affirmations updated: " + affirmations);
+        });
+
+        // Observe randomAffirmation
+        aViewModel.getRandomAffirmation().observe(getViewLifecycleOwner(), randomAffirmation -> {
+            // Handle the updated random affirmation
+            Log.i("firebase-db", "Random affirmation: " + randomAffirmation);
+        });
+
+
+
+        // temp
         binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

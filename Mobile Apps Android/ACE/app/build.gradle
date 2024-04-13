@@ -47,6 +47,7 @@ dependencies {
     implementation libs.room.runtime
     implementation libs.annotation
     implementation libs.firebase.auth
+    implementation libs.firebase.firestore
     annotationProcessor libs.room.compiler
     androidTestImplementation libs.room.testing
 

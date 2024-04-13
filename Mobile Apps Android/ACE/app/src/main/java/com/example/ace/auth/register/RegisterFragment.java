@@ -16,15 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ace.MainActivity;
 import com.example.ace.R;
-import com.example.ace.affirmation.ShowAffirmationViewModel;
 import com.example.ace.databinding.RegisterFragmentBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegisterFragment extends Fragment {

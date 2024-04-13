@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/showAffirmationFragment"
-        android:name="com.example.ace.affirmation.ShowAffirmationFragment"
+        android:name="com.example.ace.affirmation.show.ShowAffirmationFragment"
         android:label="show_affirmation_fragment"
         tools:layout="@layout/show_affirmation_fragment" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.example.ace.affirmation.FavouritesFragment"
+        android:name="com.example.ace.favourite.FavouritesFragment"
         android:label="favourites_fragment"
         tools:layout="@layout/favourites_fragment" >
         <action
