@@ -23,14 +23,14 @@ public class ShowAffirmationViewModel extends ViewModel {
         affirmationsLiveData.setValue(Collections.emptyList());
         randomAffirmation.setValue(null);
 
-        // Fetch affirmations from db
+        // fetch affirmations from db
         fetchAffirmations();
     }
 
     private void fetchAffirmations() {
         affirmationRepository.getAllAffirmationsLiveData().observeForever(affirmations -> {
-            affirmationsLiveData.setValue(affirmations); // Update LiveData
-            // Now that affirmations are available, set a random affirmation
+            affirmationsLiveData.setValue(affirmations);
+            // set random affirmation
             randomAffirmation.setValue(affirmationRepository.getRandomAffirmation(affirmations));
         });
     }
@@ -41,5 +41,9 @@ public class ShowAffirmationViewModel extends ViewModel {
 
     public LiveData<Affirmation> getRandomAffirmation() {
         return randomAffirmation;
+    }
+
+    public LiveData<Affirmation> getAffirmationByID(String affirmationID) {
+        return affirmationRepository.getAffirmationByID(affirmationID);
     }
 }

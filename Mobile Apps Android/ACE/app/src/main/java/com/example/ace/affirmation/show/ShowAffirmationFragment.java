@@ -22,6 +22,8 @@ import com.example.ace.R;
 import com.example.ace.affirmation.Affirmation;
 import com.example.ace.affirmation.AffirmationRepository;
 import com.example.ace.databinding.ShowAffirmationFragmentBinding;
+import com.example.ace.favourite.FavouriteRepository;
+import com.example.ace.favourite.FavouriteViewModel;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,9 +35,11 @@ import java.util.Random;
 public class ShowAffirmationFragment extends Fragment {
 
     private ShowAffirmationViewModel aViewModel;
+    private FavouriteViewModel fViewModel;
     private ShowAffirmationFragmentBinding binding;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth uAuth;
     private int[] colours;
+    String affirmationID;
 
     public static ShowAffirmationFragment newInstance() {
         return new ShowAffirmationFragment();
@@ -47,7 +51,7 @@ public class ShowAffirmationFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        mAuth = FirebaseAuth.getInstance();
+        uAuth = FirebaseAuth.getInstance();
         binding = ShowAffirmationFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -59,10 +63,10 @@ public class ShowAffirmationFragment extends Fragment {
         return colours[rand.nextInt(colours.length)];
     }
 
-    // programmatically create and add chips to the ChipGroup
+    // programmatically create and add chips to ChipGroup
     private void createChips(String[] chipTexts) {
         ChipGroup chipGroup = binding.chipGroup;
-        chipGroup.removeAllViews(); // Clear existing chips
+        chipGroup.removeAllViews();
 
         for (String text : chipTexts) {
             Chip chip = new Chip(getContext());
@@ -80,6 +84,7 @@ public class ShowAffirmationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
         aViewModel = new ViewModelProvider(this).get(ShowAffirmationViewModel.class);
+        fViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
 
         // set up navigation
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
@@ -95,17 +100,17 @@ public class ShowAffirmationFragment extends Fragment {
         });
 
         // Check if user is signed in (non-null)
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = uAuth.getCurrentUser();
         if (currentUser == null) {
             navController.navigate(R.id.action_showAffirmationFragment_to_registerFragment);
         }
 
 
-        // Observe affirmationsLiveData
+        // Observe affirmations
         aViewModel.getAllAffirmations().observe(getViewLifecycleOwner(), affirmations -> {
             if (affirmations != null) {
                 // Handle the updated list of affirmations
-                Log.i("firebase-db", "Affirmations updated: " + affirmations);
+                Log.i("firebase-db", "Affirmations: " + affirmations);
             }
         });
 
@@ -115,10 +120,13 @@ public class ShowAffirmationFragment extends Fragment {
                 // Handle the updated random affirmation
                 Log.i("firebase-db", "Random affirmation: " + randomAffirmation);
 
+                // set affirmationID for favourite
+                affirmationID = randomAffirmation.getId();
+
                 // display affirmation text
                 binding.affirmationTextView.setText(randomAffirmation.getText());
 
-                // get random colour
+                // set random colour
                 colours = new int[] {
                         ContextCompat.getColor(requireContext(), R.color.red1),
                         ContextCompat.getColor(requireContext(), R.color.red2),
@@ -131,6 +139,29 @@ public class ShowAffirmationFragment extends Fragment {
                 String[] tagsArr = randomAffirmation.getTags().toArray(new String[0]);
                 // add tags as chips
                 createChips(tagsArr);
+            }
+        });
+
+
+        // handle favourite icon click
+        binding.favouriteAffirmationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // change img to show it's been clicked
+                binding.favouriteAffirmationBtn.setImageResource(R.drawable.outline_heart_check_24);
+
+                // add favourite
+                fViewModel.addFavourite(currentUser.getUid(), affirmationID, new FavouriteRepository.FavouriteOperationCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(getContext(), "Favourite added successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onFailure(Exception e) {
+                        Toast.makeText(getContext(), "Failed to add favourite: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
     }
