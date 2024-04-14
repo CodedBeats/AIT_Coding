@@ -133,19 +133,5 @@ public class ShowAffirmationFragment extends Fragment {
                 createChips(tagsArr);
             }
         });
-
-
-
-
-        // temp
-//        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                // navigate to login
-//                navController.navigate(R.id.action_showAffirmationFragment_to_loginFragment);
-//                Toast.makeText(getContext(), "Logout Successful", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }

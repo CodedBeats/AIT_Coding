@@ -11,10 +11,12 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ace.R;
 import com.example.ace.databinding.FavouritesFragmentBinding;
 import com.example.ace.databinding.UserFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class UserFragment extends Fragment {
@@ -49,6 +51,18 @@ public class UserFragment extends Fragment {
                 return true;
             }
             return false;
+        });
+
+
+        // logout
+        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                // navigate to login
+                navController.navigate(R.id.action_userFragment_to_loginFragment);
+                Toast.makeText(getContext(), "Logout Successful", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
