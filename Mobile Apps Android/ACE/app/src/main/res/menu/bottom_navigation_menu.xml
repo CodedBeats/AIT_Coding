@@ -18,7 +18,7 @@
     <item
         android:id="@+id/navigation_favourites"
         android:title="Favourites"
-        android:icon="@drawable/outline_settings_heart_24"
+        android:icon="@drawable/outline_heart_plus_24"
         android:state_checked="true"
         />
 </menu>
