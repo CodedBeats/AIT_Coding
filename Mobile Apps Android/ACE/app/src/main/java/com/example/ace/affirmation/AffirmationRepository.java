@@ -27,6 +27,7 @@ public class AffirmationRepository {
     public AffirmationRepository() {
         db = FirebaseFirestore.getInstance();
 
+        // get all affirmations
         db.collection("affirmations")
             .get()
             .addOnCompleteListener(task -> {
@@ -54,10 +55,10 @@ public class AffirmationRepository {
 
     // get random affirmation
     public Affirmation getRandomAffirmation(List<Affirmation> allAffirmations) {
-        // get random
+        // get random index
         int randomIndex = new Random().nextInt(allAffirmations.size());
 
-        // get the affirmation at random
+        // get the affirmation at random index
         return allAffirmations.get(randomIndex);
     }
 

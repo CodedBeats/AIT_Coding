@@ -63,10 +63,10 @@ public class ShowAffirmationFragment extends Fragment {
         return colours[rand.nextInt(colours.length)];
     }
 
-    // programmatically create and add chips to the ChipGroup
+    // programmatically create and add chips to ChipGroup
     private void createChips(String[] chipTexts) {
         ChipGroup chipGroup = binding.chipGroup;
-        chipGroup.removeAllViews(); // Clear existing chips
+        chipGroup.removeAllViews();
 
         for (String text : chipTexts) {
             Chip chip = new Chip(getContext());
@@ -106,7 +106,7 @@ public class ShowAffirmationFragment extends Fragment {
         }
 
 
-        // Observe affirmationsLiveData
+        // Observe affirmations
         aViewModel.getAllAffirmations().observe(getViewLifecycleOwner(), affirmations -> {
             if (affirmations != null) {
                 // Handle the updated list of affirmations
@@ -143,20 +143,19 @@ public class ShowAffirmationFragment extends Fragment {
         });
 
 
-        // add favourite
+        // handle favourite icon click
         binding.favouriteAffirmationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // change img to show it's been clicked
                 binding.favouriteAffirmationBtn.setImageResource(R.drawable.outline_heart_check_24);
 
-                // update user
+                // add favourite
                 fViewModel.addFavourite(currentUser.getUid(), affirmationID, new FavouriteRepository.FavouriteOperationCallback() {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(getContext(), "Favourite added successfully!", Toast.LENGTH_SHORT).show();
                     }
-
                     @Override
                     public void onFailure(Exception e) {
                         Toast.makeText(getContext(), "Failed to add favourite: " + e.getMessage(), Toast.LENGTH_SHORT).show();

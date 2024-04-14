@@ -24,7 +24,6 @@ public class UserFragment extends Fragment {
     UserFragmentBinding binding;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,8 +52,10 @@ public class UserFragment extends Fragment {
             return false;
         });
 
+        // display user info
 
-        // logout
+
+        // handle logout
         binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

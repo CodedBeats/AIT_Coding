@@ -57,9 +57,9 @@ public class FavouritesFragment extends Fragment {
         return colours[rand.nextInt(colours.length)];
     }
 
-    // Programmatically create and add chips to the ChipGroup
+    // programmatically create and add chips to ChipGroup
     private void createChips(String[] chipTexts, ChipGroup chipGroup) {
-        chipGroup.removeAllViews(); // Clear existing chips
+        chipGroup.removeAllViews();
         for (String text : chipTexts) {
             Chip chip = new Chip(getContext());
             chip.setText(text);
@@ -100,10 +100,10 @@ public class FavouritesFragment extends Fragment {
                 // hide no favourites text
                 binding.noFavouritesTextView.setVisibility(View.GONE);
 
-                // Clear the container before adding new views
+                // cleanup
                 binding.affirmationsContainer.removeAllViews();
 
-                // Iterate over all favourites and get affirmation by ID for each
+                // iterate over all favourites and get affirmation by affirmationID for each
                 for (Favourite favourite : favourites) {
                     aViewModel.getAffirmationByID(favourite.getAffirmationID()).observe(getViewLifecycleOwner(), affirmation -> {
                         if (affirmation != null) {
@@ -119,18 +119,18 @@ public class FavouritesFragment extends Fragment {
                                     ContextCompat.getColor(requireContext(), R.color.green2),
                             };
 
-                            // Inflate the affirmation layout
+                            // inflate the affirmation layout (this one was so weird to figure out with trial and error...plus i think I did it wrong but it works lol)
                             View affirmationView = LayoutInflater.from(getContext()).inflate(R.layout.item_affirmation, binding.affirmationsContainer, false);
                             TextView textView = affirmationView.findViewById(R.id.affirmation_text_view);
                             ChipGroup chipGroup = affirmationView.findViewById(R.id.affirmation_chip_group);
 
-                            // Set the affirmation text
+                            // set affirmation text
                             textView.setText(affirmation.getText());
 
-                            // Create chips for the tags
+                            // create chips for tags
                             createChips(affirmation.getTags().toArray(new String[0]), chipGroup);
 
-                            // Add the affirmation view to the container
+                            // add affirmation view to the container
                             binding.affirmationsContainer.addView(affirmationView);
                         } else {
                             Log.i("firebase-db", "Affirmation: none");
@@ -141,7 +141,5 @@ public class FavouritesFragment extends Fragment {
                 Log.i("firebase-db", "No favourites found for the user.");
             }
         });
-
-
     }
 }

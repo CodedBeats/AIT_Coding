@@ -47,43 +47,43 @@ public class FavouriteRepository {
         return favouritesLiveData;
     }
 
+    // interface for callback to improve feedback on void functions
     public interface FavouriteOperationCallback {
         void onSuccess();
         void onFailure(Exception e);
     }
 
+    // add favourite but only if it doesn't alredy exist
     public void addFavourite(String userID, String affirmationID, FavouriteOperationCallback callback) {
-        // Check for duplicates
+        // check for duplicates
         db.collection("favourites")
             .whereEqualTo("userID", userID)
             .whereEqualTo("affirmationID", affirmationID)
             .get()
             .addOnCompleteListener(task -> {
                 if (task.isSuccessful() && task.getResult() != null && task.getResult().isEmpty()) {
-                    // No duplicates found, proceed to add new favourite
+                    // no duplicates found, add new favourite
                     Map<String, Object> favouriteMap = new HashMap<>();
                     favouriteMap.put("userID", userID);
                     favouriteMap.put("affirmationID", affirmationID);
 
-                    // Add a new document with an auto-generated ID
+                    // add favourite
                     db.collection("favourites").add(favouriteMap)
                             .addOnSuccessListener(documentReference -> {
-                                // Notify success
+                                // notify success
                                 callback.onSuccess();
                             })
                             .addOnFailureListener(e -> {
-                                // Notify failure
+                                // notify failure
                                 callback.onFailure(e);
                             });
                 } else if (task.isSuccessful() && task.getResult() != null && !task.getResult().isEmpty()) {
-                    // Duplicate exists, notify failure
+                    // duplicate exists, notify failure
                     callback.onFailure(new Exception("favourite already exists."));
                 } else {
-                    // Query failed, notify failure
+                    // query failed, notify failure
                     callback.onFailure(task.getException());
                 }
             });
     }
-
-
 }
