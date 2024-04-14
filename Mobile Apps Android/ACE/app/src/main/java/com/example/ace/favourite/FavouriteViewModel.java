@@ -23,4 +23,9 @@ public class FavouriteViewModel extends ViewModel {
         return favouriteRepository.getFavouritesByUserID(userID);
     }
 
+    // add favourite
+    public void addFavourite(String userID, String affirmationID, FavouriteRepository.FavouriteOperationCallback callback) {
+        favouriteRepository.addFavourite(userID, affirmationID, callback);
+    }
+
 }
