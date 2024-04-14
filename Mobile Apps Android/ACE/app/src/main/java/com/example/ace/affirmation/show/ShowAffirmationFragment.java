@@ -34,7 +34,7 @@ public class ShowAffirmationFragment extends Fragment {
 
     private ShowAffirmationViewModel aViewModel;
     private ShowAffirmationFragmentBinding binding;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth uAuth;
     private int[] colours;
 
     public static ShowAffirmationFragment newInstance() {
@@ -47,7 +47,7 @@ public class ShowAffirmationFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        mAuth = FirebaseAuth.getInstance();
+        uAuth = FirebaseAuth.getInstance();
         binding = ShowAffirmationFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -95,7 +95,7 @@ public class ShowAffirmationFragment extends Fragment {
         });
 
         // Check if user is signed in (non-null)
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = uAuth.getCurrentUser();
         if (currentUser == null) {
             navController.navigate(R.id.action_showAffirmationFragment_to_registerFragment);
         }
@@ -105,7 +105,7 @@ public class ShowAffirmationFragment extends Fragment {
         aViewModel.getAllAffirmations().observe(getViewLifecycleOwner(), affirmations -> {
             if (affirmations != null) {
                 // Handle the updated list of affirmations
-                Log.i("firebase-db", "Affirmations updated: " + affirmations);
+                Log.i("firebase-db", "Affirmations: " + affirmations);
             }
         });
 
@@ -118,7 +118,7 @@ public class ShowAffirmationFragment extends Fragment {
                 // display affirmation text
                 binding.affirmationTextView.setText(randomAffirmation.getText());
 
-                // get random colour
+                // set random colour
                 colours = new int[] {
                         ContextCompat.getColor(requireContext(), R.color.red1),
                         ContextCompat.getColor(requireContext(), R.color.red2),
@@ -131,6 +131,15 @@ public class ShowAffirmationFragment extends Fragment {
                 String[] tagsArr = randomAffirmation.getTags().toArray(new String[0]);
                 // add tags as chips
                 createChips(tagsArr);
+            }
+        });
+
+        // add favourite
+        binding.favouriteAffirmationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // change img to show it's been clicked
+                binding.favouriteAffirmationBtn.setImageResource(R.drawable.outline_heart_check_24);
             }
         });
     }

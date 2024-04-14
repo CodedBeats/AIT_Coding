@@ -42,4 +42,8 @@ public class ShowAffirmationViewModel extends ViewModel {
     public LiveData<Affirmation> getRandomAffirmation() {
         return randomAffirmation;
     }
+
+    public LiveData<Affirmation> getAffirmationByID(String affirmationID) {
+        return affirmationRepository.getAffirmationByID(affirmationID);
+    }
 }
