@@ -9,6 +9,7 @@ import UserContext from '../../UserContext';
 import AdditionalInformation from './AdditionalInformation';
 import ChocolateReviews from './ChocolateReviews';
 import StarRating from '../common/StarRating';
+import FavouriteIcon from '../common/FavouriteIcon';
 
 // style
 import "./css/chocolate.css"
@@ -142,7 +143,7 @@ let Chocolate = () => {
                 <div className="choc-title-box">
                     <p>{chocolate.name}</p>
                     <div className="favourite-icon">
-                        {isFavorited ? 'Favorited' : 'Not Favorited'}
+                        <FavouriteIcon isFavorited={isFavorited} />
                     </div>
                 </div>
                 <div className="choc-rating-box">

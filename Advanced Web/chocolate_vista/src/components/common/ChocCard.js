@@ -1,13 +1,18 @@
 // dependencies
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 
 // components
 import StarRating from "./StarRating";
+import FavouriteIcon from "./FavouriteIcon";
 
 // style
 import "./css/choc-img.css";
 import "./css/carousel.css";
+import "./css/choc-card.css";
 
 
 let ChocCard = (props) => {
@@ -18,17 +23,13 @@ let ChocCard = (props) => {
             <Card.Body>
                 <Link to={chocLink}>
                     <Card.Img variant="top" src={props.choc.imgUrl} alt={props.choc.name} className="choc-img" />
-                    <Card.Title>{props.choc.name}</Card.Title>
+                    <Card.Title>
+                        <div className="name-fave-container">
+                            {props.choc.name}
+                            <FavouriteIcon isFavorited={props.isFavorited} />
+                        </div>
+                    </Card.Title>
                 </Link>
-
-                <Card.Subtitle className="mb-2 text-muted">
-                    Favorited: 
-                    {props.isFavorited ? (
-                        <span> Yes</span>
-                    ) : (
-                        <span> No</span>
-                    )}
-                </Card.Subtitle>
 
                 <Card.Text>
                     <StarRating rating={props.choc.rating} numRatings={props.choc.numRatings} id={props.choc.chocID} static={true} />
