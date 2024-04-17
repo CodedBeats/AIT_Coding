@@ -20,7 +20,16 @@ let ChocCard = (props) => {
                     <Card.Img variant="top" src={props.choc.imgUrl} alt={props.choc.name} className="choc-img" />
                     <Card.Title>{props.choc.name}</Card.Title>
                 </Link>
-                <Card.Subtitle className="mb-2 text-muted">Favorited: no</Card.Subtitle>
+
+                <Card.Subtitle className="mb-2 text-muted">
+                    Favorited: 
+                    {props.isFavorited ? (
+                        <span> Yes</span>
+                    ) : (
+                        <span> No</span>
+                    )}
+                </Card.Subtitle>
+
                 <Card.Text>
                     <StarRating rating={props.choc.rating} numRatings={props.choc.numRatings} id={props.choc.chocID} static={true} />
                 </Card.Text>

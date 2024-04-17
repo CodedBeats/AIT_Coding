@@ -33,6 +33,9 @@
 .choc-title-box, .choc-rating-box {
     display: flex;
 }
+.favourite-icon {
+    margin-left: 30px;
+}
 
 
 .details-and-reviews-container {

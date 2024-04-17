@@ -1,10 +1,11 @@
 // dependencies
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 
 // components
+import UserContext from '../../UserContext';
 import AdditionalInformation from './AdditionalInformation';
 import ChocolateReviews from './ChocolateReviews';
 import StarRating from '../common/StarRating';
@@ -14,7 +15,9 @@ import "./css/chocolate.css"
 
 
 let Chocolate = () => {
+    const {userData: user} = useContext(UserContext);
     const { id: currentId } = useParams();
+
     const [chocolate, setChocolate] = useState({
         chocID: "",
         name: "",
@@ -34,6 +37,7 @@ let Chocolate = () => {
     });
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
+    const [isFavorited, setIsFavorited] = useState(false);
     const [reviewsVisible, setReviewsVisible] = useState(false);
 
     const handleTabs = () => {
@@ -98,6 +102,22 @@ let Chocolate = () => {
                     origin,
                     certifications
                 });
+
+                // Make AJAX call to check if chocolate is favorited
+                const isFavResponse = await fetch("http://localhost/chocolatevista_api/favourite/getIsUserFavourite.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ userID: user.userID, chocolateID: chocID })
+                });
+                
+                if (!isFavResponse.ok) {
+                    throw new Error('Failed to fetch favorite status');
+                }
+
+                const isFavData = await isFavResponse.json();
+                setIsFavorited(isFavData.success);
             } catch (error) {
                 setError(error.message);
             }
@@ -121,7 +141,9 @@ let Chocolate = () => {
             <div className="choc-details-container">
                 <div className="choc-title-box">
                     <p>{chocolate.name}</p>
-                    <p>--isFavourited</p>
+                    <div className="favourite-icon">
+                        {isFavorited ? 'Favorited' : 'Not Favorited'}
+                    </div>
                 </div>
                 <div className="choc-rating-box">
                     <StarRating rating={chocolate.rating} numRatings={chocolate.numRatings} id={chocolate.chocID} static={false} />
