@@ -83,7 +83,7 @@ let Landing = () => {
             </div>
 
             <div className="random-chocolates-container">
-                <div className="random-chocolates-title">Some Boxed Chocolates You Might Like</div>
+                <div className="random-chocolates-title">Some Chocolates You Might Like</div>
                 <div className="random-chocolates">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
