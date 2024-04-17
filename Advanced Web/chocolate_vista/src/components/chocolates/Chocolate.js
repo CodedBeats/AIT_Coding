@@ -104,7 +104,7 @@ let Chocolate = () => {
                     certifications
                 });
 
-                // Make AJAX call to check if chocolate is favorited
+                // check if chocolate is favorited
                 const isFavResponse = await fetch("http://localhost/chocolatevista_api/favourite/getIsUserFavourite.php", {
                     method: "POST",
                     headers: {
@@ -143,7 +143,11 @@ let Chocolate = () => {
                 <div className="choc-title-box">
                     <p>{chocolate.name}</p>
                     <div className="favourite-icon">
-                        <FavouriteIcon isFavorited={isFavorited} />
+                        <FavouriteIcon 
+                            isFavorited={isFavorited} 
+                            userID={user.userID}
+                            chocolateID={chocolate.chocID}
+                        />
                     </div>
                 </div>
                 <div className="choc-rating-box">

@@ -26,7 +26,7 @@ let ChocCard = (props) => {
                     <Card.Title>
                         <div className="name-fave-container">
                             {props.choc.name}
-                            <FavouriteIcon isFavorited={props.isFavorited} static={true} />
+                            <FavouriteIcon isFavorited={props.isFavorited} userID={props.userID} chocolateID={props.choc.chocID} static={true} />
                         </div>
                     </Card.Title>
                 </Link>

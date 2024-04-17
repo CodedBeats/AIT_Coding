@@ -112,7 +112,11 @@ let Chocolates = () => {
                 : <div className="all-chocolates-container">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
-                            <ChocCard chocID={chocolate} choc={chocolate} isFavorited={favorites[chocolate.chocID]} static={false} />
+                            <ChocCard 
+                                chocID={chocolate}
+                                choc={chocolate} 
+                                isFavorited={favorites[chocolate.chocID]} 
+                            />
                         </div>
                     ))}
                 </div>
