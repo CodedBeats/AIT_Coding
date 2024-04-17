@@ -89,3 +89,4 @@ $conn->close();
 
 // Encode response as JSON and output
 echo json_encode($response);
+?>
