@@ -1,6 +1,6 @@
 // dependencies
 import { useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 
@@ -13,8 +13,44 @@ import "./css/user-info.css";
 
 
 let UserInfo = () => {
+    const navigate = useNavigate();
     const {userData: user, setUserData} = useContext(UserContext);
     const [modalShow, setModalShow] = useState(false);
+
+    const handleDelete = () => {
+        // Prompt the user with a confirmation dialog
+        const isConfirmed = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
+        // If the user confirms, proceed with the deletion
+        if (isConfirmed) {
+            fetch("http://localhost/chocolatevista_api/auth/deleteUser.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userID: user.userID })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+
+                // essentially logout
+                setUserData({
+                    userID: "",
+                    imgUrl: "",
+                    email: "",
+                    username: "",
+                    isLoggedIn: false,
+                });
+                // clear user data from local storage
+                localStorage.removeItem("userData");
+                navigate("/");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+    }
 
     
     return (
@@ -42,6 +78,9 @@ let UserInfo = () => {
                 onHide={() => setModalShow(false)}
                 email={user.email}
             />
+            <div className="delete-container">
+                <button onClick={handleDelete}>Delete Account</button>
+            </div>
         </div>
     )
 }
