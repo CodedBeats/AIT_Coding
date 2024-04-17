@@ -12,11 +12,9 @@ import "./css/user-review.css";
 
 let UserReviews = () => {
     const {userData: user, setUserData} = useContext(UserContext);
-    const navigate = useNavigate();
     
     const [reviews, setReviews] = useState([]);
     const [noReviewsDisplay, setNoReviewsDisplay] = useState(false);
-    const [reviewLink, setReviewLink] = useState(null);
     const [reviewUpdated, setReviewUpdated] = useState(false);
     const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
@@ -93,9 +91,10 @@ let UserReviews = () => {
             });
     }
 
-    // const chocLink = `/chocolates/${props.choc.chocID}/${props.choc.name}`;
+
     return (
         <div className="user-reviews">
+            <span>Your Reviews</span>
             <div className="review-cards-container">
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => {
@@ -116,7 +115,7 @@ let UserReviews = () => {
                 })
             ) : (
                 <div>
-                    This chocolate currently has no reviews
+                    You currently have no reviews
                 </div>
             )}
             </div>

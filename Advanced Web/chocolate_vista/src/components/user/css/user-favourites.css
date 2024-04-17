@@ -1,0 +1,16 @@
+.user-favourites {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.favourites-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    column-gap: 1%;
+    row-gap: 1em;
+}

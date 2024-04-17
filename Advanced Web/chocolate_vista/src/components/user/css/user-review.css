@@ -1,3 +1,10 @@
+.user-reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .review-card-link {
     text-decoration: none;
     color: black;
