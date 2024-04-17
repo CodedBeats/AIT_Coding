@@ -24,6 +24,8 @@ const NavbarComponent = () => {
             username: "",
             isLoggedIn: false,
         });
+        // clear user data from local storage
+        localStorage.removeItem("userData");
         navigate("/");
     }
 
