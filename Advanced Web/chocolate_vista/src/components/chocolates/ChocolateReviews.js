@@ -89,7 +89,19 @@ const ChocolateReviews = (props) => {
     }
 
     const handleInputTextChange = (e) => {
-        setInputText(e.target.value);
+        let filteredText = e.target.value;
+        // get blacklist from .env, this way you don't have to see the words :)
+        const blacklist = process.env.REACT_APP_BLACKLIST.split(',');
+    
+        // check if input text contains any word from blacklist
+        blacklist.forEach((badWord) => {
+            // regex to match bad word globally
+            const regex = new RegExp(badWord.trim(), 'gi');
+            filteredText = filteredText.replace(regex, "");
+        });
+    
+        setInputText(filteredText);
+    
         // clear error message when user starts typing
         setInputError("");
     };

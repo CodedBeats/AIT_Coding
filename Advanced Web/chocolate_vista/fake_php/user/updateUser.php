@@ -29,25 +29,37 @@ $response = array();
 
 if ($data && isset($data->email)) {
     $email = $data->email;
-    $username = $data->username;
-    $password = $data->password;
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $username = isset($data->username) ? $data->username : null;
+    $password = isset($data->password) ? $data->password : null;
+    
+    $updateFields = array();
 
-    $sql = "UPDATE `user` SET `username` = '".$username."', `password` = '".$hashedPassword."' WHERE `email` = '".$email."'";
-
-    if (mysqli_query($conn, $sql)) {
-        $response['success'] = true;
-        $response['message'] = "Details updated successfully";
+    if ($username !== null) {
+        $updateFields[] = "`username` = '" . $username . "'";
     }
-    else {
+    if ($password !== null) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $updateFields[] = "`password` = '" . $hashedPassword . "'";
+    }
+
+    if (!empty($updateFields)) {
+        $sql = "UPDATE `user` SET " . implode(', ', $updateFields) . " WHERE `email` = '" . $email . "'";
+
+        if (mysqli_query($conn, $sql)) {
+            $response['success'] = true;
+            $response['message'] = "Details updated successfully";
+        } else {
+            $response['success'] = false;
+            $response['message'] = "Couldn't update";
+        }
+    } else {
         $response['success'] = false;
-        $response['message'] = "Couldn't update";
+        $response['message'] = "No fields to update provided";
     }
 } else {
     $response['success'] = false;
     $response['message'] = "Data and/or email not provided";
 }
-
 
 echo json_encode($response);
 ?>
