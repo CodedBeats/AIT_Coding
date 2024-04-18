@@ -24,9 +24,17 @@ let RegisterForm = () => {
             ...prevState,
             [name]: value,
         }));
+
+        // set random avatar img
+        const randomAvatar = `/imgs/user/${Math.floor(Math.random() * 12) + 1}.png`;
+        setFormData(prevState => ({
+            ...prevState,
+            imgUrl: randomAvatar
+        }));
     };
 
 
+    // login user
     const getUserData = () => {
         fetch("http://localhost/chocolatevista_api/user/getUserByEmail.php", {
             method: "POST",
@@ -63,13 +71,6 @@ let RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // set random avatar img
-        const randomAvatar = `/imgs/user/${Math.floor(Math.random() * 12) + 1}.png`;
-        setFormData(prevState => ({
-            ...prevState,
-            imgUrl: randomAvatar
-        }));
-
         // console.log(formData); 
 
         fetch("http://localhost/chocolatevista_api/auth/registerFormSubmit.php", {
@@ -85,7 +86,7 @@ let RegisterForm = () => {
                 console.log("Register successful");
                 // console.log(data.userData);
 
-                // get user data for context and route somewhere
+                // get user data for context and route home
                 getUserData();
             } else {
                 console.log(data.message);
