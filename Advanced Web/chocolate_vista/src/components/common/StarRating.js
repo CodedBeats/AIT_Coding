@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import { Button } from "react-bootstrap";
+import { toast } from 'react-toastify';
 
 // style
 import "./css/star-rating.css";
@@ -14,6 +15,14 @@ const StarRating = (props) => {
     const [hasRated, setHasRated] = useState(false);
     const [ratingInstance, setRatingInstance] = useState(0)
     const [numRatingsInstance, setNumRatingsInstance] = useState(0);
+    const notifyRatingUpdated = () => toast.success("Rating Updated", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+    });
 
     const handleClick = (value) => {
         const newRating = (parseInt(props.rating)) + (parseInt(value));
@@ -37,6 +46,9 @@ const StarRating = (props) => {
                 // update rating on front end to update display
                 setNumRatingsInstance(parseInt(numRatingsInstance) + parseInt(1));
                 setRatingInstance(parseInt(props.rating) + parseInt(value));
+
+                // notify user rating updated
+                notifyRatingUpdated();
             })
             .catch((error) => {
                 console.error("Error:", error);

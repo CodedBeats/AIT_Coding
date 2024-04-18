@@ -1,6 +1,7 @@
 // dependencies
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
@@ -19,6 +20,14 @@ let UserReviews = () => {
     const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
+    const notifyReviewUpdate = () => toast.success("Review Deleted Successfully", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+    });
 
 
     useEffect(() => {
@@ -82,8 +91,10 @@ let UserReviews = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.message);
-
                 setReviewRemoved(prevState => !prevState);
+
+                // notify user successfull review delete
+                notifyReviewUpdate();
                 
             })
             .catch((error) => {

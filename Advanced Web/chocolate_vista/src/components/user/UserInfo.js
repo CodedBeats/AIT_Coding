@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
@@ -16,6 +17,14 @@ let UserInfo = () => {
     const navigate = useNavigate();
     const {userData: user, setUserData} = useContext(UserContext);
     const [modalShow, setModalShow] = useState(false);
+    const notifySuccessfulDelete = () => toast.success("Account Deleted Successfully", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+    });
 
     const handleDelete = () => {
         // Prompt the user with a confirmation dialog
@@ -45,6 +54,9 @@ let UserInfo = () => {
                 // clear user data from local storage
                 localStorage.removeItem("userData");
                 navigate("/");
+
+                // notify user successfully deleted account
+                notifySuccessfulDelete();
             })
             .catch(error => {
                 console.error("Error:", error);

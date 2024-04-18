@@ -5,6 +5,7 @@ import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 
 // components
@@ -30,6 +31,14 @@ const ChocolateReviews = (props) => {
     const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
+    const notifyReviewUpdate = (message) => toast.success(message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -120,6 +129,9 @@ const ChocolateReviews = (props) => {
                 setReviewAdded(prevState => !prevState);
                 // clear error message when review is successfully submitted
                 setInputError("");
+
+                // notify user successful review create
+                notifyReviewUpdate("Review Created Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -139,9 +151,10 @@ const ChocolateReviews = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.message);
-
                 setReviewRemoved(prevState => !prevState);
-                
+
+                // notify user successful review delete
+                notifyReviewUpdate("Review Deleted Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -183,6 +196,9 @@ const ChocolateReviews = (props) => {
                 setCurrentlyEditing(false);
                 // clear error message when review is successfully submitted
                 setInputError("");
+
+                // notify user successful review update
+                notifyReviewUpdate("Review Updated Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);

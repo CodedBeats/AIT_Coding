@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
@@ -10,6 +11,14 @@ import UserContext from '../../UserContext';
 let RegisterForm = () => {
     const navigate = useNavigate();
     const {setUserData} = useContext(UserContext);
+    const notifySuccessfulRegister = () => toast.success("Account Created Successfully", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+    });
 
     const [formData, setFormData] = useState({
         imgUrl: "",
@@ -119,6 +128,9 @@ let RegisterForm = () => {
 
                 // get user data for context
                 getUserData();
+
+                // toast alert successful register
+                notifySuccessfulRegister();
             } else {
                 console.log(data.message);
             }
