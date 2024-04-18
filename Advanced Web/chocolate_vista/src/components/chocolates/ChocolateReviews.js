@@ -10,6 +10,7 @@ import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
+import CustomToast from "../common/CustomToast";
 
 // style
 
@@ -21,6 +22,7 @@ const ChocolateReviews = (props) => {
     const [creatingReview, setCreatingReview] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [inputText, setInputText] = useState("");
+    const [inputError, setInputError] = useState("");
     const [editingReview, setEditingReview] = useState(false);
     const [editReviewID, setEditReviewID] = useState(null);
     const [currentlyEditing, setCurrentlyEditing] = useState(false);
@@ -88,9 +90,17 @@ const ChocolateReviews = (props) => {
 
     const handleInputTextChange = (e) => {
         setInputText(e.target.value);
+        // clear error message when user starts typing
+        setInputError("");
     };
 
     const handleReviewSubmit = () => {
+        // tell user to enter text
+        if (inputText.trim() === "") {
+            setInputError("Please fill out this field");
+            return;
+        }
+
         fetch("http://localhost/chocolatevista_api/review/addReview.php", {
                 method: "POST",
                 headers: {
@@ -109,7 +119,11 @@ const ChocolateReviews = (props) => {
                 setIsOpen(prevState => !prevState);
                 setCreatingReview(prevState => !prevState);
                 setReviewAdded(prevState => !prevState);
-                
+                // clear error message when review is successfully submitted
+                setInputError("");
+
+                // notify user successful review create
+                CustomToast("Review Created Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -129,9 +143,10 @@ const ChocolateReviews = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.message);
-
                 setReviewRemoved(prevState => !prevState);
-                
+
+                // notify user successful review delete
+                CustomToast("Review Deleted Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -147,6 +162,12 @@ const ChocolateReviews = (props) => {
     }
 
     const handleEditSubmit = () => {
+        // tell user to enter text
+        if (inputText.trim() === "") {
+            setInputError("Please fill out this field");
+            return;
+        }
+
         fetch("http://localhost/chocolatevista_api/review/editReview.php", {
                 method: "POST",
                 headers: {
@@ -165,7 +186,11 @@ const ChocolateReviews = (props) => {
                 setCreatingReview(prevState => !prevState);
                 setReviewUpdated(prevState => !prevState);
                 setCurrentlyEditing(false);
-                
+                // clear error message when review is successfully submitted
+                setInputError("");
+
+                // notify user successful review update
+                CustomToast("Review Updated Successfully"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -196,6 +221,7 @@ const ChocolateReviews = (props) => {
                                 value={inputText} 
                                 onChange={handleInputTextChange} 
                             />
+                            {inputError && <Form.Text className="text-danger">{inputError}</Form.Text>}
                             </Form.Group>
                             </div>
                             { !editingReview ?

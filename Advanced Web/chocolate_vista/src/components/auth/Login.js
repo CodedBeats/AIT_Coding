@@ -5,6 +5,7 @@ import { Form, Button } from "react-bootstrap";
 
 // components
 import UserContext from '../../UserContext';
+import CustomToast from "../common/CustomToast";
 
 
 let LoginForm = () => {
@@ -15,6 +16,10 @@ let LoginForm = () => {
         email: "",
         password: "",
     });
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,11 +27,35 @@ let LoginForm = () => {
             ...prevState,
             [name]: value,
         }));
+        // clear error message when user starts typing
+        setErrors(prevState => ({
+            ...prevState,
+            [name]: ""
+        }));
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        let formValid = true;
+        const newErrors = {};
+
+        // check if form fields are empty
+        if (formData.email === "") {
+            newErrors.email = "Please fill out this field";
+            formValid = false;
+        }
+        if (formData.password === "") {
+            newErrors.password = "Please fill out this field";
+            formValid = false;
+        }
+
+        // if any field is empty, set errors and return
+        if (!formValid) {
+            setErrors(newErrors);
+            return;
+        }
 
         fetch("http://localhost/chocolatevista_api/auth/loginFormSubmit.php", {
             method: "POST",
@@ -52,6 +81,9 @@ let LoginForm = () => {
 
                 // navigate to home (or maybe last page)
                 navigate("/");
+
+                // toast alert successful login
+                CustomToast("Login Successful",);
             } else {
                 console.log(data.message);
             }
@@ -74,6 +106,7 @@ let LoginForm = () => {
                     onChange={handleChange}
                     placeholder="Enter email"
                 />
+                {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
             </Form.Group>
 
             <Form.Group controlId="password">
@@ -85,6 +118,7 @@ let LoginForm = () => {
                     onChange={handleChange}
                     placeholder="Password"
                 />
+                {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
             </Form.Group>
         </Form>
 

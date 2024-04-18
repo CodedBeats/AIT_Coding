@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 // components
 import UserContext from '../../UserContext';
 import UpdateUserInfo from './UpdateUserInfo';
+import CustomToast from "../common/CustomToast";
 
 // style
 import "./css/user-info.css";
@@ -45,6 +46,9 @@ let UserInfo = () => {
                 // clear user data from local storage
                 localStorage.removeItem("userData");
                 navigate("/");
+
+                // notify user successfully deleted account
+                CustomToast("Account Deleted Successfully");
             })
             .catch(error => {
                 console.error("Error:", error);

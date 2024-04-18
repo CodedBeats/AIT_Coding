@@ -1,16 +1,22 @@
+// dependecies
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 
+// components
+import CustomToast from "../common/CustomToast";
+
 const FavouriteIcon = (props) => {
     const [isFavorited, setIsFavorited] = useState();
     const [icon, setIcon] = useState(props.isFavorited ? solidHeart : regularHeart);
     const color = "red";
+    const [notifyMessage, setNotifyMessage] = useState("");
 
     useEffect(() => {
         setIsFavorited(props.isFavorited);
         setIcon(props.isFavorited ? solidHeart : regularHeart);
+        setNotifyMessage(props.isFavorited ? "Favourite Removed" : "Favourite Added");
     }, [props.isFavorited])
     
 
@@ -18,10 +24,12 @@ const FavouriteIcon = (props) => {
         let url = "";
         if (isFavorited) {
             url = "http://localhost/chocolatevista_api/favourite/deleteFavourite.php";
+            setNotifyMessage(isFavorited ? "Favourite Added" : "Favourite Removed");
         }
         else if (isFavorited == false && isFavorited != null) {
             console.log(isFavorited)
             url = "http://localhost/chocolatevista_api/favourite/addFavourite.php";
+            setNotifyMessage(isFavorited ? "Favourite Added" : "Favourite Removed");
         }
 
         const data = {
@@ -41,6 +49,9 @@ const FavouriteIcon = (props) => {
             console.log(data.message);
             setIsFavorited(prevState => !prevState);
             setIcon(prevIcon => (prevIcon === solidHeart ? regularHeart : solidHeart));
+
+            // notify user favourite updated
+            CustomToast(notifyMessage);
         })
         .catch(error => {
             console.error("Error:", error);

@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 // components
 import UserContext from '../../UserContext';
 import Search from "../common/Search";
+import CustomToast from "../common/CustomToast";
 
 // style
 import "./css/navbar.css";
@@ -27,6 +28,9 @@ const NavbarComponent = () => {
         // clear user data from local storage
         localStorage.removeItem("userData");
         navigate("/");
+
+        // notify user logout success
+        CustomToast("Logout Successful");
     }
 
     return (

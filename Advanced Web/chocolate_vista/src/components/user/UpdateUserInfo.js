@@ -11,10 +11,10 @@ import UserContext from '../../UserContext';
 
 // style
 import "./css/modal.css";
+import CustomToast from "../common/CustomToast";
 
 let UpdateUserInfo = (props) => {
     const {userData, setUserData} = useContext(UserContext);
-
     const [formData, setFormData] = useState({
         email: "",
         username: "",
@@ -67,6 +67,8 @@ let UpdateUserInfo = (props) => {
                     isLoggedIn: true,
                 });
 
+                // notify user details updated successfully
+                CustomToast("Details Updated Successfully");
             })
             .catch((error) => {
                 console.error("Error:", error);

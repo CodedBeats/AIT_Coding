@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
+import CustomToast from "../common/CustomToast";
 
 // style
 import "./css/user-review.css";
@@ -82,8 +83,10 @@ let UserReviews = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.message);
-
                 setReviewRemoved(prevState => !prevState);
+
+                // notify user successfull review delete
+                CustomToast("Review Deleted Successfully");
                 
             })
             .catch((error) => {
