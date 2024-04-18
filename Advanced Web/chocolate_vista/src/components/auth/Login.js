@@ -2,23 +2,15 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
+import CustomToast from "../common/CustomToast";
 
 
 let LoginForm = () => {
     const navigate = useNavigate();
     const {setUserData} = useContext(UserContext);
-    const notifySuccessfulLogin = () => toast.success("Login Successful", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-    });
 
     const [formData, setFormData] = useState({
         email: "",
@@ -91,7 +83,7 @@ let LoginForm = () => {
                 navigate("/");
 
                 // toast alert successful login
-                notifySuccessfulLogin();
+                CustomToast("Login Successful",);
             } else {
                 console.log(data.message);
             }

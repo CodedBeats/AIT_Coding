@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import Image from 'react-bootstrap/Image';
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
 import Search from "../common/Search";
+import CustomToast from "../common/CustomToast";
 
 // style
 import "./css/navbar.css";
@@ -16,14 +16,6 @@ import "./css/navbar.css";
 const NavbarComponent = () => {
     const navigate = useNavigate();
     const {userData, setUserData} = useContext(UserContext);
-    const notifySuccessfulLogout = () => toast.success("Logout Successful", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-    });
 
     const handleLogout = () => {
         setUserData({
@@ -38,7 +30,7 @@ const NavbarComponent = () => {
         navigate("/");
 
         // notify user logout success
-        notifySuccessfulLogout();
+        CustomToast("Logout Successful");
     }
 
     return (

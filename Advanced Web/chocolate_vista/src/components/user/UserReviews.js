@@ -1,11 +1,11 @@
 // dependencies
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
+import CustomToast from "../common/CustomToast";
 
 // style
 import "./css/user-review.css";
@@ -20,14 +20,6 @@ let UserReviews = () => {
     const [reviewRemoved, setReviewRemoved] = useState(false);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
-    const notifyReviewUpdate = () => toast.success("Review Deleted Successfully", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-    });
 
 
     useEffect(() => {
@@ -94,7 +86,7 @@ let UserReviews = () => {
                 setReviewRemoved(prevState => !prevState);
 
                 // notify user successfull review delete
-                notifyReviewUpdate();
+                CustomToast("Review Deleted Successfully");
                 
             })
             .catch((error) => {

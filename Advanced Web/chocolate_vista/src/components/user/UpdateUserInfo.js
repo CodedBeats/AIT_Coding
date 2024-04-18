@@ -5,13 +5,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import { toast } from 'react-toastify';
 
 // components
 import UserContext from '../../UserContext';
 
 // style
 import "./css/modal.css";
+import CustomToast from "../common/CustomToast";
 
 let UpdateUserInfo = (props) => {
     const {userData, setUserData} = useContext(UserContext);
@@ -23,14 +23,6 @@ let UpdateUserInfo = (props) => {
     });
     const [usernameIsLocked, setUsernameIsLocked] = useState(true);
     const [passwordIsLocked, setPasswordIsLocked] = useState(true);
-    const notifySuccessfulUpdate = () => toast.success("Details Updated Successful", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-    });
 
 
     const handleFormChange = (e) => {
@@ -76,7 +68,7 @@ let UpdateUserInfo = (props) => {
                 });
 
                 // notify user details updated successfully
-                notifySuccessfulUpdate();
+                CustomToast("Details Updated Successfully");
             })
             .catch((error) => {
                 console.error("Error:", error);

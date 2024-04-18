@@ -1,22 +1,17 @@
+// dependecies
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { toast } from 'react-toastify';
+
+// components
+import CustomToast from "../common/CustomToast";
 
 const FavouriteIcon = (props) => {
     const [isFavorited, setIsFavorited] = useState();
     const [icon, setIcon] = useState(props.isFavorited ? solidHeart : regularHeart);
     const color = "red";
     const [notifyMessage, setNotifyMessage] = useState("");
-    const notifyFavouriteUpdated = () => toast.success(notifyMessage, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-    });
 
     useEffect(() => {
         setIsFavorited(props.isFavorited);
@@ -56,7 +51,7 @@ const FavouriteIcon = (props) => {
             setIcon(prevIcon => (prevIcon === solidHeart ? regularHeart : solidHeart));
 
             // notify user favourite updated
-            notifyFavouriteUpdated();
+            CustomToast(notifyMessage);
         })
         .catch(error => {
             console.error("Error:", error);
