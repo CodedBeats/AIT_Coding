@@ -17,12 +17,22 @@ let RegisterForm = () => {
         username: "",
         password: "",
     });
+    const [errors, setErrors] = useState({
+        email: "",
+        username: "",
+        password: "",
+    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
             ...prevState,
             [name]: value,
+        }));
+        // clear error message when user starts typing
+        setErrors(prevState => ({
+            ...prevState,
+            [name]: ""
         }));
 
         // set random avatar img
@@ -57,7 +67,7 @@ let RegisterForm = () => {
                     isLoggedIn: true,
                 });
 
-                // navigate to home (or maybe last page)
+                // navigate home
                 navigate("/");
             } else {
                 console.log(data.message);
@@ -71,7 +81,28 @@ let RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // console.log(formData); 
+        let formValid = true;
+        const newErrors = {};
+
+        // check if form fields are empty
+        if (formData.email === "") {
+            newErrors.email = "Please fill out this field";
+            formValid = false;
+        }
+        if (formData.username === "") {
+            newErrors.username = "Please fill out this field";
+            formValid = false;
+        }
+        if (formData.password === "") {
+            newErrors.password = "Please fill out this field";
+            formValid = false;
+        }
+
+        // if any field is empty, set errors and return
+        if (!formValid) {
+            setErrors(newErrors);
+            return;
+        }
 
         fetch("http://localhost/chocolatevista_api/auth/registerFormSubmit.php", {
             method: "POST",
@@ -86,7 +117,7 @@ let RegisterForm = () => {
                 console.log("Register successful");
                 // console.log(data.userData);
 
-                // get user data for context and route home
+                // get user data for context
                 getUserData();
             } else {
                 console.log(data.message);
@@ -110,6 +141,7 @@ let RegisterForm = () => {
                     onChange={handleChange}
                     placeholder="Enter email"
                 />
+                {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
             </Form.Group>
 
             <Form.Group controlId="username">
@@ -121,6 +153,7 @@ let RegisterForm = () => {
                     onChange={handleChange}
                     placeholder="Enter your username"
                 />
+                {errors.username && <Form.Text className="text-danger">{errors.username}</Form.Text>}
             </Form.Group>
 
             <Form.Group controlId="password">
@@ -132,6 +165,7 @@ let RegisterForm = () => {
                     onChange={handleChange}
                     placeholder="Password"
                 />
+                {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
             </Form.Group>
         </Form>
 
