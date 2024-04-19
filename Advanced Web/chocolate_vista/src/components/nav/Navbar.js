@@ -33,7 +33,7 @@ const NavbarComponent = () => {
         navigate("/");
 
         // notify user logout success
-        CustomToast("Logout Successful");
+        CustomToast("Logout Successful", "success");
     }
 
     return (

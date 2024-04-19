@@ -86,7 +86,7 @@ let UserReviews = () => {
                 setReviewRemoved(prevState => !prevState);
 
                 // notify user successfull review delete
-                CustomToast("Review Deleted Successfully");
+                CustomToast("Review Deleted Successfully", "success");
                 
             })
             .catch((error) => {

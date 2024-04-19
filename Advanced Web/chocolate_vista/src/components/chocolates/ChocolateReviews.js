@@ -136,7 +136,7 @@ const ChocolateReviews = (props) => {
                 setInputError("");
 
                 // notify user successful review create
-                CustomToast("Review Created Successfully"); 
+                CustomToast("Review Created Successfully", "success"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -159,7 +159,7 @@ const ChocolateReviews = (props) => {
                 setReviewRemoved(prevState => !prevState);
 
                 // notify user successful review delete
-                CustomToast("Review Deleted Successfully"); 
+                CustomToast("Review Deleted Successfully", "success"); 
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -204,7 +204,7 @@ const ChocolateReviews = (props) => {
                 setInputError("");
 
                 // notify user successful review update
-                CustomToast("Review Updated Successfully"); 
+                CustomToast("Review Updated Successfully", "success"); 
             })
             .catch((error) => {
                 console.error("Error:", error);

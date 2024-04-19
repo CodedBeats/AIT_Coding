@@ -170,7 +170,7 @@ let UpdateUserInfo = (props) => {
                 handleCloseModal();
 
                 // notify user details updated successfully
-                CustomToast("Details Updated Successfully");
+                CustomToast("Details Updated Successfully", "success");
             })
             .catch((error) => {
                 console.error("Error:", error);

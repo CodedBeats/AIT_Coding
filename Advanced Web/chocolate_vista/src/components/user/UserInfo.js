@@ -48,7 +48,7 @@ let UserInfo = () => {
                 navigate("/");
 
                 // notify user successfully deleted account
-                CustomToast("Account Deleted Successfully");
+                CustomToast("Account Deleted Successfully", "success");
             })
             .catch(error => {
                 console.error("Error:", error);

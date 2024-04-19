@@ -42,7 +42,7 @@ const StarRating = (props) => {
                 setRatingInstance(parseInt(props.rating) + parseInt(value));
 
                 // notify user rating updated
-                CustomToast("Rating Updated");
+                CustomToast("Rating Updated", "success");
             })
             .catch((error) => {
                 console.error("Error:", error);

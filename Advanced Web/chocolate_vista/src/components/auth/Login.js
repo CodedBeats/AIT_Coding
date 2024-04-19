@@ -88,9 +88,12 @@ let LoginForm = () => {
                 navigate("/");
 
                 // toast alert successful login
-                CustomToast("Login Successful",);
+                CustomToast("Login Successful", "success");
             } else {
                 console.log(data.message);
+
+                // toast alert failed login
+                CustomToast(data.message, "warning");
             }
         })
         .catch((error) => {
