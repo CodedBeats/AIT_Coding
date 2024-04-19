@@ -80,15 +80,17 @@ const Search = () => {
             </div>
             <ListGroup className="search-results">
                 {!noChocsDisplay ?
-                chocolates.map((choc) => (
-                    <ListGroup.Item key={choc.chocID}>
-                        <Link 
-                            to={`/chocolates/${choc.chocID}/${choc.name}`}
-                            onClick={handleLinkClick}
-                        >
-                            {choc.name}
-                        </Link>
-                    </ListGroup.Item>
+                chocolates.map((choc, index) => (
+                    <Link 
+                        to={`/chocolates/${choc.chocID}/${choc.name}`}
+                        onClick={handleLinkClick}
+                        className="search-results-link"
+                        key={choc.chocID}
+                    >
+                        <ListGroup.Item className={index === chocolates.length - 1 ? "last-search-results-item" : ""}>
+                            <span className="search-results-link-text">{choc.name}</span>
+                        </ListGroup.Item>
+                    </Link>
                 ))
                 :
                 <div></div>
