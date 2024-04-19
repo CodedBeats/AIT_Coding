@@ -32,9 +32,21 @@ let UpdateUserInfo = (props) => {
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
+        let filteredValue = value;
+        
+        // get blacklist from .env, this way you don't have to see the words :)
+        const blacklist = process.env.REACT_APP_BLACKLIST.split(',');
+    
+        // check if input value contains any word from blacklist
+        blacklist.forEach((badWord) => {
+            // regex to match bad word globally
+            const regex = new RegExp(badWord.trim(), 'gi');
+            filteredValue = filteredValue.replace(regex, "");
+        });
+        
         setFormData((prevState) => ({
             ...prevState,
-            [name]: value,
+            [name]: filteredValue,
         }));
         // clear error message when user starts typing
         setErrors(prevState => ({

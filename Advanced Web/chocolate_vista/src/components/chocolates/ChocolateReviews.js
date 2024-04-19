@@ -131,7 +131,8 @@ const ChocolateReviews = (props) => {
                 setIsOpen(prevState => !prevState);
                 setCreatingReview(prevState => !prevState);
                 setReviewAdded(prevState => !prevState);
-                // clear error message when review is successfully submitted
+                // clear input and error message when review is successfully submitted
+                setInputText("");
                 setInputError("");
 
                 // notify user successful review create
@@ -198,7 +199,8 @@ const ChocolateReviews = (props) => {
                 setCreatingReview(prevState => !prevState);
                 setReviewUpdated(prevState => !prevState);
                 setCurrentlyEditing(false);
-                // clear error message when review is successfully submitted
+                // clear input and error message when review is successfully submitted
+                setInputText("");
                 setInputError("");
 
                 // notify user successful review update
