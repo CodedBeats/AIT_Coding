@@ -51,7 +51,7 @@ const FavouriteIcon = (props) => {
             setIcon(prevIcon => (prevIcon === solidHeart ? regularHeart : solidHeart));
 
             // notify user favourite updated
-            CustomToast(notifyMessage);
+            CustomToast(notifyMessage, "success");
         })
         .catch(error => {
             console.error("Error:", error);

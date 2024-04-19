@@ -170,14 +170,15 @@ let UpdateUserInfo = (props) => {
                 handleCloseModal();
 
                 // notify user details updated successfully
-                CustomToast("Details Updated Successfully");
+                CustomToast("Details Updated Successfully", "success");
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
         }
         else {
-            alert("Passwords don't match");
+            // notify user passwords don't match
+            CustomToast("Passwords Do Not Match", "warning");
         }
     };
 
@@ -187,6 +188,7 @@ let UpdateUserInfo = (props) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            onHide={handleCloseModal}
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">

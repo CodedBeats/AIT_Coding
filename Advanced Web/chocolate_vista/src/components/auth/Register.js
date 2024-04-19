@@ -140,7 +140,7 @@ let RegisterForm = () => {
                 getUserData();
 
                 // toast alert successful register
-                CustomToast("Account Created Successfully");
+                CustomToast("Account Created Successfully", "success");
             } else {
                 console.log(data.message);
             }
