@@ -1,11 +1,16 @@
 // dependencies
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import UserContext from '../../UserContext';
 import CustomToast from "../common/CustomToast";
+
+// styles
+import "./css/login.css";
 
 
 let LoginForm = () => {
@@ -95,44 +100,53 @@ let LoginForm = () => {
 
 
     return (
-        <>
-        <Form>
-            <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Enter email"
-                />
-                {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
-            </Form.Group>
+        <div className="login-page-container">
+            <div className="login-form-container">
+                <span className="login-title">Login</span>
+                <Form className="form-wrapper">
+                    <Form.Group controlId="email">
+                        <div className="form-input-container">
+                            <Form.Control
+                                className="form-input"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Email"
+                            />
+                            <FontAwesomeIcon icon={faEnvelope} />
+                        </div>
+                        {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
+                    </Form.Group>
 
-            <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-                {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
-            </Form.Group>
-        </Form>
+                    <Form.Group controlId="password">
+                        <div className="form-input-container">
+                            <Form.Control
+                                className="form-input"
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Password"
+                            />
+                            <span><FontAwesomeIcon icon={faLock}/></span>
+                        </div>
+                        {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
+                    </Form.Group>
+                </Form>
 
-        <Button variant="primary" type="button" onClick={handleSubmit}>
-            LOGIN
-        </Button>
+                <button type="button" className="login-btn" onClick={handleSubmit}>
+                    Login
+                </button>
 
-        <div>
-            Don't have an account? 
-            <Link to="/register">
-                <Button variant="outline-success">Register</Button>
-            </Link>
+                <div>
+                    Don't have an account? 
+                    <Link to="/register" className="register-link">
+                        <span>Register</span>
+                    </Link>
+                </div>
+            </div>
         </div>
-        </>
     );
 }
 

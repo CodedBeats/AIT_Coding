@@ -2,9 +2,10 @@
 .navbar-container {
     background-color: #007F7F;
     display: flex !important;
-    justify-content: space-between !important;;
-    align-items: center !important;;
-    padding: 8px 40px !important;;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px 40px !important;
+    height: 8vh;
 }
 .navbar-collapse {
     justify-content: flex-end;

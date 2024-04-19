@@ -1,11 +1,16 @@
 // dependencies
 import { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import UserContext from '../../UserContext';
 import CustomToast from "../common/CustomToast";
+
+// style
+import "./css/register.css";
 
 
 let RegisterForm = () => {
@@ -147,56 +152,68 @@ let RegisterForm = () => {
 
 
     return (
-        <>
-        <Form>
-            <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Enter email"
-                />
-                {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
-            </Form.Group>
+        <div className="register-page-container">
+            <div className="register-form-container">
+                <span className="register-title">Register</span>
+                <Form className="form-wrapper">
+                    <Form.Group controlId="email">
+                        <div className="form-input-container">
+                            <Form.Control
+                                className="form-input"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Enter email"
+                            />
+                            <FontAwesomeIcon icon={faEnvelope} />
+                        </div>
+                        {errors.email && <Form.Text className="text-danger">{errors.email}</Form.Text>}
+                    </Form.Group>
 
-            <Form.Group controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    placeholder="Enter your username"
-                />
-                {errors.username && <Form.Text className="text-danger">{errors.username}</Form.Text>}
-            </Form.Group>
+                    <Form.Group controlId="username">
+                        <div className="form-input-container">
+                            <Form.Control
+                                className="form-input"
+                                type="text"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                placeholder="Enter your username"
+                            />
+                            <span><FontAwesomeIcon icon={faUser}/></span>
+                        </div>
+                        {errors.username && <Form.Text className="text-danger">{errors.username}</Form.Text>}
+                    </Form.Group>
 
-            <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-                {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
-            </Form.Group>
-        </Form>
+                    <Form.Group controlId="password">
+                        <div className="form-input-container">
+                            <Form.Control
+                                className="form-input"
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Password"
+                            />
+                            <span><FontAwesomeIcon icon={faLock}/></span>
+                        </div>
+                        {errors.password && <Form.Text className="text-danger">{errors.password}</Form.Text>}
+                    </Form.Group>
+                </Form>
 
-        <Button variant="primary" type="button" onClick={handleSubmit}>
-            REGISTER
-        </Button>
+                <button type="button" className="login-btn" onClick={handleSubmit}>
+                    Register
+                </button>
 
-        <div>
-            Already have an account? 
-            <Link to="/login">
-                <Button variant="outline-success">Login</Button>
-            </Link>
+                <div>
+                    Already have an account? 
+                    <Link to="/login" className="register-link">
+                        <span>Login</span>
+                    </Link>
+                </div>
+            </div>
         </div>
-        </>
     );
 }
 
