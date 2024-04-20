@@ -75,11 +75,11 @@ let Landing = () => {
         <div className="landing-page">
             <div className="carousel-section-container">
                 <ImageCarousel images={carouselImage} imageClass="landing-carousel-image" />
-                <div className="chocolates-link-container">
-                    <Link to="/chocolates" className="chocolates-link">
-                        <h4 className="chocolates-link-text">All Chocolates</h4>
-                    </Link>
-                </div>
+                <Link to="/chocolates" className="chocolates-link">
+                    <div className="chocolates-link-container">
+                            <h4 className="chocolates-link-text">All Chocolates</h4>
+                    </div>
+                </Link>
             </div>
 
             <div className="random-chocolates-container">

@@ -36,19 +36,20 @@
     border-top: none;
 }
 .search-results div {
-    background-color: rgb(255, 255, 255);
+    background-color: #f7e6d5;
     border: none;
-    transition: 0.3s;
+    transition: 0.15s;
 }
 .last-search-results-item {
     border-radius: 0 0 15px 15px !important;
 }
 .search-results div:hover {
-    background-color: rgb(204, 204, 204);
+    background-color: #d3ac85;
 }
 .search-results-link {
     text-decoration: none;
 }
 .search-results-link-text {
     color: black;
+    font-weight: bold;
 }

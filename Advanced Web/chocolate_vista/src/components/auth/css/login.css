@@ -1,8 +1,3 @@
-/* hide breadcrumbs on this page */
-.breadcrumbs {
-    display: none;
-}
-
 /* general */
 p {
     margin: 0 !important;
