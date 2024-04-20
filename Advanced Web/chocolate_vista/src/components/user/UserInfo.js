@@ -63,28 +63,22 @@ let UserInfo = () => {
                 <Image src={user.imgUrl} alt="Logo" className="user-img" rounded />
             </div>
             <div className="email-container">
-                <p>email</p>
-                <p>{user.email}</p>
+                <p className="user-info-label">Email</p>
+                <p className="user-info-text">{user.email}</p>
             </div>
             <div className="username-container">
-                <p>username</p>
-                <p>{user.username}</p>
+                <p className="user-info-label">Username</p>
+                <p className="user-info-text">{user.username}</p>
             </div>
-            <div className="password-container">
-                <p>password</p>
-                <p>*******</p>
-            </div>
-            <div className="update-container">
-                <Button variant="outline-warning" onClick={() => setModalShow(true)}>Update Details</Button>
+            <div className="user-info-btns">
+                <Button variant="warning" onClick={() => setModalShow(true)} className="user-info-btn">Update Details</Button>
+                <Button variant="danger" onClick={handleDelete} className="user-info-btn">Delete Account</Button>
             </div>
             <UpdateUserInfo
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 email={user.email}
             />
-            <div className="delete-container">
-                <button onClick={handleDelete}>Delete Account</button>
-            </div>
         </div>
     )
 }
