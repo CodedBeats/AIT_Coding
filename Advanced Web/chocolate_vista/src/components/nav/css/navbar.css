@@ -4,7 +4,7 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 8px 40px !important;
+    padding: 8px 10px !important;
     height: 8vh;
 }
 .navbar-collapse {
@@ -52,8 +52,8 @@
 
 /* search */
 .navbar-search-container {
-    /* allow Search to take remaining space */
-    flex: 20; 
+    /* allow Search to take remaining space...it's being finiky so this is a weird fix */
+    flex: 10000; 
     justify-content: center;
     display: flex;
 }
@@ -76,17 +76,17 @@
 
 
 /* some override styles */
-.dropdown-toggle {
+.nav-dropdown-btn {
     border: none !important;
     padding: 0 !important;
 }
-.dropdown-toggle::after {
+.nav-dropdown-btn::after {
     border: none !important;
 }
-.dropdown-toggle:focus {
+.nav-dropdown-btn:focus {
     border: none !important;
 }
-.dropdown-toggle:active {
+.nav-dropdown-btn:active {
     border: none !important;
 }
 

@@ -92,23 +92,25 @@ let Chocolates = () => {
 
     
     return (
-        <>
-        <div>
-            <p className="chocolates-found">{chocolatesLength} Chocolates Found</p>
-            <div>
-                <Filters 
-                    onFilterChange={handleFilterChange} 
-                    numRatingsVal={numRatingsFilterVal}
-                    setNumRatingsVal={setNumRatingsFilterVal}
-                    priceVal={priceVal}
-                    setPriceVal={setPriceVal}
-                    weightVal={weightVal}
-                    setWeightVal={setWeightVal}
-                />
-                <Button onClick={clearFilterValues} variant="outline-warning">X Reset Filters</Button>
+        <div className="chocolates-page-container">
+            <div className="filters-container-wrapper">
+                <p className="chocolates-found">{chocolatesLength} Chocolates Found</p>
+                <p className="filters-container-title">Filter by Tag</p>
+                <Button onClick={clearFilterValues} variant="warning" className="reset-filters-btn">X Reset Filters</Button>
+                <div className="filters-container">
+                    <Filters 
+                        onFilterChange={handleFilterChange} 
+                        numRatingsVal={numRatingsFilterVal}
+                        setNumRatingsVal={setNumRatingsFilterVal}
+                        priceVal={priceVal}
+                        setPriceVal={setPriceVal}
+                        weightVal={weightVal}
+                        setWeightVal={setWeightVal}
+                    />
+                </div>
             </div>
             {noChocsDisplay 
-                ? <div>No Chocolates Found</div>
+                ? <div className="no-chocolates-found-txt">No Chocolates Found</div>
                 : <div className="all-chocolates-container">
                     {chocolates.map((chocolate, index) => (
                         <div key={index}>
@@ -122,7 +124,6 @@ let Chocolates = () => {
                 </div>
             }
         </div>
-        </>
     )
 }
 
