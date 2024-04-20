@@ -98,13 +98,13 @@ let UserReviews = () => {
     return (
         <div className="user-reviews">
             <span className="user-reviews-title">Your Reviews</span>
-            <div className="review-cards-container">
+            <div className="user-review-cards-container">
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => {
                     const currentReviewLink = `/chocolates/${review.chocID}/${review.name}`;
                     return (
-                        <div key={index}>
-                            <div className="review-card-link">
+                        <div key={index} className="user-review-card">
+                            <div className="user-review-card-link">
                                 <ReviewCard 
                                     review={review} 
                                     canEdit={true} 

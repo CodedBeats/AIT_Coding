@@ -6,13 +6,13 @@ import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
 import CustomToast from "../common/CustomToast";
 
 // style
+import "./css/chocolate-review.css";
 
 
 const ChocolateReviews = (props) => {
@@ -25,7 +25,7 @@ const ChocolateReviews = (props) => {
     const [inputError, setInputError] = useState("");
     const [editingReview, setEditingReview] = useState(false);
     const [editReviewID, setEditReviewID] = useState(null);
-    const [currentlyEditing, setCurrentlyEditing] = useState(false);
+    const [currentlyEditing, setCurrentlyEditing] = useState([]);
     const [reviewAdded, setReviewAdded] = useState(false);
     const [reviewUpdated, setReviewUpdated] = useState(false);
     const [reviewRemoved, setReviewRemoved] = useState(false);
@@ -85,7 +85,8 @@ const ChocolateReviews = (props) => {
         setIsOpen(prevState => !prevState);
         setCreatingReview(prevState => !prevState);
         setEditingReview(false);
-        setCurrentlyEditing(false);
+        setCurrentlyEditing([]);
+        setInputText("");
     }
 
     const handleInputTextChange = (e) => {
@@ -166,12 +167,17 @@ const ChocolateReviews = (props) => {
             });
     }
 
-    const handleEdit = (reviewID) => {
+    const handleEdit = (reviewID, currentText) => {
         setIsOpen(<FontAwesomeIcon icon={faArrowUp} />);
+        setInputText(currentText);
         setEditingReview(true);
         setCreatingReview(true);
         setEditReviewID(reviewID);
-        setCurrentlyEditing(true);
+        setCurrentlyEditing((prevEditing) => {
+            return prevEditing.includes(reviewID)
+                ? prevEditing.filter((editingId) => editingId !== reviewID)
+                : [...prevEditing, reviewID];
+        });
     }
 
     const handleEditSubmit = () => {
@@ -198,7 +204,7 @@ const ChocolateReviews = (props) => {
                 setIsOpen(prevState => !prevState);
                 setCreatingReview(prevState => !prevState);
                 setReviewUpdated(prevState => !prevState);
-                setCurrentlyEditing(false);
+                setCurrentlyEditing([]);
                 // clear input and error message when review is successfully submitted
                 setInputText("");
                 setInputError("");
@@ -216,18 +222,25 @@ const ChocolateReviews = (props) => {
         <div>
             { user.isLoggedIn &&
                 <div className="create-review-container">
-                    <Button variant="primary" onClick={toggleCreateReview}>
-                        {!editingReview ? "Create" : "Update"} Review 
+                    <button onClick={toggleCreateReview} className="changing-review-btn">
+                        {!editingReview ? "Create" : "Update"} Review&nbsp;
                         {isOpen ? <FontAwesomeIcon icon={faArrowUp} /> : <FontAwesomeIcon icon={faArrowDown} />}
-                    </Button>
+                    </button>
                     {/* only show on create click */}
                     {creatingReview && 
-                        <div className="review-card-container">
-                            <div className="review-user-img-container">
-                                <Image src={user.imgUrl} alt="Logo" className="review-user-img" rounded />
+                        <div className="choc-review-card-create-container">
+                            <div className="create-sect-left">
+                                <div className="review-user-img-container">
+                                    <Image src={user.imgUrl} alt="Logo" className="review-user-img" rounded />
+                                </div>
+                                <div className="review-title">{user.username}</div>
+                                { !editingReview ?
+                                    <Button variant="success" onClick={handleReviewSubmit}>Create</Button>
+                                :
+                                    <Button variant="success" onClick={handleEditSubmit}>Update</Button>
+                                }
                             </div>
-                            <div className="review-title">{user.username}</div>
-                            <div className="review-text">
+                            <div className="choc-review-text">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Control 
                                 as="textarea" 
@@ -238,31 +251,26 @@ const ChocolateReviews = (props) => {
                             {inputError && <Form.Text className="text-danger">{inputError}</Form.Text>}
                             </Form.Group>
                             </div>
-                            { !editingReview ?
-                                <Button variant="success" onClick={handleReviewSubmit}>Submit</Button>
-                            :
-                                <Button variant="success" onClick={handleEditSubmit}>Update</Button>
-                            }
                         </div>
                     }
                 </div>
             }
-            <div className="review-cards-container">
+            <div className="chocolate-review-cards-container">
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => (
-                    <div key={index}>
+                    <div key={index} className="chocolate-review-card">
                         <ReviewCard 
                             review={review} 
                             chocolateReviews={true}
-                            currentlyEditing={currentlyEditing}
+                            currentlyEditing={currentlyEditing.includes(review.reviewID)}
                             canEdit={review.name === user.username ? true : false} 
-                            onClickEdit={(id) => handleEdit(id)} 
+                            onClickEdit={(id) => handleEdit(id, review.text)} 
                             onClickDelete={(id) => handleDelete(id)} 
                         />
                     </div>
                 ))
             ) : (
-                <div>
+                <div className="no-reviews-title">
                     This chocolate currently has no reviews
                 </div>
             )}
