@@ -10,7 +10,6 @@ import Form from "react-bootstrap/Form";
 import UserContext from '../../UserContext';
 
 // style
-import "./css/modal.css";
 import CustomToast from "../common/CustomToast";
 
 let UpdateUserInfo = (props) => {
@@ -190,12 +189,12 @@ let UpdateUserInfo = (props) => {
             centered
             onHide={handleCloseModal}
         >
-            <Modal.Header closeButton>
+            <Modal.Header closeButton className="update-modal">
                 <Modal.Title id="contained-modal-title-vcenter">
                     Update Your Details
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="update-modal">
                 {/* username */}
                 <Form.Check
                     type="switch"

@@ -5,6 +5,17 @@
     align-items: center;
 }
 
+/* container */
+.review-cards-container {
+    width: 100%;
+}
+
+/* title */
+.user-reviews-title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .review-card-link {
     text-decoration: none;
     color: black;

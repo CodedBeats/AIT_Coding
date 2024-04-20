@@ -97,7 +97,7 @@ let UserReviews = () => {
 
     return (
         <div className="user-reviews">
-            <span>Your Reviews</span>
+            <span className="user-reviews-title">Your Reviews</span>
             <div className="review-cards-container">
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => {

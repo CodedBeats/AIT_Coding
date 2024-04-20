@@ -15,13 +15,13 @@ let Profile = () => {
 
     return (
         <div className="profile-container">
-            <div className="user-info-container">
+            <div className="user-info-container profile-card">
                 <UserInfo />
             </div>
-            <div className="reviews-container">
+            <div className="reviews-container profile-card">
                 <UserReviews />
             </div>
-            <div className="favorites-container">
+            <div className="favorites-container profile-card">
                 <UserFavourites />
             </div>
         </div>

@@ -90,7 +90,7 @@ let UserFavourites = () => {
 
     return (
         <div className="user-favourites">
-            <span>Your Favourites</span>
+            <span className="user-favourites-title">Your Favourites</span>
             <div className="favourites-cards-container">
             {true ? (
               <div className="favourites-cards">
