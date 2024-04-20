@@ -11,13 +11,13 @@
     padding: 20px 20px 0 20px;
     background-color: rgb(219, 219, 219);
 }
-.choc-review-card-create-container .create-sec-left {
+.choc-review-card-create-container .create-sect-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.create-sec-left button {
+.create-sect-left button {
     margin-top: 5px;
 }
 .chocolate-review-cards-container {
@@ -27,10 +27,10 @@
     align-items: stretch;
     border-top: 1px solid black;
 }
-.chocolate-review-cards-container div:nth-child(odd) {
+.chocolate-review-cards-container .chocolate-review-card:nth-child(odd) {
     background-color: rgb(241, 210, 175);
 }
-.chocolate-review-cards-container div:nth-child(even) {
+.chocolate-review-cards-container .chocolate-review-card:nth-child(even) {
     background-color: rgb(206, 166, 120);
 }
 

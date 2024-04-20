@@ -103,7 +103,7 @@ let UserReviews = () => {
                 reviews.map((review, index) => {
                     const currentReviewLink = `/chocolates/${review.chocID}/${review.name}`;
                     return (
-                        <div key={index}>
+                        <div key={index} className="user-review-card">
                             <div className="user-review-card-link">
                                 <ReviewCard 
                                     review={review} 
