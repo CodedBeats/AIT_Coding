@@ -40,14 +40,14 @@ let Chocolate = () => {
     const [error, setError] = useState(null);
     const [isFavorited, setIsFavorited] = useState(false);
     const [reviewsVisible, setReviewsVisible] = useState(false);
-    const [button1Color, setButton1Color] = useState("white");
+    const [button1Color, setButton1Color] = useState("rgb(219, 219, 219)");
     const [button2Color, setButton2Color] = useState("rgb(66, 66, 66)");
 
     const handleTabs = (buttonNumber) => {
         setReviewsVisible(prevState => !prevState);
         // Toggle colors of both buttons simultaneously
-        setButton1Color(prevColor => prevColor === "white" ? "rgb(66, 66, 66)" : "white");
-        setButton2Color(prevColor => prevColor === "white" ? "rgb(66, 66, 66)" : "white");
+        setButton1Color(prevColor => prevColor === "rgb(219, 219, 219)" ? "rgb(66, 66, 66)" : "rgb(219, 219, 219)");
+        setButton2Color(prevColor => prevColor === "rgb(219, 219, 219)" ? "rgb(66, 66, 66)" : "rgb(219, 219, 219)");
     }
 
     useEffect(() => {
@@ -140,26 +140,28 @@ let Chocolate = () => {
     return (
         <>
         <div className="chocolcate-container">
-            <div className="chocolate-img-container">
-                <Image src={chocolate.imgUrl} className="chocolate-img" rounded />
-            </div>
+            <div className="chocolate-img-container-wrapper">
+                <div className="chocolate-img-container">
+                    <Image src={chocolate.imgUrl} className="chocolate-img" rounded />
+                </div>
 
-            <div className="choc-details-container">
-                <div className="choc-title-box">
-                    <p className="choc-title-name">{chocolate.name}</p>
-                    <div className="chocolate-favourite-icon">
-                        <FavouriteIcon 
-                            isFavorited={isFavorited} 
-                            userID={user.userID}
-                            chocolateID={chocolate.chocID}
-                        />
+                <div className="choc-details-container">
+                    <div className="choc-title-box">
+                        <p className="choc-title-name">{chocolate.name}</p>
+                        <div className="chocolate-favourite-icon">
+                            <FavouriteIcon 
+                                isFavorited={isFavorited} 
+                                userID={user.userID}
+                                chocolateID={chocolate.chocID}
+                            />
+                        </div>
                     </div>
+                    <div className="choc-rating-box">
+                        <StarRating rating={chocolate.rating} numRatings={chocolate.numRatings} id={chocolate.chocID} static={false} />
+                    </div>
+                    <p className="choc-title-description">Description</p>
+                    <p>{chocolate.description}</p>
                 </div>
-                <div className="choc-rating-box">
-                    <StarRating rating={chocolate.rating} numRatings={chocolate.numRatings} id={chocolate.chocID} static={false} />
-                </div>
-                <p className="choc-title-description">Description</p>
-                <p>{chocolate.description}</p>
             </div>
 
             <div className="details-and-reviews-container">

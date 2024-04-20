@@ -6,7 +6,7 @@
 }
 
 /* container */
-.review-cards-container {
+.user-review-cards-container {
     width: 100%;
 }
 
@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 
-.review-card-link {
+.user-review-card-link {
     text-decoration: none;
     color: black;
 }

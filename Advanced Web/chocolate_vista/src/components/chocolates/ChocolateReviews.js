@@ -6,13 +6,13 @@ import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-
 // components
 import UserContext from '../../UserContext';
 import ReviewCard from "../common/ReviewCard";
 import CustomToast from "../common/CustomToast";
 
 // style
+import "./css/chocolate-review.css";
 
 
 const ChocolateReviews = (props) => {
@@ -216,18 +216,25 @@ const ChocolateReviews = (props) => {
         <div>
             { user.isLoggedIn &&
                 <div className="create-review-container">
-                    <Button variant="primary" onClick={toggleCreateReview}>
-                        {!editingReview ? "Create" : "Update"} Review 
+                    <button onClick={toggleCreateReview} className="changing-review-btn">
+                        {!editingReview ? "Create" : "Update"} Review&nbsp;
                         {isOpen ? <FontAwesomeIcon icon={faArrowUp} /> : <FontAwesomeIcon icon={faArrowDown} />}
-                    </Button>
+                    </button>
                     {/* only show on create click */}
                     {creatingReview && 
-                        <div className="review-card-container">
-                            <div className="review-user-img-container">
-                                <Image src={user.imgUrl} alt="Logo" className="review-user-img" rounded />
+                        <div className="choc-review-card-create-container">
+                            <div className="create-sec-left">
+                                <div className="review-user-img-container">
+                                    <Image src={user.imgUrl} alt="Logo" className="review-user-img" rounded />
+                                </div>
+                                <div className="review-title">{user.username}</div>
+                                { !editingReview ?
+                                    <Button variant="success" onClick={handleReviewSubmit}>Create</Button>
+                                :
+                                    <Button variant="success" onClick={handleEditSubmit}>Update</Button>
+                                }
                             </div>
-                            <div className="review-title">{user.username}</div>
-                            <div className="review-text">
+                            <div className="choc-review-text">
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Control 
                                 as="textarea" 
@@ -238,16 +245,11 @@ const ChocolateReviews = (props) => {
                             {inputError && <Form.Text className="text-danger">{inputError}</Form.Text>}
                             </Form.Group>
                             </div>
-                            { !editingReview ?
-                                <Button variant="success" onClick={handleReviewSubmit}>Submit</Button>
-                            :
-                                <Button variant="success" onClick={handleEditSubmit}>Update</Button>
-                            }
                         </div>
                     }
                 </div>
             }
-            <div className="review-cards-container">
+            <div className="chocolate-review-cards-container">
             {!noReviewsDisplay ? (
                 reviews.map((review, index) => (
                     <div key={index}>
@@ -262,7 +264,7 @@ const ChocolateReviews = (props) => {
                     </div>
                 ))
             ) : (
-                <div>
+                <div className="no-reviews-title">
                     This chocolate currently has no reviews
                 </div>
             )}
