@@ -19,13 +19,13 @@ let ChocCard = (props) => {
     const chocLink = `/chocolates/${props.choc.chocID}/${props.choc.name}`;
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card className="choc-card-container">
             <Card.Body>
-                <Link to={chocLink}>
+                <Link to={chocLink} className="choc-card-link">
                     <Card.Img variant="top" src={props.choc.imgUrl} alt={props.choc.name} className="choc-img" />
                     <Card.Title>
                         <div className="name-fave-container">
-                            {props.choc.name}
+                            <span className="name">{props.choc.name}</span>
                             <FavouriteIcon isFavorited={props.isFavorited} userID={props.userID} chocolateID={props.choc.chocID} static={true} />
                         </div>
                     </Card.Title>

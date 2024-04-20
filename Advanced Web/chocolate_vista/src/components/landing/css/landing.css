@@ -1,6 +1,6 @@
 .carousel-section-container {
     width: 100%;
-    height: 55vh;
+    height: 43vh;
     overflow: hidden;
     position: relative;
 }
@@ -32,15 +32,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0 20px 0;
+    margin: 20px 0;
     font-size: 3em;
     font-weight: bold;
     color: rgb(56, 27, 0);
 }
 .random-chocolates {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    column-gap: 2%;
+    gap: 2%;
     margin-bottom: 30px;
+    width: 100%;
 }
