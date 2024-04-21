@@ -80,5 +80,21 @@
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
-    
+    .user-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: 4fr auto auto 1fr;
+        gap: 0;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "user-img-container"
+            "email-container"
+            "username-container"
+            "user-info-btns";
+    }
+    .email-container {
+        margin: 10px 0;
+    }
+    .username-container {
+        margin: 10px 0 25px 0;
+    }
 }

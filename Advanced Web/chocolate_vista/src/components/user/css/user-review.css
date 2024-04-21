@@ -54,5 +54,7 @@
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
-    
+    .user-review-card-link .review-card-container {
+        display: inline-block;
+    }
 }
