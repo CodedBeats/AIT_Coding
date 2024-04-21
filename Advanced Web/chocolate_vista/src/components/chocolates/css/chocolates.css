@@ -87,5 +87,20 @@
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
-    
+    .filters-container-wrapper {
+        grid-template-rows: 3fr 1fr;
+        justify-items: center;
+    }
+    .filters-container-title {
+        justify-self: center;
+    }
+    .filters {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+    .reset-filters-btn {
+        width: 100%;
+    }
 }

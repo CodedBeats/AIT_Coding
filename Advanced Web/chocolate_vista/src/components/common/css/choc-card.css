@@ -75,5 +75,10 @@
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
-    
+    .choc-card-container {
+        width: 10rem;
+    }
+    .choc-img {
+        height: 150px;
+    }
 }
