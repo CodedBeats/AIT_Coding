@@ -79,3 +79,21 @@
 .additional-details-reviews-container {
     background-color: white;
 }
+
+
+/************************************************************************/
+/* Media query for tablets */
+@media only screen and (min-width: 769px) and (max-width: 989px) {
+    .choc-details-container {
+        max-width: 100%;
+    }
+    .chocolate-img {
+        max-height: 250px;
+    }
+}
+
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    
+}
