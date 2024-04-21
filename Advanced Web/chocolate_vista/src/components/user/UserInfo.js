@@ -53,8 +53,7 @@ let UserInfo = () => {
             .catch(error => {
                 console.error("Error:", error);
             });
-    }
-    }
+    }}
 
     
     return (

@@ -205,6 +205,11 @@
     font-weight: bold;
 }
 
+/* value */
+.additional-info-value {
+    padding-left: 5px;
+}
+
 /* list */
 .additionsal-info-list {
     margin: 0;
