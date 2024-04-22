@@ -40,7 +40,7 @@ public class FavouriteRepository {
                         }
                         favouritesLiveData.setValue(favourites); // Update LiveData
                     } else {
-                        Log.i("XYZ", "Error getting documents.", task.getException());
+                        Log.i("XYZ", "error getting documents", task.getException());
                     }
                 });
 
@@ -79,9 +79,42 @@ public class FavouriteRepository {
                             });
                 } else if (task.isSuccessful() && task.getResult() != null && !task.getResult().isEmpty()) {
                     // duplicate exists, notify failure
-                    callback.onFailure(new Exception("favourite already exists."));
+                    callback.onFailure(new Exception("favourite already exists"));
                 } else {
                     // query failed, notify failure
+                    callback.onFailure(task.getException());
+                }
+            });
+    }
+
+    // remove favourite
+    public void removeFavourite(String userID, String affirmationID, FavouriteOperationCallback callback) {
+        // query for existing favorite
+        db.collection("favourites")
+            .whereEqualTo("userID", userID)
+            .whereEqualTo("affirmationID", affirmationID)
+            .get()
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    if (!task.getResult().isEmpty()) {
+                        // favorite exists -> delete
+                        String documentId = task.getResult().getDocuments().get(0).getId();
+                        db.collection("favourites").document(documentId)
+                                .delete()
+                                .addOnSuccessListener(aVoid -> {
+                                    // notify success
+                                    callback.onSuccess();
+                                })
+                                .addOnFailureListener(e -> {
+                                    // notify failure
+                                    callback.onFailure(e);
+                                });
+                    } else {
+                        // no favorite found
+                        callback.onFailure(new Exception("favorite not found"));
+                    }
+                } else {
+                    // query failed
                     callback.onFailure(task.getException());
                 }
             });

@@ -28,4 +28,9 @@ public class FavouriteViewModel extends ViewModel {
         favouriteRepository.addFavourite(userID, affirmationID, callback);
     }
 
+    // remove favourite
+    public void removeFavourite(String userID, String affirmationID, FavouriteRepository.FavouriteOperationCallback callback) {
+        favouriteRepository.removeFavourite(userID, affirmationID, callback);
+    }
+
 }

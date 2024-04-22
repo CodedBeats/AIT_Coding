@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,14 +16,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ace.R;
-import com.example.ace.affirmation.Affirmation;
-import com.example.ace.affirmation.AffirmationRepository;
 import com.example.ace.affirmation.show.ShowAffirmationViewModel;
 import com.example.ace.databinding.FavouritesFragmentBinding;
-import com.example.ace.databinding.ShowAffirmationFragmentBinding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
@@ -122,10 +121,35 @@ public class FavouritesFragment extends Fragment {
                             // inflate the affirmation layout (this one was so weird to figure out with trial and error...plus i think I did it wrong but it works lol)
                             View affirmationView = LayoutInflater.from(getContext()).inflate(R.layout.item_affirmation, binding.affirmationsContainer, false);
                             TextView textView = affirmationView.findViewById(R.id.affirmation_text_view);
+                            ImageView favouriteBtn = affirmationView.findViewById(R.id.favourites_favourite_affirmation_btn);
                             ChipGroup chipGroup = affirmationView.findViewById(R.id.affirmation_chip_group);
 
                             // set affirmation text
                             textView.setText(affirmation.getText());
+
+                            // handle update favourite
+                            favouriteBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    // change img to show it's been unclick
+                                    favouriteBtn.setImageResource(R.drawable.outline_heart_plus_24);
+
+                                    // remove favourite
+                                    fViewModel.removeFavourite(currentUser.getUid(), affirmation.getId(), new FavouriteRepository.FavouriteOperationCallback() {
+                                        @Override
+                                        public void onSuccess() {
+                                            // remove favourite view
+                                            binding.affirmationsContainer.removeView(affirmationView);
+                                            Toast.makeText(getContext(), "Favourite removed successfully!", Toast.LENGTH_SHORT).show();
+                                        }
+                                        @Override
+                                        public void onFailure(Exception e) {
+                                            Toast.makeText(getContext(), "Failed to remove favourite: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                                }
+                            });
 
                             // create chips for tags
                             createChips(affirmation.getTags().toArray(new String[0]), chipGroup);

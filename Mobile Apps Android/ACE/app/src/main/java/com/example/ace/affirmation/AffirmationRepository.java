@@ -67,26 +67,26 @@ public class AffirmationRepository {
         MutableLiveData<Affirmation> liveDataAffirmation = new MutableLiveData<>();
 
         db.collection("affirmations")
-                .document(affirmationID)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document != null && document.exists()) {
-                            String id = document.getId();
-                            String text = document.getString("text");
-                            Object tagsObject = document.get("tags");
-                            List<String> tags = (List<String>) tagsObject;
+            .document(affirmationID)
+            .get()
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        String id = document.getId();
+                        String text = document.getString("text");
+                        Object tagsObject = document.get("tags");
+                        List<String> tags = (List<String>) tagsObject;
 
-                            Affirmation affirmation = new Affirmation(id, text, tags);
-                            liveDataAffirmation.setValue(affirmation); // Update the LiveData object
-                        } else {
-                            Log.i("XYZ", "No such document.");
-                        }
+                        Affirmation affirmation = new Affirmation(id, text, tags);
+                        liveDataAffirmation.setValue(affirmation); // Update the LiveData object
                     } else {
-                        Log.i("XYZ", "Error getting documents.", task.getException());
+                        Log.i("XYZ", "No such document.");
                     }
-                });
+                } else {
+                    Log.i("XYZ", "Error getting documents.", task.getException());
+                }
+            });
 
         return liveDataAffirmation;
     }
