@@ -1,65 +1,110 @@
 // dependencies
 import { useContext } from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Nav, Button } from "react-bootstrap";
+import Image from 'react-bootstrap/Image';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import UserContext from '../../UserContext';
+import Search from "../common/Search";
+import CustomToast from "../common/CustomToast";
+
+// style
+import "./css/navbar.css";
 
 
 const NavbarComponent = () => {
-
+    const navigate = useNavigate();
     const {userData, setUserData} = useContext(UserContext);
 
     const handleLogout = () => {
         setUserData({
             userID: "",
+            imgUrl: "",
             email: "",
             username: "",
             isLoggedIn: false,
         });
+        // clear user data from local storage
+        localStorage.removeItem("userData");
+        navigate("/");
+
+        // notify user logout success
+        CustomToast("Logout Successful", "success");
     }
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
-                <img
-                    src="/imgs/choc1.jpg"
+        <Navbar expand="lg" className="navbar-container">
+            <Link to="/" className="logo-img-link">
+                <Image 
+                    className="logo-img"
+                    src="/imgs/logo.png"
                     width="50"
                     height="50"
-                    className="d-inline-block align-top"
                     alt="Logo"
-                />{" "}
-                Website Title
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Form inline>
-                        <FormControl
-                            type="text"
-                            placeholder="Search"
-                            className="mr-sm-2"
-                        />
-                    </Form>
-                    <Nav.Link href="#">Boxed Chocolates</Nav.Link>
-                    <Nav.Link href="#">About</Nav.Link>
-                </Nav>
-                <Nav>
-                    {userData.isLoggedIn ? (
-                        <Nav>
-                            <Link to="#">
-                                <Button variant="outline-success">Profile</Button>
-                            </Link>
-                            <Button variant="danger" onClick={handleLogout}>Logout</Button>
-                        </Nav>
-                    ) : (
-                        <Link to="/register">
-                            <Button variant="outline-success">Register</Button>
-                        </Link>
-                    )}
+                    rounded 
+                />
+                <span className="logo-title">ChocolateVista</span>
+            </Link>
+            <Nav className="mr-auto navbar-search-container">
+                <Search />
+            </Nav>
+            <Navbar.Collapse id="basic-navbar-nav" className="nav-right">
+                <Nav className="sidebar">
+                    <Nav className="mr-auto sidebar-search">
+                        <Search />
+                    </Nav>
+                    <Link to="/chocolates" className="nav-link">
+                        Chocolates
+                    </Link>
+                    <Link to="/about" className="nav-link">
+                        About
+                    </Link>
                 </Nav>
             </Navbar.Collapse>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Nav>
+                {userData.isLoggedIn ? (
+                <Dropdown align={{ lg: "end" }} className="navbar-dropdown">
+                    <Dropdown.Toggle variant="transparent" id="dropdown-basic" className="nav-dropdown-btn">
+                        <Image 
+                            className="logo-img"
+                            src={userData.imgUrl}
+                            width="50"
+                            height="50"
+                            alt="Logo"
+                            rounded 
+                        />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.ItemText>
+                            <div className="navbar-user-info">
+                                {userData.username}
+                            </div>
+                        </Dropdown.ItemText>
+                        <Dropdown.Divider />
+                        <Dropdown.Item>
+                            <Link to="/profile" className="navbar-dropdown-link">
+                                <FontAwesomeIcon icon={faUser} />
+                                <span className="navbar-dropdown-link-text">Profile</span>
+                            </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                            <FontAwesomeIcon icon={faRightFromBracket} />
+                            <span className="navbar-dropdown-link-text">Logout</span>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                ) : (
+                    <Link to="/login">
+                        <Button variant="dark">Login</Button>
+                    </Link>
+                )}
+            </Nav>
         </Navbar>
     );
 };

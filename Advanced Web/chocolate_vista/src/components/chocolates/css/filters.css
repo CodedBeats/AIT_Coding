@@ -1,0 +1,9 @@
+.filters {
+    display: flex;
+    gap: 20px;
+}
+
+/* btn */
+.filter-btn-dropdown {
+    padding: 5px 10px !important;
+}

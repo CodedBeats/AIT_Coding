@@ -1,5 +1,5 @@
 <?php
-require_once('serverConnection.php');
+require_once('../serverConnection.php');
 
 // === DON'T TOUCH ===
 header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -27,24 +27,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 $data = json_decode(file_get_contents('php://input'));
 $response = array();
 
-// Extract the form data
-$email = $data->email;
-$username = $data->username;
-$password = $data->password;
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+if ($data && isset($data->userID) && isset($data->chocolateID)) {
+    $userID = $data->userID;
+    $chocolateID = $data->chocolateID;
 
-// Perform database operation (insertion, etc.)
-$sql = "INSERT INTO userstest (email, username, password) VALUES ('$email', '$username', '$hashedPassword')";
-if ($conn->query($sql) === TRUE) {
-    $response["success"] = true;
-    $response["message"] = "User registered successfully";
-    $response['userData'] = [$email, $username];
+    $sql = "SELECT * FROM favourite WHERE UserID = '".$userID."' AND ChocolateID = '".$chocolateID."'";
+    $results = $conn->query($sql);
+
+    if ($results && mysqli_num_rows($results) > 0) {
+        // found a matching row
+        $response['success'] = true;
+        $response['message'] = "Chocolate is favorited";
+    } else {
+        // no matching row found
+        $response['success'] = false;
+        $response['message'] = "Chocolate is not favorited";
+    }
 } else {
-    $response["success"] = false;
-    $response["message"] = "Error: " . $conn->error;
+    // invalid or missing data
+    $response['success'] = false;
+    $response['message'] = "Invalid data provided";
 }
 
-// Send JSON response back to React app
-header('Content-Type: application/json');
 echo json_encode($response);
 ?>

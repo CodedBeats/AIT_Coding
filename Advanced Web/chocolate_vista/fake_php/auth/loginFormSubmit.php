@@ -1,5 +1,5 @@
 <?php
-require_once('serverConnection.php');
+require_once('../serverConnection.php');
 
 // === DON'T TOUCH ===
 header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -23,21 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // === DON'T TOUCH ===
 
 
-
-
 // Get the JSON data sent from the frontend
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'));
 $response = array();
 
-if (isset($data['email']) && isset($data['password'])) {
-    $email = $data["email"];
-    $password = $data["password"];
+if ($data && isset($data->email)) {
+    $email = $data->email;
+    $password = $data->password;
 
-    $sql = "SELECT * FROM userstest WHERE email = '".$email."'";
+    $sql = "SELECT * FROM user WHERE email = '".$email."'";
     $results = $conn->query($sql);
 
     if (mysqli_num_rows($results) > 0) {
         $row = mysqli_fetch_array($results);
+        $imgUrl = $row["ImgUrl"];
         $hash = $row["Password"];
         $username = $row["Username"];
         $userID = $row["UserID"];
@@ -46,7 +45,7 @@ if (isset($data['email']) && isset($data['password'])) {
             // password match
             $response['success'] = true;
             $response['message'] = "Login successful";
-            $response['userData'] = [$userID, $email, $username];
+            $response['userData'] = [$userID, $imgUrl, $email, $username];
         }
         else {
             $response['success'] = false;

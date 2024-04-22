@@ -1,5 +1,5 @@
 <?php
-require_once('serverConnection.php');
+require_once('../serverConnection.php');
 
 // === DON'T TOUCH ===
 header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -23,37 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // === DON'T TOUCH ===
 
 
-
-
 // Get the JSON data sent from the frontend
-$data = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'));
 $response = array();
 
-if (isset($data['email'])) {
-    $email = $data["email"];
+if ($data && isset($data->chocolateID) && isset($data->userID)) {
+    $userID = $data->userID;
+    $chocolateID = $data->chocolateID;
 
-    $sql = "SELECT * FROM userstest WHERE email = '".$email."'";
-    $results = $conn->query($sql);
+    // prepare and bind statement
+    $stmt = $conn->prepare("DELETE FROM favourite WHERE ChocolateID = ? AND UserID = ?");
+    $stmt->bind_param("ii", $chocolateID, $userID);
 
-    if (mysqli_num_rows($results) > 0) {
-        $row = mysqli_fetch_array($results);
-        $hash = $row["Password"];
-        $username = $row["Username"];
-        $userID = $row["UserID"];
-
+    // execute the statement
+    if ($stmt->execute() === TRUE) {
         $response['success'] = true;
-        $response['message'] = "Login successful";
-        $response['userData'] = [$userID, $email, $username];
-    }
-    else {
+        $response['message'] = "Record deleted successfully";
+    } else {
         $response['success'] = false;
-        $response['message'] = "Email not found";
+        $response['message'] = "Error deleting record: " . $conn->error;
     }
+
+    // close statement
+    $stmt->close();
 } else {
     $response['success'] = false;
-    $response['message'] = "Email not provided.|".$email;
+    $response['message'] = "userID and chocolateID not provided";
 }
-
 
 echo json_encode($response);
 ?>

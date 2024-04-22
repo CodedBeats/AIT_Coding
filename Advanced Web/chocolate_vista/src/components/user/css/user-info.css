@@ -1,0 +1,100 @@
+.user-info {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    grid-template-rows: 2fr 2fr 1fr;
+    gap: 10px 30px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "user-img-container email-container"
+        "user-img-container username-container"
+        "user-info-btns user-info-btns";
+}
+
+/* img */
+.user-img-container {
+    justify-self: center;
+    align-self: center;
+    grid-area: user-img-container;
+}
+.user-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* info containers */
+.email-container {
+    justify-self: start;
+    align-self: center;
+    grid-area: email-container;
+}
+.username-container {
+    justify-self: start;
+    align-self: center;
+    grid-area: username-container;
+}
+
+/* labels and text */
+.user-info-label {
+    font-weight: bold;
+}
+.user-info-text {
+    font-size: 1.2em;
+}
+
+/* buttons */
+.user-info-btns {
+    grid-area: user-info-btns;
+    display: flex;
+    justify-content: start;
+    column-gap: 15px;
+    width: 100%;
+}
+.user-info-btn {
+    padding: 0 10px !important;
+    /* max-height: 70%; */
+}
+
+
+/************************************************************************/
+/* Media query for tablets */
+@media only screen and (min-width: 769px) and (max-width: 989px) {
+    .user-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: 4fr auto auto 1fr;
+        gap: 0;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "user-img-container"
+            "email-container"
+            "username-container"
+            "user-info-btns";
+    }
+    .email-container {
+        margin: 10px 0;
+    }
+    .username-container {
+        margin: 10px 0 25px 0;
+    }
+}
+
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    .user-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: 4fr auto auto 1fr;
+        gap: 0;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "user-img-container"
+            "email-container"
+            "username-container"
+            "user-info-btns";
+    }
+    .email-container {
+        margin: 10px 0;
+    }
+    .username-container {
+        margin: 10px 0 25px 0;
+    }
+}

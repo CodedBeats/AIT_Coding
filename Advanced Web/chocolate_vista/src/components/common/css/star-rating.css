@@ -1,0 +1,33 @@
+.star-btn {
+    padding: 0 !important;
+}
+.static-star-btn {
+    cursor: default !important;
+}
+
+.star-icon {
+    font-size: 1.9rem;
+    color: #ffc107;
+    transition: color 0.2s;
+}
+
+.star-icon.filled {
+    color: #f7d516;
+}
+
+
+/************************************************************************/
+/* Media query for tablets */
+@media only screen and (min-width: 769px) and (max-width: 989px) {
+    .star-icon {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    .star-icon {
+        font-size: 1.2rem;
+    }
+}

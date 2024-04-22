@@ -1,0 +1,60 @@
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2% 2%;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "user-info-container favorites-container"
+        "reviews-container favorites-container";
+    margin: 40px;
+}
+
+/* card */
+.profile-card {
+    padding: 15px;
+    background-color: rgb(236, 216, 195);
+    border-radius: 10px;
+    /* right down blur size */
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.671);
+}
+.user-info-container {
+    justify-self: center;
+    align-self: center;
+    grid-area: user-info-container;
+    width: 100%;
+}
+.reviews-container {
+    justify-self: center;
+    align-self: start;
+    grid-area: reviews-container;
+    width: 100%;
+}
+.favorites-container {
+    justify-self: center;
+    align-self: start;
+    grid-area: favorites-container;
+    width: 100%;
+}
+
+
+/************************************************************************/
+/* Media query for tablets */
+@media only screen and (min-width: 769px) and (max-width: 989px) {
+    
+}
+
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    .profile-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2% 2%;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "user-info-container"
+            "reviews-container"
+            "favorites-container";
+        margin: 40px;
+    }
+}
