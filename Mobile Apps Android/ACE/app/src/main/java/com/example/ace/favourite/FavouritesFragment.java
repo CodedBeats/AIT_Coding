@@ -131,9 +131,6 @@ public class FavouritesFragment extends Fragment {
                             favouriteBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    // change img to show it's been unclick
-                                    favouriteBtn.setImageResource(R.drawable.outline_heart_plus_24);
-
                                     // remove favourite
                                     fViewModel.removeFavourite(currentUser.getUid(), affirmation.getId(), new FavouriteRepository.FavouriteOperationCallback() {
                                         @Override
