@@ -49,6 +49,37 @@ public class UserRepository {
             });
     }
 
+    // delete user doc in userSeenAffirmations
+    private void removeUserFromSeenAffirmations(String userID) {
+        db.collection("userSeenAffirmations")
+            .whereEqualTo("userID", userID)
+            .get()
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    if (!task.getResult().isEmpty()) {
+                        // doc exists -> delete
+                        String documentId = task.getResult().getDocuments().get(0).getId();
+                        db.collection("userSeenAffirmations").document(documentId)
+                            .delete()
+                            .addOnSuccessListener(aVoid -> {
+                                // success
+                                Log.i("firebase-user", "successfully deleted user doc from coll");
+                            })
+                            .addOnFailureListener(e -> {
+                                // failure
+                                Log.i("firebase-user", "Error deleting user doc: " + e.getMessage());
+                            });
+                    } else {
+                        // no doc found
+                        Log.i("firebase-user", "no doc found");
+                    }
+                } else {
+                    // query failed
+                    Log.i("firebase-user", "query failed");
+                }
+            });
+    }
+
 
     // get user
     public LiveData<User> getUser() {
@@ -122,6 +153,9 @@ public class UserRepository {
                         callback.onFailure(e);
                     }
                 });
+
+            // remove user from userSeenAffirmations
+            removeUserFromSeenAffirmations(user.getUid());
         }
     }
 
