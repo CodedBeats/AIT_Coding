@@ -36,6 +36,7 @@
         android:text="ACE"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -47,8 +48,9 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:itemActiveIndicatorStyle="@drawable/item_bg"
-        app:itemIconTint="@drawable/item_bg"
-        app:itemTextColor="@drawable/item_bg"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:backgroundTint="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +63,7 @@
         android:layout_marginTop="24dp"
         android:text="Create Affirmation"
         android:textColor="#FFFFFF"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -75,6 +78,7 @@
         android:layout_marginEnd="16dp"
         android:text="Enter Text For Affirmation"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -88,6 +92,7 @@
         android:text="Enter 1st Tag"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
@@ -120,6 +125,7 @@
         android:text="Enter 2nd Tag"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
@@ -169,7 +175,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="#146317"
         android:text="Submit Affirmation"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5" />
