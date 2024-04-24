@@ -118,7 +118,7 @@ public class RegisterFragment extends Fragment {
                                     binding.progressBar.setVisibility(View.GONE);
 
                                     String errorMessage = task.getException().getMessage();
-                                    Log.i("XYZ", errorMessage);
+                                    Log.i("firebase-auth", errorMessage);
                                     Toast.makeText(getContext(), "Couldn't create user", Toast.LENGTH_SHORT).show();
                                 }
                             }

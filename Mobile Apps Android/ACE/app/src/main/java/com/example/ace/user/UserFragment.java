@@ -144,13 +144,13 @@ public class UserFragment extends Fragment {
                                 binding.updatePasswordBtn.setEnabled(false);
 
                                 Toast.makeText(getContext(), "Password Update Successful", Toast.LENGTH_SHORT).show();
-                                Log.i("firebase-db", "Password Update Successful");
+                                Log.i("firebase-auth", "Password Update Successful");
                             }
 
                             @Override
                             public void onFailure(Exception e) {
                                 Toast.makeText(getContext(), "Update failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                Log.i("firebase-db", e.getMessage());
+                                Log.i("firebase-auth", e.getMessage());
                             }
                         });
                     }
@@ -216,18 +216,18 @@ public class UserFragment extends Fragment {
                             uViewModel.deleteUser(currentUser, new UserRepository.UserOperationCallback() {
                                 @Override
                                 public void onSuccess() {
-                                    Log.i("firebase-db", "account removed");
+                                    Log.i("firebase-auth", "account removed");
 
                                     // delete user's favourites
                                     fViewModel.removeAllUserFavourites(userID, new FavouriteRepository.FavouriteOperationCallback() {
                                         @Override
                                         public void onSuccess() {
-                                            Log.i("firebase-db", "user's favourites removed");
+                                            Log.i("firebase-auth", "user's favourites removed");
                                         }
 
                                         @Override
                                         public void onFailure(Exception e) {
-                                            Log.i("firebase-db", e.getMessage());
+                                            Log.i("firebase-auth", e.getMessage());
                                         }
                                     });
 
@@ -240,14 +240,14 @@ public class UserFragment extends Fragment {
                                 @Override
                                 public void onFailure(Exception e) {
                                     Toast.makeText(getContext(), "Remove account failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    Log.i("firebase-db", e.getMessage());
+                                    Log.i("firebase-auth", e.getMessage());
                                 }
                             });
                         })
                         .addOnFailureListener(e -> {
                             // auth failed
                             Toast.makeText(getContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
-                            Log.i("firebase-db", e.getMessage());
+                            Log.i("firebase-auth", e.getMessage());
                         });
                     }
                 });

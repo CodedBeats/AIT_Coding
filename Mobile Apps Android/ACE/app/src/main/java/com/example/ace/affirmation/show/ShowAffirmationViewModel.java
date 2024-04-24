@@ -22,20 +22,18 @@ public class ShowAffirmationViewModel extends ViewModel {
         // init LiveData with empty data
         affirmationsLiveData.setValue(Collections.emptyList());
         randomAffirmation.setValue(null);
-
-        // fetch affirmations from db
-        fetchAffirmations();
     }
 
-    private void fetchAffirmations() {
-        affirmationRepository.getAllAffirmationsLiveData().observeForever(affirmations -> {
+    private void fetchAffirmations(String userID) {
+        affirmationRepository.getAllAffirmationsLiveData(userID).observeForever(affirmations -> {
             affirmationsLiveData.setValue(affirmations);
             // set random affirmation
             randomAffirmation.setValue(affirmationRepository.getRandomAffirmation(affirmations));
         });
     }
 
-    public LiveData<List<Affirmation>> getAllAffirmations() {
+    public LiveData<List<Affirmation>> getAllAffirmations(String userID) {
+        fetchAffirmations(userID);
         return affirmationsLiveData;
     }
 

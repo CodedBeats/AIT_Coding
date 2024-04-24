@@ -7,12 +7,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import com.example.ace.favourite.Favourite;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -23,33 +25,54 @@ public class AffirmationRepository {
     private FirebaseFirestore db;
     private MutableLiveData<List<Affirmation>> affirmationsLiveData = new MutableLiveData<>();
 
-
     public AffirmationRepository() {
         db = FirebaseFirestore.getInstance();
+    }
 
-        // get all affirmations
-        db.collection("affirmations")
+    public void getUnseenAffirmationsForUser(String userID) {
+        // get user's document from the userSeenAffirmations coll
+        db.collection("userSeenAffirmations")
+            .whereEqualTo("userID", userID)
             .get()
             .addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    List<Affirmation> affirmations = new ArrayList<>();
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        String id = document.getId();
-                        String text = document.getString("text");
-                        Object tagsObject = document.get("tags");
-                        List<String> tags = (List<String>) tagsObject;
+                    List<Affirmation> unseenAffirmations = new ArrayList<>();
+                    for (QueryDocumentSnapshot userDoc : task.getResult()) {
+                        // retrieve the "affirmationsSeen" arr from doc
+                        List<String> seenAffirmationIDs = (List<String>) userDoc.get("affirmationsSeen");
+                        Log.i("firebase-affirmation", "Seen affirmationIDs: "+ Arrays.toString(seenAffirmationIDs.toArray()));
 
-                        Affirmation affirmation = new Affirmation(id, text, tags);
-                        affirmations.add(affirmation);
+                        // query all affirmations
+                        db.collection("affirmations")
+                            .get()
+                            .addOnCompleteListener(affirmationsTask -> {
+                                if (affirmationsTask.isSuccessful()) {
+                                    for (QueryDocumentSnapshot affirmationDoc : affirmationsTask.getResult()) {
+                                        String affirmationID = affirmationDoc.getId();
+                                        String text = affirmationDoc.getString("text");
+                                        Object tagsObject = affirmationDoc.get("tags");
+                                        List<String> tags = (List<String>) tagsObject;
+
+                                        // check if affirmationID is not in seen list
+                                        if (!seenAffirmationIDs.contains(affirmationID)) {
+                                            Affirmation affirmation = new Affirmation(affirmationID, text, tags);
+                                            unseenAffirmations.add(affirmation);
+                                        }
+                                    }
+                                    affirmationsLiveData.setValue(unseenAffirmations); // Update LiveData
+                                } else {
+                                    Log.i("firebase-affirmation", "Error getting affirmations.", affirmationsTask.getException());
+                                }
+                            });
                     }
-                    affirmationsLiveData.setValue(affirmations); // Update LiveData
                 } else {
-                    Log.i("XYZ", "Error getting documents.", task.getException());
+                    Log.i("firebase-affirmation", "Error getting user documents.", task.getException());
                 }
             });
     }
 
-    public LiveData<List<Affirmation>> getAllAffirmationsLiveData() {
+    public LiveData<List<Affirmation>> getAllAffirmationsLiveData(String userID) {
+        getUnseenAffirmationsForUser(userID);
         return affirmationsLiveData;
     }
 
@@ -81,10 +104,10 @@ public class AffirmationRepository {
                         Affirmation affirmation = new Affirmation(id, text, tags);
                         liveDataAffirmation.setValue(affirmation); // Update the LiveData object
                     } else {
-                        Log.i("XYZ", "No such document.");
+                        Log.i("firebase-affirmation", "No such document.");
                     }
                 } else {
-                    Log.i("XYZ", "Error getting documents.", task.getException());
+                    Log.i("firebase-affirmation", "Error getting documents.", task.getException());
                 }
             });
 

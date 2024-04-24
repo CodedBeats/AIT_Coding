@@ -83,6 +83,7 @@ public class ShowAffirmationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
+        FirebaseUser currentUser = uAuth.getCurrentUser();
         aViewModel = new ViewModelProvider(this).get(ShowAffirmationViewModel.class);
         fViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
 
@@ -100,17 +101,16 @@ public class ShowAffirmationFragment extends Fragment {
         });
 
         // Check if user is signed in (non-null)
-        FirebaseUser currentUser = uAuth.getCurrentUser();
         if (currentUser == null) {
             navController.navigate(R.id.action_showAffirmationFragment_to_registerFragment);
         }
 
 
         // Observe affirmations
-        aViewModel.getAllAffirmations().observe(getViewLifecycleOwner(), affirmations -> {
+        aViewModel.getAllAffirmations(currentUser.getUid()).observe(getViewLifecycleOwner(), affirmations -> {
             if (affirmations != null) {
                 // Handle the updated list of affirmations
-                Log.i("firebase-db", "Affirmations: " + affirmations);
+                Log.i("firebase-affirmation", "Affirmations: " + affirmations);
             }
         });
 
@@ -118,7 +118,7 @@ public class ShowAffirmationFragment extends Fragment {
         aViewModel.getRandomAffirmation().observe(getViewLifecycleOwner(), randomAffirmation -> {
             if (randomAffirmation != null && randomAffirmation.getText() != null && randomAffirmation.getTags() != null) {
                 // Handle the updated random affirmation
-                Log.i("firebase-db", "Random affirmation: " + randomAffirmation);
+                Log.i("firebase-affirmation", "Random affirmation: " + randomAffirmation);
 
                 // set affirmationID for favourite
                 affirmationID = randomAffirmation.getId();

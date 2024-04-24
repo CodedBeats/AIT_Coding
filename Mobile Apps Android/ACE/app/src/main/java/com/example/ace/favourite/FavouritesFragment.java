@@ -94,7 +94,7 @@ public class FavouritesFragment extends Fragment {
         FirebaseUser currentUser = uAuth.getCurrentUser();
         fViewModel.getFavouritesByUserID(currentUser.getUid()).observe(getViewLifecycleOwner(), favourites -> {
             if (favourites != null && !favourites.isEmpty()) {
-                Log.i("firebase-db", "Favourites: " + favourites);
+                Log.i("firebase-favourie", "Favourites: " + favourites);
 
                 // hide no favourites text
                 binding.noFavouritesTextView.setVisibility(View.GONE);
@@ -106,7 +106,7 @@ public class FavouritesFragment extends Fragment {
                 for (Favourite favourite : favourites) {
                     aViewModel.getAffirmationByID(favourite.getAffirmationID()).observe(getViewLifecycleOwner(), affirmation -> {
                         if (affirmation != null) {
-                            Log.i("firebase-db", "Affirmation: " + affirmation);
+                            Log.i("firebase-favourite", "Affirmation: " + affirmation);
 
                             // set random colour
                             colours = new int[] {
@@ -154,12 +154,12 @@ public class FavouritesFragment extends Fragment {
                             // add affirmation view to the container
                             binding.affirmationsContainer.addView(affirmationView);
                         } else {
-                            Log.i("firebase-db", "Affirmation: none");
+                            Log.i("firebase-favourite", "Affirmation: none");
                         }
                     });
                 }
             } else {
-                Log.i("firebase-db", "No favourites found for the user.");
+                Log.i("firebase-favourite", "No favourites found for the user.");
             }
         });
     }

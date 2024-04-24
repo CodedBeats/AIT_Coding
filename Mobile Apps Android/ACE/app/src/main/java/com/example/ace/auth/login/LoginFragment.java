@@ -103,7 +103,7 @@ public class LoginFragment extends Fragment {
                                     binding.progressBar.setVisibility(View.GONE);
 
                                     String errorMessage = task.getException().getMessage();
-                                    Log.i("XYZ", errorMessage);
+                                    Log.i("firebase-auth", errorMessage);
                                     Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                                 }
                             }
