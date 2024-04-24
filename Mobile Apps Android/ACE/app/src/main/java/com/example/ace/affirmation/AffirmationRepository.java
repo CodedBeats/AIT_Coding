@@ -9,12 +9,16 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.example.ace.favourite.Favourite;
+import com.example.ace.favourite.FavouriteRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -166,5 +170,33 @@ public class AffirmationRepository {
             });
 
         return liveDataAffirmation;
+    }
+
+
+
+    // interface for callback to improve feedback on void functions
+    public interface AffirmationOperationCallback {
+        void onSuccess();
+        void onFailure(Exception e);
+    }
+
+    // create affirmation
+    public void createAffirmation(String inputText, String inputTag1, String inputTag2, AffirmationOperationCallback callback) {
+        CollectionReference affirmationsCollection = db.collection("affirmations");
+
+        // create new affirmation document with passed data
+        Map<String, Object> affirmationData = new HashMap<>();
+        affirmationData.put("text", inputText);
+        // Convert tags to arr
+        affirmationData.put("tags", Arrays.asList(inputTag1, inputTag2));
+
+        // insert affirmation into collection
+        // notify failure
+        db.collection("affirmations").add(affirmationData)
+            .addOnSuccessListener(documentReference -> {
+                // notify success
+                callback.onSuccess();
+            })
+            .addOnFailureListener(callback::onFailure);
     }
 }

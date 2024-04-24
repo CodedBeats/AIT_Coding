@@ -65,6 +65,9 @@
             app:destination="@id/userFragment"
             app:popUpTo="@id/userFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_createAffirmationFragment"
+            app:destination="@id/createAffirmationFragment" />
     </fragment>
     <fragment
         android:id="@+id/userFragment"
@@ -82,5 +85,26 @@
         <action
             android:id="@+id/action_userFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAffirmationFragment"
+        android:name="com.example.ace.affirmation.create.CreateAffirmationFragment"
+        android:label="create_affirmation_fragment"
+        tools:layout="@layout/create_affirmation_fragment" >
+        <action
+            android:id="@+id/action_createAffirmationFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:popUpTo="@id/userFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_createAffirmationFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment"
+            app:popUpTo="@id/favouritesFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_createAffirmationFragment_to_showAffirmationFragment"
+            app:destination="@id/showAffirmationFragment"
+            app:popUpTo="@id/showAffirmationFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
