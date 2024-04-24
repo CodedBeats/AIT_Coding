@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -29,10 +30,12 @@ public class AffirmationRepository {
         db = FirebaseFirestore.getInstance();
     }
 
+    // set all affirmations that the user hasn't seen
     public void getUnseenAffirmationsForUser(String userID) {
         // get user's document from the userSeenAffirmations coll
         db.collection("userSeenAffirmations")
             .whereEqualTo("userID", userID)
+            .limit(1)
             .get()
             .addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -71,19 +74,70 @@ public class AffirmationRepository {
             });
     }
 
+
+    // get all affirmations that the user hasn't seen
     public LiveData<List<Affirmation>> getAllAffirmationsLiveData(String userID) {
         getUnseenAffirmationsForUser(userID);
         return affirmationsLiveData;
     }
 
+
+    // add affirmation as seen
+    private void addAffirmationAsSeen(String userID, String affirmationID) {
+        // get user's document from the userSeenAffirmations coll
+        db.collection("userSeenAffirmations")
+            .whereEqualTo("userID", userID)
+            .limit(1)
+            .get()
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    List<String> seenAffirmationIDs = new ArrayList<>();
+                    for (QueryDocumentSnapshot userDoc : task.getResult()) {
+                        // retrieve  existing "affirmationsSeen" array
+                        seenAffirmationIDs = (List<String>) userDoc.get("affirmationsSeen");
+
+                        // add new affirmationID to arr
+                        seenAffirmationIDs.add(affirmationID);
+
+                        // update user document
+                        db.collection("userSeenAffirmations")
+                            .document(userDoc.getId())
+                            .update("affirmationsSeen", seenAffirmationIDs)
+                            .addOnSuccessListener(aVoid -> {
+                                // affirmation added successfully
+                                Log.i("firebase-affirmation", "Affirmation added to seen list");
+                            })
+                            .addOnFailureListener(e -> {
+                                // failed to add affirmation
+                                Log.e("firebase-affirmation", "Error adding affirmation: " + e.getMessage());
+                            });
+                    }
+                } else {
+                    Log.i("firebase-affirmation", "Error getting user document.", task.getException());
+                }
+            });
+    }
+
+
     // get random affirmation
-    public Affirmation getRandomAffirmation(List<Affirmation> allAffirmations) {
+    public Affirmation getRandomAffirmation(String userID, List<Affirmation> allAffirmations) {
+        // handle if all affirmations have been seen
+        if (allAffirmations.isEmpty()) {
+            // return a default affirmation (you can customize the text and tags)
+            return new Affirmation("default_id", "You are amazing!", Collections.singletonList("no more sorry :("));
+        }
+
         // get random index
         int randomIndex = new Random().nextInt(allAffirmations.size());
+
+        // add randomly selected affirmation as seen to userSeenAffirmations
+        String affirmationID = allAffirmations.get(randomIndex).getId();
+        addAffirmationAsSeen(userID, affirmationID);
 
         // get the affirmation at random index
         return allAffirmations.get(randomIndex);
     }
+
 
     // get affirmation by ID
     public LiveData<Affirmation> getAffirmationByID(String affirmationID) {

@@ -28,7 +28,7 @@ public class ShowAffirmationViewModel extends ViewModel {
         affirmationRepository.getAllAffirmationsLiveData(userID).observeForever(affirmations -> {
             affirmationsLiveData.setValue(affirmations);
             // set random affirmation
-            randomAffirmation.setValue(affirmationRepository.getRandomAffirmation(affirmations));
+            randomAffirmation.setValue(affirmationRepository.getRandomAffirmation(userID, affirmations));
         });
     }
 
