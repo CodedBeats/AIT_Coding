@@ -19,6 +19,12 @@ public class UserViewModel extends ViewModel {
         userRepository = new UserRepository();
     }
 
+
+    // create user doc in userSeenAffirmations
+    public void setupUserForSeenAffirmations(String userID) {
+        userRepository.setupUserForSeenAffirmations(userID);
+    }
+
     // get user
     public LiveData<User> getUser() {
         return userRepository.getUser();

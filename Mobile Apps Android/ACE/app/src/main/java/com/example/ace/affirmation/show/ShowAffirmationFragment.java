@@ -103,6 +103,7 @@ public class ShowAffirmationFragment extends Fragment {
         // Check if user is signed in (non-null)
         if (currentUser == null) {
             navController.navigate(R.id.action_showAffirmationFragment_to_registerFragment);
+            return;
         }
 
 

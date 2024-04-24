@@ -3,6 +3,7 @@ package com.example.ace.auth.register;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -18,16 +19,19 @@ import android.widget.Toast;
 
 import com.example.ace.R;
 import com.example.ace.databinding.RegisterFragmentBinding;
+import com.example.ace.user.UserViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegisterFragment extends Fragment {
 
+    private UserViewModel uViewModel;
     private RegisterFragmentBinding binding;
-    FirebaseAuth mAuth;
+    FirebaseAuth uAuth;
     ProgressBar progressBar;
     LinearLayout bottomNav;
 
@@ -47,13 +51,10 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController navController = Navigation.findNavController(view);
-        mAuth = FirebaseAuth.getInstance();
+        uViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        uAuth = FirebaseAuth.getInstance();
 
-        // hide nav
-
-
-
-        // link to login
+        // link to login screen
         binding.alreadyRegisteredTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,28 +102,35 @@ public class RegisterFragment extends Fragment {
                 }
 
                 // create user
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // hide progress bar
-                                    binding.progressBar.setVisibility(View.GONE);
+                uAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // user created successfully
+                                FirebaseUser newUser = task.getResult().getUser();
+                                String userID = newUser.getUid();
 
-                                    Toast.makeText(getContext(), "User created successfully", Toast.LENGTH_SHORT).show();
-                                    // navigate to home
-                                    navController.navigate(R.id.action_registerFragment_to_showAffirmationFragment);
+                                // create doc of user in userSeenAffirmations with empty array of affirmationsSeen
+                                uViewModel.setupUserForSeenAffirmations(userID);
 
-                                } else {
-                                    // hide progress bar
-                                    binding.progressBar.setVisibility(View.GONE);
+                                // hide progress bar
+                                binding.progressBar.setVisibility(View.GONE);
 
-                                    String errorMessage = task.getException().getMessage();
-                                    Log.i("firebase-auth", errorMessage);
-                                    Toast.makeText(getContext(), "Couldn't create user", Toast.LENGTH_SHORT).show();
-                                }
+                                Toast.makeText(getContext(), "User created successfully", Toast.LENGTH_SHORT).show();
+                                // navigate to home
+                                navController.navigate(R.id.action_registerFragment_to_showAffirmationFragment);
+
+                            } else {
+                                // hide progress bar
+                                binding.progressBar.setVisibility(View.GONE);
+
+                                String errorMessage = task.getException().getMessage();
+                                Log.i("firebase-auth", errorMessage);
+                                Toast.makeText(getContext(), "Couldn't create user", Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        }
+                    });
             }
         });
     }

@@ -1,5 +1,7 @@
 package com.example.ace.user;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -11,7 +13,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserRepository {
 
@@ -24,6 +29,26 @@ public class UserRepository {
     public UserRepository() {
         db = FirebaseFirestore.getInstance();
     }
+
+
+    // create user doc in userSeenAffirmations
+    public void setupUserForSeenAffirmations(String userID) {
+        Map<String, Object> userDoc = new HashMap<>();
+        userDoc.put("userID", userID);
+        userDoc.put("affirmationsSeen", new ArrayList<>());
+
+        db.collection("userSeenAffirmations")
+            .add(userDoc)
+            .addOnSuccessListener(documentReference -> {
+                // document added successfully
+                Log.i("firebase-user", "User doc added, ID: " + documentReference.getId());
+            })
+            .addOnFailureListener(e -> {
+                // failed to add document
+                Log.e("firebase-user", "Error adding user document: " + e.getMessage());
+            });
+    }
+
 
     // get user
     public LiveData<User> getUser() {
@@ -40,11 +65,13 @@ public class UserRepository {
         return userLiveData;
     }
 
+
     // interface for callback to improve feedback on void functions
     public interface UserOperationCallback {
         void onSuccess();
         void onFailure(Exception e);
     }
+
 
     // update user
     public void updateUserPassword(String newPassword, String oldPassword, UserOperationCallback callback) {
@@ -78,6 +105,7 @@ public class UserRepository {
             callback.onFailure(new Exception("User not authenticated."));
         }
     }
+
 
     // delete user
     public void deleteUser(FirebaseUser user, UserOperationCallback callback) {
