@@ -69,7 +69,7 @@
         android:id="@+id/favouriteAffirmationBtn"
         android:layout_width="65dp"
         android:layout_height="61dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:src="@drawable/outline_heart_plus_24"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"

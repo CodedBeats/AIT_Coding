@@ -162,5 +162,13 @@ public class FavouritesFragment extends Fragment {
                 Log.i("firebase-favourite", "No favourites found for the user.");
             }
         });
+
+        // handle route to create affirmation screen btn
+        binding.createAffirmationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_favouritesFragment_to_createAffirmationFragment);
+            }
+        });
     }
 }
