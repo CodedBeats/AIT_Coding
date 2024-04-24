@@ -40,7 +40,7 @@ public class FavouriteRepository {
                     }
                     favouritesLiveData.setValue(favourites); // Update LiveData
                 } else {
-                    Log.i("XYZ", "error getting documents", task.getException());
+                    Log.i("firebase-favourite", "error getting documents", task.getException());
                 }
             });
 
