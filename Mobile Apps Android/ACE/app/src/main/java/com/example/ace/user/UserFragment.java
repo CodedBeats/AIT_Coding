@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +60,7 @@ public class UserFragment extends Fragment {
         uViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         fViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
 
+
         // setup nav
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.navigation_home) {
@@ -78,7 +81,90 @@ public class UserFragment extends Fragment {
         });
 
 
-        // update password
+        /*
+        * Update password and delete account are handled sort of differently.
+        * I don't know which way would be the jetpack way so I kinda just did both lol.
+        * For update password the re-auth is handled in the repository,
+        * For delete account the re-auth is handled in the fragment.
+        * Both ways get the password from the view and passed with the fragment which I believe is the correct way,
+        * But not sure where the re-auth should be called so here is both ways :p
+        */
+
+
+        // disable update password btn until input is not null
+        binding.updatePasswordBtn.setEnabled(false);
+        // fancy way to make sure update password btn won't submit null (maybe not necessary but I like it)
+        binding.updatePasswordTextInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // fancy fancy fancy
+                String userInput = binding.updatePasswordTextInput.getText().toString();
+                boolean isWhitespaceOnly = userInput.matches("^\\s*$");
+                // enable the button if it's not empty/just spaces
+                binding.updatePasswordBtn.setEnabled(!isWhitespaceOnly);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        // handle update password
+        binding.updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // modal to re-auth user
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Change Password");
+                builder.setMessage("Please enter your current password to proceed");
+
+                // input field for password
+                final EditText input = new EditText(getContext());
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                builder.setView(input);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // get entered password
+                        String enteredPassword = input.getText().toString();
+                        // handle empty/null input
+                        if (enteredPassword.isEmpty()) {
+                            enteredPassword = "blank";
+                        }
+                        uViewModel.updateUserPassword(binding.updatePasswordTextInput.getText().toString(), enteredPassword, new UserRepository.UserOperationCallback() {
+                            @Override
+                            public void onSuccess() {
+                                // clear input and change focus, also disable update btn
+                                binding.updatePasswordTextInput.setText("");
+                                binding.updatePasswordTextInput.clearFocus();
+                                binding.updatePasswordBtn.setEnabled(false);
+
+                                Toast.makeText(getContext(), "Password Update Successful", Toast.LENGTH_SHORT).show();
+                                Log.i("firebase-db", "Password Update Successful");
+                            }
+
+                            @Override
+                            public void onFailure(Exception e) {
+                                Toast.makeText(getContext(), "Update failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.i("firebase-db", e.getMessage());
+                            }
+                        });
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // user canceled -> do nothing
+                    }
+                });
+
+                builder.show();
+            }
+        });
 
 
         // handle logout
@@ -92,13 +178,15 @@ public class UserFragment extends Fragment {
             }
         });
 
+
         // handle delete account
         binding.deleteAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // modal to re-auth user
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Confirm Account Deletion");
-                builder.setMessage("Are you sure you want to delete your account? Enter your password to confirm:");
+                builder.setMessage("Are you sure you want to delete your account? Enter your password to confirm");
 
                 // input field for password
                 final EditText input = new EditText(getContext());
@@ -123,7 +211,7 @@ public class UserFragment extends Fragment {
                         AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), enteredPassword);
 
                         currentUser.reauthenticate(credential).addOnSuccessListener(authResult -> {
-                            // User auth successful -> delete all user data
+                            // user auth successful -> delete all user data
                             // delete user
                             uViewModel.deleteUser(currentUser, new UserRepository.UserOperationCallback() {
                                 @Override

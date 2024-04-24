@@ -25,7 +25,9 @@ public class UserViewModel extends ViewModel {
     }
 
     // update user
-
+    public void updateUserPassword(String newPassword, String oldPassword, UserRepository.UserOperationCallback callback) {
+        userRepository.updateUserPassword(newPassword, oldPassword, callback);
+    }
 
     // delete user {
     public void deleteUser(FirebaseUser user, UserRepository.UserOperationCallback callback) {

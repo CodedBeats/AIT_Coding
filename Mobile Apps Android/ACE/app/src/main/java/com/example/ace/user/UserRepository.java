@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.ace.affirmation.Affirmation;
 import com.example.ace.favourite.Favourite;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,7 +27,7 @@ public class UserRepository {
 
     // get user
     public LiveData<User> getUser() {
-        MutableLiveData<User> liveDataUser = new MutableLiveData<>();
+        MutableLiveData<User> userLiveData = new MutableLiveData<>();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
 
@@ -33,18 +35,48 @@ public class UserRepository {
             String email = currentUser.getEmail();
 
             User user = new User(uid, email);
-            liveDataUser.setValue(user);
+            userLiveData.setValue(user);
         }
-        return liveDataUser;
+        return userLiveData;
     }
-
-    // update user
-
 
     // interface for callback to improve feedback on void functions
     public interface UserOperationCallback {
         void onSuccess();
         void onFailure(Exception e);
+    }
+
+    // update user
+    public void updateUserPassword(String newPassword, String oldPassword, UserOperationCallback callback) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            // Re-authenticate the user (using their existing credentials)
+            AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), oldPassword); // Replace with the actual user's password
+
+            currentUser.reauthenticate(credential)
+                    .addOnSuccessListener(authResult -> {
+                        // User re-authenticated successfully
+                        // Now update the password
+                        currentUser.updatePassword(newPassword)
+                                .addOnSuccessListener(aVoid -> {
+                                    // Password updated successfully
+                                    callback.onSuccess();
+                                })
+                                .addOnFailureListener(e -> {
+                                    // Failed to update password
+                                    callback.onFailure(e);
+                                });
+                    })
+                    .addOnFailureListener(e -> {
+                        // Re-authentication failed
+                        callback.onFailure(e);
+                    });
+        } else {
+            // User is not authenticated (not signed in)
+            // Handle this case as needed (e.g., show a login screen)
+            callback.onFailure(new Exception("User not authenticated."));
+        }
     }
 
     // delete user
