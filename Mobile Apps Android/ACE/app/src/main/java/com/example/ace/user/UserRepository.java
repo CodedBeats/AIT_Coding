@@ -1,5 +1,7 @@
 package com.example.ace.user;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -11,7 +13,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserRepository {
 
@@ -24,6 +29,57 @@ public class UserRepository {
     public UserRepository() {
         db = FirebaseFirestore.getInstance();
     }
+
+
+    // create user doc in userSeenAffirmations
+    public void setupUserForSeenAffirmations(String userID) {
+        Map<String, Object> userDoc = new HashMap<>();
+        userDoc.put("userID", userID);
+        userDoc.put("affirmationsSeen", new ArrayList<>());
+
+        db.collection("userSeenAffirmations")
+            .add(userDoc)
+            .addOnSuccessListener(documentReference -> {
+                // document added successfully
+                Log.i("firebase-user", "User doc added, ID: " + documentReference.getId());
+            })
+            .addOnFailureListener(e -> {
+                // failed to add document
+                Log.e("firebase-user", "Error adding user document: " + e.getMessage());
+            });
+    }
+
+    // delete user doc in userSeenAffirmations
+    private void removeUserFromSeenAffirmations(String userID) {
+        db.collection("userSeenAffirmations")
+            .whereEqualTo("userID", userID)
+            .get()
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    if (!task.getResult().isEmpty()) {
+                        // doc exists -> delete
+                        String documentId = task.getResult().getDocuments().get(0).getId();
+                        db.collection("userSeenAffirmations").document(documentId)
+                            .delete()
+                            .addOnSuccessListener(aVoid -> {
+                                // success
+                                Log.i("firebase-user", "successfully deleted user doc from coll");
+                            })
+                            .addOnFailureListener(e -> {
+                                // failure
+                                Log.i("firebase-user", "Error deleting user doc: " + e.getMessage());
+                            });
+                    } else {
+                        // no doc found
+                        Log.i("firebase-user", "no doc found");
+                    }
+                } else {
+                    // query failed
+                    Log.i("firebase-user", "query failed");
+                }
+            });
+    }
+
 
     // get user
     public LiveData<User> getUser() {
@@ -40,11 +96,13 @@ public class UserRepository {
         return userLiveData;
     }
 
+
     // interface for callback to improve feedback on void functions
     public interface UserOperationCallback {
         void onSuccess();
         void onFailure(Exception e);
     }
+
 
     // update user
     public void updateUserPassword(String newPassword, String oldPassword, UserOperationCallback callback) {
@@ -79,6 +137,7 @@ public class UserRepository {
         }
     }
 
+
     // delete user
     public void deleteUser(FirebaseUser user, UserOperationCallback callback) {
         if (user != null) {
@@ -94,6 +153,9 @@ public class UserRepository {
                         callback.onFailure(e);
                     }
                 });
+
+            // remove user from userSeenAffirmations
+            removeUserFromSeenAffirmations(user.getUid());
         }
     }
 

@@ -69,14 +69,14 @@ public class FavouriteRepository {
 
                     // add favourite
                     db.collection("favourites").add(favouriteMap)
-                            .addOnSuccessListener(documentReference -> {
-                                // notify success
-                                callback.onSuccess();
-                            })
-                            .addOnFailureListener(e -> {
-                                // notify failure
-                                callback.onFailure(e);
-                            });
+                        .addOnSuccessListener(documentReference -> {
+                            // notify success
+                            callback.onSuccess();
+                        })
+                        .addOnFailureListener(e -> {
+                            // notify failure
+                            callback.onFailure(e);
+                        });
                 } else if (task.isSuccessful() && task.getResult() != null && !task.getResult().isEmpty()) {
                     // duplicate exists, notify failure
                     callback.onFailure(new Exception("favourite already exists"));
@@ -131,15 +131,15 @@ public class FavouriteRepository {
                         // favorite exists -> delete
                         String documentId = task.getResult().getDocuments().get(0).getId();
                         db.collection("favourites").document(documentId)
-                                .delete()
-                                .addOnSuccessListener(aVoid -> {
-                                    // notify success
-                                    callback.onSuccess();
-                                })
-                                .addOnFailureListener(e -> {
-                                    // notify failure
-                                    callback.onFailure(e);
-                                });
+                            .delete()
+                            .addOnSuccessListener(aVoid -> {
+                                // notify success
+                                callback.onSuccess();
+                            })
+                            .addOnFailureListener(e -> {
+                                // notify failure
+                                callback.onFailure(e);
+                            });
                     } else {
                         // no favorite found
                         callback.onFailure(new Exception("favorite not found"));
