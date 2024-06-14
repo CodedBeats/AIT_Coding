@@ -1,6 +1,16 @@
 import Foundation
 
 
+// === Variables ===
+print("\n=== Variables ===\n")
+var mutableVar = 1
+mutableVar = 2
+let constantVar = 3
+print("{\(mutableVar)} can be changed but {\(constantVar)} is constant")
+print("\n")
+
+
+
 // === Closures ===
 print("\n=== Closures ===\n")
 
