@@ -87,11 +87,11 @@ thisIsGettingComplicated(name: "UNDERMINERRR", canGreet: {bool in
 print("\n")
 
 
-// function that returns an arr of "n" random chars from the alphabet
+// function that returns an arr of  "n" random chars from the alphabet
 // takes int as first param and closure as last param
 func findAlphabetLetter(number n: Int, completion: () -> Void) -> [Character] {
     var selectedChars: [Character] = []
-    var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWQYZ"
+    let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWQYZ"
     var selectedChar: Character
     
     // can use "_" since a var would never be used
@@ -137,7 +137,7 @@ print("\n")
 
 
 // === Classes ===
-print("\n=== Class ===\n")
+print("\n=== Classes ===\n")
 
 class Force {
     var strength: Int
@@ -205,7 +205,39 @@ darthMall.printVals()
 var lukePoints = luke
 lukePoints.name = "Luke Points"
 luke.printVals()
+print("\n")
 
 
+
+// === Extensions ===
+// ~Adds code (like functions and properties) to types and classes
+// really useful, think like custom exceptions
+print("\n=== Extensions ===\n")
+extension String {
+    func myOwnStringFunc() {
+        print("I have this capability now")
+    }
+}
+
+var codersName: String = "Luca"
+codersName.myOwnStringFunc()
+print("\n")
+
+// extending Optional specifying what content it has
+extension Optional where Wrapped == String {
+    // is blank tells if string is nill or has empty spaces as value
+    var isBlank: Bool {
+        // check something at beginning of prcedure and exit if it doesn't match
+        guard let notNilBool = self else {
+            // the value wrapped in the optional is nill
+            return true
+        }
+        
+        return notNilBool.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+}
+// create optional with string content
+var maybeBlankVal: String?
+print(maybeBlankVal.isBlank)
 
 
