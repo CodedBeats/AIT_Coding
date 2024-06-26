@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
+import { useContext } from "react"
 
 export default function LoginScreen() {
     return (

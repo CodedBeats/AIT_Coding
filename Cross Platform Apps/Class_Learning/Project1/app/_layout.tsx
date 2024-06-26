@@ -4,7 +4,7 @@ import { firebaseConfig } from "@/config/Config"
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 // contexts
-// import { AuthContext } from "@/contexts/AuthContext"
+import { AuthContext } from "@/contexts/AuthContext"
 
 export default function RootLayout() {
     // init firebase
@@ -13,12 +13,12 @@ export default function RootLayout() {
     const FBAuth = getAuth(FBApp);
 
     return (
-        // <AuthContext.Provider value={FBAuth}>
+        <AuthContext.Provider value={FBAuth}>
         <Stack>
             <Stack.Screen name="index" />
             <Stack.Screen name="details" />
             <Stack.Screen name="login" />
         </Stack>
-        // </AuthContext.Provider>
+        </AuthContext.Provider>
     );
 }
