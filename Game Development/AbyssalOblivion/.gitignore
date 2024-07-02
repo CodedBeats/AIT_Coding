@@ -50,6 +50,8 @@ Desktop.ini
 
 
 ################################################################
-# Ignore asset packs levels
+# Ignore asset packs levels and textures
 /Content/ModularSciFi/Levels
+/Content/ModularSciFi/Textures
+
 
