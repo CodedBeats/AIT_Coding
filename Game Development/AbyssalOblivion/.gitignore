@@ -50,7 +50,8 @@ Desktop.ini
 
 
 ################################################################
-# Ignore asset packs
-/Content/ModularSciFi
-/Content/Particles_Wind_Control_System
+# Ignore asset packs levels and textures
+/Content/ModularSciFi/Levels
+/Content/ModularSciFi/Textures
+
 
