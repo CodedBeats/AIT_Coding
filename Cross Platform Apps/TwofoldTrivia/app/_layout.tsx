@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { firebaseConfig } from "@/config/Config";
 import { initializeApp } from "@firebase/app";
 import { getAuth } from "@firebase/auth";
-import { AuthContext } from '@/contexts/AuthContext';
+import { AuthContext } from "@/contexts/AuthContext";
 import { getFirestore } from "@firebase/firestore";
 
 export default function RootLayout() {
