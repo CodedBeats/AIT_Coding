@@ -1,13 +1,18 @@
-import { View, Text, StyleSheet } from 'react-native'
-import { Link } from 'expo-router'
+import { View, Text, StyleSheet, StatusBar, TextInput } from "react-native"
+import { Link } from "expo-router"
+import { AuthContext } from "../contexts/AuthContext"
+import { useContext, useState } from "react"
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
+import { useRouter } from "expo-router"
 
 export default function Signup(props: any) {
+    const auth = useContext( AuthContext )
 
     return (
         <View>
             <View style={styles.container}>
                 <Text>Already have an account?</Text>
-                <Link href='/login'>
+                <Link href="/login">
                     <Text style={styles.link} >Go to Sign in</Text>
                 </Link>
             </View>
