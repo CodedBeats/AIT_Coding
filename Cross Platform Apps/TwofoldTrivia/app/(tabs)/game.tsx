@@ -58,7 +58,7 @@ export default function GameScreen(props: any) {
         setDocuments(prevDocuments => [
             ...prevDocuments.slice(0, randomIndex),
             ...prevDocuments.slice(randomIndex + 1)
-        ]);
+        ])
         return selectedDocument
     }
 
@@ -78,6 +78,20 @@ export default function GameScreen(props: any) {
         setTimerFinished(false)
     }
 
+    // handle option choice
+    const handleOptionClick = (optionIndex: number) => {
+        // check if answer is correct
+        if (optionIndex == currentQuestion?.correctAnswer) {
+            setScore(prevScore => prevScore + 1)
+            console.log(`Correct! Score: ${score}`)
+        }
+
+        // console.log(documents)
+        // get new random question
+        const newQuestion = getRandomDocument()
+        setCurrentQuestion(newQuestion)
+    }
+
     // finish game loop
     const handleTimerFinish = () => {
         setTimerFinished(true)
@@ -86,6 +100,12 @@ export default function GameScreen(props: any) {
 
     return (
         <View>
+            <Text>PROMPT</Text>
+            {/* dynamic score */}
+            <View>
+                <Text>Score: {score}</Text>
+            </View>
+
             <Text>PROMPT</Text>
             {/* question prompt */}
             <View>
@@ -96,18 +116,19 @@ export default function GameScreen(props: any) {
                 )}
             </View>
 
+            <Text>OPTIONS</Text>
             {/* options */}
             <View style={styles.optionsContainer}>
                 {currentQuestion ? (
                     <View>
                     <Pressable 
-                        onPress={() => console.log(`${currentQuestion.option1} clicked`)}
+                        onPress={() => handleOptionClick(1)}
                         style={styles.optionBtn}
                     >
                         <Text>{currentQuestion.option1}</Text>
                     </Pressable>
                     <Pressable 
-                        onPress={() => console.log(`${currentQuestion.option2} clicked`)}
+                        onPress={() => handleOptionClick(2)}
                         style={styles.optionBtn}
                     >
                         <Text>{currentQuestion.option2}</Text>
