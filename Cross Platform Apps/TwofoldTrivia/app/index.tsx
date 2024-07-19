@@ -13,7 +13,7 @@ export default function Signup(props: any) {
     const auth = useContext(AuthContext)
     const router = useRouter()
 
-    const createAccount = async (email: string, username: String, password: string) => {
+    const handleRegister = async (email: string, username: String, password: string) => {
         console.log(email, username, password)
         // create auth user
         createUserWithEmailAndPassword(auth, email, password)
@@ -46,7 +46,7 @@ export default function Signup(props: any) {
 
     return (
         <View>
-            <AuthForm title="Sign up for an account" actionText="Sign up" action={createAccount} />
+            <AuthForm title="Sign up for an account" actionText="Sign up" action={handleRegister} />
             <View style={styles.container}>
                 <Text>Already have an account?</Text>
                 <Link href="/login">
