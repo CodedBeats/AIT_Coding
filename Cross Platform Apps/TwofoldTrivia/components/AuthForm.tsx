@@ -2,10 +2,12 @@ import { Text, TextInput, StyleSheet, View, Pressable } from "react-native"
 import { useState, useEffect } from "react" 
 
 export function AuthForm (props: any) {
-    const[email, setEmail] = useState("")
-    const[password, setPassword] = useState("")
-    const[validEmail, setValidEmail] = useState(false)
-    const[validPassword, setValidPassword] = useState(false)
+    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [validEmail, setValidEmail] = useState(false)
+    const [validUsername, setValidUsername] = useState(false)
+    const [validPassword, setValidPassword] = useState(false)
 
     // regex
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
@@ -15,22 +17,36 @@ export function AuthForm (props: any) {
         if (emailRegex.test(email)) {
             // valid email
             setValidEmail(true)
-            console.log(`email is valid?: ${emailRegex.test(email)}`)
+            // console.log(`email is valid?: ${emailRegex.test(email)}`)
         }
         else {
             // invalid email
             setValidEmail(false)
-            console.log(`email is valid?: ${emailRegex.test(email)}`)
+            // console.log(`email is valid?: ${emailRegex.test(email)}`)
         }
     }, [email])
+
+    useEffect(() => {
+        if (username.length > 0) {
+            // valid username
+            setValidUsername(true)
+            // console.log(`username is valid?: ${validUsername}`)
+        }
+        else {
+            setValidUsername(false)
+            // console.log(`username is valid?: ${validUsername}`)
+        }
+    }, [username])
 
     useEffect(() => {
         if (password.length >= 6) {
             // valid password
             setValidPassword(true)
+            // console.log(`password is valid?: ${validPassword}`)
         }
         else {
             setValidPassword(false)
+            // console.log(`password is valid?: ${validPassword}`)
         }
     }, [password])
 
@@ -43,6 +59,13 @@ export function AuthForm (props: any) {
                 value={email} 
                 onChangeText={(text) => setEmail(text)}
             />
+            <Text>Username</Text>
+            <TextInput 
+                style={styles.input}  
+                secureTextEntry={true} 
+                value={username} 
+                onChangeText={(text) => setUsername(text)}
+            />
             <Text>Password</Text>
             <TextInput 
                 style={styles.input}  
@@ -51,9 +74,9 @@ export function AuthForm (props: any) {
                 onChangeText={(text) => setPassword(text)}
             />
             <Pressable 
-                onPress={() => props.action(email, password)} 
-                style={(validEmail && validPassword) ? styles.button : styles.buttonDisabled}
-                disabled={(validEmail && validPassword) ? false : true}
+                onPress={() => props.action(email, username, password)} 
+                style={(validEmail && validPassword && validUsername) ? styles.button : styles.buttonDisabled}
+                disabled={(validEmail && validPassword && validUsername) ? false : true}
             >
                 <Text style={styles.buttonText}>
                     {props.actionText}

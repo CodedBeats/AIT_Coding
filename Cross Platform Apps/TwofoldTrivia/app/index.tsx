@@ -2,21 +2,34 @@ import { View, Text, StyleSheet, StatusBar, TextInput } from "react-native"
 import { Link } from "expo-router"
 import { AuthForm } from "@/components/AuthForm"
 import { AuthContext } from "../contexts/AuthContext"
+import { DBContext } from "@/contexts/DBContext"
 import { useContext, useState } from "react"
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
+import { collection, addDoc } from "firebase/firestore"
 import { useRouter } from "expo-router"
 
 export default function Signup(props: any) {
+    const db = useContext(DBContext)
     const auth = useContext(AuthContext)
     const router = useRouter()
 
-    const createAccount = (email: string, password: string) => {
+    const createAccount = async (email: string, username: String, password: string) => {
+        console.log(email, username, password)
+        // create auth user
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             router.replace("/home")
         })
         .catch( (error) => {
            console.log(error)
+        })
+
+        // create db user
+        const highscore = 0
+        await addDoc(collection(db, "users"), {
+            email: email,
+            username: username,
+            highscore: highscore,
         })
     }
 

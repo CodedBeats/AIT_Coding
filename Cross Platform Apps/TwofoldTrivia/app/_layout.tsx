@@ -3,7 +3,8 @@ import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { firebaseConfig } from "@/config/Config";
 import { initializeApp } from "@firebase/app";
 import { getAuth } from "@firebase/auth";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/contexts/AuthContext"
+import { DBContext } from "@/contexts/DBContext"
 import { getFirestore } from "@firebase/firestore";
 
 export default function RootLayout() {
@@ -16,9 +17,11 @@ export default function RootLayout() {
 
     return (
         <AuthContext.Provider value={auth}>
+        <DBContext.Provider value={db}>
             <SafeAreaView style={styles.container}>
                 <Stack screenOptions={{headerShown: false}} />
             </SafeAreaView>
+        </DBContext.Provider>
         </AuthContext.Provider>
     );
 }
