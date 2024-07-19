@@ -2,37 +2,53 @@ import { Text, TextInput, StyleSheet, View, Pressable } from "react-native"
 import { useState, useEffect } from "react" 
 
 export function AuthForm (props: any) {
-    const[email, setEmail] = useState("")
-    const[password, setPassword] = useState("")
-    const[validEmail, setValidEmail] = useState(false)
-    const[validPassword, setValidPassword] = useState(false)
+    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [validEmail, setValidEmail] = useState(false)
+    const [validUsername, setValidUsername] = useState(false)
+    const [validPassword, setValidPassword] = useState(false)
 
     // regex
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
+    // handle form updates
     useEffect(() => {
         // validate email against regex 
-        if (emailRegex.test(email)) {
-            // valid email
-            setValidEmail(true)
-            console.log(`email is valid?: ${emailRegex.test(email)}`)
-        }
-        else {
-            // invalid email
-            setValidEmail(false)
-            console.log(`email is valid?: ${emailRegex.test(email)}`)
-        }
+        setValidEmail(emailRegex.test(email))
+        // console.log(`email is valid?: ${emailRegex.test(email)}`)
     }, [email])
 
     useEffect(() => {
-        if (password.length >= 6) {
-            // valid password
-            setValidPassword(true)
-        }
-        else {
-            setValidPassword(false)
-        }
+        setValidUsername(username.length > 0)
+        // console.log(`username is valid?: ${validUsername}`)
+    }, [username])
+
+    useEffect(() => {
+        setValidPassword(password.length >= 6)
+        // console.log(`password is valid?: ${validPassword}`)
     }, [password])
+
+
+    // handle check valid for login or register form (at this point, why am I not making 2 seperate components??? haha)
+    const handleCheckValid = () => {
+        if (props.actionText === "Sign up") {
+            return validEmail && validUsername && validPassword
+        } else if (props.actionText === "Sign in") {
+            return validEmail && validPassword
+        }
+    }
+
+
+    // handle login or register
+    const handlePress = () => {
+        if (props.actionText === "Sign up") {
+            props.action(email, username, password)
+        } else if (props.actionText === "Sign in") {
+            props.action(email, password)
+        }
+    }
+    
 
     return (
         <View style={styles.container}>
@@ -43,6 +59,17 @@ export function AuthForm (props: any) {
                 value={email} 
                 onChangeText={(text) => setEmail(text)}
             />
+            {props.actionText === "Sign up" &&
+            <>
+                <Text>Username</Text>
+                <TextInput 
+                    style={styles.input}  
+                    secureTextEntry={true} 
+                    value={username} 
+                    onChangeText={(text) => setUsername(text)}
+                />
+            </>
+            }
             <Text>Password</Text>
             <TextInput 
                 style={styles.input}  
@@ -51,9 +78,9 @@ export function AuthForm (props: any) {
                 onChangeText={(text) => setPassword(text)}
             />
             <Pressable 
-                onPress={() => props.action(email, password)} 
-                style={(validEmail && validPassword) ? styles.button : styles.buttonDisabled}
-                disabled={(validEmail && validPassword) ? false : true}
+                onPress={handlePress}
+                style={handleCheckValid() ? styles.button : styles.buttonDisabled}
+                disabled={handleCheckValid() ? false : true}
             >
                 <Text style={styles.buttonText}>
                     {props.actionText}
