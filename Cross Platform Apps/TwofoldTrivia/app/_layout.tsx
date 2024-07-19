@@ -22,13 +22,13 @@ export default function RootLayout() {
         <AuthContext.Provider value={auth}>
             <DBContext.Provider value={db}>
                 <SafeAreaView style={styles.container}>
-                    <Stack>
+                    <Stack screenOptions={{ headerShown: false }} > 
                     {loading ? (
                         // show loading screen
                         <Stack.Screen name="loading" />
                     ) : user ? (
                         // user authenticated -> show tabs
-                        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                        <Stack.Screen name="(tabs)" />
                     ) : (
                         // user not authenticated -> show auth screens
                         <>

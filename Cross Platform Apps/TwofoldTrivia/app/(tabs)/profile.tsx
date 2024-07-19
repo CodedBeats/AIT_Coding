@@ -24,8 +24,8 @@ export default function ProfileScreen(props: any) {
     }
 
     return (
-        <View>
-            <View style={styles.container}>
+        <View style={styles.container}>
+            <View>
                 <Text>profile</Text>
             </View>
 
