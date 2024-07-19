@@ -5,7 +5,6 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
 import { useContext, useState } from "react"
 import { signOut } from "@firebase/auth"
-import { collection, addDoc } from "firebase/firestore"
 import { useRouter } from "expo-router"
 
 export default function ProfileScreen(props: any) {

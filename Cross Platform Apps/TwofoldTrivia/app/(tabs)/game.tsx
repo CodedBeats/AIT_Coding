@@ -1,25 +1,77 @@
+// dependencies
 import { View, Text, StyleSheet, Pressable, FlatList } from "react-native"
 import { useRouter } from "expo-router"
-import { useState } from "react"
+import { useState, useEffect, useContext } from "react"
+import { collection, addDoc, getDocs } from "firebase/firestore"
+
+// context
+import { DBContext } from "@/contexts/DBContext"
 
 // components
 import { Timer } from "../../components/Timer"
 
-export default function NewScreen(props: any) {
+
+// type for document structure
+interface WordDocument {
+    word: string;
+    option1: string;
+    option2: string;
+    correctAnswer: number;
+}
+
+
+export default function GameScreen(props: any) {
     const [score, setScore] = useState(0)
     const [timerStarted, setTimerStarted] = useState(false)
     const [timerFinished, setTimerFinished] = useState(false)
-    const [canPlayGame, setCanPlayGame] = useState(false)
-
+    const [documents, setDocuments] = useState([]);
+    const [currentQuestion, setCurrentQuestion] = useState<WordDocument | null>(null)
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+    const db = useContext(DBContext)
     const router = useRouter()
+
+    // fetch data
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true)
+            try {
+                const querySnapshot = await getDocs(collection(db, "questions"))
+                const docsArray: any = querySnapshot.docs.map(doc => doc.data())
+                console.log(docsArray)
+                setDocuments(docsArray)
+            } catch (err: any) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        };
+        fetchData();
+    }, []);
+
+    // get random question
+    const getRandomDocument = () => {
+        if (documents.length === 0) return null
+        const randomIndex = Math.floor(Math.random() * documents.length)
+        const selectedDocument = documents[randomIndex]
+        setDocuments(prevDocuments => [
+            ...prevDocuments.slice(0, randomIndex),
+            ...prevDocuments.slice(randomIndex + 1)
+        ]);
+        return selectedDocument
+    }
 
     // start game loop
     const startTimer = () => {
+        // get random from all questions
+        const randomQuestion = getRandomDocument()
+        setCurrentQuestion(randomQuestion)
+        console.log(randomQuestion)
+
+
         // reset score
         setScore(0)
-
-        // allow user to click
-        setCanPlayGame(prevState => !prevState)
 
         // start timer
         setTimerStarted(true)
@@ -29,20 +81,45 @@ export default function NewScreen(props: any) {
     // finish game loop
     const handleTimerFinish = () => {
         setTimerFinished(true)
-        // stop user being able to click
-        setCanPlayGame(prevState => !prevState)
     }
 
 
     return (
-        <View style={styles.container}>
-            <Text>Game</Text>
-            <Pressable onPress={() => router.replace("/")}>
-                <Text>Home</Text>
-            </Pressable>
+        <View>
+            <Text>PROMPT</Text>
+            {/* question prompt */}
+            <View>
+                {currentQuestion ? (
+                    <Text>{currentQuestion.word}</Text>
+                ) : (
+                    <Text></Text>
+                )}
+            </View>
+
+            {/* options */}
+            <View style={styles.optionsContainer}>
+                {currentQuestion ? (
+                    <View>
+                    <Pressable 
+                        onPress={() => console.log(`${currentQuestion.option1} clicked`)}
+                        style={styles.optionBtn}
+                    >
+                        <Text>{currentQuestion.option1}</Text>
+                    </Pressable>
+                    <Pressable 
+                        onPress={() => console.log(`${currentQuestion.option2} clicked`)}
+                        style={styles.optionBtn}
+                    >
+                        <Text>{currentQuestion.option2}</Text>
+                    </Pressable>
+                    </View>
+                ) : (
+                    <Text></Text>
+                )}
+            </View>
 
             {/* === timer and play btn === */}
-            <View>
+            <View style={styles.container}>
             {!timerFinished && <Timer start={timerStarted} onTimerFinish={handleTimerFinish} />}
             {!timerStarted && (
                 <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
@@ -86,5 +163,20 @@ const styles = StyleSheet.create({
       color: "white",
       backgroundColor: "#222",
       textAlign: "center",
+    },
+    optionsContainer: {
+        display: "flex",
+    },
+    optionBtn: {
+        width: "30%",
+        fontSize: 20,
+        padding: 10,
+        borderRadius: 10,
+        backgroundColor: "#FFFF00",
+        margin: 10,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        marginBottom: 5,
+        textAlign: "center",
     },
 });
