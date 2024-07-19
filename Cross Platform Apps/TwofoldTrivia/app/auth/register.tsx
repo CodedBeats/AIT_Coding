@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, StatusBar, TextInput } from "react-native"
 import { Link } from "expo-router"
 import { AuthForm } from "@/components/AuthForm"
-import { AuthContext } from "../contexts/AuthContext"
+import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
 import { useContext, useState } from "react"
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
@@ -18,7 +18,7 @@ export default function Signup(props: any) {
         // create auth user
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            router.replace("/home")
+            router.replace("/")
         })
         .catch( (error) => {
            console.log(error)
@@ -37,7 +37,7 @@ export default function Signup(props: any) {
         if (user) {
             // authenticated
             // nav to home
-            router.replace("/home")
+            router.replace("(tabs)")
         }
         else {
             // not authenticated
@@ -49,7 +49,7 @@ export default function Signup(props: any) {
             <AuthForm title="Sign up for an account" actionText="Sign up" action={handleRegister} />
             <View style={styles.container}>
                 <Text>Already have an account?</Text>
-                <Link href="/login">
+                <Link href="/auth/login">
                     <Text style={styles.link} >Go to Sign in</Text>
                 </Link>
             </View>

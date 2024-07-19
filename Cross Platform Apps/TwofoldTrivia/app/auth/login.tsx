@@ -13,7 +13,7 @@ export default function Login(props: any) {
     const handleLogin = (email: string, password: string) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            router.replace("/home")
+            router.replace("(tabs)")
         })
         .catch((error) => {
             console.log(error)
@@ -25,7 +25,7 @@ export default function Login(props: any) {
             <AuthForm title="Sign in to your account" actionText="Sign in" action={handleLogin} />
             <View style={styles.container}>
                 <Text>Don"t have an account?</Text>
-                <Link href="/">
+                <Link href="/auth/register">
                     <Text style={styles.link}>
                         Go to Sign up
                     </Text>
