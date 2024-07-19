@@ -48,6 +48,7 @@ export function AuthForm (props: any) {
             props.action(email, password)
         }
     }
+    
 
     return (
         <View style={styles.container}>
@@ -78,8 +79,8 @@ export function AuthForm (props: any) {
             />
             <Pressable 
                 onPress={handlePress}
-                style={{handleCheckValid} ? styles.button : styles.buttonDisabled}
-                disabled={{handleCheckValid} ? false : true}
+                style={handleCheckValid() ? styles.button : styles.buttonDisabled}
+                disabled={handleCheckValid() ? false : true}
             >
                 <Text style={styles.buttonText}>
                     {props.actionText}
