@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
 import { useContext, useState } from "react"
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
-import { collection, addDoc } from "firebase/firestore"
+import { collection, setDoc, doc } from "firebase/firestore"
 import { useRouter } from "expo-router"
 
 export default function Signup(props: any) {
@@ -15,22 +15,23 @@ export default function Signup(props: any) {
 
     const handleRegister = async (email: string, username: String, password: string) => {
         console.log(email, username, password)
-        // create auth user
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            router.replace("/")
-        })
-        .catch( (error) => {
-           console.log(error)
-        })
-
-        // create db user
-        const highscore = 0
-        await addDoc(collection(db, "users"), {
-            email: email,
-            username: username,
-            highscore: highscore,
-        })
+        try {
+            // create auth user
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            const userDocRef = doc(db, "users", user.uid);
+    
+            // create db user with UID
+            await setDoc(userDocRef, {
+                email: email,
+                username: username,
+                highscore: 0,
+            });
+    
+            router.replace("/");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     onAuthStateChanged(auth, (user) => {
