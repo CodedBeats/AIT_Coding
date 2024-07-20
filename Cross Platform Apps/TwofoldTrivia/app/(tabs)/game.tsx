@@ -48,11 +48,17 @@ export default function GameScreen(props: any) {
             }
         };
         fetchData();
-    }, []);
+    }, [timerFinished]);
 
     // get random question
     const getRandomDocument = () => {
-        if (documents.length === 0) return null
+        if (documents.length === 0) {
+            // no docs left -> end timer
+            handleTimerFinish()
+            console.log("all questions answered")
+
+            return null
+        }
         const randomIndex = Math.floor(Math.random() * documents.length)
         const selectedDocument = documents[randomIndex]
         setDocuments(prevDocuments => [
@@ -148,6 +154,7 @@ export default function GameScreen(props: any) {
             {timerFinished && 
                 <View>
                     <Text style={styles.timeIsUp}>Time is up!</Text>
+                    <Text style={styles.timeIsUp}>Final Score: {score}</Text>
                     <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
                 </View>
             }
