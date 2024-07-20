@@ -1,11 +1,13 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, FlatList } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native"
 import { useRouter } from "expo-router"
 import { useState, useEffect, useContext } from "react"
-import { collection, addDoc, getDocs } from "firebase/firestore"
+import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
+import { getAuth } from "firebase/auth"
 
 // context
 import { DBContext } from "@/contexts/DBContext"
+import { AuthContext } from "@/contexts/AuthContext"
 
 // components
 import { Timer } from "../../components/Timer"
@@ -30,6 +32,7 @@ export default function GameScreen(props: any) {
     const [error, setError] = useState(null);
     
     const db = useContext(DBContext)
+    const auth = useContext(AuthContext)
     const router = useRouter()
 
     // fetch data
@@ -48,11 +51,17 @@ export default function GameScreen(props: any) {
             }
         };
         fetchData();
-    }, []);
+    }, [timerFinished]);
 
     // get random question
     const getRandomDocument = () => {
-        if (documents.length === 0) return null
+        if (documents.length <= 1) {
+            // no docs left -> end timer
+            handleTimerFinish()
+            console.log("all questions answered")
+
+            return null
+        }
         const randomIndex = Math.floor(Math.random() * documents.length)
         const selectedDocument = documents[randomIndex]
         setDocuments(prevDocuments => [
@@ -69,7 +78,6 @@ export default function GameScreen(props: any) {
         setCurrentQuestion(randomQuestion)
         console.log(randomQuestion)
 
-
         // reset score
         setScore(0)
 
@@ -83,7 +91,6 @@ export default function GameScreen(props: any) {
         // check if answer is correct
         if (optionIndex == currentQuestion?.correctAnswer) {
             setScore(prevScore => prevScore + 1)
-            console.log(`Correct! Score: ${score}`)
         }
 
         // console.log(documents)
@@ -92,9 +99,38 @@ export default function GameScreen(props: any) {
         setCurrentQuestion(newQuestion)
     }
 
+    // handle updating the user's high score
+    const handleUpdateHighScore = async () => {
+        // get auth user
+        const user = auth.currentUser
+
+        if (user) {
+            // get db user
+            const userDocRef = doc(db, "users", user.uid)
+            const userDoc = await getDoc(userDocRef)
+
+            if (userDoc.exists()) {
+                // get user data
+                const userData = userDoc.data()
+                console.log(userData.highscore)
+
+                // update high score if necessary
+                const newHighScore = score > userData.highscore ? score : userData.highscore
+                await updateDoc(userDocRef, {
+                    highscore: newHighScore
+                })
+            } else {
+                console.log("no user doc")
+            }
+        } else {
+            console.log("no user signed in")
+        }
+    }
+
     // finish game loop
     const handleTimerFinish = () => {
         setTimerFinished(true)
+        handleUpdateHighScore()
     }
 
 
@@ -148,6 +184,7 @@ export default function GameScreen(props: any) {
             {timerFinished && 
                 <View>
                     <Text style={styles.timeIsUp}>Time is up!</Text>
+                    <Text style={styles.timeIsUp}>Final Score: {score}</Text>
                     <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
                 </View>
             }

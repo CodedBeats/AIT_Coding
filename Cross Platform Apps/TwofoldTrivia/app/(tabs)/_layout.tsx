@@ -41,6 +41,12 @@ export default function TabLayout() {
                     href: null,
                 }}
             />
+            <Tabs.Screen
+                name="addQuestion"
+                options={{
+                    href: null,
+                }}
+            />
         </Tabs>
     );
 }
