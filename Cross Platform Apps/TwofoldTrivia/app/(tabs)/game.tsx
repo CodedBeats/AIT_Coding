@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, FlatList } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native"
 import { useRouter } from "expo-router"
 import { useState, useEffect, useContext } from "react"
 import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
@@ -55,7 +55,7 @@ export default function GameScreen(props: any) {
 
     // get random question
     const getRandomDocument = () => {
-        if (documents.length === 0) {
+        if (documents.length <= 1) {
             // no docs left -> end timer
             handleTimerFinish()
             console.log("all questions answered")
