@@ -64,7 +64,6 @@ export function AuthForm (props: any) {
                 <Text>Username</Text>
                 <TextInput 
                     style={styles.input}  
-                    secureTextEntry={true} 
                     value={username} 
                     onChangeText={(text) => setUsername(text)}
                 />
