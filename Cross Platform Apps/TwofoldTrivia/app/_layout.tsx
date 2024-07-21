@@ -22,7 +22,7 @@ export default function RootLayout() {
         <AuthContext.Provider value={auth}>
             <DBContext.Provider value={db}>
                 <SafeAreaView style={styles.container}>
-                    <Stack screenOptions={{ headerShown: false }} > 
+                    <Stack screenOptions={{headerShown: false}} > 
                     {loading ? (
                         // show loading screen
                         <Stack.Screen name="loading" />

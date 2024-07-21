@@ -50,8 +50,8 @@ export default function GameScreen(props: any) {
                 setLoading(false)
             }
         };
-        fetchData();
-    }, [timerFinished]);
+        fetchData()
+    }, [timerFinished])
 
     // get random question
     const getRandomDocument = () => {
