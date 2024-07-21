@@ -1,6 +1,5 @@
 // dependencies
 import { View, Text, StyleSheet, Pressable } from "react-native"
-import { useRouter } from "expo-router"
 import { useState, useEffect, useContext } from "react"
 import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
 

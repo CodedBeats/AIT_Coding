@@ -1,6 +1,6 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, FlatList } from "react-native"
-import { useContext, useEffect } from "react"
+import { View, Text, StyleSheet, Pressable } from "react-native"
+import { useContext } from "react"
 import { useRouter } from "expo-router"
 import { useNavigation } from "expo-router"
 

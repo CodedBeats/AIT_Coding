@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, StatusBar, TextInput } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import { Link } from "expo-router"
 import { AuthForm } from "@/components/AuthForm"
 import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
-import { collection, setDoc, doc } from "firebase/firestore"
+import { setDoc, doc } from "firebase/firestore"
 import { useRouter } from "expo-router"
 
 export default function Signup(props: any) {
