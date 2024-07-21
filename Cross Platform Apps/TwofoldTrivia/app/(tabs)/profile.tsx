@@ -1,7 +1,7 @@
 // dependencies
-import { View, Text, StyleSheet, StatusBar, TextInput, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native"
 import { useContext, useState, useEffect } from "react"
-import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
+import { doc, getDoc} from "firebase/firestore"
 import { signOut } from "@firebase/auth"
 import { useRouter } from "expo-router"
 
@@ -24,7 +24,7 @@ export default function ProfileScreen(props: any) {
     // fetch data
     useEffect(() => {
         fetchUser()
-    }, [])
+    }, [db])
 
     const fetchUser = async () => {
         // get auth user
@@ -40,9 +40,11 @@ export default function ProfileScreen(props: any) {
                 const fetchedData = userDoc.data()
 
                 // set user data
-                userData.username = fetchedData.username
-                userData.email = fetchedData.email
-                userData.highscore = fetchedData.highscore
+                setUSerData({
+                    username: fetchedData.username,
+                    email: fetchedData.email,
+                    highscore: fetchedData.highscore,
+                });
             } else {
                 console.log("no user doc")
             }
