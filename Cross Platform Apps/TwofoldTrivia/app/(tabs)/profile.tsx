@@ -1,16 +1,57 @@
+// dependencies
 import { View, Text, StyleSheet, StatusBar, TextInput, Pressable } from "react-native"
-import { Link } from "expo-router"
-import { AuthForm } from "@/components/AuthForm"
-import { AuthContext } from "../../contexts/AuthContext"
-import { DBContext } from "@/contexts/DBContext"
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
+import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
 import { signOut } from "@firebase/auth"
 import { useRouter } from "expo-router"
 
+// context
+import { AuthContext } from "../../contexts/AuthContext"
+import { DBContext } from "@/contexts/DBContext"
+
+
 export default function ProfileScreen(props: any) {
+    const [userData, setUSerData] = useState({
+        username: "",
+        email: "",
+        highscore: 0,
+    })
+
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
     const router = useRouter()
+
+    // fetch data
+    useEffect(() => {
+        fetchUser()
+    }, [])
+
+    const fetchUser = async () => {
+        // get auth user
+        const user = auth.currentUser
+
+        if (user) {
+            // get db user
+            const userDocRef = doc(db, "users", user.uid)
+            const userDoc = await getDoc(userDocRef)
+
+            if (userDoc.exists()) {
+                // get user data
+                const fetchedData = userDoc.data()
+
+                // set user data
+                userData.username = fetchedData.username
+                userData.email = fetchedData.email
+                userData.highscore = fetchedData.highscore
+            } else {
+                console.log("no user doc")
+            }
+        } else {
+            console.log("no user signed in")
+        }
+    }
+
+    
 
     const SignOutUser = () => {
         signOut(auth)
@@ -25,24 +66,60 @@ export default function ProfileScreen(props: any) {
     return (
         <View style={styles.container}>
             <View>
-                <Text>profile</Text>
+                <Text style={styles.title}>Profile</Text>
             </View>
 
-            <Pressable onPress={() => SignOutUser()}>
-                <Text>Sign Out</Text>
-            </Pressable>
+            <View>
+                <Text style={styles.userInfo}>{userData.username}</Text>
+                <Text style={styles.userInfo}>Highscore: {userData.highscore}</Text>
+            </View>
+
+            <View style={styles.btnsContainer}>
+                <Pressable onPress={() => console.log("change password")} style={styles.btn}>
+                    <Text style={styles.btnText}>Change Password</Text>
+                </Pressable>
+
+                <Pressable onPress={() => SignOutUser()} style={styles.btn}>
+                    <Text style={styles.btnText}>Sign Out</Text>
+                </Pressable>
+
+                <Pressable onPress={() => console.log("Delete Account")} style={styles.btn}>
+                    <Text style={styles.btnText}>Delete Account</Text>
+                </Pressable>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        justifyContent: "center",
-        marginVertical: 15,
+        flex: 1,
+        padding: 20,
     },
-    link: {
-        color: "#b8111e",
-        marginLeft: 5,
-    }
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    userInfo: {
+        textAlign: "center",
+    },
+    btnsContainer: {
+        marginTop: 30,
+        marginBottom: 30,
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+    },
+    btn: {
+        width: "50%",
+        padding: 10,
+        backgroundColor: "#ccc",
+        borderRadius: 10,
+        marginBottom: 10,
+    },
+    btnText: {
+        textAlign: "center",
+    },
 })

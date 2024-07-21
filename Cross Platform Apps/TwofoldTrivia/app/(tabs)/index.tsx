@@ -16,14 +16,22 @@ export default function HomeScreen() {
 
     return(
         <View style={styles.container}>
-            <Text>Twodold Trivia</Text>
-            <Pressable style={styles.gameBtn} onPress={() => router.replace("/game")}>
-                <Text style={styles.gameBtnText}>Start Trivia Game</Text>
-            </Pressable>
+            <View>
+                <Text style={styles.title}>Twodold Trivia</Text>
+            </View>
 
             <View>
-                <Text>Rules</Text>
-                <Text>info</Text>
+                <Pressable style={styles.gameBtn} onPress={() => router.replace("/game")}>
+                    <Text style={styles.gameBtnText}>Start Trivia Game</Text>
+                </Pressable>
+            </View>
+
+            <View style={styles.gameInfo}>
+                <Text style={styles.gameInfoTitle}>Rules</Text>
+                <Text>TBD</Text>
+
+                <Text style={styles.gameInfoTitle}>Game Info</Text>
+                <Text>TBD</Text>
             </View>
         </View>
     )
@@ -32,18 +40,43 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        padding: 20,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginBottom: 20,
     },
     gameBtn: {
         backgroundColor: "#333333",
-        padding: 8,
+        margin: 20,
+        padding: 15,
+        paddingTop: 10,
         alignSelf: "center",
         width: 200,
         borderRadius: 5,
     },
     gameBtnText: {
-        color: "#FF0000",
+        color: "#FFF",
+        textAlign: "center",
+        fontSize: 40,
+        fontWeight: "bold",
+    },
+    gameInfo: {
+        marginTop: 30,
+        marginBottom: 20,
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexDirection: "column",
+        flexWrap: "wrap",
+    },
+    gameInfoTitle: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 10,
+        marginTop: 20,
         textAlign: "center",
     }
 })
