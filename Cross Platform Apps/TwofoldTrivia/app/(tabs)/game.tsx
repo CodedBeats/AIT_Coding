@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Pressable } from "react-native"
 import { useRouter } from "expo-router"
 import { useState, useEffect, useContext } from "react"
 import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
-import { getAuth } from "firebase/auth"
 
 // context
 import { DBContext } from "@/contexts/DBContext"
@@ -33,7 +32,6 @@ export default function GameScreen(props: any) {
     
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
-    const router = useRouter()
 
     // fetch data
     useEffect(() => {
@@ -135,59 +133,63 @@ export default function GameScreen(props: any) {
 
 
     return (
-        <View>
-            <Text>PROMPT</Text>
-            {/* dynamic score */}
+        <View style={styles.container}>
             <View>
-                <Text>Score: {score}</Text>
+                <Text style={styles.title}>Twofold Trivia</Text>
             </View>
 
-            <Text>PROMPT</Text>
             {/* question prompt */}
             <View>
                 {currentQuestion ? (
-                    <Text>{currentQuestion.word}</Text>
+                    <Text style={styles.word}>{currentQuestion.word}</Text>
                 ) : (
                     <Text></Text>
                 )}
             </View>
 
-            <Text>OPTIONS</Text>
             {/* options */}
-            <View style={styles.optionsContainer}>
-                {currentQuestion ? (
-                    <View>
-                    <Pressable 
-                        onPress={() => handleOptionClick(1)}
-                        style={styles.optionBtn}
-                    >
-                        <Text>{currentQuestion.option1}</Text>
-                    </Pressable>
-                    <Pressable 
-                        onPress={() => handleOptionClick(2)}
-                        style={styles.optionBtn}
-                    >
-                        <Text>{currentQuestion.option2}</Text>
-                    </Pressable>
-                    </View>
-                ) : (
-                    <Text></Text>
-                )}
-            </View>
-
-            {/* === timer and play btn === */}
-            <View style={styles.container}>
-            {!timerFinished && <Timer start={timerStarted} onTimerFinish={handleTimerFinish} />}
-            {!timerStarted && (
-                <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
-            )}
-            {timerFinished && 
-                <View>
-                    <Text style={styles.timeIsUp}>Time is up!</Text>
-                    <Text style={styles.timeIsUp}>Final Score: {score}</Text>
-                    <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
+            {currentQuestion ? (
+                <View style={styles.optionsContainer}>
+                <Pressable 
+                    onPress={() => handleOptionClick(1)}
+                    style={[styles.optionBtn, styles.optionBtn1]}
+                >
+                    <Text style={styles.optionText}>{currentQuestion.option1}</Text>
+                </Pressable>
+                <Pressable 
+                    onPress={() => handleOptionClick(2)}
+                    style={[styles.optionBtn, styles.optionBtn2]}
+                >
+                    <Text style={styles.optionText}>{currentQuestion.option2}</Text>
+                </Pressable>
                 </View>
-            }
+            ) : (
+                <View style={styles.optionsContainer}>
+                    <Pressable style={[styles.optionBtn, styles.optionBtn1]}></Pressable>
+                    <Pressable style={[styles.optionBtn, styles.optionBtn2]}></Pressable>
+                </View>
+            )}
+
+            
+
+            <View style={styles.stats}>
+                {/* dynamic score */}
+                <View>
+                    <Text style={styles.score}>Score: {score}</Text>
+                </View>
+
+                {/* === timer and play btn === */}
+                {!timerFinished && <Timer start={timerStarted} onTimerFinish={handleTimerFinish} />}
+                {!timerStarted && (
+                    <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
+                )}
+                {timerFinished && 
+                    <View>
+                        <Text style={styles.timeIsUp}>Time is up!</Text>
+                        <Text style={styles.timeIsUp}>Final Score: {score}</Text>
+                        <Pressable onPress={startTimer}><Text style={styles.playBtn}>PLAY</Text></Pressable>
+                    </View>
+                }
             </View>
         </View>
     );
@@ -196,45 +198,77 @@ export default function GameScreen(props: any) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
         padding: 20,
     },
-    score: {
-      fontSize: 20,
-      marginTop: 10,
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginBottom: 20,
     },
-    timeIsUp: {
-      fontSize: 20,
-      fontWeight: "bold",
-      padding: 10,
-      borderRadius: 10,
-      color: "black",
-      backgroundColor: "#bbb",
-      margin: 10,
-    },
-    playBtn: {
-      fontSize: 30,
-      fontWeight: "bold",
-      padding: 20,
-      borderRadius: 10,
-      color: "white",
-      backgroundColor: "#222",
-      textAlign: "center",
+    word: {
+        fontSize:50,
+        fontWeight: "bold",
+        margin: 30,
+        textAlign: "center",
     },
     optionsContainer: {
-        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginBottom: 20,
     },
     optionBtn: {
-        width: "30%",
+        width: "45%",
         fontSize: 20,
         padding: 10,
+        paddingTop: 30,
+        paddingBottom: 30,
         borderRadius: 10,
         backgroundColor: "#FFFF00",
         margin: 10,
         borderWidth: 1,
         borderColor: "#ccc",
         marginBottom: 5,
+        textAlign: "center",
+    },
+    optionBtn1: {
+        backgroundColor: "#630000",
+    },
+    optionBtn2: {
+        backgroundColor: "#00016C",
+    },
+    optionText: {
+        color: "white",
+        fontWeight: "bold",
+        fontSize: 20,
+        textAlign: "center",
+    },
+    stats: {
+
+    },
+    score: {
+        fontSize: 20,
+        marginTop: 10,
+        alignSelf: "center",
+        textAlign: "center",
+    },
+    timeIsUp: {
+        fontSize: 20,
+        fontWeight: "bold",
+        padding: 10,
+        borderRadius: 10,
+        color: "black",
+        backgroundColor: "#bbb",
+        margin: 10,
+        textAlign: "center",
+    },
+    playBtn: {
+        fontSize: 30,
+        fontWeight: "bold",
+        padding: 20,
+        borderRadius: 10,
+        color: "white",
+        backgroundColor: "#222",
         textAlign: "center",
     },
 });
