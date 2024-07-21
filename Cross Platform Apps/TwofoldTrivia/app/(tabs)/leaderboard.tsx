@@ -42,7 +42,7 @@ export default function LeaderboardScreen() {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#FFFF00" />
+                <ActivityIndicator size="large" color="#0000FF" />
             </View>
         );
     }
