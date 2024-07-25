@@ -45,7 +45,7 @@ class Friend {
                   id: id,
                   agentName: dictionary["agentName"] as! String,
                   level: dictionary["level"] as! Int,
-                  badges: dictionary["badges"] as! [String],
+                  badges: dictionary["badges"] as! [String]
                 )
     }
 }

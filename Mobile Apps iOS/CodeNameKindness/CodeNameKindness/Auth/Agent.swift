@@ -11,7 +11,6 @@ import FirebaseFirestore
 class Agent {
     var id: String!
     var agentName: String
-    var email: String
     var currentMission: String
     var level: Int
     var exp: Int
@@ -19,10 +18,9 @@ class Agent {
     var friends: [Friend] = [Friend]() // init friends collection to not be nil
     
     
-    init(id: String!, agentName: String, email: String, currentMission: String, level: Int, exp: Int, badges: [String]) {
+    init(id: String!, agentName: String, currentMission: String, level: Int, exp: Int, badges: [String]) {
         self.id = id
         self.agentName = agentName
-        self.email = email
         self.currentMission = currentMission
         self.level = level
         self.exp = exp
@@ -33,7 +31,6 @@ class Agent {
         self.init(
                     id: id,
                     agentName: dictionary["agentName"] as! String,
-                    email: dictionary["email"] as! String,
                     currentMission: dictionary["currentMission"] as! String,
                     level: dictionary["level"] as! Int,
                     exp: dictionary["exp"] as! Int,
