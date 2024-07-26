@@ -17,7 +17,7 @@ class Repository{
     func addAgent(agent: Agent) -> Bool {
         var result = true
         var dictionary: [String: Any] = [
-            "agentName": agent.agentName,
+            "agentName": "CodeName" + agent.agentName,
             "currentMission": agent.currentMission,
             "level": agent.level,
             "exp": agent.exp,

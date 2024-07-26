@@ -70,7 +70,7 @@ class SignupVC: UIViewController {
                                level: 1,
                                exp: 0,
                                badges: ["none"]
-                              )
+                             )
             
             // create user in the DB
             if self.service.addAgent(agent: agent) {
@@ -102,4 +102,15 @@ class SignupVC: UIViewController {
             
         }
     }
+    
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 }
