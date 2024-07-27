@@ -47,4 +47,25 @@ extension UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    func deleteConfirmationMessage(title : String, message : String, delete : ( () -> Void )?, cancel: ( () -> Void )? ){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+       
+       
+        let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: .destructive) {
+            action -> Void in delete?()
+        }
+       
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .default) {
+            action -> Void in cancel?()
+        }
+       
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+   
+        present(alert, animated: true, completion: nil)
+       
+    }
 }
