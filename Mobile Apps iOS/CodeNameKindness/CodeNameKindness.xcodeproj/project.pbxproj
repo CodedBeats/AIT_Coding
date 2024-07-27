@@ -28,6 +28,8 @@
 		AF8278342C52C22800CEA6A6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8278332C52C22800CEA6A6 /* LoginVC.swift */; };
 		AF8278362C52C23900CEA6A6 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8278352C52C23900CEA6A6 /* SignupVC.swift */; };
 		AF8278382C52C2CB00CEA6A6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8278372C52C2CB00CEA6A6 /* Repository.swift */; };
+		AFA033BC2C555B9200F140DA /* LoginTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA033BB2C555B9200F140DA /* LoginTVC.swift */; };
+		AFA033BE2C555BA000F140DA /* SignupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA033BD2C555BA000F140DA /* SignupTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		AF8278332C52C22800CEA6A6 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AF8278352C52C23900CEA6A6 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		AF8278372C52C2CB00CEA6A6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		AFA033BB2C555B9200F140DA /* LoginTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTVC.swift; sourceTree = "<group>"; };
+		AFA033BD2C555BA000F140DA /* SignupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				AF82782E2C52B98A00CEA6A6 /* Agent.swift */,
 				AF8278332C52C22800CEA6A6 /* LoginVC.swift */,
 				AF8278352C52C23900CEA6A6 /* SignupVC.swift */,
+				AFA033BB2C555B9200F140DA /* LoginTVC.swift */,
+				AFA033BD2C555BA000F140DA /* SignupTVC.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF8278362C52C23900CEA6A6 /* SignupVC.swift in Sources */,
+				AFA033BC2C555B9200F140DA /* LoginTVC.swift in Sources */,
 				AF82782F2C52B98A00CEA6A6 /* Agent.swift in Sources */,
 				AF40CDAF2C53E6ED004469FB /* ShowLeaderboardTVC.swift in Sources */,
 				AF40CDB42C53E77E004469FB /* ShowMissionTVC.swift in Sources */,
@@ -245,6 +252,7 @@
 				AF82780B2C52B37300CEA6A6 /* AppDelegate.swift in Sources */,
 				AF8278322C52BA1600CEA6A6 /* Friend.swift in Sources */,
 				AF82780D2C52B37300CEA6A6 /* SceneDelegate.swift in Sources */,
+				AFA033BE2C555BA000F140DA /* SignupTVC.swift in Sources */,
 				AF40CDB62C53E79D004469FB /* ShowAgentReportTVC.swift in Sources */,
 				AF82782C2C52B57D00CEA6A6 /* Extensions.swift in Sources */,
 				AF40CDB12C53E716004469FB /* ShowFriendsTVC.swift in Sources */,
