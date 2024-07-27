@@ -20,7 +20,6 @@ class ShowMissionTVC: UITableViewController {
     }
 
     // MARK: - Table view data source
-    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
