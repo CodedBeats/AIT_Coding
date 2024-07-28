@@ -37,6 +37,34 @@ class Repository {
         }
         
         return result
-        
     }
+    
+    
+    // get agent for initial load in headquarters
+    func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
+            // agents coll with specific docID
+            let docRef = db.collection("agents").document(id)
+            
+            docRef.getDocument {(document, error) in
+                if let error = error {
+                    // handle error
+                    completion(nil, error)
+                } else if let document = document, document.exists {
+                    // get data
+                    if let data = document.data() {
+                        let agent = Agent(id: id, dictionary: data)
+                        
+                        completion(agent, nil)
+                    } else {
+                        // doc does not exist or is empty
+                        print("Document does not exist or is empty")
+                        completion(nil, nil)
+                    }
+                } else {
+                    // doc doesn't exist
+                    print("Document not found")
+                    completion(nil, nil)
+                }
+            }
+        }
 }

@@ -6,21 +6,50 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ShowHeadquartersTVC: UITableViewController {
     
+    @IBOutlet weak var agentNameLabel: UILabel!
+    @IBOutlet weak var agentLevelLabel: UILabel!
+    @IBOutlet weak var agentExpProgress: UIProgressView!
+    @IBOutlet weak var currentMissionLabel: UILabel!
     
-    @IBOutlet weak var xLabel: UILabel!
-    @IBOutlet weak var xProgress: UIProgressView!
+    var agent: Agent!
+    let service = Repository()
+    var userAuthId: String!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        userAuthId = Auth.auth().currentUser?.uid
+        print("Currenr User ID: \(userAuthId ?? "NIL")")
+        
+        service.fetchAgent(withId: userAuthId) { (returnedAgent, error) in
+            if let error = error {
+                print("Error fetching agent: \(error.localizedDescription)")
+            } else if let fetchedAgent = returnedAgent {
+                // success
+                print("Fetched Agent: \(fetchedAgent.agentName)")
+                self.agent = fetchedAgent
+                
+                // load agent data onto screen
+                print(self.agent!)
+                self.agentNameLabel.text = self.agent.agentName
+                self.agentLevelLabel.text = String(self.agent.level) // convert Int to String
+                self.agentExpProgress.progress = Float(self.agent.exp) / 100.0 // convert Int to Float for progress bar
+                self.currentMissionLabel.text = self.agent.currentMission
+            } else {
+                print("Agent not found")
+            }
+        }
+        
+        
+        
+        
+        
     }
 
     // MARK: - Table view data source

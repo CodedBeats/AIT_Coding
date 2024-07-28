@@ -74,10 +74,14 @@ class LoginTVC: UITableViewController {
             }
             
             // let user pass to next screen because log in successfull
-            let homeViewController = self?.storyboard?.instantiateViewController(identifier: "HomeVC") as? UITabBarController
-            
-            self?.view.window?.rootViewController = homeViewController
-            self?.view.window?.makeKeyAndVisible()
+            if let homeViewController = self?.storyboard?.instantiateViewController(identifier: "HomeVC") as? UITabBarController {
+                // set middle tab as selected tab
+                homeViewController.selectedIndex = 2
+                
+                // set tab bar controller as root view controller
+                self?.view.window?.rootViewController = homeViewController
+                self?.view.window?.makeKeyAndVisible()
+            }
         }
         
         let uid = Auth.auth().currentUser?.uid ?? ""

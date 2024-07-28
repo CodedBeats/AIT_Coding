@@ -479,8 +479,10 @@
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="xLabel" destination="ZaK-AU-qn5" id="Y7H-Wf-oms"/>
-                        <outlet property="xProgress" destination="zts-r1-MYf" id="ZfR-k9-QHA"/>
+                        <outlet property="agentExpProgress" destination="zts-r1-MYf" id="Z7A-88-hLX"/>
+                        <outlet property="agentLevelLabel" destination="ZaK-AU-qn5" id="FMy-Jt-Nqj"/>
+                        <outlet property="agentNameLabel" destination="l1h-QQ-usb" id="B69-xS-pcM"/>
+                        <outlet property="currentMissionLabel" destination="Y0S-jt-ND1" id="clz-nx-XBb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMf-qX-etV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
