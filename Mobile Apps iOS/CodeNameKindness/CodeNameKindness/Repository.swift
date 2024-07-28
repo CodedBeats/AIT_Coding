@@ -9,16 +9,19 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
-class Repository{
-    
+class Repository {
+    var missions: [String] = ["x", "y", "z"]
     var db = Firestore.firestore()
     
     // add agent for signup call
     func addAgent(agent: Agent) -> Bool {
+        // get random mission
+        let randomMission = Utility.getRandomMission(from: Utility.missionsArr)
+        
         var result = true
         var dictionary: [String: Any] = [
             "agentName": "CodeName" + agent.agentName,
-            "currentMission": agent.currentMission,
+            "currentMission": randomMission ?? "Somehow ran out of missions?",
             "level": agent.level,
             "exp": agent.exp,
             "badges": agent.badges,
