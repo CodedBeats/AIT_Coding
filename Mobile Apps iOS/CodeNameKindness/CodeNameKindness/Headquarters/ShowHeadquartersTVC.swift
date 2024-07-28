@@ -6,22 +6,98 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class ShowHeadquartersTVC: UITableViewController {
+class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
+    
+    @IBOutlet weak var agentNameLabel: UILabel!
+    @IBOutlet weak var agentLevelLabel: UILabel!
+    @IBOutlet weak var agentExpProgress: UIProgressView!
+    @IBOutlet weak var currentMissionLabel: UILabel!
+    
+    var agent: Agent!
+    let service = Repository()
+    var userAuthId: String!
     
     
-    @IBOutlet weak var xLabel: UILabel!
-    @IBOutlet weak var xProgress: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        userAuthId = Auth.auth().currentUser?.uid
+        print("Currenr User ID: \(userAuthId ?? "NIL")")
+        
+        service.fetchAgent(withId: userAuthId) { (returnedAgent, error) in
+            if let error = error {
+                print("Error fetching agent: \(error.localizedDescription)")
+            } else if let fetchedAgent = returnedAgent {
+                // success
+                print("Fetched Agent: \(fetchedAgent.agentName)")
+                self.agent = fetchedAgent
+                
+                // load agent data onto screen
+                self.agentNameLabel.text = self.agent.agentName
+                self.agentLevelLabel.text = String(self.agent.level) // convert Int to String
+                self.agentExpProgress.progress = Float(self.agent.exp) / 100.0 // convert Int to Float for progress bar
+                self.currentMissionLabel.text = self.agent.currentMission
+            } else {
+                print("Agent not found")
+            }
+        }
     }
+    
+    
+    @IBAction func completeMissionBtnDidPress(_ sender: Any) {
+        // unwrap user ID
+        guard let userAuthId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+        
+        // get random mission
+        guard let randomMission = Utility.getRandomMission(from: Utility.missionsArr) else {
+            print("Failed to get a random mission")
+            return
+        }
+        
+        // unwrap agent's level and exp
+        guard let currentLevel = agent?.level, let currentExp = agent?.exp else {
+            print("Agent data is not available")
+            return
+        }
+        
+        // calculate new experience and level
+        var newLvl = currentLevel
+        var newExp = currentExp + 30
+        if newExp >= 100 {
+            newExp -= 100
+            newLvl += 1
+        }
+        
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { (error) in
+            if let error = error {
+                // error
+                print("Error updating agent: \(error.localizedDescription)")
+            } else {
+                // success
+                print("Agent updated successfully.")
+                
+                // update agent object locally...this might be wrong :(
+                self.agent.level = newLvl
+                self.agent.exp = newExp
+                self.agent.currentMission = randomMission
+                
+                // update UI to reflect changes
+                self.agentLevelLabel.text = String(self.agent.level)
+                self.agentExpProgress.progress = Float(self.agent.exp) / 100.0
+                self.currentMissionLabel.text = randomMission
+            }
+        }
+    }
+    
+    
+    
 
     // MARK: - Table view data source
 
@@ -79,5 +155,22 @@ class ShowHeadquartersTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //whats a segue lol
+    // but really, once I built out all my screens there really are no pages that make sense to go in 1 deep of any of the nav tab bar screens
+    // so what do I do? I looked up this method of passing data as an alternative
+    // will ask for help in terms of project specifications and what else to do after prototype
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let agentReportTVC = viewController as? ShowAgentReportTVC {
+            // pass data to ShowAgentReportTVC when tab selected
+            agentReportTVC.agent = self.agent
+            print(self.agent.agentName)
+        }
+        if let missionTVC = viewController as? ShowMissionTVC {
+            // pass data to ShowMissionTVC when tab selected
+            missionTVC.agent = self.agent
+            print(self.agent.currentMission)
+        }
+    }
 
 }
