@@ -50,6 +50,8 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
     
     @IBAction func completeMissionBtnDidPress(_ sender: Any) {
         userAuthId = Auth.auth().currentUser?.uid
+        // get random mission
+        let randomMission = Utility.getRandomMission(from: Utility.missionsArr)
         
         var newLvl = self.agent.level
         var newExp = self.agent.exp + 30
@@ -58,7 +60,7 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
             newLvl = newLvl + 1
         }
         
-        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl) { (error) in
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission!) { (error) in
             if let error = error {
                 // error
                 print("Error updating agent: \(error.localizedDescription)")
@@ -69,10 +71,12 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
                 // update agent object locally...this might be wrong :(
                 self.agent.level = newLvl
                 self.agent.exp = newExp
+                self.agent.currentMission = randomMission!
                 
                 // update UI to reflect changes
                 self.agentLevelLabel.text = String(self.agent.level)
                 self.agentExpProgress.progress = Float(self.agent.exp) / 100.0
+                self.currentMissionLabel.text = randomMission
             }
         }
     }

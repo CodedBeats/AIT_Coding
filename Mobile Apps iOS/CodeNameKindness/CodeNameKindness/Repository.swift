@@ -70,12 +70,13 @@ class Repository {
     
     
     // update agent exp for completing mission
-    func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, completion: @escaping (Error?) -> Void) {
+    func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
         // agents coll with specific docID
         let docRef = db.collection("agents").document(id)
         
         // ppdate exp and level fields
         docRef.updateData([
+            "currentMission": newMission,
             "exp": newExp,
             "level": newLevel
         ]) { error in
