@@ -344,10 +344,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-sf-BN7">
-                                                    <rect key="frame" x="125" y="74" width="71" height="20"/>
+                                                    <rect key="frame" x="125" y="74" width="77" height="20"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Complete">
-                                                        <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
@@ -529,23 +529,17 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttq-r9-V08">
-                                                    <rect key="frame" x="63.5" y="160" width="78.5" height="29"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Complete">
-                                                        <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </buttonConfiguration>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3J-R3-WEx">
-                                                    <rect key="frame" x="181" y="160" width="76.5" height="29"/>
+                                                    <rect key="frame" x="205.5" y="160" width="52.5" height="29"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Pass">
-                                                        <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="passMissionBtnDidPress:" destination="g4g-gc-hIu" eventType="touchUpInside" id="BPv-jr-Xff"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call your parents and ask for a movie recommendation" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bk7-aU-X00">
                                                     <rect key="frame" x="16" y="85.5" width="288" height="29"/>
@@ -553,21 +547,31 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngG-x4-O0R">
+                                                    <rect key="frame" x="60" y="160" width="82.5" height="29"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Complete">
+                                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
+                                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="completeMissionBtnDidPress:" destination="g4g-gc-hIu" eventType="touchUpInside" id="ErJ-Lg-9Vx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Qlt-g2-rdP" firstAttribute="leading" secondItem="ArU-QU-AdU" secondAttribute="leading" constant="112" id="49w-hC-AiG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qlt-g2-rdP" secondAttribute="trailing" constant="111" id="5rA-g4-bFL"/>
                                                 <constraint firstItem="AOU-02-ETx" firstAttribute="leading" secondItem="ArU-QU-AdU" secondAttribute="leading" constant="38" id="9p8-oS-TAY"/>
                                                 <constraint firstItem="bk7-aU-X00" firstAttribute="leading" secondItem="ArU-QU-AdU" secondAttribute="leading" constant="16" id="IrN-H1-tL0"/>
-                                                <constraint firstItem="Ttq-r9-V08" firstAttribute="width" secondItem="U3J-R3-WEx" secondAttribute="width" multiplier="1.02439" id="KNj-Hh-CKJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="U3J-R3-WEx" secondAttribute="trailing" constant="62.5" id="Keu-iy-uHG"/>
                                                 <constraint firstItem="bk7-aU-X00" firstAttribute="centerY" secondItem="ArU-QU-AdU" secondAttribute="centerY" id="Vc9-ek-kPm"/>
+                                                <constraint firstItem="ngG-x4-O0R" firstAttribute="top" secondItem="ArU-QU-AdU" secondAttribute="top" constant="160" id="agf-w6-T6K"/>
                                                 <constraint firstAttribute="trailing" secondItem="AOU-02-ETx" secondAttribute="trailing" constant="38" id="cC9-lN-Sdm"/>
                                                 <constraint firstAttribute="trailing" secondItem="bk7-aU-X00" secondAttribute="trailing" constant="16" id="cdu-2k-bXn"/>
-                                                <constraint firstItem="Ttq-r9-V08" firstAttribute="top" secondItem="ArU-QU-AdU" secondAttribute="top" constant="160" id="d24-f6-Rxj"/>
-                                                <constraint firstItem="Ttq-r9-V08" firstAttribute="firstBaseline" secondItem="U3J-R3-WEx" secondAttribute="firstBaseline" id="dIU-2z-ILn"/>
-                                                <constraint firstItem="Ttq-r9-V08" firstAttribute="leading" secondItem="ArU-QU-AdU" secondAttribute="leading" constant="63.5" id="qw9-lP-cQQ"/>
                                                 <constraint firstItem="U3J-R3-WEx" firstAttribute="top" secondItem="ArU-QU-AdU" secondAttribute="top" constant="160" id="rlK-2h-jTZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="U3J-R3-WEx" secondAttribute="trailing" constant="62" id="vRe-Il-AUb"/>
+                                                <constraint firstItem="ngG-x4-O0R" firstAttribute="leading" secondItem="ArU-QU-AdU" secondAttribute="leading" constant="60" id="yiN-F0-6iX"/>
                                                 <constraint firstItem="AOU-02-ETx" firstAttribute="top" secondItem="ArU-QU-AdU" secondAttribute="top" constant="40" id="zZy-Yu-qgL"/>
                                                 <constraint firstItem="Qlt-g2-rdP" firstAttribute="top" secondItem="ArU-QU-AdU" secondAttribute="top" constant="11" id="zhC-nR-JB9"/>
                                             </constraints>
@@ -583,6 +587,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Missions" image="envelope.badge.shield.half.filled" catalog="system" id="jOo-ql-LO5"/>
+                    <connections>
+                        <outlet property="currentMissionLabel" destination="bk7-aU-X00" id="Z62-jv-0UI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqp-gi-Trl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -49,18 +49,33 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
     
     
     @IBAction func completeMissionBtnDidPress(_ sender: Any) {
-        userAuthId = Auth.auth().currentUser?.uid
-        // get random mission
-        let randomMission = Utility.getRandomMission(from: Utility.missionsArr)
-        
-        var newLvl = self.agent.level
-        var newExp = self.agent.exp + 30
-        if newExp >= 100 {
-            newExp = newExp - 100
-            newLvl = newLvl + 1
+        // unwrap user ID
+        guard let userAuthId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
         }
         
-        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission!) { (error) in
+        // get random mission
+        guard let randomMission = Utility.getRandomMission(from: Utility.missionsArr) else {
+            print("Failed to get a random mission")
+            return
+        }
+        
+        // unwrap agent's level and exp
+        guard let currentLevel = agent?.level, let currentExp = agent?.exp else {
+            print("Agent data is not available")
+            return
+        }
+        
+        // calculate new experience and level
+        var newLvl = currentLevel
+        var newExp = currentExp + 30
+        if newExp >= 100 {
+            newExp -= 100
+            newLvl += 1
+        }
+        
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { (error) in
             if let error = error {
                 // error
                 print("Error updating agent: \(error.localizedDescription)")
@@ -71,7 +86,7 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
                 // update agent object locally...this might be wrong :(
                 self.agent.level = newLvl
                 self.agent.exp = newExp
-                self.agent.currentMission = randomMission!
+                self.agent.currentMission = randomMission
                 
                 // update UI to reflect changes
                 self.agentLevelLabel.text = String(self.agent.level)
@@ -150,6 +165,11 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
             // pass data to ShowAgentReportTVC when tab selected
             agentReportTVC.agent = self.agent
             print(self.agent.agentName)
+        }
+        if let missionTVC = viewController as? ShowMissionTVC {
+            // pass data to ShowMissionTVC when tab selected
+            missionTVC.agent = self.agent
+            print(self.agent.currentMission)
         }
     }
 

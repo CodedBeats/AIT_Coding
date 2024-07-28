@@ -6,18 +6,128 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ShowMissionTVC: UITableViewController {
+    
+    @IBOutlet weak var currentMissionLabel: UILabel!
+    
+    let service = Repository()
+    var userAuthId: String!
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    // thius is all pretty gross looking haha, but technically I am passing data on an action, it's just not a segue
+    // the point is to not call the repo unecesarily right? (god I can't spoell lol)
+    var agent: Agent? {
+        didSet {
+            // call func to update UI when agent is recieved
+            updateUI()
+        }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateUI()
+    }
+    
+    func updateUI() {
+        guard isViewLoaded, let agent = agent else {
+            return
+        }
+        print("Received agent: \(agent.currentMission)")
+        
+        // put agent data into UI elemnts
+        currentMissionLabel.text = agent.currentMission
+    }
+    
+    
+    
+    @IBAction func completeMissionBtnDidPress(_ sender: Any) {
+        // unwrap user ID
+        guard let userAuthId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+        
+        // get random mission
+        guard let randomMission = Utility.getRandomMission(from: Utility.missionsArr) else {
+            print("Failed to get a random mission")
+            return
+        }
+        
+        // unwrap agent's level and exp
+        guard let currentLevel = agent?.level, let currentExp = agent?.exp else {
+            print("Agent data is not available")
+            return
+        }
+        
+        // calculate new experience and level
+        var newLvl = currentLevel
+        var newExp = currentExp + 30
+        if newExp >= 100 {
+            newExp -= 100
+            newLvl += 1
+        }
+        
+        // update agent
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { error in
+            if let error = error {
+                // error
+                print("Error updating agent: \(error.localizedDescription)")
+            } else {
+                // success
+                print("Agent updated successfully.")
+                
+                // update agent object locally...this might be wrong :(
+                self.agent?.level = newLvl
+                self.agent?.exp = newExp
+                self.agent?.currentMission = randomMission
+                
+                // update UI to reflect changes
+                self.currentMissionLabel.text = randomMission
+            }
+        }
+    }
+    
+    @IBAction func passMissionBtnDidPress(_ sender: Any) {
+        // unwrap user ID
+        guard let userAuthId = Auth.auth().currentUser?.uid else {
+            print("User not authenticated")
+            return
+        }
+        
+        // get random mission
+        guard let randomMission = Utility.getRandomMission(from: Utility.missionsArr) else {
+            print("Failed to get a random mission")
+            return
+        }
+        
+        // unwrap agent's level and exp
+        guard let currentLevel = agent?.level, let currentExp = agent?.exp else {
+            print("Agent data is not available")
+            return
+        }
+        
+        // Call the service to update the agent's data
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: currentExp, newLevel: currentLevel, newMission: randomMission)
+        { error in
+            if let error = error {
+                // error
+                print("Error updating agent: \(error.localizedDescription)")
+            } else {
+                // success
+                print("Agent updated successfully.")
+                
+                // update agent object locally...this might be wrong :(
+                self.agent?.currentMission = randomMission
+                
+                // update UI to reflect changes
+                self.currentMissionLabel.text = randomMission
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
 
