@@ -36,7 +36,6 @@ class ShowHeadquartersTVC: UITableViewController {
                 self.agent = fetchedAgent
                 
                 // load agent data onto screen
-                print(self.agent!)
                 self.agentNameLabel.text = self.agent.agentName
                 self.agentLevelLabel.text = String(self.agent.level) // convert Int to String
                 self.agentExpProgress.progress = Float(self.agent.exp) / 100.0 // convert Int to Float for progress bar
@@ -45,12 +44,40 @@ class ShowHeadquartersTVC: UITableViewController {
                 print("Agent not found")
             }
         }
-        
-        
-        
-        
-        
     }
+    
+    
+    @IBAction func completeMissionBtnDidPress(_ sender: Any) {
+        userAuthId = Auth.auth().currentUser?.uid
+        
+        var newLvl = self.agent.level
+        var newExp = self.agent.exp + 30
+        if newExp >= 100 {
+            newExp = newExp - 100
+            newLvl = newLvl + 1
+        }
+        
+        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl) { (error) in
+            if let error = error {
+                // error
+                print("Error updating agent: \(error.localizedDescription)")
+            } else {
+                // success
+                print("Agent updated successfully.")
+                
+                // update agent object locally...this might be wrong :(
+                self.agent.level = newLvl
+                self.agent.exp = newExp
+                
+                // update UI to reflect changes
+                self.agentLevelLabel.text = String(self.agent.level)
+                self.agentExpProgress.progress = Float(self.agent.exp) / 100.0
+            }
+        }
+    }
+    
+    
+    
 
     // MARK: - Table view data source
 

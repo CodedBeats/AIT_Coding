@@ -42,29 +42,52 @@ class Repository {
     
     // get agent for initial load in headquarters
     func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
-            // agents coll with specific docID
-            let docRef = db.collection("agents").document(id)
-            
-            docRef.getDocument {(document, error) in
-                if let error = error {
-                    // handle error
-                    completion(nil, error)
-                } else if let document = document, document.exists {
-                    // get data
-                    if let data = document.data() {
-                        let agent = Agent(id: id, dictionary: data)
-                        
-                        completion(agent, nil)
-                    } else {
-                        // doc does not exist or is empty
-                        print("Document does not exist or is empty")
-                        completion(nil, nil)
-                    }
+        // agents coll with specific docID
+        let docRef = db.collection("agents").document(id)
+        
+        docRef.getDocument {(document, error) in
+            if let error = error {
+                // handle error
+                completion(nil, error)
+            } else if let document = document, document.exists {
+                // get data
+                if let data = document.data() {
+                    let agent = Agent(id: id, dictionary: data)
+                    
+                    completion(agent, nil)
                 } else {
-                    // doc doesn't exist
-                    print("Document not found")
+                    // doc does not exist or is empty
+                    print("Document does not exist or is empty")
                     completion(nil, nil)
                 }
+            } else {
+                // doc doesn't exist
+                print("Document not found")
+                completion(nil, nil)
             }
         }
+    }
+    
+    
+    // update agent exp for completing mission
+    func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, completion: @escaping (Error?) -> Void) {
+        // agents coll with specific docID
+        let docRef = db.collection("agents").document(id)
+        
+        // ppdate exp and level fields
+        docRef.updateData([
+            "exp": newExp,
+            "level": newLevel
+        ]) { error in
+            if let error = error {
+                // error
+                print("Error updating exp and level: \(error.localizedDescription)")
+                completion(error)
+            } else {
+                // success
+                print("Agent exp and level updated successfully")
+                completion(nil)
+            }
+        }
+    }
 }

@@ -351,6 +351,9 @@
                                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="completeMissionBtnDidPress:" destination="d46-tN-T0R" eventType="touchUpInside" id="HP2-xD-ptD"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
