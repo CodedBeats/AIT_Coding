@@ -46,7 +46,7 @@
                         <segue destination="EDK-ld-Ebh" kind="relationship" relationship="viewControllers" id="jr1-C6-pgT"/>
                         <segue destination="d46-tN-T0R" kind="relationship" relationship="viewControllers" id="RGb-j6-ocu"/>
                         <segue destination="g4g-gc-hIu" kind="relationship" relationship="viewControllers" id="roK-Cv-sbH"/>
-                        <segue destination="0rJ-xX-06I" kind="relationship" relationship="viewControllers" id="PnN-1q-Sj8"/>
+                        <segue destination="0rJ-xX-06I" kind="relationship" relationship="viewControllers" destinationCreationSelector="showAgentReport" id="PnN-1q-Sj8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWn-XD-DtN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -739,6 +739,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Report" image="person.circle" catalog="system" id="eiZ-nX-WOY"/>
+                    <connections>
+                        <outlet property="agentExpProgress" destination="gk8-x6-dQa" id="iqj-yH-dq0"/>
+                        <outlet property="agentLevelLabel" destination="lB7-nN-0cS" id="rNI-5p-vvf"/>
+                        <outlet property="agentNameLabel" destination="A8T-Lg-9z8" id="LhX-ae-7me"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQC-gJ-b9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

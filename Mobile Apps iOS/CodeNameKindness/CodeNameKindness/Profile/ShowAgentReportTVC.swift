@@ -8,17 +8,43 @@
 import UIKit
 
 class ShowAgentReportTVC: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+    @IBOutlet weak var agentNameLabel: UILabel!
+    @IBOutlet weak var agentExpProgress: UIProgressView!
+    @IBOutlet weak var agentLevelLabel: UILabel!
+    
+    
+    
+    // thius is all pretty gross looking haha
+    var agent: Agent? {
+        didSet {
+            // call func to update UI when agent is recieved
+            updateUI()
+        }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateUI()
+    }
+    
+    func updateUI() {
+        guard isViewLoaded, let agent = agent else {
+            return
+        }
+        print("Received agent: \(agent.agentName)")
+        
+        // put agent data into UI elemnts
+        agentNameLabel.text = agent.agentName
+        agentLevelLabel.text = String(agent.level) // convert Int to String
+        agentExpProgress.progress = Float(agent.exp) / 100.0 // convert Int to Float for progress bar
+    }
+
+    
+    
+    
+    
     // MARK: - Table view data source
 
     /*
