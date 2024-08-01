@@ -12,7 +12,6 @@ export default function HomeScreen() {
     const auth = useContext(AuthContext)
     const router = useRouter()
     const navigation = useNavigation()
-    navigation.setOptions({headerShown: true})
 
     return(
         <SafeAreaView style={styles.container}>
