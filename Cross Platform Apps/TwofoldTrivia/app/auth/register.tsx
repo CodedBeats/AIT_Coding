@@ -1,6 +1,5 @@
 import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { Link } from "expo-router"
-import { AuthForm } from "@/components/AuthForm"
 import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
 import { useContext, useState, useEffect } from "react"

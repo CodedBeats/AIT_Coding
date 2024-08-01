@@ -1,6 +1,5 @@
 import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { Link } from "expo-router"
-import { AuthForm } from "@/components/AuthForm"
 import { signInWithEmailAndPassword } from "@firebase/auth"
 import { AuthContext } from "@/contexts/AuthContext"
 import { useContext, useState, useEffect } from "react"
