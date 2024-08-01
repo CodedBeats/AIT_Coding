@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Alert, SafeAreaView } from "react-native";
 import { collection, addDoc } from "firebase/firestore";
 import { DBContext } from "@/contexts/DBContext";
 
@@ -36,7 +36,7 @@ export default function AddQuestionScreen() {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Add New Question</Text>
             <TextInput
                 style={styles.input}
@@ -64,7 +64,7 @@ export default function AddQuestionScreen() {
                 onChangeText={(text) => setCorrectAnswer(parseInt(text, 10))}
             />
             <Button title="Add Question" onPress={handleAddQuestion} />
-        </View>
+        </SafeAreaView>
     );
 }
 

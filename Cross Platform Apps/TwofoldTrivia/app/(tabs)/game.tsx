@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native"
 import { useState, useEffect, useContext } from "react"
 import { collection, getDocs, doc, getDoc, updateDoc} from "firebase/firestore"
 
@@ -132,7 +132,7 @@ export default function GameScreen(props: any) {
 
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View>
                 <Text style={styles.title}>Twofold Trivia</Text>
             </View>
@@ -190,7 +190,7 @@ export default function GameScreen(props: any) {
                     </View>
                 }
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 35,
         fontWeight: "bold",
         textAlign: "center",
-        marginBottom: 20,
+        margin: 15,
     },
     word: {
         fontSize:50,
