@@ -1,6 +1,6 @@
 // dependencies
 import React, { useState, useEffect, useContext } from "react"
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from "react-native"
+import { View, Text, StyleSheet, FlatList, ActivityIndicator, SafeAreaView } from "react-native"
 import { collection, getDocs, orderBy, query } from "firebase/firestore"
 
 // contexts
@@ -48,7 +48,7 @@ export default function LeaderboardScreen() {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Leaderboard</Text>
             <FlatList
                 data={users}
@@ -60,7 +60,7 @@ export default function LeaderboardScreen() {
                     </View>
                 )}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 

@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, FlatList } from "react-native"
+import { View, Text, StyleSheet, Pressable, FlatList, SafeAreaView } from "react-native"
 import { useContext } from "react"
 import { useRouter } from "expo-router"
 import { useNavigation } from "expo-router"
@@ -15,7 +15,7 @@ export default function HomeScreen() {
     navigation.setOptions({headerShown: true})
 
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View>
                 <Text style={styles.title}>Twodold Trivia</Text>
             </View>
@@ -45,7 +45,7 @@ export default function HomeScreen() {
                     renderItem={({item}) => <Text>{item.key}</Text>}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

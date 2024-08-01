@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native"
 import { useContext, useState, useEffect } from "react"
 import { doc, getDoc} from "firebase/firestore"
 import { signOut } from "@firebase/auth"
@@ -66,7 +66,7 @@ export default function ProfileScreen(props: any) {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View>
                 <Text style={styles.title}>Profile</Text>
             </View>
@@ -89,7 +89,7 @@ export default function ProfileScreen(props: any) {
                     <Text style={styles.btnText}>Delete Account</Text>
                 </Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
