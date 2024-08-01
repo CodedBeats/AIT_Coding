@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 35,
         fontWeight: "bold",
         textAlign: "center",
-        marginBottom: 20,
+        margin: 15,
     },
     word: {
         fontSize:50,
