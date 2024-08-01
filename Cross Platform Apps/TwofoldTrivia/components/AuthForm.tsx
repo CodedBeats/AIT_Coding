@@ -53,6 +53,7 @@ export function AuthForm (props: any) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{props.title}</Text>
+            
             <Text>Email</Text>
             <TextInput 
                 style={styles.input} 
