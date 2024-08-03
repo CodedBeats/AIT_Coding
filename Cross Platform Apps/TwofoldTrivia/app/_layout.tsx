@@ -1,3 +1,4 @@
+// dependencies
 import { Stack } from "expo-router"
 import { SafeAreaView, StyleSheet, StatusBar } from "react-native"
 import { firebaseConfig } from "@/config/Config"
@@ -16,7 +17,7 @@ export default function RootLayout() {
     // init firestore
     const db = getFirestore(app)
 
-    const [user, loading] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth)
 
     return (
         <AuthContext.Provider value={auth}>
