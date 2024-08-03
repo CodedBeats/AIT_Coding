@@ -1,3 +1,4 @@
+// dependencies
 import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
@@ -6,7 +7,9 @@ import { createUserWithEmailAndPassword, onAuthStateChanged } from "@firebase/au
 import { setDoc, doc } from "firebase/firestore"
 import { useRouter } from "expo-router"
 import { BlurView } from "expo-blur"
-import { Link } from '@react-navigation/native'
+import { Link } from "@react-navigation/native"
+
+// components
 
 export default function Signup(props: any) {
     const [email, setEmail] = useState("")
@@ -45,11 +48,12 @@ export default function Signup(props: any) {
 
     const handleRegister = async (email: string, username: String, password: string) => {
         console.log(email, username, password)
+        
         try {
             // create auth user
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            const userDocRef = doc(db, "users", user.uid);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
+            const userDocRef = doc(db, "users", user.uid)
     
             // create db user with UID
             await setDoc(userDocRef, {
@@ -58,9 +62,10 @@ export default function Signup(props: any) {
                 highscore: 0,
             });
     
-            router.replace("/");
+            router.replace("/home")
+
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 
@@ -68,7 +73,7 @@ export default function Signup(props: any) {
         if (user) {
             // authenticated
             // nav to home
-            router.replace("(tabs)")
+            router.replace("/home")
         }
         else {
             // not authenticated
@@ -76,7 +81,7 @@ export default function Signup(props: any) {
     })
     
     const handleCheckValid = () => {
-        return validEmail && validPassword
+        return validEmail && validUsername && validPassword
     }
 
 

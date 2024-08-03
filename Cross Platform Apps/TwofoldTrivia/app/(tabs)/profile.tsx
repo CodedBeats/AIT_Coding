@@ -1,14 +1,16 @@
 // dependencies
 import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native"
 import { useContext, useState, useEffect } from "react"
-import { doc, getDoc} from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore"
 import { signOut } from "@firebase/auth"
-import { Link } from '@react-navigation/native'
+import { Link } from "@react-navigation/native"
+
+// components
+import ConfirmationModal from "@/components/ConfirmationModal"
 
 // context
 import { AuthContext } from "../../contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
-
 
 export default function ProfileScreen(props: any) {
     const [userData, setUSerData] = useState({
@@ -16,6 +18,8 @@ export default function ProfileScreen(props: any) {
         email: "",
         highscore: 0,
     })
+    const [modalVisible, setModalVisible] = useState(false)
+    const [modalAction, setModalAction] = useState<"changePassword" | "deleteAccount" | null>(null)
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
@@ -52,16 +56,40 @@ export default function ProfileScreen(props: any) {
         }
     }
 
-    
+    // modal actions
+    const handleConfirm = () => {
+        setModalVisible(false);
+        if (modalAction === "changePassword") {
+            handleChangePassword()
+        } else if (modalAction === "deleteAccount") {
+            handleDeleteAccount()
+        }
+        console.log("confirmed")
+    }
+    const handleCancel = () => {
+        setModalVisible(false)
+        console.log("cancelled")
+    }
 
+    // sign out
     const SignOutUser = () => {
         signOut(auth)
-        .then(() => {
-            console.log("logged out")
-        })
-        .catch(( error) => {
-            console.log(error.code, error.message)
-        })
+            .then(() => {
+                console.log("logged out")
+            })
+            .catch((error) => {
+                console.log(error.code, error.message)
+            })
+    }
+
+    // change password
+    const handleChangePassword = () => {
+        console.log("change password")
+    }
+
+    // delete account
+    const handleDeleteAccount = () => {
+        console.log("delete account")
     }
 
     return (
@@ -72,26 +100,36 @@ export default function ProfileScreen(props: any) {
 
             <View>
                 <Text style={styles.userInfo}>{userData.username}</Text>
-                <Text style={styles.userInfo}>Highscore: {userData.highscore}</Text>
+                <Text style={styles.userInfo}>
+                    Highscore: {userData.highscore}
+                </Text>
             </View>
 
             <View style={styles.btnsContainer}>
-                <Pressable onPress={() => console.log("change password")} style={styles.btn}>
+                <Pressable onPress={() => { setModalAction('changePassword'); setModalVisible(true); }} style={styles.btn}>
                     <Text style={styles.btnText}>Change Password</Text>
                 </Pressable>
 
                 <Link to="./">
-                <Pressable onPress={() => SignOutUser()} style={styles.btn}>
+                <Pressable onPress={SignOutUser} style={styles.btn}>
                     <Text style={styles.btnText}>Sign Out</Text>
                 </Pressable>
                 </Link>
 
-                <Pressable onPress={() => console.log("Delete Account")} style={styles.btn}>
+                <Pressable onPress={() => { setModalAction('deleteAccount'); setModalVisible(true); }} style={styles.btn}>
                     <Text style={styles.btnText}>Delete Account</Text>
                 </Pressable>
             </View>
+
+            {/* modal */}
+            <ConfirmationModal
+                visible={modalVisible}
+                message={`Are you sure you want to ${modalAction === 'changePassword' ? 'change your password' : 'delete your account'}?`}
+                onConfirm={handleConfirm}
+                onCancel={handleCancel}
+            />
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -125,4 +163,4 @@ const styles = StyleSheet.create({
     btnText: {
         textAlign: "center",
     },
-})
+});

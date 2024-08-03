@@ -1,10 +1,13 @@
+// dependencies
 import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { signInWithEmailAndPassword } from "@firebase/auth"
 import { AuthContext } from "@/contexts/AuthContext"
 import { useContext, useState, useEffect } from "react"
 import { useRouter } from "expo-router"
 import { BlurView } from "expo-blur"
-import { Link } from '@react-navigation/native'
+import { Link } from "@react-navigation/native"
+
+// components
 
 
 export default function Login(props: any) {
@@ -14,6 +17,7 @@ export default function Login(props: any) {
     const [validPassword, setValidPassword] = useState(false)
 
     const auth = useContext(AuthContext)
+    const router = useRouter()
 
     
     // regex
@@ -35,6 +39,7 @@ export default function Login(props: any) {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(`user credential: ${userCredential}`)
+            router.replace("/home")
         })
         .catch((error) => {
             console.log(error)
@@ -77,7 +82,6 @@ export default function Login(props: any) {
                         onChangeText={(text) => setPassword(text)}
                     />
                     
-                    <Link to="/home">
                     <Pressable 
                         onPress={() => handleLogin(email, password)}
                         style={handleCheckValid() ? styles.button : styles.buttonDisabled}
@@ -87,7 +91,6 @@ export default function Login(props: any) {
                             Sign In
                         </Text>
                     </Pressable>
-                    </Link>
                     
                     <View style={styles.swapAuthForm}>
                         <Text>Don"t have an account?</Text>

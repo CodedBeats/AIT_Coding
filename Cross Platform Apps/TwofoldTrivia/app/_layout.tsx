@@ -1,3 +1,4 @@
+// dependencies
 import { Stack } from "expo-router"
 import { SafeAreaView, StyleSheet, StatusBar } from "react-native"
 import { firebaseConfig } from "@/config/Config"
