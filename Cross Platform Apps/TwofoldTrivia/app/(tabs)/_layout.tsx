@@ -8,6 +8,21 @@ export default function TabLayout() {
             screenOptions={{ tabBarActiveTintColor: "blue",
             headerShown: false,
         }}>
+            {/* Auth */}
+            <Tabs.Screen
+                name="index"
+                options={{
+                    href: null,
+                }}
+            />
+            <Tabs.Screen
+                name="register"
+                options={{
+                    href: null,
+                }}
+            />
+
+            {/* Authenticated */}
             <Tabs.Screen
                 name="profile"
                 options={{
@@ -18,7 +33,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="index"
+                name="home"
                 options={{
                     title: "Home",
                     tabBarIcon: ({ color }) => (

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native"
 import { useContext, useState, useEffect } from "react"
 import { doc, getDoc} from "firebase/firestore"
 import { signOut } from "@firebase/auth"
-import { useRouter } from "expo-router"
+import { Link } from '@react-navigation/native'
 
 // context
 import { AuthContext } from "../../contexts/AuthContext"
@@ -19,7 +19,6 @@ export default function ProfileScreen(props: any) {
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
-    const router = useRouter()
 
     // fetch data
     useEffect(() => {
@@ -58,7 +57,7 @@ export default function ProfileScreen(props: any) {
     const SignOutUser = () => {
         signOut(auth)
         .then(() => {
-            router.replace("/auth/register")
+            console.log("logged out")
         })
         .catch(( error) => {
             console.log(error.code, error.message)
@@ -81,9 +80,11 @@ export default function ProfileScreen(props: any) {
                     <Text style={styles.btnText}>Change Password</Text>
                 </Pressable>
 
+                <Link to="./">
                 <Pressable onPress={() => SignOutUser()} style={styles.btn}>
                     <Text style={styles.btnText}>Sign Out</Text>
                 </Pressable>
+                </Link>
 
                 <Pressable onPress={() => console.log("Delete Account")} style={styles.btn}>
                     <Text style={styles.btnText}>Delete Account</Text>

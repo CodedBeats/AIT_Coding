@@ -1,57 +1,127 @@
-// dependencies
-import { View, Text, StyleSheet, Pressable, FlatList, SafeAreaView } from "react-native"
-import { useContext } from "react"
-import { useRouter } from "expo-router"
-import { useNavigation } from "expo-router"
-
-// context
+import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
+import { signInWithEmailAndPassword } from "@firebase/auth"
 import { AuthContext } from "@/contexts/AuthContext"
+import { useContext, useState, useEffect } from "react"
+import { useRouter } from "expo-router"
+import { BlurView } from "expo-blur"
+import { Link } from '@react-navigation/native'
 
 
-export default function HomeScreen() {
+export default function Login(props: any) {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [validEmail, setValidEmail] = useState(false)
+    const [validPassword, setValidPassword] = useState(false)
+
     const auth = useContext(AuthContext)
-    const router = useRouter()
-    const navigation = useNavigation()
 
-    return(
-        <SafeAreaView style={styles.container}>
-            <View>
-                <Text style={styles.title}>Twodold Trivia</Text>
+    
+    // regex
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+
+    // handle form updates
+    useEffect(() => {
+        // validate email against regex 
+        setValidEmail(emailRegex.test(email))
+        // console.log(`email is valid?: ${emailRegex.test(email)}`)
+    }, [email])
+
+    useEffect(() => {
+        setValidPassword(password.length >= 6)
+        // console.log(`password is valid?: ${validPassword}`)
+    }, [password])
+
+    const handleLogin = (email: string, password: string) => {
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log(`user credential: ${userCredential}`)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+    
+    const handleCheckValid = () => {
+        return validEmail && validPassword
+    }
+
+
+    return (
+        <ImageBackground
+            source={require("../../assets/images/background/trivia_background_img_1.png")}
+            resizeMode="cover"
+            style={styles.container}
+        >
+            <Text style={styles.title}>Twofold Trivia</Text>
+
+            <View style={styles.formContainer}>
+                <BlurView
+                    style={styles.blurContainer}
+                    intensity={50}
+                    tint="light"
+                >
+                    <Text style={styles.title}>Sign In</Text>
+                    
+                    <Text>Email</Text>
+                    <TextInput 
+                        style={styles.input} 
+                        value={email} 
+                        onChangeText={(text) => setEmail(text)}
+                    />
+                    
+                    <Text>Password</Text>
+                    <TextInput 
+                        style={styles.input}  
+                        secureTextEntry={true} 
+                        value={password} 
+                        onChangeText={(text) => setPassword(text)}
+                    />
+                    
+                    <Link to="/home">
+                    <Pressable 
+                        onPress={() => handleLogin(email, password)}
+                        style={handleCheckValid() ? styles.button : styles.buttonDisabled}
+                        disabled={handleCheckValid() ? false : true}
+                    >
+                        <Text style={styles.buttonText}>
+                            Sign In
+                        </Text>
+                    </Pressable>
+                    </Link>
+                    
+                    <View style={styles.swapAuthForm}>
+                        <Text>Don"t have an account?</Text>
+                        <Link to="/register">
+                            <Text style={styles.link}>
+                                Go to Sign up
+                            </Text>
+                        </Link>
+                    </View>
+                </BlurView>
             </View>
-
-            <View>
-                <Pressable style={styles.gameBtn} onPress={() => router.replace("/game")}>
-                    <Text style={styles.gameBtnText}>Start Trivia Game</Text>
-                </Pressable>
-            </View>
-
-            <View style={styles.gameInfo}>
-                <Text style={styles.gameInfoTitle}>Game Info</Text>
-                <Text>
-                    Welcome to Twofold Trivia! Test your knowledge and quick thinking by choosing the correct category for each word. Challenge yourself to score high and climb the leaderboard. Enjoy a fun and educational trivia experience designed for both casual players and trivia enthusiasts!
-                </Text>
-
-                <Text style={styles.gameInfoTitle}>Rules</Text>
-                <FlatList
-                    data={[
-                    {key: "> Objective: Match each word with the correct category as quickly as possible."},
-                    {key: "> You will be given a series of words, each with two possible category options."},
-                    {key: "> Tap the left or right button to choose the category you think is correct."},
-                    {key: "> Time Limit: Each game is timed, so think fast to maximize your score!"},
-                    {key: "> Earn points for each correct answer. Aim for the highest score to top the leaderboard!"},
-                    {key: "> Compare your scores with other players and strive to become the top trivia master!"},
-                    ]}
-                    renderItem={({item}) => <Text>{item.key}</Text>}
-                />
-            </View>
-        </SafeAreaView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         padding: 20,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    formContainer: {
+        marginHorizontal: 20,
+        marginTop: 100,
+    },
+    blurContainer: {
+        padding: 20,
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: "#000",
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center",
     },
     title: {
         fontSize: 35,
@@ -59,35 +129,38 @@ const styles = StyleSheet.create({
         textAlign: "center",
         margin: 15,
     },
-    gameBtn: {
-        backgroundColor: "#333333",
-        margin: 20,
-        padding: 15,
-        paddingTop: 10,
-        alignSelf: "center",
-        width: 200,
-        borderRadius: 5,
+    swapAuthForm: {
+        flexDirection: "row",
     },
-    gameBtnText: {
-        color: "#FFF",
-        textAlign: "center",
-        fontSize: 40,
-        fontWeight: "bold",
+    link: {
+        color: "#b8111e",
+        marginLeft: 5,
     },
-    gameInfo: {
-        marginTop: 30,
+    input: {
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: "#cccccc",
+        padding: 6,
         marginBottom: 20,
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexDirection: "column",
-        flexWrap: "wrap",
+        backgroundColor: "#efefef",
+        borderRadius: 6,
     },
-    gameInfoTitle: {
-        fontSize: 20,
-        fontWeight: "bold",
-        marginBottom: 10,
-        marginTop: 20,
+    button: {
+        backgroundColor: "#333333",
+        borderRadius: 4,
+    },
+    buttonText: {
+        color: "#efefef",
         textAlign: "center",
-    }
+        padding: 8,
+    },
+    buttonDisabled: {
+        backgroundColor: "#888888",
+        borderRadius: 4,
+    },
+    buttonTextDisabled: {
+        color: "#666666",
+        textAlign: "center",
+        padding: 8,
+    },
 })
