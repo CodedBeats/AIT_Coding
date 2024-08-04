@@ -42,7 +42,15 @@ export default function LeaderboardScreen() {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#0000FF" />
+                <ImageBackground
+                    source={require("../../assets/images/background/Background_3.png")}
+                    resizeMode="cover"
+                    style={styles.backgroundImg}
+                >
+                    <View style={styles.loadingBar}>
+                        <ActivityIndicator size="large" color="#0000FF" />
+                    </View>
+                </ImageBackground>
             </View>
         );
     }
@@ -94,6 +102,11 @@ const styles = StyleSheet.create({
     },
     loadingContainer: {
         flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    loadingBar: {
+        flex: 2,
         justifyContent: "center",
         alignItems: "center",
     },
