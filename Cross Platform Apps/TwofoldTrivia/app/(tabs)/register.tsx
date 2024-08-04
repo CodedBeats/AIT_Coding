@@ -86,10 +86,11 @@ export default function Signup(props: any) {
 
 
     return (
+        <SafeAreaView style={styles.container}>
         <ImageBackground
-            source={require("../../assets/images/background/trivia_background_img_1.png")}
+        source={require("../../assets/images/background/Background_4.png")}
             resizeMode="cover"
-            style={styles.container}
+            style={styles.backgroundImg}
         >
 
             <Text style={styles.title}>Twofold Trivia</Text>
@@ -142,17 +143,23 @@ export default function Signup(props: any) {
                 </BlurView>
             </View>
         </ImageBackground>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        height: "100%",
+        width: "100%",
         justifyContent: "center",
         alignItems: "center",
     },
+    backgroundImg: {
+        height: "100%",
+        width: "100%",
+    },
     formContainer: {
-        marginHorizontal: 20,
+        marginHorizontal: 40,
         marginTop: 100,
     },
     blurContainer: {
@@ -170,13 +177,16 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        color: "#FFF",
     },
     swapAuthForm: {
         flexDirection: "row",
+        justifyContent: "center",
     },
     link: {
         color: "#b8111e",
         marginLeft: 5,
+        fontWeight: "bold",
     },
     input: {
         borderStyle: "solid",
