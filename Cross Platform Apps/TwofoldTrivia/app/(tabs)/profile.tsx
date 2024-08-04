@@ -1,9 +1,9 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native"
+import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground  } from "react-native"
 import { useContext, useState, useEffect } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { signOut } from "@firebase/auth"
-import { Link } from "@react-navigation/native"
+import { useRouter } from "expo-router"
 
 // components
 import ConfirmationModal from "@/components/ConfirmationModal"
@@ -23,6 +23,7 @@ export default function ProfileScreen(props: any) {
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
+    const router = useRouter()
 
     // fetch data
     useEffect(() => {
@@ -76,6 +77,7 @@ export default function ProfileScreen(props: any) {
         signOut(auth)
             .then(() => {
                 console.log("logged out")
+                router.replace("/")
             })
             .catch((error) => {
                 console.log(error.code, error.message)
@@ -94,11 +96,16 @@ export default function ProfileScreen(props: any) {
 
     return (
         <SafeAreaView style={styles.container}>
+        <ImageBackground
+            source={require("../../assets/images/background/Background_2.png")}
+            resizeMode="cover"
+            style={styles.backgroundImg}
+        >
             <View>
                 <Text style={styles.title}>Profile</Text>
             </View>
 
-            <View>
+            <View style={styles.userInfoContainer}>
                 <Text style={styles.userInfo}>{userData.username}</Text>
                 <Text style={styles.userInfo}>
                     Highscore: {userData.highscore}
@@ -110,11 +117,9 @@ export default function ProfileScreen(props: any) {
                     <Text style={styles.btnText}>Change Password</Text>
                 </Pressable>
 
-                <Link to="./">
                 <Pressable onPress={SignOutUser} style={styles.btn}>
                     <Text style={styles.btnText}>Sign Out</Text>
                 </Pressable>
-                </Link>
 
                 <Pressable onPress={() => { setModalAction('deleteAccount'); setModalVisible(true); }} style={styles.btn}>
                     <Text style={styles.btnText}>Delete Account</Text>
@@ -128,6 +133,7 @@ export default function ProfileScreen(props: any) {
                 onConfirm={handleConfirm}
                 onCancel={handleCancel}
             />
+        </ImageBackground>
         </SafeAreaView>
     );
 }
@@ -137,18 +143,27 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
+    backgroundImg: {
+        height: "100%",
+        width: "100%",
+    },
     title: {
         fontSize: 35,
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
     },
+    userInfoContainer: {
+        marginVertical: 50,
+    },
     userInfo: {
         textAlign: "center",
+        fontWeight: "bold",
+        fontSize: 50,
+        margin: 10,
     },
     btnsContainer: {
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: 50,
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
@@ -156,11 +171,13 @@ const styles = StyleSheet.create({
     btn: {
         width: "50%",
         padding: 10,
-        backgroundColor: "#ccc",
+        backgroundColor: "#333",
         borderRadius: 10,
-        marginBottom: 10,
+        marginBottom: 20,
     },
     btnText: {
         textAlign: "center",
+        color: "#fff",
+        fontSize: 20,
     },
 });

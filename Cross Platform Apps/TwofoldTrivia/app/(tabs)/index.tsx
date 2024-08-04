@@ -1,6 +1,6 @@
 // dependencies
 import { Text, TextInput, StyleSheet, View, Pressable, SafeAreaView, ImageBackground } from "react-native"
-import { signInWithEmailAndPassword } from "@firebase/auth"
+import { signInWithEmailAndPassword, onAuthStateChanged } from "@firebase/auth"
 import { AuthContext } from "@/contexts/AuthContext"
 import { useContext, useState, useEffect } from "react"
 import { useRouter } from "expo-router"
@@ -38,13 +38,23 @@ export default function Login(props: any) {
     const handleLogin = (email: string, password: string) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(`user credential: ${userCredential}`)
             router.replace("/home")
         })
         .catch((error) => {
             console.log(error)
         })
     }
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // authenticated
+            // nav to home
+            router.replace("/home")
+        }
+        else {
+            // not authenticated
+        }
+    })
     
     const handleCheckValid = () => {
         return validEmail && validPassword
@@ -52,10 +62,11 @@ export default function Login(props: any) {
 
 
     return (
+        <SafeAreaView style={styles.container}>
         <ImageBackground
-            source={require("../../assets/images/background/trivia_background_img_1.png")}
+            source={require("../../assets/images/background/Background_4.png")}
             resizeMode="cover"
-            style={styles.container}
+            style={styles.backgroundImg}
         >
             <Text style={styles.title}>Twofold Trivia</Text>
 
@@ -93,7 +104,7 @@ export default function Login(props: any) {
                     </Pressable>
                     
                     <View style={styles.swapAuthForm}>
-                        <Text>Don"t have an account?</Text>
+                        <Text>Don't have an account?</Text>
                         <Link to="/register">
                             <Text style={styles.link}>
                                 Go to Sign up
@@ -103,17 +114,23 @@ export default function Login(props: any) {
                 </BlurView>
             </View>
         </ImageBackground>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        height: "100%",
+        width: "100%",
         justifyContent: "center",
         alignItems: "center",
     },
+    backgroundImg: {
+        height: "100%",
+        width: "100%",
+    },
     formContainer: {
-        marginHorizontal: 20,
+        marginHorizontal: 40,
         marginTop: 100,
     },
     blurContainer: {
@@ -131,13 +148,16 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        color: "#FFF",
     },
     swapAuthForm: {
         flexDirection: "row",
+        justifyContent: "center",
     },
     link: {
         color: "#b8111e",
         marginLeft: 5,
+        fontWeight: "bold",
     },
     input: {
         borderStyle: "solid",
