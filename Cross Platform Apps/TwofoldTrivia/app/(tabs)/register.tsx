@@ -161,6 +161,12 @@ const styles = StyleSheet.create({
     formContainer: {
         marginHorizontal: 40,
         marginTop: 100,
+        borderWidth: 2,
+        borderColor: "#000",
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 4, height: 4 },
+        shadowOpacity: 0.8,
     },
     blurContainer: {
         padding: 20,

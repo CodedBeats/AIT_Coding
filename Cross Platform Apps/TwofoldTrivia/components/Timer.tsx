@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
+// dependencies
+import React, { useState, useEffect, useRef } from "react"
+import { View, Text, StyleSheet } from "react-native"
 
 interface TimerProps {
-    start: boolean;
-    onTimerFinish: () => void;
+    start: boolean
+    onTimerFinish: () => void
 }
 
 const Timer: React.FC<TimerProps> = ({ start, onTimerFinish }) => {
@@ -25,8 +26,8 @@ const Timer: React.FC<TimerProps> = ({ start, onTimerFinish }) => {
                     return prevTime
                 }
                 return prevTime - 1
-            });
-        };
+            })
+        }
 
         // interval to run tick every second
         if (start) {
@@ -78,9 +79,15 @@ const styles = StyleSheet.create({
     timerContainer: {
         justifyContent: "center",
         alignItems: "center",
-        padding: 20,
+        marginHorizontal: "auto",
+        paddingHorizontal: 20,
         backgroundColor: "#f0f0f0",
+        borderWidth: 2,
+        borderColor: "#000",
         borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 4, height: 4 },
+        shadowOpacity: 0.8,
     },
     timerText: {
         fontSize: 75,

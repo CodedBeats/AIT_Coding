@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground  } from "react-native"
+import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { useContext, useState, useEffect } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { signOut } from "@firebase/auth"
@@ -172,8 +172,13 @@ const styles = StyleSheet.create({
         width: "50%",
         padding: 10,
         backgroundColor: "#333",
-        borderRadius: 10,
         marginBottom: 20,
+        borderWidth: 2,
+        borderColor: "#000",
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 4, height: 4 },
+        shadowOpacity: 0.8,
     },
     btnText: {
         textAlign: "center",
