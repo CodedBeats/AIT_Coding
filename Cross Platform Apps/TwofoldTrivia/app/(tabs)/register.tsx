@@ -10,6 +10,8 @@ import { BlurView } from "expo-blur"
 import { Link } from "@react-navigation/native"
 
 // components
+import ErrorMessage from "@/components/ErrorMessage"
+
 
 export default function Signup(props: any) {
     const [email, setEmail] = useState("")
@@ -18,6 +20,8 @@ export default function Signup(props: any) {
     const [validEmail, setValidEmail] = useState(false)
     const [validUsername, setValidUsername] = useState(false)
     const [validPassword, setValidPassword] = useState(false)
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [error, setError] = useState("")
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
@@ -60,12 +64,13 @@ export default function Signup(props: any) {
                 email: email,
                 username: username,
                 highscore: 0,
-            });
+            })
     
             router.replace("/home")
 
         } catch (error) {
-            console.log(error)
+            setError(`${error}`)
+            setErrorVisible(true)
         }
     }
 
@@ -135,13 +140,21 @@ export default function Signup(props: any) {
                     </Pressable>
 
                     <View style={styles.swapAuthForm}>
-                        <Text>Already have an account?</Text>
+                        <Text style={styles.swapAuthFormText}>Already have an account?</Text>
                         <Link to="/">
                             <Text style={styles.link}>Go to Sign in</Text>
                         </Link>
                     </View>
                 </BlurView>
             </View>
+
+            {/* Modal */}
+            <ErrorMessage
+                visible={errorVisible}
+                title="Error"
+                message={error}
+                onDismiss={() => setErrorVisible(false)}
+            />
         </ImageBackground>
         </SafeAreaView>
     )
@@ -184,15 +197,20 @@ const styles = StyleSheet.create({
         textAlign: "center",
         margin: 15,
         color: "#FFF",
+        fontFamily: "Roboto-Regular",
     },
     swapAuthForm: {
         flexDirection: "row",
         justifyContent: "center",
     },
+    swapAuthFormText: {
+        fontFamily: "NunitoSans-Regular",
+    },
     link: {
         color: "#b8111e",
         marginLeft: 5,
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     },
     input: {
         borderStyle: "solid",
@@ -202,6 +220,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         backgroundColor: "#efefef",
         borderRadius: 6,
+        fontFamily: "NunitoSans-Regular",
     },
     button: {
         backgroundColor: "#333333",
@@ -211,6 +230,7 @@ const styles = StyleSheet.create({
         color: "#efefef",
         textAlign: "center",
         padding: 8,
+        fontFamily: "NunitoSans-Regular",
     },
     buttonDisabled: {
         backgroundColor: "#888888",

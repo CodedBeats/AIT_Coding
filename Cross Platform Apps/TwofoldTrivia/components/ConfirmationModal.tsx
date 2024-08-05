@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 20,
         textAlign: "center",
+        fontFamily: "NunitoSans-Regular",
     },
     buttonContainer: {
         flex: 1,
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 25,
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     }
 });
 

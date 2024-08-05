@@ -1,12 +1,13 @@
 // dependencies
 import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { useContext, useState, useEffect } from "react"
-import { doc, getDoc } from "firebase/firestore"
-import { signOut } from "@firebase/auth"
+import { doc, getDoc, deleteDoc } from "firebase/firestore"
+import { signOut, sendPasswordResetEmail, deleteUser } from "@firebase/auth"
 import { useRouter } from "expo-router"
 
 // components
 import ConfirmationModal from "@/components/ConfirmationModal"
+import ErrorMessage from "@/components/ErrorMessage"
 
 // context
 import { AuthContext } from "../../contexts/AuthContext"
@@ -20,6 +21,9 @@ export default function ProfileScreen(props: any) {
     })
     const [modalVisible, setModalVisible] = useState(false)
     const [modalAction, setModalAction] = useState<"changePassword" | "deleteAccount" | null>(null)
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [errorTitle, setErrorTitle] = useState("")
+    const [error, setError] = useState("")
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
@@ -48,7 +52,7 @@ export default function ProfileScreen(props: any) {
                     username: fetchedData.username,
                     email: fetchedData.email,
                     highscore: fetchedData.highscore,
-                });
+                })
             } else {
                 console.log("no user doc")
             }
@@ -61,7 +65,7 @@ export default function ProfileScreen(props: any) {
     const handleConfirm = () => {
         setModalVisible(false);
         if (modalAction === "changePassword") {
-            handleChangePassword()
+            handleChangePassword(userData.email)
         } else if (modalAction === "deleteAccount") {
             handleDeleteAccount()
         }
@@ -72,27 +76,71 @@ export default function ProfileScreen(props: any) {
         console.log("cancelled")
     }
 
+
+    // === btn actions ===
     // sign out
-    const SignOutUser = () => {
+    const signOutUser = () => {
         signOut(auth)
             .then(() => {
                 console.log("logged out")
                 router.replace("/")
             })
             .catch((error) => {
-                console.log(error.code, error.message)
+                setError(error.message)
+                setErrorVisible(true)
             })
     }
 
     // change password
-    const handleChangePassword = () => {
-        console.log("change password")
+    const handleChangePassword = async (email: string) => {
+        try {
+            await sendPasswordResetEmail(auth, email)
+            
+            setErrorTitle("Password Reset")
+            setError("An email has been sent to you to change your password")
+            setErrorVisible(true)
+
+        } catch (error) {
+            setErrorTitle("Password Reset Error")
+            setError(`${error}`)
+            setErrorVisible(true)
+        }
     }
 
     // delete account
-    const handleDeleteAccount = () => {
-        console.log("delete account")
+    const handleDeleteAccount = async () => {
+        try {
+            // get user
+            const user = auth.currentUser;
+    
+            if (user) {
+                // get ref
+                const userDocRef = doc(db, "users", user.uid);
+    
+                // delete user doc
+                await deleteDoc(userDocRef);
+    
+                // delete user auth
+                await deleteUser(user);
+            
+                setErrorTitle("Account Deletion")
+                setError("Your account has been deleted successfully")
+                setErrorVisible(true)
+
+                // route to login
+                router.replace("/")
+            } else {
+                console.log("no user")
+            }
+
+        } catch (error) {
+            setErrorTitle("Account Deletion Error")
+            setError(`${error}`)
+            setErrorVisible(true)
+        }
     }
+
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -117,7 +165,7 @@ export default function ProfileScreen(props: any) {
                     <Text style={styles.btnText}>Change Password</Text>
                 </Pressable>
 
-                <Pressable onPress={SignOutUser} style={styles.btn}>
+                <Pressable onPress={signOutUser} style={styles.btn}>
                     <Text style={styles.btnText}>Sign Out</Text>
                 </Pressable>
 
@@ -132,6 +180,13 @@ export default function ProfileScreen(props: any) {
                 message={`Are you sure you want to ${modalAction === 'changePassword' ? 'change your password' : 'delete your account'}?`}
                 onConfirm={handleConfirm}
                 onCancel={handleCancel}
+            />
+            
+            <ErrorMessage
+                visible={errorVisible}
+                title={errorTitle}
+                message={error}
+                onDismiss={() => setErrorVisible(false)}
             />
         </ImageBackground>
         </SafeAreaView>
@@ -152,6 +207,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        fontFamily: "Roboto-Regular",
     },
     userInfoContainer: {
         marginVertical: 50,
@@ -184,5 +240,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#fff",
         fontSize: 20,
+        fontFamily: "NunitoSans-Regular",
     },
 });

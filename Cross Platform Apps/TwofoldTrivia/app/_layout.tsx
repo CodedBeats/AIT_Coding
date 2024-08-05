@@ -1,4 +1,5 @@
 // dependencies
+import React, { useEffect } from "react"
 import { Stack } from "expo-router"
 import { SafeAreaView, StyleSheet, StatusBar } from "react-native"
 import { firebaseConfig } from "@/config/Config"
@@ -8,6 +9,8 @@ import { AuthContext } from "@/contexts/AuthContext"
 import { DBContext } from "@/contexts/DBContext"
 import { getFirestore } from "@firebase/firestore"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { useFonts } from 'expo-font'
+
 
 export default function RootLayout() {
     // init firebase
@@ -16,8 +19,20 @@ export default function RootLayout() {
     const auth = getAuth(app)
     // init firestore
     const db = getFirestore(app)
-
     const [user, loading] = useAuthState(auth)
+
+    const [loaded, error] = useFonts({
+        "NunitoSans-Regular": require("../assets/fonts/NunitoSans_7pt-Regular.ttf"),
+        "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
+        "Ubuntu-Regular": require("../assets/fonts/Ubuntu-Regular.ttf"),
+    })
+
+    useEffect(() => {
+        if (loaded || error) {
+            console.log("something")
+        }
+    }, [loaded, error])
+
 
     return (
         <AuthContext.Provider value={auth}>
