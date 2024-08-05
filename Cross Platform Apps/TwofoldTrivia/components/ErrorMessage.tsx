@@ -54,11 +54,13 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 10,
         color: "#fff",
+        fontFamily: "Roboto-Regular",
     },
     messageText: {
         fontSize: 16,
         color: "#fff",
         textAlign: "center",
+        fontFamily: "NunitoSans-Regular",
         marginBottom: 20,
     },
     dismissButton: {
@@ -69,6 +71,7 @@ const styles = StyleSheet.create({
     dismissButtonText: {
         color: "#fff",
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     },
 });
 

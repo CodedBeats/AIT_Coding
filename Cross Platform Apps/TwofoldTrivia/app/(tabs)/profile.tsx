@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        fontFamily: "Roboto-Regular",
     },
     userInfoContainer: {
         marginVertical: 50,
@@ -239,5 +240,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#fff",
         fontSize: 20,
+        fontFamily: "NunitoSans-Regular",
     },
 });

@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        fontFamily: "Roboto-Regular",
     },
     loadingContainer: {
         flex: 1,
@@ -145,6 +146,7 @@ const styles = StyleSheet.create({
     labelText: {
         fontSize: 20,
         fontWeight: "bold",
+        fontFamily: "Roboto-Regular",
     },
     userContainer: {
         flexDirection: "row",
@@ -155,8 +157,10 @@ const styles = StyleSheet.create({
     },
     username: {
         fontSize: 18,
+        fontFamily: "NunitoSans-Regular",
     },
     highscore: {
         fontSize: 18,
+        fontFamily: "NunitoSans-Regular",
     },
 });

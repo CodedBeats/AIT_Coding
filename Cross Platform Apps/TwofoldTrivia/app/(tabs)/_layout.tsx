@@ -16,6 +16,7 @@ export default function TabLayout() {
                 color: "#FFF",
                 fontSize: 16,
                 fontWeight: "bold",
+                fontFamily: "NunitoSans-Regular",
             },
         }}>
             {/* Auth */}

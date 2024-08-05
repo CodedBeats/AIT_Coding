@@ -43,7 +43,7 @@ export default function GameScreen(props: any) {
                 const docsArray: any = querySnapshot.docs.map((doc) =>
                     doc.data()
                 )
-                console.log(docsArray)
+                
                 setDocuments(docsArray)
             } catch (err: any) {
                 setError(err.message)
@@ -57,19 +57,22 @@ export default function GameScreen(props: any) {
 
     // get random question
     const getRandomDocument = () => {
-        if (documents.length <= 1) {
-            // no docs left -> end timer
+        if (documents.length === 0) {
+            // No docs left -> end timer
             handleTimerFinish()
             console.log("all questions answered")
 
             return null
         }
+
         const randomIndex = Math.floor(Math.random() * documents.length)
         const selectedDocument = documents[randomIndex]
-        setDocuments((prevDocuments) => [
-            ...prevDocuments.slice(0, randomIndex),
-            ...prevDocuments.slice(randomIndex + 1),
-        ]);
+        console.log(`${documents.length} documents, random index: ${randomIndex}`)
+    
+        // remove selected doc from arr (filter is so cool)
+        const newDocuments = documents.filter((_, index) => index !== randomIndex)
+        setDocuments(newDocuments)
+    
         return selectedDocument
     }
 
@@ -248,12 +251,14 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        fontFamily: "Roboto-Regular",
     },
     word: {
         fontSize: 60,
         fontWeight: "bold",
         margin: 30,
         textAlign: "center",
+        fontFamily: "Roboto-Regular",
     },
     optionsContainer: {
         flexDirection: "row",
@@ -288,6 +293,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
         textAlign: "center",
+        fontFamily: "Ubuntu-Regular",
     },
     stats: {
         flex: 1,
@@ -301,6 +307,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         textAlign: "center",
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     },
     timeIsUp: {
         padding: 10,
@@ -318,10 +325,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 20,
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     },
     playBtn: {
         fontSize: 30,
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
         padding: 20,
         color: "white",
         backgroundColor: "#222",

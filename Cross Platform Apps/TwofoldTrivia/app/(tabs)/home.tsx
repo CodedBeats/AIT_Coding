@@ -32,7 +32,7 @@ export default function HomeScreen() {
 
             <View style={styles.gameInfo}>
                 <Text style={styles.gameInfoTitle}>Game Info</Text>
-                <Text>
+                <Text style={styles.gameInfoText}>
                     Welcome to Twofold Trivia! Test your knowledge and quick thinking by choosing the correct category for each word. 
                     You have 60 seconds to get as high a score as you can and climb the leaderboard.
                     Enjoy a fun and educational trivia experience designed for both casual players and trivia enthusiasts!
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         margin: 15,
+        fontFamily: "Roboto-Regular",
     },
     gameBtn: {
         backgroundColor: "#333333",
@@ -87,6 +88,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 40,
         fontWeight: "bold",
+        fontFamily: "NunitoSans-Regular",
     },
     gameInfo: {
         backgroundColor: "#EEE",
@@ -113,8 +115,13 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 20,
         textAlign: "center",
+        fontFamily: "Roboto-Regular",
+    },
+    gameInfoText: {
+        fontFamily: "NunitoSans-Regular",
     },
     rule: {
         marginBottom: 20,
+        fontFamily: "NunitoSans-Regular",
     }
 })
