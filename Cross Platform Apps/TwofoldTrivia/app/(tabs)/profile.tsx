@@ -1,8 +1,8 @@
 // dependencies
 import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground } from "react-native"
 import { useContext, useState, useEffect } from "react"
-import { doc, getDoc } from "firebase/firestore"
-import { signOut } from "@firebase/auth"
+import { doc, getDoc, deleteDoc } from "firebase/firestore"
+import { signOut, sendPasswordResetEmail, deleteUser } from "@firebase/auth"
 import { useRouter } from "expo-router"
 
 // components
@@ -22,6 +22,7 @@ export default function ProfileScreen(props: any) {
     const [modalVisible, setModalVisible] = useState(false)
     const [modalAction, setModalAction] = useState<"changePassword" | "deleteAccount" | null>(null)
     const [errorVisible, setErrorVisible] = useState(false)
+    const [errorTitle, setErrorTitle] = useState("")
     const [error, setError] = useState("")
 
     const db = useContext(DBContext)
@@ -64,7 +65,7 @@ export default function ProfileScreen(props: any) {
     const handleConfirm = () => {
         setModalVisible(false);
         if (modalAction === "changePassword") {
-            handleChangePassword()
+            handleChangePassword(userData.email)
         } else if (modalAction === "deleteAccount") {
             handleDeleteAccount()
         }
@@ -75,8 +76,10 @@ export default function ProfileScreen(props: any) {
         console.log("cancelled")
     }
 
+
+    // === btn actions ===
     // sign out
-    const SignOutUser = () => {
+    const signOutUser = () => {
         signOut(auth)
             .then(() => {
                 console.log("logged out")
@@ -89,14 +92,55 @@ export default function ProfileScreen(props: any) {
     }
 
     // change password
-    const handleChangePassword = () => {
-        console.log("change password")
+    const handleChangePassword = async (email: string) => {
+        try {
+            await sendPasswordResetEmail(auth, email)
+            
+            setErrorTitle("Password Reset")
+            setError("An email has been sent to you to change your password")
+            setErrorVisible(true)
+
+        } catch (error) {
+            setErrorTitle("Password Reset Error")
+            setError(`${error}`)
+            setErrorVisible(true)
+        }
     }
 
     // delete account
-    const handleDeleteAccount = () => {
-        console.log("delete account")
+    const handleDeleteAccount = async () => {
+        try {
+            // get user
+            const user = auth.currentUser;
+    
+            if (user) {
+                // get ref
+                const userDocRef = doc(db, "users", user.uid);
+    
+                // delete user doc
+                await deleteDoc(userDocRef);
+    
+                // delete user auth
+                await deleteUser(user);
+            
+                setErrorTitle("Account Deletion")
+                setError("Your account has been deleted successfully")
+                setErrorVisible(true)
+
+                // route to login
+                router.replace("/")
+            } else {
+                console.log("no user")
+            }
+
+        } catch (error) {
+            setErrorTitle("Account Deletion Error")
+            setError(`${error}`)
+            setErrorVisible(true)
+        }
     }
+
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -121,7 +165,7 @@ export default function ProfileScreen(props: any) {
                     <Text style={styles.btnText}>Change Password</Text>
                 </Pressable>
 
-                <Pressable onPress={SignOutUser} style={styles.btn}>
+                <Pressable onPress={signOutUser} style={styles.btn}>
                     <Text style={styles.btnText}>Sign Out</Text>
                 </Pressable>
 
@@ -137,11 +181,10 @@ export default function ProfileScreen(props: any) {
                 onConfirm={handleConfirm}
                 onCancel={handleCancel}
             />
-
-            {/* Modal */}
+            
             <ErrorMessage
                 visible={errorVisible}
-                title="Error"
+                title={errorTitle}
                 message={error}
                 onDismiss={() => setErrorVisible(false)}
             />
