@@ -1,151 +1,140 @@
 // dependencies
-import {
-    View,
-    Text,
-    StyleSheet,
-    Pressable,
-    SafeAreaView,
-    ImageBackground,
-} from "react-native";
-import { useState, useEffect, useContext } from "react";
-import {
-    collection,
-    getDocs,
-    doc,
-    getDoc,
-    updateDoc,
-} from "firebase/firestore";
+import { View, Text, StyleSheet, Pressable, SafeAreaView, ImageBackground } from "react-native"
+import { useState, useEffect, useContext } from "react"
+import { collection, getDocs, doc, getDoc, updateDoc } from "firebase/firestore"
 
 // context
-import { DBContext } from "@/contexts/DBContext";
-import { AuthContext } from "@/contexts/AuthContext";
+import { DBContext } from "@/contexts/DBContext"
+import { AuthContext } from "@/contexts/AuthContext"
 
 // components
-import { Timer } from "../../components/Timer";
+import { Timer } from "../../components/Timer"
+import ErrorMessage from "@/components/ErrorMessage"
 
 // type for document structure
 interface WordDocument {
-    word: string;
-    option1: string;
-    option2: string;
-    correctAnswer: number;
+    word: string
+    option1: string
+    option2: string
+    correctAnswer: number
 }
 
 export default function GameScreen(props: any) {
-    const [score, setScore] = useState(0);
-    const [timerStarted, setTimerStarted] = useState(false);
-    const [timerFinished, setTimerFinished] = useState(false);
-    const [documents, setDocuments] = useState([]);
-    const [currentQuestion, setCurrentQuestion] = useState<WordDocument | null>(
-        null
-    );
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [score, setScore] = useState(0)
+    const [timerStarted, setTimerStarted] = useState(false)
+    const [timerFinished, setTimerFinished] = useState(false)
+    const [documents, setDocuments] = useState([])
+    const [currentQuestion, setCurrentQuestion] = useState<WordDocument | null>(null)
+    const [loading, setLoading] = useState(true)
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [error, setError] = useState("")
 
-    const db = useContext(DBContext);
-    const auth = useContext(AuthContext);
+    const db = useContext(DBContext)
+    const auth = useContext(AuthContext)
 
     // fetch data
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            setLoading(true)
             try {
                 const querySnapshot = await getDocs(
                     collection(db, "questions")
-                );
+                )
                 const docsArray: any = querySnapshot.docs.map((doc) =>
                     doc.data()
-                );
-                console.log(docsArray);
-                setDocuments(docsArray);
+                )
+                console.log(docsArray)
+                setDocuments(docsArray)
             } catch (err: any) {
-                setError(err);
+                setError(err.message)
+                setErrorVisible(true)
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         };
-        fetchData();
-    }, [timerFinished]);
+        fetchData()
+    }, [timerFinished])
 
     // get random question
     const getRandomDocument = () => {
         if (documents.length <= 1) {
             // no docs left -> end timer
-            handleTimerFinish();
-            console.log("all questions answered");
+            handleTimerFinish()
+            console.log("all questions answered")
 
-            return null;
+            return null
         }
-        const randomIndex = Math.floor(Math.random() * documents.length);
-        const selectedDocument = documents[randomIndex];
+        const randomIndex = Math.floor(Math.random() * documents.length)
+        const selectedDocument = documents[randomIndex]
         setDocuments((prevDocuments) => [
             ...prevDocuments.slice(0, randomIndex),
             ...prevDocuments.slice(randomIndex + 1),
         ]);
-        return selectedDocument;
-    };
+        return selectedDocument
+    }
 
     // start game loop
     const startTimer = () => {
         // get random from all questions
-        const randomQuestion = getRandomDocument();
-        setCurrentQuestion(randomQuestion);
+        const randomQuestion = getRandomDocument()
+        setCurrentQuestion(randomQuestion)
 
         // reset score
-        setScore(0);
+        setScore(0)
 
         // start timer
-        setTimerStarted(true);
-        setTimerFinished(false);
+        setTimerStarted(true)
+        setTimerFinished(false)
     };
 
     // handle option choice
     const handleOptionClick = (optionIndex: number) => {
         // check if answer is correct
         if (optionIndex == currentQuestion?.correctAnswer) {
-            setScore((prevScore) => prevScore + 1);
+            setScore((prevScore) => prevScore + 1)
         }
 
         // console.log(documents)
         // get new random question
-        const newQuestion = getRandomDocument();
-        setCurrentQuestion(newQuestion);
-    };
+        const newQuestion = getRandomDocument()
+        setCurrentQuestion(newQuestion)
+    }
 
     // handle updating the user's high score
     const handleUpdateHighScore = async () => {
         // get auth user
-        const user = auth.currentUser;
+        const user = auth.currentUser
 
         if (user) {
             // get db user
-            const userDocRef = doc(db, "users", user.uid);
-            const userDoc = await getDoc(userDocRef);
+            const userDocRef = doc(db, "users", user.uid)
+            const userDoc = await getDoc(userDocRef)
 
             if (userDoc.exists()) {
                 // get user data
-                const userData = userDoc.data();
+                const userData = userDoc.data()
 
                 // update high score if necessary
                 const newHighScore =
-                    score > userData.highscore ? score : userData.highscore;
+                    score > userData.highscore ? score : userData.highscore
                 await updateDoc(userDocRef, {
                     highscore: newHighScore,
-                });
+                })
             } else {
-                console.log("no user doc");
+                console.log("no user doc")
             }
         } else {
-            console.log("no user signed in");
+            console.log("no user signed in")
         }
-    };
+    }
 
     // finish game loop
     const handleTimerFinish = () => {
-        setTimerFinished(true);
-        handleUpdateHighScore();
-        setCurrentQuestion(null);
-    };
+        setTimerFinished(true)
+        handleUpdateHighScore()
+        setCurrentQuestion(null)
+    }
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -232,6 +221,14 @@ export default function GameScreen(props: any) {
                         </View>
                     )}
                 </View>
+
+                {/* Modal */}
+                <ErrorMessage
+                    visible={errorVisible}
+                    title="Error"
+                    message={error}
+                    onDismiss={() => setErrorVisible(false)}
+                />
             </ImageBackground>
         </SafeAreaView>
     );

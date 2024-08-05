@@ -8,6 +8,7 @@ import { BlurView } from "expo-blur"
 import { Link } from "@react-navigation/native"
 
 // components
+import ErrorMessage from "@/components/ErrorMessage"
 
 
 export default function Login(props: any) {
@@ -15,6 +16,8 @@ export default function Login(props: any) {
     const [password, setPassword] = useState("")
     const [validEmail, setValidEmail] = useState(false)
     const [validPassword, setValidPassword] = useState(false)
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [error, setError] = useState("")
 
     const auth = useContext(AuthContext)
     const router = useRouter()
@@ -41,7 +44,8 @@ export default function Login(props: any) {
             router.replace("/home")
         })
         .catch((error) => {
-            console.log(error)
+            setError(error.message)
+            setErrorVisible(true)
         })
     }
 
@@ -113,6 +117,14 @@ export default function Login(props: any) {
                     </View>
                 </BlurView>
             </View>
+
+            {/* Modal */}
+            <ErrorMessage
+                visible={errorVisible}
+                title="Error"
+                message={error}
+                onDismiss={() => setErrorVisible(false)}
+            />
         </ImageBackground>
         </SafeAreaView>
     )

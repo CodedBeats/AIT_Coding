@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext } from "react"
 import { View, Text, StyleSheet, FlatList, ActivityIndicator, SafeAreaView, ImageBackground } from "react-native"
 import { collection, getDocs, orderBy, query } from "firebase/firestore"
 
+// components
+import ErrorMessage from "@/components/ErrorMessage"
+
 // contexts
 import { DBContext } from "@/contexts/DBContext"
 
@@ -17,6 +20,9 @@ interface UserDocument {
 export default function LeaderboardScreen() {
     const [users, setUsers] = useState<UserDocument[]>([]);
     const [loading, setLoading] = useState(true);
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [error, setError] = useState("")
+
     const db = useContext(DBContext);
 
     useEffect(() => {
@@ -29,7 +35,8 @@ export default function LeaderboardScreen() {
                 const usersArray: UserDocument[] = querySnapshot.docs.map(doc => doc.data() as UserDocument)
                 setUsers(usersArray)
             } catch (err: any) {
-                console.log(err.message)
+                setError(err.message)
+                setErrorVisible(true)
             } finally {
                 setLoading(false)
             }
@@ -51,6 +58,14 @@ export default function LeaderboardScreen() {
                         <ActivityIndicator size="large" color="#0000FF" />
                     </View>
                 </ImageBackground>
+
+                {/* Modal */}
+                <ErrorMessage
+                    visible={errorVisible}
+                    title="Error"
+                    message={error}
+                    onDismiss={() => setErrorVisible(false)}
+                />
             </View>
         );
     }

@@ -7,6 +7,7 @@ import { useRouter } from "expo-router"
 
 // components
 import ConfirmationModal from "@/components/ConfirmationModal"
+import ErrorMessage from "@/components/ErrorMessage"
 
 // context
 import { AuthContext } from "../../contexts/AuthContext"
@@ -20,6 +21,8 @@ export default function ProfileScreen(props: any) {
     })
     const [modalVisible, setModalVisible] = useState(false)
     const [modalAction, setModalAction] = useState<"changePassword" | "deleteAccount" | null>(null)
+    const [errorVisible, setErrorVisible] = useState(false)
+    const [error, setError] = useState("")
 
     const db = useContext(DBContext)
     const auth = useContext(AuthContext)
@@ -48,7 +51,7 @@ export default function ProfileScreen(props: any) {
                     username: fetchedData.username,
                     email: fetchedData.email,
                     highscore: fetchedData.highscore,
-                });
+                })
             } else {
                 console.log("no user doc")
             }
@@ -80,7 +83,8 @@ export default function ProfileScreen(props: any) {
                 router.replace("/")
             })
             .catch((error) => {
-                console.log(error.code, error.message)
+                setError(error.message)
+                setErrorVisible(true)
             })
     }
 
@@ -132,6 +136,14 @@ export default function ProfileScreen(props: any) {
                 message={`Are you sure you want to ${modalAction === 'changePassword' ? 'change your password' : 'delete your account'}?`}
                 onConfirm={handleConfirm}
                 onCancel={handleCancel}
+            />
+
+            {/* Modal */}
+            <ErrorMessage
+                visible={errorVisible}
+                title="Error"
+                message={error}
+                onDismiss={() => setErrorVisible(false)}
             />
         </ImageBackground>
         </SafeAreaView>
