@@ -63,7 +63,7 @@ export default function ProfileScreen(props: any) {
 
     // modal actions
     const handleConfirm = () => {
-        setModalVisible(false);
+        setModalVisible(false)
         if (modalAction === "changePassword") {
             handleChangePassword(userData.email)
         } else if (modalAction === "deleteAccount") {
@@ -111,17 +111,17 @@ export default function ProfileScreen(props: any) {
     const handleDeleteAccount = async () => {
         try {
             // get user
-            const user = auth.currentUser;
+            const user = auth.currentUser
     
             if (user) {
                 // get ref
-                const userDocRef = doc(db, "users", user.uid);
+                const userDocRef = doc(db, "users", user.uid)
     
                 // delete user doc
-                await deleteDoc(userDocRef);
+                await deleteDoc(userDocRef)
     
                 // delete user auth
-                await deleteUser(user);
+                await deleteUser(user)
             
                 setErrorTitle("Account Deletion")
                 setError("Your account has been deleted successfully")
@@ -190,13 +190,14 @@ export default function ProfileScreen(props: any) {
             />
         </ImageBackground>
         </SafeAreaView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        height: "100%",
+        width: "100%",
     },
     backgroundImg: {
         height: "100%",

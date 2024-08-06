@@ -1,5 +1,5 @@
 // dependencies
-import { View, Text, StyleSheet, Pressable, FlatList, SafeAreaView, ImageBackground } from "react-native"
+import { View, Text, StyleSheet, Pressable, FlatList, SafeAreaView, ImageBackground, ScrollView } from "react-native"
 import { useContext } from "react"
 import { useRouter } from "expo-router"
 import { useNavigation } from "expo-router"
@@ -20,34 +20,38 @@ export default function HomeScreen() {
             resizeMode="cover"
             style={styles.backgroundImg}
         >
-            <View>
-                <Text style={styles.title}>Twofold Trivia</Text>
-            </View>
+            <ScrollView>
 
-            <View>
-                <Pressable style={styles.gameBtn} onPress={() => router.replace("/game")}>
-                    <Text style={styles.gameBtnText}>Start Trivia Game</Text>
-                </Pressable>
-            </View>
+                <View>
+                    <Text style={styles.title}>Twofold Trivia</Text>
+                </View>
 
-            <View style={styles.gameInfo}>
-                <Text style={styles.gameInfoTitle}>Game Info</Text>
-                <Text style={styles.gameInfoText}>
-                    Welcome to Twofold Trivia! Test your knowledge and quick thinking by choosing the correct category for each word. 
-                    You have 60 seconds to get as high a score as you can and climb the leaderboard.
-                    Enjoy a fun and educational trivia experience designed for both casual players and trivia enthusiasts!
-                </Text>
+                <View>
+                    <Pressable style={styles.gameBtn} onPress={() => router.replace("/game")}>
+                        <Text style={styles.gameBtnText}>Start Trivia Game</Text>
+                    </Pressable>
+                </View>
 
-                <Text style={styles.gameInfoTitle}>Rules</Text>
-                <FlatList
-                    data={[
-                    {key: "1. You will be given a series of words, each with two possible category options"},
-                    {key: "2. Tap the left or right button to choose the category you think is correct"},
-                    {key: "3. Match each word with the correct category as quickly as possible to get a high score and compete with the top of the leaderboard"},
-                    ]}
-                    renderItem={({item}) => <Text style={styles.rule}>{item.key}</Text>}
-                />
-            </View>
+                <View style={styles.gameInfo}>
+                    <Text style={styles.gameInfoTitle}>Game Info</Text>
+                    <Text style={styles.gameInfoText}>
+                        Welcome to Twofold Trivia! Test your knowledge and quick thinking by choosing the correct category for each word. 
+                        You have 60 seconds to get as high a score as you can and climb the leaderboard.
+                        Enjoy a fun and educational trivia experience designed for both casual players and trivia enthusiasts!
+                    </Text>
+
+                    <Text style={styles.gameInfoTitle}>Rules</Text>
+                    <FlatList
+                        data={[
+                        {key: "1. You will be given a series of words, each with two possible category options"},
+                        {key: "2. Tap the left or right button to choose the category you think is correct"},
+                        {key: "3. Match each word with the correct category as quickly as possible to get a high score and compete with the top of the leaderboard"},
+                        ]}
+                        renderItem={({item}) => <Text style={styles.rule}>{item.key}</Text>}
+                    />
+                </View>
+                
+            </ScrollView>
         </ImageBackground>
         </SafeAreaView>
     )
@@ -56,7 +60,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        height: "100%",
+        width: "100%",
     },
     backgroundImg: {
         height: "100%",

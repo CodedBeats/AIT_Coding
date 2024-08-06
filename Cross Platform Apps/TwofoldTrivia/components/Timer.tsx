@@ -54,10 +54,10 @@ const Timer: React.FC<TimerProps> = ({ start, onTimerFinish }) => {
         // clear timeout
         return () => {
             if (timerRef.current) {
-                clearTimeout(timerRef.current);
+                clearTimeout(timerRef.current)
             }
         }
-    }, [timeLeft, start]);
+    }, [timeLeft, start])
 
     // format time in MM:SS
     const formatTime = (seconds: number): string => {
@@ -65,15 +65,15 @@ const Timer: React.FC<TimerProps> = ({ start, onTimerFinish }) => {
         const mins = Math.floor(seconds / 60)
         // calc sec
         const secs = seconds % 60
-        return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-    };
+        return `${mins}:${secs < 10 ? "0" : ""}${secs}`
+    }
 
     return (
         <View style={styles.timerContainer}>
             <Text style={styles.timerText}>{formatTime(timeLeft)}</Text>
         </View>
-    );
-};
+    )
+}
 
 const styles = StyleSheet.create({
     timerContainer: {
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export {Timer};
+export { Timer };
