@@ -51,7 +51,7 @@ export default function GameScreen(props: any) {
             } finally {
                 setLoading(false)
             }
-        };
+        }
         fetchData()
     }, [timerFinished])
 
@@ -88,7 +88,7 @@ export default function GameScreen(props: any) {
         // start timer
         setTimerStarted(true)
         setTimerFinished(false)
-    };
+    }
 
     // handle option choice
     const handleOptionClick = (optionIndex: number) => {
@@ -234,13 +234,14 @@ export default function GameScreen(props: any) {
                 />
             </ImageBackground>
         </SafeAreaView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        height: "100%",
+        width: "100%",
     },
     backgroundImg: {
         height: "100%",
@@ -342,4 +343,4 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 4, height: 4 },
         shadowOpacity: 0.8,
     },
-});
+})

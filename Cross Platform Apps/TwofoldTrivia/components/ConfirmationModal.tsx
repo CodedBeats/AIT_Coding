@@ -1,12 +1,12 @@
-import React from "react";
-import { Modal, View, Text, Pressable, StyleSheet } from "react-native";
+import React from "react"
+import { Modal, View, Text, Pressable, StyleSheet } from "react-native"
 
 // Define the props for the component
 interface ConfirmationDialogProps {
-    visible: boolean;
-    message: string;
-    onConfirm: () => void;
-    onCancel: () => void;
+    visible: boolean
+    message: string
+    onConfirm: () => void
+    onCancel: () => void
 }
 
 const ConfirmationModal: React.FC<ConfirmationDialogProps> = ({
@@ -36,8 +36,8 @@ const ConfirmationModal: React.FC<ConfirmationDialogProps> = ({
                 </View>
             </View>
         </Modal>
-    );
-};
+    )
+}
 
 const styles = StyleSheet.create({
     modalBackground: {
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: 300,
+        minHeight: 250,
         padding: 20,
         backgroundColor: "#af3dbe",
         borderRadius: 10,

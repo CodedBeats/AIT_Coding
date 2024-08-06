@@ -1,7 +1,7 @@
 // dependencies
 import React, { useState, useEffect, useContext } from "react"
-import { View, Text, StyleSheet, FlatList, ActivityIndicator, SafeAreaView, ImageBackground } from "react-native"
-import { collection, getDocs, orderBy, query } from "firebase/firestore"
+import { View, Text, StyleSheet, FlatList, ActivityIndicator, SafeAreaView, ImageBackground, ScrollView } from "react-native"
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 
 // components
 import ErrorMessage from "@/components/ErrorMessage"
@@ -18,31 +18,31 @@ interface UserDocument {
 
 
 export default function LeaderboardScreen() {
-    const [users, setUsers] = useState<UserDocument[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [users, setUsers] = useState<UserDocument[]>([])
+    const [loading, setLoading] = useState(true)
     const [errorVisible, setErrorVisible] = useState(false)
     const [error, setError] = useState("")
 
-    const db = useContext(DBContext);
+    const db = useContext(DBContext)
 
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                // get all users in order of highest score
-                const qry = query(collection(db, "users"), orderBy("highscore", "desc"))
-                const querySnapshot = await getDocs(qry)
+        const qry = query(collection(db, "users"), orderBy("highscore", "desc"))
+        
+        const unsubscribe = onSnapshot(qry, 
+            (querySnapshot) => {
                 const usersArray: UserDocument[] = querySnapshot.docs.map(doc => doc.data() as UserDocument)
                 setUsers(usersArray)
-            } catch (err: any) {
+                setLoading(false)
+            },
+            (err) => {
                 setError(err.message)
                 setErrorVisible(true)
-            } finally {
                 setLoading(false)
             }
-        };
-        fetchData()
-    }, [])
+        )
+
+        return () => unsubscribe() // Clean up the listener on unmount
+    }, [db])
 
 
     // fancy loading I found
@@ -54,9 +54,9 @@ export default function LeaderboardScreen() {
                     resizeMode="cover"
                     style={styles.backgroundImg}
                 >
-                    <View style={styles.loadingBar}>
-                        <ActivityIndicator size="large" color="#0000FF" />
-                    </View>
+                        <View style={styles.loadingBar}>
+                            <ActivityIndicator size="large" color="#0000FF" />
+                        </View>
                 </ImageBackground>
 
                 {/* Modal */}
@@ -67,7 +67,7 @@ export default function LeaderboardScreen() {
                     onDismiss={() => setErrorVisible(false)}
                 />
             </View>
-        );
+        )
     }
 
     return (
@@ -77,33 +77,36 @@ export default function LeaderboardScreen() {
             resizeMode="cover"
             style={styles.backgroundImg}
         >
-            <Text style={styles.title}>Leaderboard</Text>
-            <View style={styles.leaderboard}>
-                <View style={styles.labels}>
-                    <Text style={styles.labelText}>User</Text>
-                    <Text style={styles.labelText}>Highscore</Text>
-                </View>
+            <ScrollView>
+                <Text style={styles.title}>Leaderboard</Text>
+                <View style={styles.leaderboard}>
+                    <View style={styles.labels}>
+                        <Text style={styles.labelText}>User</Text>
+                        <Text style={styles.labelText}>Highscore</Text>
+                    </View>
 
-                <FlatList
-                    data={users}
-                    keyExtractor={(item) => item.email}
-                    renderItem={({item}) => (
-                        <View style={styles.userContainer}>
-                            <Text style={styles.username}>{item.username}</Text>
-                            <Text style={styles.highscore}>{item.highscore}</Text>
-                        </View>
-                    )}
-                />
-            </View>
+                    <FlatList
+                        data={users}
+                        keyExtractor={(item) => item.email}
+                        renderItem={({item}) => (
+                            <View style={styles.userContainer}>
+                                <Text style={styles.username}>{item.username}</Text>
+                                <Text style={styles.highscore}>{item.highscore}</Text>
+                            </View>
+                        )}
+                    />
+                </View>
+            </ScrollView>
         </ImageBackground>
         </SafeAreaView>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        height: "100%",
+        width: "100%",
     },
     backgroundImg: {
         height: "100%",

@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, View, Text, StyleSheet, Pressable } from "react-native";
+import React from "react"
+import { Modal, View, Text, StyleSheet, Pressable } from "react-native"
 
 // Define the props for the component
 interface ErrorMessageProps {
