@@ -32,7 +32,7 @@ export default function ProfileScreen(props: any) {
     // fetch data
     useEffect(() => {
         fetchUser()
-    }, [db])
+    }, [userData])
 
     const fetchUser = async () => {
         // get auth user

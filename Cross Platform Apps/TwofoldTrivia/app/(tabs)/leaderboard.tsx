@@ -1,7 +1,7 @@
 // dependencies
 import React, { useState, useEffect, useContext } from "react"
 import { View, Text, StyleSheet, FlatList, ActivityIndicator, SafeAreaView, ImageBackground } from "react-native"
-import { collection, getDocs, orderBy, query } from "firebase/firestore"
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 
 // components
 import ErrorMessage from "@/components/ErrorMessage"
@@ -26,23 +26,23 @@ export default function LeaderboardScreen() {
     const db = useContext(DBContext);
 
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                // get all users in order of highest score
-                const qry = query(collection(db, "users"), orderBy("highscore", "desc"))
-                const querySnapshot = await getDocs(qry)
+        const qry = query(collection(db, "users"), orderBy("highscore", "desc"))
+        
+        const unsubscribe = onSnapshot(qry, 
+            (querySnapshot) => {
                 const usersArray: UserDocument[] = querySnapshot.docs.map(doc => doc.data() as UserDocument)
                 setUsers(usersArray)
-            } catch (err: any) {
+                setLoading(false)
+            },
+            (err) => {
                 setError(err.message)
                 setErrorVisible(true)
-            } finally {
                 setLoading(false)
             }
-        };
-        fetchData()
-    }, [])
+        );
+
+        return () => unsubscribe() // Clean up the listener on unmount
+    }, [db])
 
 
     // fancy loading I found
