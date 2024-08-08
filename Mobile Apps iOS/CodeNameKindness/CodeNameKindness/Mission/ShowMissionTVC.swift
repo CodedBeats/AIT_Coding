@@ -62,7 +62,7 @@ class ShowMissionTVC: UITableViewController {
             return
         }
         
-        // calculate new experience and level
+        // calculate new experience and level (refactor me into service)
         var newLvl = currentLevel
         var newExp = currentExp + 30
         if newExp >= 100 {
