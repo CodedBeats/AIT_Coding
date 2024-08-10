@@ -12,6 +12,7 @@ import FirebaseAuth
 class Repository {
     var db = Firestore.firestore()
     
+    
     // === CREATE === //
     
     // add agent for signup call
@@ -20,7 +21,7 @@ class Repository {
         let randomMission = Utility.getRandomMission(from: Utility.missionsArr)
         
         var result = true
-        var dictionary: [String: Any] = [
+        let dictionary: [String: Any] = [
             "agentName": "CodeName" + agent.agentName,
             "currentMission": randomMission ?? "Somehow ran out of missions?",
             "level": agent.level,
@@ -39,6 +40,25 @@ class Repository {
         
         return result
     }
+    
+    // add agent as friend to sub collection
+    func addFriend(forUserID userId: String, withFriendID friendId: String, completion: @escaping (Bool) -> Void) {
+        let userRef = db.collection("agents").document(userId)
+        
+        // add friendID to arr of friends
+        userRef.setData([
+            "friends": FieldValue.arrayUnion([friendId])
+        ], merge: true) { error in
+            if let error = error {
+                print("Error adding friend: \(error.localizedDescription)")
+                completion(false) // failure
+            } else {
+                print("Friend added successfully")
+                completion(true) // success
+            }
+        }
+    }
+
     
     
     
@@ -88,6 +108,7 @@ class Repository {
     
     
     
+    
     // === UPDATE === //
     
     // update agent exp for completing mission
@@ -112,6 +133,7 @@ class Repository {
             }
         }
     }
+    
     
     
     

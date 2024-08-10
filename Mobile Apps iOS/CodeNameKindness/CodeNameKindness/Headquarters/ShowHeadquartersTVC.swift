@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
+class ShowHeadquartersTVC: UITableViewController {
     
     @IBOutlet weak var agentNameLabel: UILabel!
     @IBOutlet weak var agentLevelLabel: UILabel!
@@ -23,7 +23,6 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
 
         userAuthId = Auth.auth().currentUser?.uid
         print("Currenr User ID: \(userAuthId ?? "NIL")")

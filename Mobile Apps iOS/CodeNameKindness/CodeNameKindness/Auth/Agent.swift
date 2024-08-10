@@ -15,8 +15,7 @@ class Agent {
     var level: Int
     var exp: Int
     var badges: [String]
-    var friends: [Friend] = [Friend]() // init friends collection to not be nil
-    
+    var friends: [String] = [] // don't need a sub coll because need the friend data to update
     
     init(id: String!, agentName: String, currentMission: String, level: Int, exp: Int, badges: [String]) {
         self.id = id
@@ -29,13 +28,16 @@ class Agent {
     
     convenience init(id: String, dictionary: [String: Any]) {
         self.init(
-                    id: id,
-                    agentName: dictionary["agentName"] as! String,
-                    currentMission: dictionary["currentMission"] as! String,
-                    level: dictionary["level"] as! Int,
-                    exp: dictionary["exp"] as! Int,
-                    badges: dictionary["badges"] as! [String]
-                  )
+            id: id,
+            agentName: dictionary["agentName"] as! String,
+            currentMission: dictionary["currentMission"] as! String,
+            level: dictionary["level"] as! Int,
+            exp: dictionary["exp"] as! Int,
+            badges: dictionary["badges"] as! [String]
+        )
+        
+        self.friends = dictionary["friends"] as? [String] ?? []
     }
 }
+
 
