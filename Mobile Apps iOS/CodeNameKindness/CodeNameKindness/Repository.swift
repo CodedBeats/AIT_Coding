@@ -12,6 +12,8 @@ import FirebaseAuth
 class Repository {
     var db = Firestore.firestore()
     
+    // === CREATE === //
+    
     // add agent for signup call
     func addAgent(agent: Agent) -> Bool {
         // get random mission
@@ -39,6 +41,9 @@ class Repository {
     }
     
     
+    
+    // === READ === //
+    
     // get agent for initial load in headquarters
     func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
         // ref to the agent's doc
@@ -61,6 +66,29 @@ class Repository {
         }
     }
     
+    // get all agents sorted by level
+    func fetchAllAgentsSortedByLevel(completion: @escaping ([Agent]?, Error?) -> Void) {
+        db.collection("agents")
+            .order(by: "level", descending: true)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    // Return error if fetching fails
+                    completion(nil, error)
+                } else if let snapshot = snapshot {
+                    // Map documents to Agent objects
+                    let agents = snapshot.documents.compactMap { doc -> Agent? in
+                        let data = doc.data()
+                        return Agent(id: doc.documentID, dictionary: data)
+                    }
+                    // Return the array of agents
+                    completion(agents, nil)
+                }
+            }
+    }
+    
+    
+    
+    // === UPDATE === //
     
     // update agent exp for completing mission
     func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
@@ -84,4 +112,9 @@ class Repository {
             }
         }
     }
+    
+    
+    
+    // === DELETE === //
+    
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AF3991962C565D4400F14D34 /* ShowFriendsRankedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3991952C565D4400F14D34 /* ShowFriendsRankedTVCell.swift */; };
 		AF3991982C565D6100F14D34 /* ShowFriendsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3991972C565D6100F14D34 /* ShowFriendsTVCell.swift */; };
-		AF39919A2C565D8D00F14D34 /* ShowAgentsRankedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3991992C565D8D00F14D34 /* ShowAgentsRankedTVCell.swift */; };
 		AF40CDAD2C53E6AC004469FB /* ShowHeadquartersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40CDAC2C53E6AC004469FB /* ShowHeadquartersTVC.swift */; };
 		AF40CDAF2C53E6ED004469FB /* ShowLeaderboardTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40CDAE2C53E6ED004469FB /* ShowLeaderboardTVC.swift */; };
 		AF40CDB42C53E77E004469FB /* ShowMissionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40CDB32C53E77E004469FB /* ShowMissionTVC.swift */; };
@@ -30,13 +29,13 @@
 		AF8278382C52C2CB00CEA6A6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8278372C52C2CB00CEA6A6 /* Repository.swift */; };
 		AFA033BC2C555B9200F140DA /* LoginTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA033BB2C555B9200F140DA /* LoginTVC.swift */; };
 		AFA033BE2C555BA000F140DA /* SignupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA033BD2C555BA000F140DA /* SignupTVC.swift */; };
+		AFA456F92C6723F00016E25A /* AgentRankedTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA456F82C6723F00016E25A /* AgentRankedTVCell.swift */; };
 		AFD173132C563464009ED28B /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD173122C563464009ED28B /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF3991952C565D4400F14D34 /* ShowFriendsRankedTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFriendsRankedTVCell.swift; sourceTree = "<group>"; };
 		AF3991972C565D6100F14D34 /* ShowFriendsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFriendsTVCell.swift; sourceTree = "<group>"; };
-		AF3991992C565D8D00F14D34 /* ShowAgentsRankedTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAgentsRankedTVCell.swift; sourceTree = "<group>"; };
 		AF40CDAC2C53E6AC004469FB /* ShowHeadquartersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHeadquartersTVC.swift; sourceTree = "<group>"; };
 		AF40CDAE2C53E6ED004469FB /* ShowLeaderboardTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLeaderboardTVC.swift; sourceTree = "<group>"; };
 		AF40CDB32C53E77E004469FB /* ShowMissionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMissionTVC.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		AF8278372C52C2CB00CEA6A6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AFA033BB2C555B9200F140DA /* LoginTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTVC.swift; sourceTree = "<group>"; };
 		AFA033BD2C555BA000F140DA /* SignupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTVC.swift; sourceTree = "<group>"; };
+		AFA456F82C6723F00016E25A /* AgentRankedTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentRankedTVCell.swift; sourceTree = "<group>"; };
 		AFD173122C563464009ED28B /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				AF40CDAE2C53E6ED004469FB /* ShowLeaderboardTVC.swift */,
-				AF3991992C565D8D00F14D34 /* ShowAgentsRankedTVCell.swift */,
+				AFA456F82C6723F00016E25A /* AgentRankedTVCell.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -246,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFA456F92C6723F00016E25A /* AgentRankedTVCell.swift in Sources */,
 				AFA033BC2C555B9200F140DA /* LoginTVC.swift in Sources */,
 				AF82782F2C52B98A00CEA6A6 /* Agent.swift in Sources */,
 				AF40CDAF2C53E6ED004469FB /* ShowLeaderboardTVC.swift in Sources */,
@@ -255,7 +256,6 @@
 				AF3991982C565D6100F14D34 /* ShowFriendsTVCell.swift in Sources */,
 				AF82780D2C52B37300CEA6A6 /* SceneDelegate.swift in Sources */,
 				AFA033BE2C555BA000F140DA /* SignupTVC.swift in Sources */,
-				AF39919A2C565D8D00F14D34 /* ShowAgentsRankedTVCell.swift in Sources */,
 				AF40CDB62C53E79D004469FB /* ShowAgentReportTVC.swift in Sources */,
 				AF3991962C565D4400F14D34 /* ShowFriendsRankedTVCell.swift in Sources */,
 				AF82782C2C52B57D00CEA6A6 /* Extensions.swift in Sources */,
