@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
+class ShowHeadquartersTVC: UITableViewController {
     
     @IBOutlet weak var agentNameLabel: UILabel!
     @IBOutlet weak var agentLevelLabel: UILabel!
@@ -23,14 +23,14 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
 
         userAuthId = Auth.auth().currentUser?.uid
         print("Currenr User ID: \(userAuthId ?? "NIL")")
         
         service.fetchAgent(withId: userAuthId) { (returnedAgent, error) in
-            if let error = error {
-                print("Error fetching agent: \(error.localizedDescription)")
+            if let err = error {
+                print("Error fetching agent: \(err.localizedDescription)")
+                
             } else if let fetchedAgent = returnedAgent {
                 // success
                 print("Fetched Agent: \(fetchedAgent.agentName)")
@@ -107,21 +107,18 @@ class ShowHeadquartersTVC: UITableViewController, UITabBarControllerDelegate {
     }
     */
     
-    //whats a segue lol
-    // but really, once I built out all my screens there really are no pages that make sense to go in 1 deep of any of the nav tab bar screens
-    // so what do I do? I looked up this method of passing data as an alternative
-    // will ask for help in terms of project specifications and what else to do after prototype
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let agentReportTVC = viewController as? ShowAgentReportTVC {
-            // pass data to ShowAgentReportTVC when tab selected
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if let agentReportTVC = segue.destination as? ShowAgentReportTVC {
             agentReportTVC.agent = self.agent
-            print(self.agent.agentName)
         }
-        if let missionTVC = viewController as? ShowMissionTVC {
-            // pass data to ShowMissionTVC when tab selected
+        
+        if let missionTVC = segue.destination as? ShowMissionTVC {
             missionTVC.agent = self.agent
-            print(self.agent.currentMission)
         }
+            
     }
 
 }

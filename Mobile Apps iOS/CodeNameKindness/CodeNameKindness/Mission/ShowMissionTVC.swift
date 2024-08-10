@@ -15,29 +15,11 @@ class ShowMissionTVC: UITableViewController {
     let service = Repository()
     var userAuthId: String!
     
+    var agent: Agent!
 
-    // thius is all pretty gross looking haha, but technically I am passing data on an action, it's just not a segue
-    // the point is to not call the repo unecesarily right? (god I can't spoell lol)
-    var agent: Agent? {
-        didSet {
-            // call func to update UI when agent is recieved
-            updateUI()
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        updateUI()
-    }
-    
-    func updateUI() {
-        guard isViewLoaded, let agent = agent else {
-            return
-        }
-        print("Received agent: \(agent.currentMission)")
-        
-        // put agent data into UI elemnts
         currentMissionLabel.text = agent.currentMission
     }
     

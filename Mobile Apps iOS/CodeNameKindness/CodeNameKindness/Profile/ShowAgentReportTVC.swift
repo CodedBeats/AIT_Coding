@@ -13,32 +13,14 @@ class ShowAgentReportTVC: UITableViewController {
     @IBOutlet weak var agentExpProgress: UIProgressView!
     @IBOutlet weak var agentLevelLabel: UILabel!
     
-    
-    
-    // thius is all pretty gross looking haha
-    var agent: Agent? {
-        didSet {
-            // call func to update UI when agent is recieved
-            updateUI()
-        }
-    }
+    var agent: Agent!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        updateUI()
-    }
-    
-    func updateUI() {
-        guard isViewLoaded, let agent = agent else {
-            return
-        }
-        print("Received agent: \(agent.agentName)")
-        
-        // put agent data into UI elemnts
         agentNameLabel.text = agent.agentName
-        agentLevelLabel.text = String(agent.level) // convert Int to String
-        agentExpProgress.progress = Float(agent.exp) / 100.0 // convert Int to Float for progress bar
+        agentExpProgress.progress = Float(agent.exp) / 100.0
+        agentLevelLabel.text = String(agent.level)
     }
 
     

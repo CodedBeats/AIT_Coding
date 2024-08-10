@@ -10,8 +10,10 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class Repository {
-    var missions: [String] = ["x", "y", "z"]
     var db = Firestore.firestore()
+    
+    
+    // === CREATE === //
     
     // add agent for signup call
     func addAgent(agent: Agent) -> Bool {
@@ -19,7 +21,7 @@ class Repository {
         let randomMission = Utility.getRandomMission(from: Utility.missionsArr)
         
         var result = true
-        var dictionary: [String: Any] = [
+        let dictionary: [String: Any] = [
             "agentName": "CodeName" + agent.agentName,
             "currentMission": randomMission ?? "Somehow ran out of missions?",
             "level": agent.level,
@@ -39,35 +41,75 @@ class Repository {
         return result
     }
     
-    
-    // get agent for initial load in headquarters
-    func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
-        // agents coll with specific docID
-        let docRef = db.collection("agents").document(id)
+    // add agent as friend to sub collection
+    func addFriend(forUserID userId: String, withFriendID friendId: String, completion: @escaping (Bool) -> Void) {
+        let userRef = db.collection("agents").document(userId)
         
-        docRef.getDocument {(document, error) in
+        // add friendID to arr of friends
+        userRef.setData([
+            "friends": FieldValue.arrayUnion([friendId])
+        ], merge: true) { error in
             if let error = error {
-                // handle error
-                completion(nil, error)
-            } else if let document = document, document.exists {
-                // get data
-                if let data = document.data() {
-                    let agent = Agent(id: id, dictionary: data)
-                    
-                    completion(agent, nil)
-                } else {
-                    // doc does not exist or is empty
-                    print("Document does not exist or is empty")
-                    completion(nil, nil)
-                }
+                print("Error adding friend: \(error.localizedDescription)")
+                completion(false) // failure
             } else {
-                // doc doesn't exist
-                print("Document not found")
-                completion(nil, nil)
+                print("Friend added successfully")
+                completion(true) // success
             }
         }
     }
+
     
+    
+    
+    // === READ === //
+    
+    // get agent for initial load in headquarters
+    func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
+        // ref to the agent's doc
+        let docRef = db.collection("agents").document(id)
+        
+        // add listener for live updates
+        docRef.addSnapshotListener { documentSnapshot, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+
+            guard let document = documentSnapshot, document.exists, let data = document.data() else {
+                completion(nil, nil) // no doc
+                return
+            }
+
+            let agent = Agent(id: id, dictionary: data)
+            completion(agent, nil)
+        }
+    }
+    
+    // get all agents sorted by level
+    func fetchAllAgentsSortedByLevel(completion: @escaping ([Agent]?, Error?) -> Void) {
+        db.collection("agents")
+            .order(by: "level", descending: true)
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    // Return error if fetching fails
+                    completion(nil, error)
+                } else if let snapshot = snapshot {
+                    // Map documents to Agent objects
+                    let agents = snapshot.documents.compactMap { doc -> Agent? in
+                        let data = doc.data()
+                        return Agent(id: doc.documentID, dictionary: data)
+                    }
+                    // Return the array of agents
+                    completion(agents, nil)
+                }
+            }
+    }
+    
+    
+    
+    
+    // === UPDATE === //
     
     // update agent exp for completing mission
     func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
@@ -91,4 +133,10 @@ class Repository {
             }
         }
     }
+    
+    
+    
+    
+    // === DELETE === //
+    
 }
