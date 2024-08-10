@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class Repository {
-    var missions: [String] = ["x", "y", "z"]
     var db = Firestore.firestore()
     
     // add agent for signup call
@@ -42,29 +41,23 @@ class Repository {
     
     // get agent for initial load in headquarters
     func fetchAgent(withId id: String, completion: @escaping (Agent?, Error?) -> Void) {
-        // agents coll with specific docID
+        // ref to the agent's doc
         let docRef = db.collection("agents").document(id)
         
-        docRef.getDocument {(document, error) in
+        // add listener for live updates
+        docRef.addSnapshotListener { documentSnapshot, error in
             if let error = error {
-                // handle error
                 completion(nil, error)
-            } else if let document = document, document.exists {
-                // get data
-                if let data = document.data() {
-                    let agent = Agent(id: id, dictionary: data)
-                    
-                    completion(agent, nil)
-                } else {
-                    // doc does not exist or is empty
-                    print("Document does not exist or is empty")
-                    completion(nil, nil)
-                }
-            } else {
-                // doc doesn't exist
-                print("Document not found")
-                completion(nil, nil)
+                return
             }
+
+            guard let document = documentSnapshot, document.exists, let data = document.data() else {
+                completion(nil, nil) // no doc
+                return
+            }
+
+            let agent = Agent(id: id, dictionary: data)
+            completion(agent, nil)
         }
     }
     
