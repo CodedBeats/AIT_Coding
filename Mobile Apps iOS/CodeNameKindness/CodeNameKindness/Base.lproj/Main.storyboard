@@ -376,12 +376,12 @@
         <scene sceneID="qyo-WB-BKp">
             <objects>
                 <tableViewController id="g4g-gc-hIu" customClass="ShowMissionTVC" customModule="CodeNameKindness" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <sections>
-                            <tableViewSection id="fEU-3u-VdL">
+                            <tableViewSection headerTitle="Your Mission" id="fEU-3u-VdL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="OCd-HD-0ln">
                                         <rect key="frame" x="0.0" y="50" width="320" height="200"/>
@@ -718,11 +718,16 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.3468543046" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </stackView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-af-Ame">
+                                                    <rect key="frame" x="149" y="126" width="20" height="20"/>
+                                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="zOZ-08-7z5" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="165" id="1I0-G2-7oO"/>
                                                 <constraint firstItem="ruj-2P-GxR" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="15" id="AyT-Sk-G9S"/>
                                                 <constraint firstItem="ruj-2P-GxR" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="top" constant="154" id="H4j-3D-Rnq"/>
+                                                <constraint firstItem="GMB-af-Ame" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="top" constant="126" id="KKB-ey-z5x"/>
                                                 <constraint firstAttribute="trailing" secondItem="Szc-dH-DBN" secondAttribute="trailing" constant="17" id="KaY-1d-Gih"/>
                                                 <constraint firstAttribute="trailing" secondItem="gi8-Hd-HXk" secondAttribute="trailing" constant="17" id="Mpz-1F-6T5"/>
                                                 <constraint firstItem="Wcb-SX-jKM" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="top" constant="196.5" id="Nud-FA-yxi"/>
@@ -731,12 +736,15 @@
                                                 <constraint firstItem="Szc-dH-DBN" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="top" constant="63" id="TxJ-1E-deD"/>
                                                 <constraint firstItem="Wcb-SX-jKM" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="16" id="V7j-QE-Avh"/>
                                                 <constraint firstItem="gi8-Hd-HXk" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="topMargin" constant="20" id="ZMf-QH-kog"/>
+                                                <constraint firstItem="GMB-af-Ame" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="149" id="fNY-Md-qa3"/>
+                                                <constraint firstAttribute="bottom" secondItem="GMB-af-Ame" secondAttribute="bottom" constant="154" id="kYK-ls-Ld8"/>
                                                 <constraint firstAttribute="trailing" secondItem="ruj-2P-GxR" secondAttribute="trailing" constant="16" id="qP4-bd-3St"/>
                                                 <constraint firstItem="Szc-dH-DBN" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="16" id="qlV-4B-Tfo"/>
                                                 <constraint firstItem="zOZ-08-7z5" firstAttribute="top" secondItem="f7p-DJ-kT4" secondAttribute="top" constant="105" id="rBQ-rW-54m"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wcb-SX-jKM" secondAttribute="trailing" constant="17" id="t7S-Bl-VXo"/>
                                                 <constraint firstItem="gi8-Hd-HXk" firstAttribute="leading" secondItem="f7p-DJ-kT4" secondAttribute="leading" constant="16" id="vjD-4o-FMn"/>
                                                 <constraint firstAttribute="trailing" secondItem="zOZ-08-7z5" secondAttribute="trailing" constant="16.5" id="wUP-CK-dJo"/>
+                                                <constraint firstAttribute="trailing" secondItem="GMB-af-Ame" secondAttribute="trailing" constant="151" id="xad-hE-5Jc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
@@ -753,6 +761,7 @@
                     <navigationItem key="navigationItem" title="Login" id="qgB-Do-uAp"/>
                     <connections>
                         <outlet property="emailTextField" destination="gi8-Hd-HXk" id="FIP-qu-bYr"/>
+                        <outlet property="loadingActivityIndicator" destination="GMB-af-Ame" id="0cg-xy-6Go"/>
                         <outlet property="passwordTextField" destination="Szc-dH-DBN" id="d2c-T4-bnF"/>
                     </connections>
                 </tableViewController>

@@ -10,10 +10,10 @@ import FirebaseAuth
 
 class LoginTVC: UITableViewController {
     
-    
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,9 @@ class LoginTVC: UITableViewController {
     
     
     @IBAction func forgottenPassswordDidPress(_ sender: Any) {
-        guard !emailTextField.text.isBlank else{
+        loadingActivityIndicator.startAnimating() // start loading animation
+        
+        guard !emailTextField.text.isBlank else {
             self.showAlertMessage(title: "Email is Empty", message: "Please input your email")
             return
         }
@@ -38,17 +40,20 @@ class LoginTVC: UITableViewController {
         Auth.auth().sendPasswordReset(withEmail: emailTextField.text!){ error in
             if let error = error {
                 self.showAlertMessage(title: "Error", message: "\(error)")
-                
+                self.loadingActivityIndicator.stopAnimating() // stop loading animation
                 return
             }
             
             self.showAlertMessage(title: "Email Confirmation", message: "A confirmation email has been sent to you email account")
+            self.loadingActivityIndicator.stopAnimating() // stop loading animation
           }
     }
     
     
     
     @IBAction func loginDidPress(_ sender: Any) {
+        loadingActivityIndicator.startAnimating() // start loading animation
+        
         guard !emailTextField.text.isBlank else {
             showAlertMessage(title: "Validation", message: "Email is mandatory")
             return
@@ -65,18 +70,20 @@ class LoginTVC: UITableViewController {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard error == nil else {
                 self?.showAlertMessage(title: "Failed to login", message: "\(error!.localizedDescription)")
+                self?.loadingActivityIndicator.stopAnimating() // stop loading animation
                 return
             }
             
             guard let authUser = Auth.auth().currentUser, authUser.isEmailVerified else {
                 self?.showAlertMessage(title: "Pending email verification", message: "We've sent you an email to verify your account, please follow the instructions")
+                self?.loadingActivityIndicator.stopAnimating() // stop loading animation
                 return
             }
             
             // let user pass to next screen because log in successfull
             if let homeViewController = self?.storyboard?.instantiateViewController(identifier: "HomeVC") as? UITabBarController {
                 // set middle tab as selected tab
-                homeViewController.selectedIndex = 2
+                homeViewController.selectedIndex = 1
                 
                 // set tab bar controller as root view controller
                 self?.view.window?.rootViewController = homeViewController
