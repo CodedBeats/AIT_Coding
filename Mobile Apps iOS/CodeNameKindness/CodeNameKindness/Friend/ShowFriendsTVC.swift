@@ -12,6 +12,8 @@ class ShowFriendsTVC: UITableViewController {
     
     let service = Repository()
     var userAuthId: String!
+    // init friends arr
+    var friends: [Agent] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,46 +24,67 @@ class ShowFriendsTVC: UITableViewController {
             return
         }
         
+        self.userAuthId = userAuthId
+        
         service.fetchAllFriendsSortedByLevel(forAgentId: userAuthId) { (friends, error) in
             if let error = error {
                 print("Error fetching sorted friends: \(error.localizedDescription)")
             } else if let friends = friends {
-                print("Fetched and sorted \(friends.count) friends by level.")
+                self.friends = friends
+                // reload table with fetched data
+                self.tableView.reloadData()
                 
-                // Print each friend in a semi-formatted way
+                // semi-formatted display of all agent's friends
                 for friend in friends {
                     print(friend.toString())
                     print("----------------------------")
                 }
+                
             } else {
                 print("No friends found.")
             }
         }
-
-        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // number of friends
+        return friends.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        // Dequeue the reusable cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! ShowFriendsTVCell
+        
+        // Get the friend for this row
+        let friend = friends[indexPath.row]
+        
+        // Configure the cell with friend's data
+        cell.agentNameLabel.text = friend.agentName
+        cell.levelLabel.text = "Level: \(friend.level)"
+        
+        // Configure the progress bar for experience points
+        let progress = Float(friend.exp) / 100.0
+        cell.expProgressBar.setProgress(progress, animated: true)
+        
+        // Configure the badges (just an example)
+        //if friend.badges.count > 0 {
+        //    cell.badge1Image.image = UIImage(named: friend.badges[0])
+        //}
+        //if friend.badges.count > 1 {
+        //    cell.badge2Image.image = UIImage(named: friend.badges[1])
+        //}
+        //if friend.badges.count > 2 {
+        //    cell.badge3Image.image = UIImage(named: friend.badges[2])
+        //}
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
