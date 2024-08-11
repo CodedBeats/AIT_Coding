@@ -23,6 +23,13 @@ class ShowHeadquartersTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // remove weird overlaying background when scrolling
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.isTranslucent = false
+        tabBarController?.tabBar.barTintColor = UIColor.black
+        tabBarController?.tabBar.isTranslucent = false
+        
 
         userAuthId = Auth.auth().currentUser?.uid
         print("Currenr User ID: \(userAuthId ?? "NIL")")
