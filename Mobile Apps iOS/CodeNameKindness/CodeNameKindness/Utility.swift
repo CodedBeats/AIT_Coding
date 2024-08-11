@@ -26,5 +26,21 @@ class Utility {
     static func getRandomMission(from array: [String]) -> String? {
         return array.randomElement()
     }
+    
+    // handle increase of exp, level and badges
+    static func calculateNewStats(currentExp exp: Int, currentLevel lvl: Int) -> (newExp: Int, newLvl: Int, badges: [String]) {
+        var newLvl = lvl
+        var newExp = exp + 30
+        
+        if newExp >= 100 {
+            newExp -= 100
+            newLvl += 1
+        }
+        
+        // static for now
+        let badges = ["badge_1", "badge_2", "badge_3"]
+        
+        return (newExp, newLvl, badges)
+    }
 }
 

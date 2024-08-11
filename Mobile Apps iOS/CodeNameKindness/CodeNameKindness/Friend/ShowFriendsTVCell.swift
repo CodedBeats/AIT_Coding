@@ -9,15 +9,15 @@ import UIKit
 
 class ShowFriendsTVCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var agentNameLabel: UILabel!
+    
+    @IBOutlet weak var levelLabel: UILabel!
+    
+    @IBOutlet weak var expProgressBar: UIProgressView!
+    
+    @IBOutlet weak var badge1Image: UIImageView!
+    
+    @IBOutlet weak var badge2Image: UIImageView!
+    
+    @IBOutlet weak var badge3Image: UIImageView!
 }

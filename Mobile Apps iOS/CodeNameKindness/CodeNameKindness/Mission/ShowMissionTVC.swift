@@ -44,16 +44,13 @@ class ShowMissionTVC: UITableViewController {
             return
         }
         
-        // calculate new experience and level (refactor me into service)
-        var newLvl = currentLevel
-        var newExp = currentExp + 30
-        if newExp >= 100 {
-            newExp -= 100
-            newLvl += 1
-        }
+        // calculate new experience, level and badges (seperate func just for cleanness)
+        let newStats = Utility.calculateNewStats(currentExp: currentExp, currentLevel: currentLevel)
+        let newExp = newStats.newExp
+        let newLvl = newStats.newLvl
         
         // update agent
-        service.updateAgentExpAndLevel(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { error in
+        service.updateAgentStats(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { error in
             if let error = error {
                 // error
                 print("Error updating agent: \(error.localizedDescription)")
@@ -92,7 +89,7 @@ class ShowMissionTVC: UITableViewController {
         }
         
         // Call the service to update the agent's data
-        service.updateAgentExpAndLevel(withId: userAuthId, newExp: currentExp, newLevel: currentLevel, newMission: randomMission)
+        service.updateAgentStats(withId: userAuthId, newExp: currentExp, newLevel: currentLevel, newMission: randomMission)
         { error in
             if let error = error {
                 // error

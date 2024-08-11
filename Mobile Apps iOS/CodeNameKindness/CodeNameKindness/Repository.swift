@@ -106,13 +106,59 @@ class Repository {
             }
     }
     
+    // get all friends of an agent by level
+    func fetchAllFriendsSortedByLevel(forAgentId id: String, completion: @escaping ([Agent]?, Error?) -> Void) {
+        let docRef = db.collection("agents").document(id)
+        
+        docRef.getDocument { (documentSnapshot, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let document = documentSnapshot, document.exists, let data = document.data() else {
+                // no doc
+                completion(nil, nil)
+                return
+            }
+            
+            if let friendsArray = data["friends"] as? [String] {
+                // create arr of agents to store friends
+                var friends = [Agent]()
+                // special swift thing to handle asyncronous fetching of data as tasks (?)
+                let dispatchGroup = DispatchGroup()
+                
+                for friendId in friendsArray {
+                    dispatchGroup.enter() // task started
+                    
+                    self.fetchAgent(withId: friendId) { (agent, error) in
+                        if let agent = agent {
+                            friends.append(agent)
+                        }
+                        dispatchGroup.leave() // task finished
+                    }
+                }
+                
+                // execute once all tasks are finished
+                dispatchGroup.notify(queue: .main) {
+                    // sort friends array by lvl
+                    let sortedFriends = friends.sorted { $0.level > $1.level }
+                    completion(sortedFriends, nil)
+                }
+            } else {
+                // no friends :(
+                completion([], nil)
+            }
+        }
+    }
+    
     
     
     
     // === UPDATE === //
     
     // update agent exp for completing mission
-    func updateAgentExpAndLevel(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
+    func updateAgentStats(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
         // agents coll with specific docID
         let docRef = db.collection("agents").document(id)
         

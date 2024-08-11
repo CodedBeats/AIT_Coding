@@ -38,6 +38,18 @@ class Agent {
         
         self.friends = dictionary["friends"] as? [String] ?? []
     }
+    
+    // print data in a semi-formatted way
+    func toString() -> String {
+        return """
+        Agent Name: \(agentName)
+        ID: \(id ?? "Unknown")
+        Level: \(level)
+        Current Mission: \(currentMission)
+        Experience Points: \(exp)
+        Badges: \(badges.joined(separator: ", "))
+        """
+    }
 }
 
 
