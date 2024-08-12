@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ShowAgentReportTVC: UITableViewController {
     
@@ -29,6 +30,62 @@ class ShowAgentReportTVC: UITableViewController {
     
     // MARK: - Table view data source
 
+    @IBAction func changePasswordBtnDidPress(_ sender: Any) {
+        // show message with input
+        showMessageWithInput(
+            title: "Reset Password",
+            message: "Please enter your email to reset your password.",
+            placeholder: "Enter your email",
+            actionTitle: "Send Reset Link"
+        ) { email in
+            // validate email
+            if email.isBlank {
+                // error alert if email is blank or nil
+                self.showAlertMessage(title: "Error", message: "Please enter a valid email address.")
+                return
+            }
+            
+            // send password reset email
+            Auth.auth().sendPasswordReset(withEmail: email!) { error in
+                if let error = error {
+                    self.showAlertMessage(title: "Error", message: error.localizedDescription)
+                } else {
+                    self.showAlertMessage(title: "Success", message: "Password reset link has been sent to \(email!).")
+                }
+            }
+        }
+    }
+    
+    @IBAction func logoutBtnDidPress(_ sender: Any) {
+        showConfirmationMessage(
+            title: "Logout",
+            message: "Are you sure you want to log out?",
+            confirmTitle: "Logout",
+            cancelTitle: "Cancel",
+            delete: {
+                
+                // logout
+                do {
+                    try Auth.auth().signOut()
+                    
+                    if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "authNC") as? UINavigationController {
+                        // set auth navigation controller as root view controller
+                        self.view.window?.rootViewController = loginVC
+                        self.view.window?.makeKeyAndVisible()
+                    }
+                } catch let signOutError as NSError {
+                    print("Error signing out: ", signOutError.localizedDescription)
+                }
+            },
+            cancel: {
+                print("Logout cancelled")
+            }
+        )
+    }
+    
+    @IBAction func deleteAccountBtnDidPress(_ sender: Any) {
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

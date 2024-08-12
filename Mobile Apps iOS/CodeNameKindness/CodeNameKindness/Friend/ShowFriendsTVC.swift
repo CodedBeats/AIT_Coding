@@ -98,21 +98,27 @@ class ShowFriendsTVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             let agent = friends[indexPath.row]
             
             // confirmation alert
-            deleteConfirmationMessage(title: "Delete", message: "Are you sure you want to remove \(agent.agentName) as a friend?", delete: {
-                // remove agent's friendID from their friends
-                self.service.removeFriend(withFriendID: agent.id, forAgentID: self.userAuthId) { error in
-                    if let error = error {
-                        print("failed to remove friend: \(error.localizedDescription)")
+            showConfirmationMessage(
+                title: "Delete",
+                message: "Are you sure you want to remove \(agent.agentName) as a friend?",
+                confirmTitle: "Delete",
+                cancelTitle: "Cancel",
+                delete: {
+                    // remove agent's friendID from their friends
+                    self.service.removeFriend(withFriendID: agent.id, forAgentID: self.userAuthId) { error in
+                        if let error = error {
+                            print("Failed to remove friend: \(error.localizedDescription)")
+                        } else {
+                            print("Friend removed successfully.")
+                        }
                     }
+                }, cancel: {
+                    print("Cancelled")
                 }
-            }, cancel: {
-                print("Cancelled")
-            })
-            
+            )
         } else if editingStyle == .insert {
             // n/a
         }

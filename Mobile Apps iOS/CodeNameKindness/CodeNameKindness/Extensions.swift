@@ -23,8 +23,8 @@ extension Optional where Wrapped == String {
 }
 
 extension UIViewController {
-    // popup message
-    func showAlertMessage( title: String, message : String){
+    // static message
+    func showAlertMessage(title: String, message : String){
         // configure alert element
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
@@ -36,6 +36,7 @@ extension UIViewController {
     }
     
     
+    // message with following action
     func showAlertMessageWithHandle(title: String, message : String, onComplete : (()->Void)? ){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
@@ -49,23 +50,50 @@ extension UIViewController {
     }
     
     
-    
-    func deleteConfirmationMessage(title : String, message : String, delete : ( () -> Void )?, cancel: ( () -> Void )? ){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
-       
-       
-        let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: .destructive) {
-            action -> Void in delete?()
+    // message with confirmation following action
+    func showConfirmationMessage(title: String, message: String, confirmTitle: String, cancelTitle: String, delete: (() -> Void)?, cancel: (() -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+
+        let deleteAction: UIAlertAction = UIAlertAction(title: confirmTitle, style: .destructive) { action in
+            delete?()
         }
-       
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .default) {
-            action -> Void in cancel?()
+
+        let cancelAction: UIAlertAction = UIAlertAction(title: cancelTitle, style: .cancel) { action in
+            cancel?()
         }
-       
+
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
-   
+
         present(alert, animated: true, completion: nil)
-       
+    }
+    
+    // message with input for following action
+    func showMessageWithInput(title: String, message: String, placeholder: String, actionTitle: String, completion: @escaping (String?) -> Void) {
+        // Configure alert controller
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Add text field to the alert for email input
+        alert.addTextField { textField in
+            textField.placeholder = placeholder
+            textField.keyboardType = .emailAddress
+        }
+        
+        // Add action for when the user presses the confirm button
+        let confirmAction = UIAlertAction(title: actionTitle, style: .default) { _ in
+            // Retrieve the input from the text field
+            let email = alert.textFields?.first?.text
+            completion(email)
+        }
+        
+        // Add cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // Add actions to the alert
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        // Show the alert
+        present(alert, animated: true, completion: nil)
     }
 }
