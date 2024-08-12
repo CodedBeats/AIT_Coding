@@ -76,6 +76,16 @@ class ShowFriendsTVC: UITableViewController {
         cell.badge1Image.image = friend.badges.contains("badge1") ? UIImage(named: "badge1") : nil
         cell.badge2Image.image = friend.badges.contains("badge2") ? UIImage(named: "badge2") : nil
         cell.badge3Image.image = friend.badges.contains("badge3") ? UIImage(named: "badge3") : nil
+        
+        // annoying code to get images dimensions to work
+        NSLayoutConstraint.activate([
+            cell.badge1Image.widthAnchor.constraint(equalToConstant: 30),
+            cell.badge1Image.heightAnchor.constraint(equalToConstant: 30),
+            cell.badge2Image.widthAnchor.constraint(equalToConstant: 30),
+            cell.badge2Image.heightAnchor.constraint(equalToConstant: 30),
+            cell.badge3Image.widthAnchor.constraint(equalToConstant: 30),
+            cell.badge3Image.heightAnchor.constraint(equalToConstant: 30),
+        ])
 
         return cell
     }

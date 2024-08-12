@@ -32,6 +32,16 @@ class ShowAgentReportTVC: UITableViewController {
         badge1Image.image = agent.badges.contains("badge1") ? UIImage(named: "badge1") : nil
         badge2Image.image = agent.badges.contains("badge2") ? UIImage(named: "badge2") : nil
         badge3Image.image = agent.badges.contains("badge3") ? UIImage(named: "badge3") : nil
+        
+        // annoying code to get images dimensions to work
+        NSLayoutConstraint.activate([
+            badge1Image.widthAnchor.constraint(equalToConstant: 40),
+            badge1Image.heightAnchor.constraint(equalToConstant: 40),
+            badge2Image.widthAnchor.constraint(equalToConstant: 40),
+            badge2Image.heightAnchor.constraint(equalToConstant: 40),
+            badge3Image.widthAnchor.constraint(equalToConstant: 40),
+            badge3Image.heightAnchor.constraint(equalToConstant: 40),
+        ])
     }
 
     
