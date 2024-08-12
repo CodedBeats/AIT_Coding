@@ -106,11 +106,12 @@ class Repository {
             }
     }
     
-    // get all friends of an agent by level
+    // get all friends of an agent by level with real-time updates
     func fetchAllFriendsSortedByLevel(forAgentId id: String, completion: @escaping ([Agent]?, Error?) -> Void) {
         let docRef = db.collection("agents").document(id)
         
-        docRef.getDocument { (documentSnapshot, error) in
+        // Set up the listener for real-time updates
+        docRef.addSnapshotListener { documentSnapshot, error in
             if let error = error {
                 completion(nil, error)
                 return
@@ -125,7 +126,7 @@ class Repository {
             if let friendsArray = data["friends"] as? [String] {
                 // create arr of agents to store friends
                 var friends = [Agent]()
-                // special swift thing to handle asyncronous fetching of data as tasks (?)
+                // special swift thing to handle asynchronous fetching of data as tasks (?)
                 let dispatchGroup = DispatchGroup()
                 
                 for friendId in friendsArray {
@@ -141,7 +142,7 @@ class Repository {
                 
                 // execute once all tasks are finished
                 dispatchGroup.notify(queue: .main) {
-                    // sort friends array by lvl
+                    // sort friends array by level
                     let sortedFriends = friends.sorted { $0.level > $1.level }
                     completion(sortedFriends, nil)
                 }
@@ -151,6 +152,7 @@ class Repository {
             }
         }
     }
+
     
     
     
@@ -185,4 +187,23 @@ class Repository {
     
     // === DELETE === //
     
+    // remove certain friendID from agent's "friends" arr
+    func removeFriend(withFriendID friendID: String, forAgentID agentID: String, completion: @escaping (Error?) -> Void) {
+        // get current agent
+        let agentRef = db.collection("agents").document(agentID)
+
+        // remove friendID from "friends" arr
+        agentRef.updateData([
+            "friends": FieldValue.arrayRemove([friendID])
+        ]) { error in
+            if let error = error {
+                print("error removing friend: \(error.localizedDescription)")
+                completion(error)
+                
+            } else {
+                print("friend removed successfully.")
+                completion(nil)
+            }
+        }
+    }
 }
