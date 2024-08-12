@@ -187,6 +187,31 @@ class Repository {
     
     // === DELETE === //
     
+    // delete agent auth and doc
+    func deleteAgent(withUserID userID: String, completion: @escaping (Error?) -> Void) {
+        guard let agentAuth = Auth.auth().currentUser else {
+            completion(nil)
+            return
+        }
+        
+        // delete agent doc from collection
+        db.collection("agents").document(userID).delete { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            // delete user from auth
+            agentAuth.delete { error in
+                if let error = error {
+                    completion(error)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     // remove certain friendID from agent's "friends" arr
     func removeFriend(withFriendID friendID: String, forAgentID agentID: String, completion: @escaping (Error?) -> Void) {
         // get current agent
@@ -201,7 +226,7 @@ class Repository {
                 completion(error)
                 
             } else {
-                print("friend removed successfully.")
+                print("friend removed successfully")
                 completion(nil)
             }
         }

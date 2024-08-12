@@ -14,6 +14,7 @@ class ShowAgentReportTVC: UITableViewController {
     @IBOutlet weak var agentExpProgress: UIProgressView!
     @IBOutlet weak var agentLevelLabel: UILabel!
     
+    let service = Repository()
     var agent: Agent!
 
     override func viewDidLoad() {
@@ -34,14 +35,14 @@ class ShowAgentReportTVC: UITableViewController {
         // show message with input
         showMessageWithInput(
             title: "Reset Password",
-            message: "Please enter your email to reset your password.",
+            message: "Please enter your email to reset your password",
             placeholder: "Enter your email",
             actionTitle: "Send Reset Link"
         ) { email in
             // validate email
             if email.isBlank {
                 // error alert if email is blank or nil
-                self.showAlertMessage(title: "Error", message: "Please enter a valid email address.")
+                self.showAlertMessage(title: "Error", message: "Please enter a valid email address")
                 return
             }
             
@@ -50,7 +51,7 @@ class ShowAgentReportTVC: UITableViewController {
                 if let error = error {
                     self.showAlertMessage(title: "Error", message: error.localizedDescription)
                 } else {
-                    self.showAlertMessage(title: "Success", message: "Password reset link has been sent to \(email!).")
+                    self.showAlertMessage(title: "Success", message: "Password reset link has been sent to \(email!)")
                 }
             }
         }
@@ -67,12 +68,9 @@ class ShowAgentReportTVC: UITableViewController {
                 // logout
                 do {
                     try Auth.auth().signOut()
+                    // navigate back to login
+                    self.navigateToAuthScenes()
                     
-                    if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "authNC") as? UINavigationController {
-                        // set auth navigation controller as root view controller
-                        self.view.window?.rootViewController = loginVC
-                        self.view.window?.makeKeyAndVisible()
-                    }
                 } catch let signOutError as NSError {
                     print("Error signing out: ", signOutError.localizedDescription)
                 }
@@ -84,7 +82,48 @@ class ShowAgentReportTVC: UITableViewController {
     }
     
     @IBAction func deleteAccountBtnDidPress(_ sender: Any) {
+        showConfirmationMessage(
+            title: "Delete Account",
+            message: "Are you sure you want to delete your account?",
+            confirmTitle: "Delete Account",
+            cancelTitle: "Cancel",
+            delete: {
+                                
+                // get agent's ID
+                guard let userID = Auth.auth().currentUser?.uid else {
+                    print("User not logged in")
+                    return
+                }
+
+                // delete agent from auth and coll
+                self.service.deleteAgent(withUserID: userID) { error in
+                    if let error = error {
+                        // failed
+                        self.showAlertMessage(title: "Error", message: "Failed to delete account: \(error.localizedDescription)")
+                    } else {
+                        // navigate back to login
+                        self.navigateToAuthScenes()
+                        // success
+                        print("Account deleted successfully")
+                    }
+                }
+                
+            }, cancel: {
+                print("Delete account cancelled")
+            }
+        )
     }
+    
+    
+    // func to route back to login
+    func navigateToAuthScenes() {
+        if let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "authNC") as? UINavigationController {
+            // set auth navigation controller as root view controller
+            self.view.window?.rootViewController = loginVC
+            self.view.window?.makeKeyAndVisible()
+        }
+    }
+    
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

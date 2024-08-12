@@ -56,7 +56,7 @@ class ShowMissionTVC: UITableViewController {
                 print("Error updating agent: \(error.localizedDescription)")
             } else {
                 // success
-                print("Agent updated successfully.")
+                print("Agent updated successfully")
                 
                 // update agent object locally...this might be wrong :(
                 self.agent?.level = newLvl
@@ -96,7 +96,7 @@ class ShowMissionTVC: UITableViewController {
                 print("Error updating agent: \(error.localizedDescription)")
             } else {
                 // success
-                print("Agent updated successfully.")
+                print("Agent updated successfully")
                 
                 // update agent object locally...this might be wrong :(
                 self.agent?.currentMission = randomMission

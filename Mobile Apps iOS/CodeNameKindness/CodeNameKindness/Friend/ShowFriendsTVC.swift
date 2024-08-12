@@ -41,7 +41,7 @@ class ShowFriendsTVC: UITableViewController {
                 }
                 
             } else {
-                print("No friends found.")
+                print("No friends found")
             }
         }
     }
@@ -112,7 +112,7 @@ class ShowFriendsTVC: UITableViewController {
                         if let error = error {
                             print("Failed to remove friend: \(error.localizedDescription)")
                         } else {
-                            print("Friend removed successfully.")
+                            print("Friend removed successfully")
                         }
                     }
                 }, cancel: {
