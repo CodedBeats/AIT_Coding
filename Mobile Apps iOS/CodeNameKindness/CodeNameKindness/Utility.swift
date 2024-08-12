@@ -29,16 +29,28 @@ class Utility {
     
     // handle increase of exp, level and badges
     static func calculateNewStats(currentExp exp: Int, currentLevel lvl: Int) -> (newExp: Int, newLvl: Int, badges: [String]) {
-        var newLvl = lvl
+        // exp
         var newExp = exp + 30
         
+        // level
+        var newLvl = lvl
         if newExp >= 100 {
             newExp -= 100
             newLvl += 1
         }
         
-        // static for now
-        let badges = ["badge_1", "badge_2", "badge_3"]
+        // badges
+        var badges = [String]()
+        if newLvl > 50 {
+            badges.append("badge3")
+        }
+        if newLvl > 20 {
+            badges.append("badge2")
+        }
+        if newLvl > 5 {
+            badges.append("badge1")
+        }
+
         
         return (newExp, newLvl, badges)
     }

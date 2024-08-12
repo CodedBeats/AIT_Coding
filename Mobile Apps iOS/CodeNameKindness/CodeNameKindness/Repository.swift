@@ -160,7 +160,7 @@ class Repository {
     // === UPDATE === //
     
     // update agent exp for completing mission
-    func updateAgentStats(withId id: String, newExp: Int, newLevel: Int, newMission: String, completion: @escaping (Error?) -> Void) {
+    func updateAgentStats(withId id: String, newExp: Int, newLevel: Int, newBadges: [String], newMission: String, completion: @escaping (Error?) -> Void) {
         // agents coll with specific docID
         let docRef = db.collection("agents").document(id)
         
@@ -168,7 +168,8 @@ class Repository {
         docRef.updateData([
             "currentMission": newMission,
             "exp": newExp,
-            "level": newLevel
+            "level": newLevel,
+            "badges": newBadges
         ]) { error in
             if let error = error {
                 // error

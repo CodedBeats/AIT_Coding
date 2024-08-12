@@ -72,16 +72,10 @@ class ShowFriendsTVC: UITableViewController {
         let progress = Float(friend.exp) / 100.0
         cell.expProgressBar.setProgress(progress, animated: true)
         
-        // Configure the badges (just an example)
-        //if friend.badges.count > 0 {
-        //    cell.badge1Image.image = UIImage(named: friend.badges[0])
-        //}
-        //if friend.badges.count > 1 {
-        //    cell.badge2Image.image = UIImage(named: friend.badges[1])
-        //}
-        //if friend.badges.count > 2 {
-        //    cell.badge3Image.image = UIImage(named: friend.badges[2])
-        //}
+        // badges
+        cell.badge1Image.image = friend.badges.contains("badge1") ? UIImage(named: "badge1") : nil
+        cell.badge2Image.image = friend.badges.contains("badge2") ? UIImage(named: "badge2") : nil
+        cell.badge3Image.image = friend.badges.contains("badge3") ? UIImage(named: "badge3") : nil
 
         return cell
     }

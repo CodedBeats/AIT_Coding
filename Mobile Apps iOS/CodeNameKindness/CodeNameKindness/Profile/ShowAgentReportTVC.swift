@@ -14,6 +14,10 @@ class ShowAgentReportTVC: UITableViewController {
     @IBOutlet weak var agentExpProgress: UIProgressView!
     @IBOutlet weak var agentLevelLabel: UILabel!
     
+    @IBOutlet weak var badge1Image: UIImageView!
+    @IBOutlet weak var badge2Image: UIImageView!
+    @IBOutlet weak var badge3Image: UIImageView!
+    
     let service = Repository()
     var agent: Agent!
 
@@ -23,6 +27,11 @@ class ShowAgentReportTVC: UITableViewController {
         agentNameLabel.text = agent.agentName
         agentExpProgress.progress = Float(agent.exp) / 100.0
         agentLevelLabel.text = String(agent.level)
+        
+        // badges
+        badge1Image.image = agent.badges.contains("badge1") ? UIImage(named: "badge1") : nil
+        badge2Image.image = agent.badges.contains("badge2") ? UIImage(named: "badge2") : nil
+        badge3Image.image = agent.badges.contains("badge3") ? UIImage(named: "badge3") : nil
     }
 
     

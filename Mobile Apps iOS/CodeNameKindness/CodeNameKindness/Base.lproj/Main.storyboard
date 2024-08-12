@@ -14,7 +14,7 @@
                 <navigationController storyboardIdentifier="authNC" automaticallyAdjustsScrollViewInsets="NO" id="MKe-V0-LNO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xFe-49-Psu">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" systemColor="tintColor"/>
@@ -244,7 +244,7 @@
             <objects>
                 <tableViewController id="d46-tN-T0R" customClass="ShowHeadquartersTVC" customModule="CodeNameKindness" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SUI-FN-dEg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <sections>
@@ -627,6 +627,9 @@
                         <outlet property="agentExpProgress" destination="gk8-x6-dQa" id="iqj-yH-dq0"/>
                         <outlet property="agentLevelLabel" destination="lB7-nN-0cS" id="rNI-5p-vvf"/>
                         <outlet property="agentNameLabel" destination="A8T-Lg-9z8" id="LhX-ae-7me"/>
+                        <outlet property="badge1Image" destination="JL3-Af-lzS" id="NiP-HY-6aN"/>
+                        <outlet property="badge2Image" destination="02u-WC-sRB" id="2UZ-9I-RQm"/>
+                        <outlet property="badge3Image" destination="KRt-Rg-cwZ" id="8I5-ne-nfP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQC-gJ-b9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -907,7 +910,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="DQi-YF-wqH">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
