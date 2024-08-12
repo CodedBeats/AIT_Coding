@@ -30,12 +30,12 @@ class LoginTVC: UITableViewController {
     
     
     @IBAction func forgottenPassswordDidPress(_ sender: Any) {
-        loadingActivityIndicator.startAnimating() // start loading animation
-        
         guard !emailTextField.text.isBlank else {
             self.showAlertMessage(title: "Email is Empty", message: "Please input your email")
             return
         }
+        
+        loadingActivityIndicator.startAnimating() // start loading animation
         
         Auth.auth().sendPasswordReset(withEmail: emailTextField.text!){ error in
             if let error = error {
@@ -52,8 +52,6 @@ class LoginTVC: UITableViewController {
     
     
     @IBAction func loginDidPress(_ sender: Any) {
-        loadingActivityIndicator.startAnimating() // start loading animation
-        
         guard !emailTextField.text.isBlank else {
             showAlertMessage(title: "Validation", message: "Email is mandatory")
             return
@@ -63,6 +61,8 @@ class LoginTVC: UITableViewController {
             showAlertMessage(title: "Validation", message: "Password is mandatory")
             return
         }
+        
+        loadingActivityIndicator.startAnimating() // start loading animation
         
         let email = emailTextField.text!
         let password = passwordTextField.text!

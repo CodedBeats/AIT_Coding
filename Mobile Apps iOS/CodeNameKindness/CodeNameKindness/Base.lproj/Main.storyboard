@@ -11,7 +11,7 @@
         <!--Navigation Controller-->
         <scene sceneID="uuD-eF-2HI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MKe-V0-LNO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="authNC" automaticallyAdjustsScrollViewInsets="NO" id="MKe-V0-LNO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xFe-49-Psu">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -376,7 +376,7 @@
         <scene sceneID="qyo-WB-BKp">
             <objects>
                 <tableViewController id="g4g-gc-hIu" customClass="ShowMissionTVC" customModule="CodeNameKindness" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -570,6 +570,9 @@
                                                         <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                                                         <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="logoutBtnDidPress:" destination="0rJ-xX-06I" eventType="touchUpInside" id="6SO-Xl-xIp"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRp-s7-8o9">
                                                     <rect key="frame" x="92" y="19" width="167" height="28"/>
@@ -579,6 +582,9 @@
                                                         <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                                                         <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="changePasswordBtnDidPress:" destination="0rJ-xX-06I" eventType="touchUpInside" id="ugw-2T-kkP"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyf-Oq-4vk">
                                                     <rect key="frame" x="92" y="102" width="167" height="32"/>
@@ -589,6 +595,9 @@
                                                         <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                                         <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="deleteAccountBtnDidPress:" destination="0rJ-xX-06I" eventType="touchUpInside" id="Xma-f7-rgc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -618,6 +627,9 @@
                         <outlet property="agentExpProgress" destination="gk8-x6-dQa" id="iqj-yH-dq0"/>
                         <outlet property="agentLevelLabel" destination="lB7-nN-0cS" id="rNI-5p-vvf"/>
                         <outlet property="agentNameLabel" destination="A8T-Lg-9z8" id="LhX-ae-7me"/>
+                        <outlet property="badge1Image" destination="JL3-Af-lzS" id="NiP-HY-6aN"/>
+                        <outlet property="badge2Image" destination="02u-WC-sRB" id="2UZ-9I-RQm"/>
+                        <outlet property="badge3Image" destination="KRt-Rg-cwZ" id="8I5-ne-nfP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQC-gJ-b9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -657,7 +669,7 @@
                                                         <action selector="emailTextField:" destination="gUe-Cy-0RH" eventType="editingDidEnd" id="J3x-6M-pL5"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Szc-dH-DBN">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1234567" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Szc-dH-DBN">
                                                     <rect key="frame" x="16" y="63" width="287" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -816,12 +828,12 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hv8-XG-sNz">
                                                     <rect key="frame" x="16" y="106" width="287" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hR9-Sm-PgR">
                                                     <rect key="frame" x="17" y="156" width="287" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7q-jh-2lo">
                                                     <rect key="frame" x="15" y="239" width="289" height="35.5"/>
@@ -836,6 +848,10 @@
                                                         <action selector="signUpDidPress:" destination="nc5-Yq-Xsv" eventType="touchUpInside" id="qm9-Ds-mXn"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6H4-wX-mTi">
+                                                    <rect key="frame" x="150" y="211" width="20" height="20"/>
+                                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MWJ-4f-COb" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="topMargin" constant="20" id="0kN-YM-P6c"/>
@@ -850,10 +866,14 @@
                                                 <constraint firstItem="hv8-XG-sNz" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="16" id="Rwf-F0-SNR"/>
                                                 <constraint firstItem="hR9-Sm-PgR" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="17" id="X7c-Uf-s33"/>
                                                 <constraint firstItem="Uxx-6x-QNh" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="17" id="a77-Ed-YjA"/>
+                                                <constraint firstItem="6H4-wX-mTi" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="150" id="bG0-K5-bBm"/>
+                                                <constraint firstItem="6H4-wX-mTi" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="211" id="exH-rM-VAf"/>
                                                 <constraint firstItem="MWJ-4f-COb" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="11" id="fIL-z5-dYe"/>
                                                 <constraint firstAttribute="trailing" secondItem="hv8-XG-sNz" secondAttribute="trailing" constant="17" id="gap-fj-1bR"/>
                                                 <constraint firstItem="hR9-Sm-PgR" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="156" id="ojz-vp-d5Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="6H4-wX-mTi" secondAttribute="trailing" constant="150" id="rmX-1X-Drn"/>
                                                 <constraint firstAttribute="trailing" secondItem="Uxx-6x-QNh" secondAttribute="trailing" constant="16" id="sfr-Il-BhK"/>
+                                                <constraint firstAttribute="bottom" secondItem="6H4-wX-mTi" secondAttribute="bottom" constant="69" id="vSv-Xo-8zd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
@@ -872,6 +892,7 @@
                         <outlet property="agentNameTextField" destination="Uxx-6x-QNh" id="LS1-2E-5L0"/>
                         <outlet property="confirmPasswordTextField" destination="hR9-Sm-PgR" id="PXs-vg-Zxz"/>
                         <outlet property="emailTextField" destination="MWJ-4f-COb" id="7c6-tk-I83"/>
+                        <outlet property="loadingActivityIndicator" destination="6H4-wX-mTi" id="5uf-XX-tIO"/>
                         <outlet property="passwordTextField" destination="hv8-XG-sNz" id="II5-Qv-skl"/>
                     </connections>
                 </tableViewController>

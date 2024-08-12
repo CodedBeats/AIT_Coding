@@ -41,7 +41,7 @@ class ShowFriendsTVC: UITableViewController {
                 }
                 
             } else {
-                print("No friends found.")
+                print("No friends found")
             }
         }
     }
@@ -72,16 +72,10 @@ class ShowFriendsTVC: UITableViewController {
         let progress = Float(friend.exp) / 100.0
         cell.expProgressBar.setProgress(progress, animated: true)
         
-        // Configure the badges (just an example)
-        //if friend.badges.count > 0 {
-        //    cell.badge1Image.image = UIImage(named: friend.badges[0])
-        //}
-        //if friend.badges.count > 1 {
-        //    cell.badge2Image.image = UIImage(named: friend.badges[1])
-        //}
-        //if friend.badges.count > 2 {
-        //    cell.badge3Image.image = UIImage(named: friend.badges[2])
-        //}
+        // badges
+        cell.badge1Image.image = friend.badges.contains("badge1") ? UIImage(named: "badge1") : nil
+        cell.badge2Image.image = friend.badges.contains("badge2") ? UIImage(named: "badge2") : nil
+        cell.badge3Image.image = friend.badges.contains("badge3") ? UIImage(named: "badge3") : nil
 
         return cell
     }
@@ -94,17 +88,35 @@ class ShowFriendsTVC: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let agent = friends[indexPath.row]
+            
+            // confirmation alert
+            showConfirmationMessage(
+                title: "Delete",
+                message: "Are you sure you want to remove \(agent.agentName) as a friend?",
+                confirmTitle: "Delete",
+                cancelTitle: "Cancel",
+                delete: {
+                    // remove agent's friendID from their friends
+                    self.service.removeFriend(withFriendID: agent.id, forAgentID: self.userAuthId) { error in
+                        if let error = error {
+                            print("Failed to remove friend: \(error.localizedDescription)")
+                        } else {
+                            print("Friend removed successfully")
+                        }
+                    }
+                }, cancel: {
+                    print("Cancelled")
+                }
+            )
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            // n/a
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

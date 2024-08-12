@@ -48,15 +48,16 @@ class ShowMissionTVC: UITableViewController {
         let newStats = Utility.calculateNewStats(currentExp: currentExp, currentLevel: currentLevel)
         let newExp = newStats.newExp
         let newLvl = newStats.newLvl
+        let newBadges = newStats.badges
         
         // update agent
-        service.updateAgentStats(withId: userAuthId, newExp: newExp, newLevel: newLvl, newMission: randomMission) { error in
+        service.updateAgentStats(withId: userAuthId, newExp: newExp, newLevel: newLvl, newBadges: newBadges, newMission: randomMission) { error in
             if let error = error {
                 // error
                 print("Error updating agent: \(error.localizedDescription)")
             } else {
                 // success
-                print("Agent updated successfully.")
+                print("Agent updated successfully")
                 
                 // update agent object locally...this might be wrong :(
                 self.agent?.level = newLvl
@@ -88,15 +89,18 @@ class ShowMissionTVC: UITableViewController {
             return
         }
         
+        // get agent's badges since they don't need to be changed
+        let badges = agent.badges
+        
         // Call the service to update the agent's data
-        service.updateAgentStats(withId: userAuthId, newExp: currentExp, newLevel: currentLevel, newMission: randomMission)
+        service.updateAgentStats(withId: userAuthId, newExp: currentExp, newLevel: currentLevel, newBadges: badges, newMission: randomMission)
         { error in
             if let error = error {
                 // error
                 print("Error updating agent: \(error.localizedDescription)")
             } else {
                 // success
-                print("Agent updated successfully.")
+                print("Agent updated successfully")
                 
                 // update agent object locally...this might be wrong :(
                 self.agent?.currentMission = randomMission
