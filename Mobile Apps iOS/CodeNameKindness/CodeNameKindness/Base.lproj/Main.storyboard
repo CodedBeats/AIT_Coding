@@ -376,7 +376,7 @@
         <scene sceneID="qyo-WB-BKp">
             <objects>
                 <tableViewController id="g4g-gc-hIu" customClass="ShowMissionTVC" customModule="CodeNameKindness" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vKH-Ho-H1B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -836,6 +836,10 @@
                                                         <action selector="signUpDidPress:" destination="nc5-Yq-Xsv" eventType="touchUpInside" id="qm9-Ds-mXn"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6H4-wX-mTi">
+                                                    <rect key="frame" x="150" y="211" width="20" height="20"/>
+                                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MWJ-4f-COb" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="topMargin" constant="20" id="0kN-YM-P6c"/>
@@ -850,10 +854,14 @@
                                                 <constraint firstItem="hv8-XG-sNz" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="16" id="Rwf-F0-SNR"/>
                                                 <constraint firstItem="hR9-Sm-PgR" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="17" id="X7c-Uf-s33"/>
                                                 <constraint firstItem="Uxx-6x-QNh" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="17" id="a77-Ed-YjA"/>
+                                                <constraint firstItem="6H4-wX-mTi" firstAttribute="leading" secondItem="ak2-Dt-H9b" secondAttribute="leading" constant="150" id="bG0-K5-bBm"/>
+                                                <constraint firstItem="6H4-wX-mTi" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="211" id="exH-rM-VAf"/>
                                                 <constraint firstItem="MWJ-4f-COb" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="11" id="fIL-z5-dYe"/>
                                                 <constraint firstAttribute="trailing" secondItem="hv8-XG-sNz" secondAttribute="trailing" constant="17" id="gap-fj-1bR"/>
                                                 <constraint firstItem="hR9-Sm-PgR" firstAttribute="top" secondItem="ak2-Dt-H9b" secondAttribute="top" constant="156" id="ojz-vp-d5Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="6H4-wX-mTi" secondAttribute="trailing" constant="150" id="rmX-1X-Drn"/>
                                                 <constraint firstAttribute="trailing" secondItem="Uxx-6x-QNh" secondAttribute="trailing" constant="16" id="sfr-Il-BhK"/>
+                                                <constraint firstAttribute="bottom" secondItem="6H4-wX-mTi" secondAttribute="bottom" constant="69" id="vSv-Xo-8zd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
@@ -872,6 +880,7 @@
                         <outlet property="agentNameTextField" destination="Uxx-6x-QNh" id="LS1-2E-5L0"/>
                         <outlet property="confirmPasswordTextField" destination="hR9-Sm-PgR" id="PXs-vg-Zxz"/>
                         <outlet property="emailTextField" destination="MWJ-4f-COb" id="7c6-tk-I83"/>
+                        <outlet property="loadingActivityIndicator" destination="6H4-wX-mTi" id="5uf-XX-tIO"/>
                         <outlet property="passwordTextField" destination="hv8-XG-sNz" id="II5-Qv-skl"/>
                     </connections>
                 </tableViewController>

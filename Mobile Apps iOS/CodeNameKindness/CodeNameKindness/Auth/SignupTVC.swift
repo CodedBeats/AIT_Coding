@@ -10,6 +10,8 @@ import FirebaseAuth
 
 class SignupTVC: UITableViewController {
     
+    
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var agentNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -57,6 +59,7 @@ class SignupTVC: UITableViewController {
             return
         }
         
+        loadingActivityIndicator.startAnimating() // start loading animation
         
         // closure with the code to be executed when the user presses Sign Up
         let registerUserClosure : () -> Void = {
@@ -86,6 +89,7 @@ class SignupTVC: UITableViewController {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             guard error == nil else {
                 self.showAlertMessage(title: "We could not create the account", message: "\(error!.localizedDescription)")
+                self.loadingActivityIndicator.stopAnimating() // stop loading animation
                 return
             }
             
@@ -94,12 +98,17 @@ class SignupTVC: UITableViewController {
                 // unwrap and see if there is an error
                 if let error = error {
                     self.showAlertMessage(title: "Error", message: "\(error.localizedDescription)")
+                    self.loadingActivityIndicator.stopAnimating() // stop loading animation
                     return
                 }
             }
-            self.showAlertMessageWithHandle(title: "Email Confirmation Sent",
-                                            message: "A confirmation email has been sent to your email account, please confirm your account before you log in",
-                                            onComplete: registerUserClosure)
+            
+            self.loadingActivityIndicator.stopAnimating() // stop loading animation
+            self.showAlertMessageWithHandle(
+                title: "Email Confirmation Sent",
+                message: "A confirmation email has been sent to your email account, please confirm your account before you log in",
+                onComplete: registerUserClosure
+            )
             
         }
     }
