@@ -11,8 +11,8 @@ A React.ts Native Expo Project that is a simple trivia game to help pass the tim
 | Timing System | Sign Up |
 | Plentiful questions with binary answers | Sign In |
 | Scoring System | Sign out |
-| Personal Highscore | Delete Account |
-| Leaderboard |  |
+| Personal Highscore | Change Password |
+| Leaderboard | Delete Account |
 
 
 ## Developer
