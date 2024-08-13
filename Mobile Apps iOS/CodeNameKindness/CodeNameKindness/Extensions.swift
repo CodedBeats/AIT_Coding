@@ -50,7 +50,7 @@ extension UIViewController {
     }
     
     
-    // message with confirmation following action
+    // message with confirmation for following action
     func showConfirmationMessage(title: String, message: String, confirmTitle: String, cancelTitle: String, delete: (() -> Void)?, cancel: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 
