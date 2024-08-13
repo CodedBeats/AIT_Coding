@@ -6,15 +6,21 @@ A React.ts Native Expo Project that is a simple trivia game to help pass the tim
 
 
 ## Features
-| **Game** | **Auth** | **Coming Soon** |
-| --- | --- | --- |
-| Timing System | Sign Up | Change Password |
-| Plentiful questions with binary answers | Sign In | Delete Account |
-| Scoring System | Sign out |  |
-| Personal Highscore |  |  |
-| Leaderboard |  |  |
+| **Game** | **Auth** |
+| --- | --- |
+| Timing System | Sign Up |
+| Plentiful questions with binary answers | Sign In |
+| Scoring System | Sign out |
+| Personal Highscore | Delete Account |
+| Leaderboard |  |
 
 
 ## Developer
 CodedBeats
 https://github.com/CodedBeats
+
+## Repository Project
+https://github.com/CodedBeats/AIT_Coding/tree/Cross_Platform_Apps/Cross%20Platform%20Apps/TwofoldTrivia
+
+## Commit History
+https://github.com/CodedBeats/AIT_Coding/commits/Cross_Platform_Apps
