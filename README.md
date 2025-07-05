@@ -61,4 +61,4 @@ Inside each class folder, you’ll find individual assessments or final project 
 ## 🔗 Connect with Me
 
 Check out my website to explore more about these projects and how they evolved:
-🌐 [CodeNameHaar]([https://your-portfolio.com](https://www.codenamehaar.dev/))  
+🌐 [CodeNameHaar](https://www.codenamehaar.dev/)  
