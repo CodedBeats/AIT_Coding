@@ -2,7 +2,7 @@
 
 This repository is a personal archive of coding projects created throughout my Bachelor of IT studies. Each folder represents a subject, and within them are various assessments, prototypes, and final projects.
 
-The primary purpose of this repo is to document my development journey and showcase the final projects from most classes. Some of the standout works are listed below, along with links to both the code and their live/demo versions on my portfolio site.
+The primary purpose of this repo is to document my development journey and showcase the final projects from most classes. Some of the standout works are listed below, along with links to both the code and their live/demo versions on my portfolio site.<br>
 (Not all classes/final projects are in this repo, towards the end of my course most final projects got their own repo)
 
 ---
