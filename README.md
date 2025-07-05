@@ -28,10 +28,10 @@ The primary purpose of this repo is to document my development journey and showc
 
 This repo is not just about code, it reflects my hands-on learning across a wide variety of technologies and disciplines, including:
 
--   Mobile development (iOS & Android)
+-   Mobile development (React Native, iOS, Android)
 -   Web development (frontend + backend)
--   Game design & Unity scripting
 -   Software Development (Java and .NET C#)
+-   Game development
 -   Full project planning & documentation
 
 These projects were created over the span of my academic journey at AIT and represent real submissions used for assessments.
