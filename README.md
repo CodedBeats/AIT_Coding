@@ -1,4 +1,4 @@
-# 🎓 AIT_Coding
+# AIT_Coding
 
 This repository is a personal archive of coding projects created throughout my Bachelor of IT studies. Each folder represents a subject, and within them are various assessments, prototypes, and final projects.
 
@@ -7,7 +7,7 @@ The primary purpose of this repo is to document my development journey and showc
 
 ---
 
-## 🚀 Featured Final Projects
+## Featured Final Projects
 
 | Class                          | Project            | Tech Stack                         | GitHub Repo                                                                                                        | Live/Demo                                                            |
 | ------------------------------ | ------------------ | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
@@ -20,11 +20,11 @@ The primary purpose of this repo is to document my development journey and showc
 | **Mobile Apps (iOS)**          | _CodeNameKindness_ | Swift, Firebase, Xcode                       | [View Code](https://github.com/CodedBeats/AIT_Coding/tree/master/Mobile%20Apps%20iOS/CodeNameKindness)             | [View Project](https://www.codenamehaar.dev/projects/QGJonEYybcyNRtLeYE6C) |
 | **Programming II**             | _Accretion²_       | C++                       | [View Code](https://github.com/CodedBeats/AIT_Coding/tree/master/Programming%20II/Assessment%203/Accretion%5E2)    | [View Project(W.I.P)](#)       |
 
-> ⚠️ Most project folders contain their own README and more specific details.
+> Most project folders contain their own README and more specific details.
 
 ---
 
-## 🧠 About This Repository
+## About This Repository
 
 This repo is not just about code, it reflects my hands-on learning across a wide variety of technologies and disciplines, including:
 
@@ -38,7 +38,7 @@ These projects were created over the span of my academic journey at AIT and repr
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 Each top-level folder represents a subject, such as:
 
@@ -58,7 +58,7 @@ Inside each class folder, you’ll find individual assessments or final project 
 
 ---
 
-## 🔗 Connect with Me
+## Connect with Me
 
 Check out my website to explore more about these projects and how they evolved:
-🌐 [CodeNameHaar](https://www.codenamehaar.dev/)  
+[CodeNameHaar](https://www.codenamehaar.dev/)  
